@@ -15,7 +15,7 @@
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
 <div>
-	<img src="images/logo.png" alt="Acme-Chorbies, Inc." />
+	<img src="images/logo.png" alt="Acme-CinemaDB, Inc." />
 </div>
 
 <div>

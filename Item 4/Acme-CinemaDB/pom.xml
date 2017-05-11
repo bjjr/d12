@@ -18,8 +18,8 @@
 	<!-- Artifact identification and properties -->
 
 	<groupId>Design-and-Testing</groupId>
-	<artifactId>Acme-Chorbies</artifactId>
-	<version>2.0</version>
+	<artifactId>Acme-CinemaDB</artifactId>
+	<version>1.0</version>
 	<packaging>war</packaging>
 	
 	<properties>
@@ -28,9 +28,9 @@
 
 	<!-- Indexing information -->
 
-	<name>Acme-Chorbies</name>
-	<url>http://www.acme-chorbies.com</url>
-	<description>This is Acme Chorbies project</description>
+	<name>Acme-CinemaDB</name>
+	<url>http://www.acme-cinemadb.com</url>
+	<description>This is Acme CinemaDB project</description>
 	
 	<!-- Build commands -->
 
