@@ -29,7 +29,7 @@ public class Campaign extends DomainEntity {
 	private int					max;
 	private int					timesDisplayed;
 	private boolean				approved;
-	private Double				fee;
+	private double				fee;
 
 
 	//Getters and Setters
@@ -77,7 +77,6 @@ public class Campaign extends DomainEntity {
 		this.max = max;
 	}
 
-	@NotNull
 	public int getTimesDisplayed() {
 		return this.timesDisplayed;
 	}
@@ -95,7 +94,6 @@ public class Campaign extends DomainEntity {
 		this.approved = approved;
 	}
 
-	@NotNull
 	public Double getFee() {
 		return this.fee;
 	}
