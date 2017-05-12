@@ -8,6 +8,7 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
@@ -94,11 +95,11 @@ public class Campaign extends DomainEntity {
 		this.approved = approved;
 	}
 
-	public Double getFee() {
+	public double getFee() {
 		return this.fee;
 	}
 
-	public void setFee(final Double fee) {
+	public void setFee(final double fee) {
 		this.fee = fee;
 	}
 
@@ -110,6 +111,7 @@ public class Campaign extends DomainEntity {
 
 	@NotNull
 	@Valid
+	@ManyToOne(optional = false)
 	public Producer getProducer() {
 		return this.producer;
 	}

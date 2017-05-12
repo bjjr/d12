@@ -29,6 +29,8 @@ public class Actor extends DomainEntity {
 	private String	country;
 
 
+	//Getters and Setters
+
 	@NotBlank
 	@NotNull
 	@SafeHtml
@@ -88,6 +90,7 @@ public class Actor extends DomainEntity {
 	private UserAccount	userAccount;
 
 
+	@OneToOne(optional = true)
 	public CreditCard getCreditCard() {
 		return this.creditCard;
 	}

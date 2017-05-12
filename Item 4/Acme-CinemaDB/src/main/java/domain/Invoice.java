@@ -6,6 +6,8 @@ import java.util.Date;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
@@ -22,7 +24,7 @@ public class Invoice extends DomainEntity {
 
 	private Boolean	paid;
 	private Date	bilingDate;
-	private Double	total;
+	private double	total;
 
 
 	@NotNull
@@ -46,11 +48,11 @@ public class Invoice extends DomainEntity {
 		this.bilingDate = bilingDate;
 	}
 
-	public Double getTotal() {
+	public double getTotal() {
 		return this.total;
 	}
 
-	public void setTotal(final Double total) {
+	public void setTotal(final double total) {
 		this.total = total;
 	}
 
@@ -63,6 +65,7 @@ public class Invoice extends DomainEntity {
 
 	@NotNull
 	@Valid
+	@ManyToOne(optional = false)
 	public Administrator getAdministrator() {
 		return this.administrator;
 	}
@@ -73,6 +76,7 @@ public class Invoice extends DomainEntity {
 
 	@NotNull
 	@Valid
+	@OneToOne(optional = false)
 	public Campaign getCampaign() {
 		return this.campaign;
 	}
