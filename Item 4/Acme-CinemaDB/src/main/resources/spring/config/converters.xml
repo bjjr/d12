@@ -29,35 +29,71 @@
 		<bean class="converters.AdministratorToStringConverter" />
 		<bean class="converters.StringToAdministratorConverter" />
 		
-		<bean class="converters.BannerToStringConverter" />
-		<bean class="converters.StringToBannerConverter" />
+		<bean class="converters.AssessableEntityToStringConverter" />
+		<bean class="converters.StringToAssessableEntityConverter" />
 		
-		<bean class="converters.ChargeToStringConverter" />
-		<bean class="converters.StringToChargeConverter" />
+		<bean class="converters.CampaignToStringConverter" />
+		<bean class="converters.StringToCampaignConverter" />
 		
-		<bean class="converters.ChirpToStringConverter" />
-		<bean class="converters.StringToChirpConverter" />
+		<bean class="converters.ChapterToStringConverter" />
+		<bean class="converters.StringToChapterConverter" />
 		
-		<bean class="converters.ChorbiToStringConverter" />
-		<bean class="converters.StringToChorbiConverter" />
+		<bean class="converters.CinematicEntityToStringConverter" />
+		<bean class="converters.StringToCinematicEntityConverter" />
 		
-		<bean class="converters.ChorbiLikeToStringConverter" />
-		<bean class="converters.StringToChorbiLikeConverter" />
+		<bean class="converters.ContentToStringConverter" />
+		<bean class="converters.StringToContentConverter" />
 		
 		<bean class="converters.CreditCardToStringConverter" />
 		<bean class="converters.StringToCreditCardConverter" />
 		
-		<bean class="converters.EventToStringConverter" />
-		<bean class="converters.StringToEventConverter" />
+		<bean class="converters.CriticToStringConverter" />
+		<bean class="converters.StringToCriticConverter" />
 		
 		<bean class="converters.FeeToStringConverter" />
 		<bean class="converters.StringToFeeConverter" />
 		
-		<bean class="converters.ManagerToStringConverter" />
-		<bean class="converters.StringToManagerConverter" />
+		<bean class="converters.GenreToStringConverter" />
+		<bean class="converters.StringToGenreConverter" />
 		
-		<bean class="converters.SearchTemplateToStringConverter" />
-		<bean class="converters.StringToSearchTemplateConverter" />
+		<bean class="converters.InvoiceToStringConverter" />
+		<bean class="converters.StringToInvoiceConverter" />
+		
+		<bean class="converters.LikeUserToStringConverter" />
+		<bean class="converters.StringToLikeUserConverter" />
+		
+		<bean class="converters.MessageEntityToStringConverter" />
+		<bean class="converters.StringToMessageEntityConverter" />
+		
+		<bean class="converters.MovieToStringConverter" />
+		<bean class="converters.StringToMovieConverter" />
+		
+		<bean class="converters.OrderUserToStringConverter" />
+		<bean class="converters.StringToOrderUserConverter" />
+		
+		<bean class="converters.ProducerToStringConverter" />
+		<bean class="converters.StringToProducerConverter" />
+		
+		<bean class="converters.ProductToStringConverter" />
+		<bean class="converters.StringToProductConverter" />
+		
+		<bean class="converters.ReviewToStringConverter" />
+		<bean class="converters.StringToReviewConverter" />
+		
+		<bean class="converters.SeasonToStringConverter" />
+		<bean class="converters.StringToSeasonConverter" />
+		
+		<bean class="converters.SocialIdentityToStringConverter" />
+		<bean class="converters.StringToSocialIdentityConverter" />
+		
+		<bean class="converters.ShippingAddressToStringConverter" />
+		<bean class="converters.StringToShippingAddressConverter" />
+		
+		<bean class="converters.ShowToStringConverter" />
+		<bean class="converters.StringToShowConverter" />
+		
+		<bean class="converters.StatusToStringConverter" />
+		<bean class="converters.StringToStatusConverter" />
 		
 		<bean class="converters.UserToStringConverter" />
 		<bean class="converters.StringToUserConverter" />
