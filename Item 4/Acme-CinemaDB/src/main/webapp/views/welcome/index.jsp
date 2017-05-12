@@ -18,8 +18,6 @@
 
 <p><spring:message code="welcome.greeting.prefix" /><spring:message code="welcome.greeting.suffix" /></p>
 
-<img alt="<spring:message code="welcome.url.broken" />" src="${ banner.path }"  style="max-height: 40vh" />
-
 <p><spring:message code="welcome.greeting.current.time" /> ${moment}</p> 
 
 <div id="legal" style="background-color:#bababa;">
