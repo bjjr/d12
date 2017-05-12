@@ -4,9 +4,9 @@ package repositories;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import domain.Fee;
+import domain.Movie;
 
 @Repository
-public interface FeeRepository extends JpaRepository<Fee, Integer> {
+public interface MovieRepository extends JpaRepository<Movie, Integer> {
 
 }
