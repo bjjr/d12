@@ -23,7 +23,12 @@
 		<value>/views/security/messages</value>		
 		<value>/views/welcome/messages</value>
 		
+		<value>/views/actor/messages</value>
+		<value>/views/content/messages</value>
+		<value>/views/fee/messages</value>
 		<value>/views/legal/messages</value>
+		<value>/views/messageEntity/messages</value>
+		<value>/views/socialIdentity/messages</value>
 		
 	</util:list>
 
