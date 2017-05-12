@@ -26,6 +26,7 @@ public class Actor extends DomainEntity {
 	private String	surname;
 	private String	email;
 	private String	phone;
+	private String	country;
 
 
 	@NotBlank
@@ -72,11 +73,28 @@ public class Actor extends DomainEntity {
 		this.phone = phone;
 	}
 
+	public String getCountry() {
+		return this.country;
+	}
+
+	public void setCountry(final String country) {
+		this.country = country;
+	}
+
 
 	// Relationships
 
+	private CreditCard	creditCard;
 	private UserAccount	userAccount;
 
+
+	public CreditCard getCreditCard() {
+		return this.creditCard;
+	}
+
+	public void setCreditCard(final CreditCard creditCard) {
+		this.creditCard = creditCard;
+	}
 
 	@NotNull
 	@Valid

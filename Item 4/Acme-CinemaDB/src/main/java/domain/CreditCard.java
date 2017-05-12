@@ -42,6 +42,7 @@ public class CreditCard extends DomainEntity implements Serializable {
 
 	@NotBlank
 	@NotNull
+	@SafeHtml
 	public String getBrand() {
 		return this.brand;
 	}

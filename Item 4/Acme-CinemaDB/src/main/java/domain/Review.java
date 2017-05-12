@@ -7,6 +7,6 @@ import javax.persistence.Entity;
 
 @Entity
 @Access(AccessType.PROPERTY)
-public class User extends Actor {
+public class Review extends DomainEntity {
 
 }
