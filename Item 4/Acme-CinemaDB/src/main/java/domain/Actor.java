@@ -75,6 +75,9 @@ public class Actor extends DomainEntity {
 		this.phone = phone;
 	}
 
+	@NotNull
+	@NotBlank
+	@SafeHtml
 	public String getCountry() {
 		return this.country;
 	}
@@ -90,6 +93,7 @@ public class Actor extends DomainEntity {
 	private UserAccount	userAccount;
 
 
+	@Valid
 	@OneToOne(optional = true)
 	public CreditCard getCreditCard() {
 		return this.creditCard;

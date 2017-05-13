@@ -12,8 +12,8 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.SafeHtml;
-import org.hibernate.validator.constraints.URL;
 
 @Entity
 @Access(AccessType.PROPERTY)
@@ -58,7 +58,7 @@ public class Content extends AssessableEntity {
 		this.avgRating = avgRating;
 	}
 
-	@URL
+	@NotNull
 	@ElementCollection
 	public Collection<String> getImages() {
 		return this.images;
@@ -68,7 +68,7 @@ public class Content extends AssessableEntity {
 		this.images = images;
 	}
 
-	@URL
+	@NotNull
 	@ElementCollection
 	public Collection<String> getVideos() {
 		return this.videos;
@@ -81,26 +81,29 @@ public class Content extends AssessableEntity {
 
 	// Relationships
 
-	private Collection<Genre>			genre;
-	private Collection<CinematicEntity>	cinematicEntity;
+	private Collection<Genre>			genres;
+	private Collection<CinematicEntity>	cinematicEntities;
 
 
+	@NotNull
+	@NotEmpty
 	@ManyToMany
-	public Collection<Genre> getGenre() {
-		return this.genre;
+	public Collection<Genre> getGenres() {
+		return this.genres;
 	}
 
-	public void setGenre(final Collection<Genre> genre) {
-		this.genre = genre;
+	public void setGenres(final Collection<Genre> genres) {
+		this.genres = genres;
 	}
 
+	@NotNull
 	@ManyToMany
-	public Collection<CinematicEntity> getCinematicEntity() {
-		return this.cinematicEntity;
+	public Collection<CinematicEntity> getCinematicEntities() {
+		return this.cinematicEntities;
 	}
 
-	public void setCinematicEntity(final Collection<CinematicEntity> cinematicEntity) {
-		this.cinematicEntity = cinematicEntity;
+	public void setCinematicEntities(final Collection<CinematicEntity> cinematicEntities) {
+		this.cinematicEntities = cinematicEntities;
 	}
 
 }
