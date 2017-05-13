@@ -24,11 +24,27 @@
 		<value>/views/welcome/messages</value>
 		
 		<value>/views/actor/messages</value>
+		<value>/views/campaign/messages</value>
+		<value>/views/chapter/messages</value>
+		<value>/views/cinematicEntity/messages</value>
 		<value>/views/content/messages</value>
+		<value>/views/creditCard/messages</value>
+		<value>/views/critic/messages</value>
 		<value>/views/fee/messages</value>
+		<value>/views/genre/messages</value>
+		<value>/views/invoice/messages</value>
 		<value>/views/legal/messages</value>
+		<value>/views/likeUser/messages</value>
 		<value>/views/messageEntity/messages</value>
+		<value>/views/orderUser/messages</value>
+		<value>/views/producer/messages</value>
+		<value>/views/product/messages</value>
+		<value>/views/review/messages</value>
+		<value>/views/season/messages</value>
+		<value>/views/shippingAddress/messages</value>
 		<value>/views/socialIdentity/messages</value>
+		<value>/views/status/messages</value>		
+		<value>/views/user/messages</value>
 		
 	</util:list>
 
