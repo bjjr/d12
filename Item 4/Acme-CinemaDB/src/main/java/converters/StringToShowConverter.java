@@ -8,19 +8,19 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import repositories.ShowRepository;
-import domain.Show;
+import domain.TvShow;
 
 @Component
 @Transactional
-public class StringToShowConverter implements Converter<String, Show> {
+public class StringToShowConverter implements Converter<String, TvShow> {
 
 	@Autowired
 	ShowRepository	showRepository;
 
 
 	@Override
-	public Show convert(final String text) {
-		Show res;
+	public TvShow convert(final String text) {
+		TvShow res;
 		int id;
 
 		try {
