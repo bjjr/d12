@@ -182,7 +182,7 @@
 		<property name="name" value="nameAdmin" />
 		<property name="surname" value="surnameAdmin" />
 		<property name="email" value="admin@admin.com" />
-		<property name="phone" value="+3400000000" />
+		<property name="phone" value="+34000000000" />
 		<property name="country" value="Spain" />
 		<property name="userAccount" ref="userAccountA" />
 	</bean>
