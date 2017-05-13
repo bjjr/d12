@@ -18,8 +18,293 @@
 	
 	<!-- User accounts -->
 
+	<bean id="userAccountA" class="security.UserAccount">
+		<property name="username" value="admin" />
+		<property name="password" value="21232f297a57a5a743894a0e4a801fc3" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ADMIN" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccountU1" class="security.UserAccount">
+		<property name="username" value="user1" />
+		<property name="password" value="24c9e15e52afc47c225b757e7bee1f9d" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="USER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccountU2" class="security.UserAccount">
+		<property name="username" value="user2" />
+		<property name="password" value="7e58d63b60197ceb55a1c487989a3720" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="USER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccountU3" class="security.UserAccount">
+		<property name="username" value="user3" />
+		<property name="password" value="92877af70a45fd6a2ed7fe81e1236b78" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="USER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccountU4" class="security.UserAccount">
+		<property name="username" value="user4" />
+		<property name="password" value="3f02ebe3d7929b091e3d8ccfde2f3bc6" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ADMIN" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccountU5" class="security.UserAccount">
+		<property name="username" value="user5" />
+		<property name="password" value="0a791842f52a0acfbb3a783378c066b8" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="USER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccountU6" class="security.UserAccount">
+		<property name="username" value="user6" />
+		<property name="password" value="affec3b64cf90492377a8114c86fc093" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="USER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccountC1" class="security.UserAccount">
+		<property name="username" value="critic1" />
+		<property name="password" value="165d185050bab438668aef6faeee3be5" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="CRITIC" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccountC2" class="security.UserAccount">
+		<property name="username" value="critic2" />
+		<property name="password" value="88fc227c1f12e1f11b8b1584991c88fe" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="CRITIC" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccountC3" class="security.UserAccount">
+		<property name="username" value="critic3" />
+		<property name="password" value="8a253092f1d177ba06d104b69a159d93" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="CRITIC" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccountP1" class="security.UserAccount">
+		<property name="username" value="producer1" />
+		<property name="password" value="d241610b8b0fe72211f7c97e44490bf3" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="PRODUCER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccountP2" class="security.UserAccount">
+		<property name="username" value="producer2" />
+		<property name="password" value="211cd297447bcffe0adb1549acbc8027" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="PRODUCER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccountP3" class="security.UserAccount">
+		<property name="username" value="producer3" />
+		<property name="password" value="d200e947051ceac468db08bbb25a2c7c" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="PRODUCER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
 
 	<!-- Other domain beans come here -->
-
+	
+	<!-- ADMIN -->
+	
+	<bean id="admin" class="domain.Administrator">
+		<property name="name" value="nameAdmin" />
+		<property name="surname" value="surnameAdmin" />
+		<property name="email" value="admin@admin.com" />
+		<property name="phone" value="+3400000000" />
+		<property name="country" value="Spain" />
+		<property name="userAccount" ref="userAccountA" />
+	</bean>
+	
+	<!-- USERS -->
+	
+	<bean id="user1" class="domain.User">
+		<property name="name" value="nameUser1" />
+		<property name="surname" value="surnameUser1" />
+		<property name="email" value="user1@user.com" />
+		<property name="phone" value="+48123456789" />
+		<property name="country" value="France" />
+		<property name="userAccount" ref="userAccountU1" />
+	</bean>
+	
+	<bean id="user2" class="domain.User">
+		<property name="name" value="nameUser2" />
+		<property name="surname" value="surnameUser2" />
+		<property name="email" value="user2@user.com" />
+		<property name="phone" value="+16123456789" />
+		<property name="country" value="Italy" />
+		<property name="userAccount" ref="userAccountU2" />
+	</bean>
+	
+	<bean id="user3" class="domain.User">
+		<property name="name" value="nameUser3" />
+		<property name="surname" value="surnameUser3" />
+		<property name="email" value="user3@user.com" />
+		<property name="phone" value="+34555666777" />
+		<property name="country" value="Spain" />
+		<property name="userAccount" ref="userAccountU3" />
+	</bean>
+	
+	<bean id="user4" class="domain.User">
+		<property name="name" value="nameUser4" />
+		<property name="surname" value="surnameUser4" />
+		<property name="email" value="user4@user.com" />
+		<property name="phone" value="+32123456789" />
+		<property name="country" value="Canada" />
+		<property name="userAccount" ref="userAccountU4" />
+	</bean>
+	
+	<bean id="user5" class="domain.User">
+		<property name="name" value="nameUser5" />
+		<property name="surname" value="surnameUser5" />
+		<property name="email" value="user5@user.com" />
+		<property name="phone" value="+12789456123" />
+		<property name="country" value="United Kingdom" />
+		<property name="userAccount" ref="userAccountU5" />
+	</bean>
+	
+	<bean id="user6" class="domain.User">
+		<property name="name" value="nameUser6" />
+		<property name="surname" value="surnameUser6" />
+		<property name="email" value="user6@user.com" />
+		<property name="phone" value="+45252627289" />
+		<property name="country" value="Netherlands" />
+		<property name="userAccount" ref="userAccountU6" />
+	</bean>
+	
+	<!-- CRITICS -->
+	
+	<bean id="critic1" class="domain.Critic">
+		<property name="name" value="nameCritic1" />
+		<property name="surname" value="surnameCritic1" />
+		<property name="email" value="critic1@critic.com" />
+		<property name="phone" value="+34123456789" />
+		<property name="country" value="Spain" />
+		<property name="media" value="Cine al día" />
+		<property name="userAccount" ref="userAccountC1" />
+	</bean>
+	
+	<bean id="critic2" class="domain.Critic">
+		<property name="name" value="nameCritic2" />
+		<property name="surname" value="surnameCritic2" />
+		<property name="email" value="critic2@critic.com" />
+		<property name="phone" value="+64444555222" />
+		<property name="country" value="United Kingdom" />
+		<property name="media" value="Cinema Today" />
+		<property name="userAccount" ref="userAccountC2" />
+	</bean>
+	
+	<bean id="critic3" class="domain.Critic">
+		<property name="name" value="nameCritic3" />
+		<property name="surname" value="surnameCritic3" />
+		<property name="email" value="critic3@critic.com" />
+		<property name="phone" value="+47555111333" />
+		<property name="country" value="France" />
+		<property name="media" value="Le photogramme" />
+		<property name="userAccount" ref="userAccountC3" />
+	</bean>
+	
+	<!-- PRODUCERS -->
+	
+	<bean id="producer1" class="domain.Producer">
+		<property name="name" value="nameProducer1" />
+		<property name="surname" value="surnameProducer1" />
+		<property name="email" value="producer1@producer.com" />
+		<property name="phone" value="+34565656117" />
+		<property name="country" value="Spain" />
+		<property name="company" value="Producciones Atlantis S.L." />
+		<property name="userAccount" ref="userAccountP1" />
+	</bean>
+	
+	<bean id="producer2" class="domain.Producer">
+		<property name="name" value="nameProducer2" />
+		<property name="surname" value="surnameProducer2" />
+		<property name="email" value="producer2@producer.com" />
+		<property name="phone" value="+34741258963" />
+		<property name="country" value="Spain" />
+		<property name="company" value="Mediterráneo S.L." />
+		<property name="userAccount" ref="userAccountP2" />
+	</bean>
+	
+	<bean id="producer3" class="domain.Producer">
+		<property name="name" value="nameProducer3" />
+		<property name="surname" value="surnameProducer3" />
+		<property name="email" value="producer3@producer.com" />
+		<property name="phone" value="+34963258741" />
+		<property name="country" value="Spain" />
+		<property name="company" value="Vértigo S.L." />
+		<property name="userAccount" ref="userAccountP3" />
+	</bean>
 	
 </beans>
