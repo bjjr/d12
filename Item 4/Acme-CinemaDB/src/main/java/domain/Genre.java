@@ -4,22 +4,20 @@ package domain;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
-import javax.validation.constraints.NotNull;
 
 @Entity
 @Access(AccessType.PROPERTY)
 public class Genre extends DomainEntity {
 
 	// Attributes
-	private Integer	kind;
+	private int	kind;
 
 
-	@NotNull
-	public Integer getKind() {
+	public int getKind() {
 		return this.kind;
 	}
 
-	public void setKind(final Integer kind) {
+	public void setKind(final int kind) {
 		this.kind = kind;
 	}
 
