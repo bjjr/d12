@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import domain.TvShow;
 
 @Repository
-public interface ShowRepository extends JpaRepository<TvShow, Integer> {
+public interface TvShowRepository extends JpaRepository<TvShow, Integer> {
 
 }

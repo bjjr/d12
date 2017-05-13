@@ -7,15 +7,15 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import repositories.ShowRepository;
+import repositories.TvShowRepository;
 import domain.TvShow;
 
 @Component
 @Transactional
-public class StringToShowConverter implements Converter<String, TvShow> {
+public class StringToTvShowConverter implements Converter<String, TvShow> {
 
 	@Autowired
-	ShowRepository	showRepository;
+	TvShowRepository	showRepository;
 
 
 	@Override

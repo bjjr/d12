@@ -9,7 +9,7 @@ import domain.TvShow;
 
 @Component
 @Transactional
-public class ShowToStringConverter implements Converter<TvShow, String> {
+public class TvShowToStringConverter implements Converter<TvShow, String> {
 
 	@Override
 	public String convert(final TvShow show) {
