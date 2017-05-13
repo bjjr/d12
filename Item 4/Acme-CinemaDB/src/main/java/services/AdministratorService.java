@@ -1,6 +1,8 @@
 
 package services;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -35,6 +37,27 @@ public class AdministratorService {
 		Administrator result;
 
 		result = this.administratorRepository.save(admin);
+
+		return result;
+	}
+
+	public Collection<Administrator> findAll() {
+		Collection<Administrator> result;
+
+		result = this.administratorRepository.findAll();
+		Assert.notNull(result);
+
+		return result;
+	}
+
+	public Administrator findOne(final int adminId) {
+		Assert.notNull(adminId);
+		Assert.isTrue(adminId != 0);
+
+		Administrator result;
+
+		result = this.administratorRepository.findOne(adminId);
+		Assert.notNull(result);
 
 		return result;
 	}
