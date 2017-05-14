@@ -5,14 +5,14 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import domain.Show;
+import domain.TvShow;
 
 @Component
 @Transactional
-public class ShowToStringConverter implements Converter<Show, String> {
+public class TvShowToStringConverter implements Converter<TvShow, String> {
 
 	@Override
-	public String convert(final Show show) {
+	public String convert(final TvShow show) {
 		String res;
 
 		if (show == null)

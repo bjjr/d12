@@ -127,7 +127,7 @@ public class ShippingAddress extends DomainEntity {
 
 	@NotBlank
 	@NotNull
-	@Pattern(regexp = "")
+	@Pattern(regexp = "^\\+[1-9]{1}\\d{10,14}$")
 	public String getPhone() {
 		return this.phone;
 	}

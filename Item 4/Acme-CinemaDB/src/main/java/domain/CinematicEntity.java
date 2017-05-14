@@ -55,8 +55,8 @@ public class CinematicEntity extends AssessableEntity {
 
 	@Past
 	@NotNull
-	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
-	@Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@Temporal(TemporalType.DATE)
 	public Date getBirthdate() {
 		return this.birthdate;
 	}

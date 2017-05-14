@@ -66,7 +66,7 @@ public class Actor extends DomainEntity {
 
 	@NotBlank
 	@NotNull
-	@Pattern(regexp = "^(\\+\\d{1,4})?[\\(\\)\\-\\d\\sA-Z]+$")
+	@Pattern(regexp = "^\\+[1-9]{1}\\d{10,14}$")
 	public String getPhone() {
 		return this.phone;
 	}
@@ -75,6 +75,9 @@ public class Actor extends DomainEntity {
 		this.phone = phone;
 	}
 
+	@NotNull
+	@NotBlank
+	@SafeHtml
 	public String getCountry() {
 		return this.country;
 	}
@@ -90,6 +93,7 @@ public class Actor extends DomainEntity {
 	private UserAccount	userAccount;
 
 
+	@Valid
 	@OneToOne(optional = true)
 	public CreditCard getCreditCard() {
 		return this.creditCard;
