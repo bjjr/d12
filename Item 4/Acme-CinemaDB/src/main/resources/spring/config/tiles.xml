@@ -23,10 +23,7 @@
 		<value>/views/security/tiles.xml</value>
 		<value>/views/welcome/tiles.xml</value>
 		
-		<value>/views/administrator/tiles.xml</value>
-		<value>/views/creditCard/tiles.xml</value>
-		<value>/views/fee/tiles.xml</value>
-		<value>/views/legal/tiles.xml</value>
+		<value>/views/critic/tiles.xml</value>
 	</util:list>
 
 </beans>
