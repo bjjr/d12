@@ -16,9 +16,9 @@
       
 <tiles-definitions>
 
-	<definition name="welcome/index" extends="master.page">	
-		<put-attribute name="title" value="¡Bienvenidos!" />
-		<put-attribute name="body" value="/views/welcome/index.jsp" />
+	<definition name="cinematicEntity/list" extends="master.page">	
+		<put-attribute name="title" value="Lista de actores y directores" />
+		<put-attribute name="body" value="/views/cinematicEntity/list.jsp" />
 	</definition>
 	
 </tiles-definitions>

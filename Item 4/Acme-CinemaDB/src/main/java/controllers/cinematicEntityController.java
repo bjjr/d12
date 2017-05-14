@@ -14,7 +14,7 @@ import services.CinematicEntityService;
 import domain.CinematicEntity;
 
 @Controller
-@RequestMapping("/recipe")
+@RequestMapping("/cinematicEntity")
 public class cinematicEntityController {
 
 	// Services
