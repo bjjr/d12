@@ -26,6 +26,7 @@
 			<li><a class="fNiv"><spring:message	code="master.page.administrator" /></a>
 				<ul>
 					<li class="arrow"></li>
+					<li><acme:link href="j_spring_security_logout" code="master.page.logout" /></li>
 				</ul>
 			</li>
 		</security:authorize>

@@ -102,6 +102,30 @@
 		</property>
 	</bean>
 	
+	<bean id="userAccountU7" class="security.UserAccount">
+		<property name="username" value="user7" />
+		<property name="password" value="3e0469fb134991f8f75a2760e409c6ed" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="USER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccountU8" class="security.UserAccount">
+		<property name="username" value="user8" />
+		<property name="password" value="7668f673d5669995175ef91b5d171945" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="USER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
 	<bean id="userAccountC1" class="security.UserAccount">
 		<property name="username" value="critic1" />
 		<property name="password" value="165d185050bab438668aef6faeee3be5" />
@@ -129,6 +153,66 @@
 	<bean id="userAccountC3" class="security.UserAccount">
 		<property name="username" value="critic3" />
 		<property name="password" value="8a253092f1d177ba06d104b69a159d93" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="CRITIC" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccountC4" class="security.UserAccount">
+		<property name="username" value="critic4" />
+		<property name="password" value="7ca0505ccfc49a367e7e0e9340d6656d" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="CRITIC" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccountC5" class="security.UserAccount">
+		<property name="username" value="critic5" />
+		<property name="password" value="18c7b56054e6b8da311caf45bf3efd79" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="CRITIC" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccountC6" class="security.UserAccount">
+		<property name="username" value="critic6" />
+		<property name="password" value="e5c68eddb605466c498f1391c20ab175" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="CRITIC" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccountC7" class="security.UserAccount">
+		<property name="username" value="critic7" />
+		<property name="password" value="d3e612b468512127b2f11fa174216ca1" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="CRITIC" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccountC8" class="security.UserAccount">
+		<property name="username" value="critic8" />
+		<property name="password" value="a04adf303b69bca92345e6371468483f" />
 		<property name="authorities">
 			<list>
 				<bean class="security.Authority">
@@ -175,6 +259,12 @@
 	</bean>
 
 	<!-- Other domain beans come here -->
+	
+	<!-- FEE -->
+	
+	<bean id="fee" class="domain.Fee">
+		<property name="value" value="1.0" />
+	</bean>
 	
 	<!-- ADMIN -->
 	
@@ -243,6 +333,24 @@
 		<property name="userAccount" ref="userAccountU6" />
 	</bean>
 	
+	<bean id="user7" class="domain.User">
+		<property name="name" value="nameUser7" />
+		<property name="surname" value="surnameUser7" />
+		<property name="email" value="user7@user.com" />
+		<property name="phone" value="+45211127289" />
+		<property name="country" value="Netherlands" />
+		<property name="userAccount" ref="userAccountU7" />
+	</bean>
+	
+	<bean id="user8" class="domain.User">
+		<property name="name" value="nameUser8" />
+		<property name="surname" value="surnameUser8" />
+		<property name="email" value="user8@user.com" />
+		<property name="phone" value="+45245727289" />
+		<property name="country" value="Netherlands" />
+		<property name="userAccount" ref="userAccountU8" />
+	</bean>
+	
 	<!-- CRITICS -->
 	
 	<bean id="critic1" class="domain.Critic">
@@ -251,7 +359,7 @@
 		<property name="email" value="critic1@critic.com" />
 		<property name="phone" value="+34123456789" />
 		<property name="country" value="Spain" />
-		<property name="media" value="Cine al día" />
+		<property name="media" value="mediaCritic1" />
 		<property name="userAccount" ref="userAccountC1" />
 	</bean>
 	
@@ -261,7 +369,7 @@
 		<property name="email" value="critic2@critic.com" />
 		<property name="phone" value="+64444555222" />
 		<property name="country" value="United Kingdom" />
-		<property name="media" value="Cinema Today" />
+		<property name="media" value="mediaCritic2" />
 		<property name="userAccount" ref="userAccountC2" />
 	</bean>
 	
@@ -271,8 +379,58 @@
 		<property name="email" value="critic3@critic.com" />
 		<property name="phone" value="+47555111333" />
 		<property name="country" value="France" />
-		<property name="media" value="Le photogramme" />
+		<property name="media" value="mediaCritic3" />
 		<property name="userAccount" ref="userAccountC3" />
+	</bean>
+	
+	<bean id="critic4" class="domain.Critic">
+		<property name="name" value="nameCritic4" />
+		<property name="surname" value="surnameCritic4" />
+		<property name="email" value="critic4@critic.com" />
+		<property name="phone" value="+11555145633" />
+		<property name="country" value="Italy" />
+		<property name="media" value="mediaCritic4" />
+		<property name="userAccount" ref="userAccountC4" />
+	</bean>
+	
+	<bean id="critic5" class="domain.Critic">
+		<property name="name" value="nameCritic5" />
+		<property name="surname" value="surnameCritic5" />
+		<property name="email" value="critic5@critic.com" />
+		<property name="phone" value="+21598611333" />
+		<property name="country" value="Russia" />
+		<property name="media" value="mediaCritic5" />
+		<property name="userAccount" ref="userAccountC5" />
+	</bean>
+	
+	<bean id="critic6" class="domain.Critic">
+		<property name="name" value="nameCritic6" />
+		<property name="surname" value="surnameCritic6" />
+		<property name="email" value="critic6@critic.com" />
+		<property name="phone" value="+40555112573" />
+		<property name="country" value="Norway" />
+		<property name="media" value="mediaCritic6" />
+		<property name="userAccount" ref="userAccountC6" />
+	</bean>
+	
+	<bean id="critic7" class="domain.Critic">
+		<property name="name" value="nameCritic7" />
+		<property name="surname" value="surnameCritic7" />
+		<property name="email" value="critic7@critic.com" />
+		<property name="phone" value="+37555111744" />
+		<property name="country" value="Iceland" />
+		<property name="media" value="mediaCritic7" />
+		<property name="userAccount" ref="userAccountC7" />
+	</bean>
+	
+	<bean id="critic8" class="domain.Critic">
+		<property name="name" value="nameCritic8" />
+		<property name="surname" value="surnameCritic8" />
+		<property name="email" value="critic8@critic.com" />
+		<property name="phone" value="+67555118553" />
+		<property name="country" value="Switzerland" />
+		<property name="media" value="mediaCritic8" />
+		<property name="userAccount" ref="userAccountC8" />
 	</bean>
 	
 	<!-- PRODUCERS -->
@@ -305,6 +463,903 @@
 		<property name="country" value="Spain" />
 		<property name="company" value="Vértigo S.L." />
 		<property name="userAccount" ref="userAccountP3" />
+	</bean>
+	
+	<!-- CAMPAIGNS -->
+	
+	<bean id="campaign1" class="domain.Campaign">
+		<property name="start" value="01/01/2017" />
+		<property name="end" value="01/01/2019" />
+		<property name="images">
+			<list>
+				<value>http://url1.com</value>
+			</list>
+		</property>
+		<property name="max" value="20" />
+		<property name="timesDisplayed" value="0" />
+		<property name="approved" value="false" />
+		<property name="fee" value="1.0" />
+		<property name="producer" ref="producer2" />
+	</bean>
+	
+	<bean id="campaign2" class="domain.Campaign">
+		<property name="start" value="02/03/2016" />
+		<property name="end" value="03/03/2016" />
+		<property name="images">
+			<list>
+				<value>http://url21.com</value>
+				<value>http://url22.com</value>
+			</list>
+		</property>
+		<property name="max" value="120" />
+		<property name="timesDisplayed" value="120" />
+		<property name="approved" value="true" />
+		<property name="fee" value="0.79" />
+		<property name="producer" ref="producer3" />
+	</bean>
+	
+	<bean id="campaign3" class="domain.Campaign">
+		<property name="start" value="05/04/2016" />
+		<property name="end" value="06/01/2016" />
+		<property name="images">
+			<list>
+				<value>http://url31.com</value>
+			</list>
+		</property>
+		<property name="max" value="150" />
+		<property name="timesDisplayed" value="150" />
+		<property name="approved" value="true" />
+		<property name="fee" value="1.32" />
+		<property name="producer" ref="producer3" />
+	</bean>
+	
+	<bean id="campaign4" class="domain.Campaign">
+		<property name="start" value="06/05/2016" />
+		<property name="end" value="06/15/2016" />
+		<property name="images">
+			<list>
+				<value>http://url41.com</value>
+			</list>
+		</property>
+		<property name="max" value="50" />
+		<property name="timesDisplayed" value="50" />
+		<property name="approved" value="true" />
+		<property name="fee" value="1.0" />
+		<property name="producer" ref="producer3" />
+	</bean>
+	
+	<bean id="campaign5" class="domain.Campaign">
+		<property name="start" value="07/08/2016" />
+		<property name="end" value="07/29/2016" />
+		<property name="images">
+			<list>
+				<value>http://url51.com</value>
+			</list>
+		</property>
+		<property name="max" value="112" />
+		<property name="timesDisplayed" value="112" />
+		<property name="approved" value="true" />
+		<property name="fee" value="1.25" />
+		<property name="producer" ref="producer3" />
+	</bean>
+	
+	<bean id="campaign6" class="domain.Campaign">
+		<property name="start" value="08/11/2016" />
+		<property name="end" value="08/25/2016" />
+		<property name="images">
+			<list>
+				<value>http://url61.com</value>
+			</list>
+		</property>
+		<property name="max" value="50" />
+		<property name="timesDisplayed" value="50" />
+		<property name="approved" value="true" />
+		<property name="fee" value="1.65" />
+		<property name="producer" ref="producer3" />
+	</bean>
+
+	<bean id="campaign7" class="domain.Campaign">
+		<property name="start" value="09/19/2016" />
+		<property name="end" value="10/15/2016" />
+		<property name="images">
+			<list>
+				<value>http://url71.com</value>
+			</list>
+		</property>
+		<property name="max" value="175" />
+		<property name="timesDisplayed" value="175" />
+		<property name="approved" value="true" />
+		<property name="fee" value="1.25" />
+		<property name="producer" ref="producer3" />
+	</bean>
+	
+	<bean id="campaign8" class="domain.Campaign">
+		<property name="start" value="05/10/2017" />
+		<property name="end" value="12/12/2017" />
+		<property name="images">
+			<list>
+				<value>http://url81.com</value>
+			</list>
+		</property>
+		<property name="max" value="200" />
+		<property name="timesDisplayed" value="198" />
+		<property name="approved" value="true" />
+		<property name="fee" value="1.25" />
+		<property name="producer" ref="producer3" />
+	</bean>
+	
+	<bean id="campaign9" class="domain.Campaign">
+		<property name="start" value="05/10/2017" />
+		<property name="end" value="10/12/2017" />
+		<property name="images">
+			<list>
+				<value>http://url91.com</value>
+			</list>
+		</property>
+		<property name="max" value="65" />
+		<property name="timesDisplayed" value="0" />
+		<property name="fee" value="1.0" />
+		<property name="producer" ref="producer3" />
+	</bean>
+	
+	<bean id="campaign10" class="domain.Campaign">
+		<property name="start" value="05/16/2017" />
+		<property name="end" value="10/12/2017" />
+		<property name="images">
+			<list>
+				<value>http://url101.com</value>
+				<value>http://url102.com</value>
+			</list>
+		</property>
+		<property name="max" value="90" />
+		<property name="timesDisplayed" value="0" />
+		<property name="fee" value="1.0" />
+		<property name="producer" ref="producer3" />
+	</bean>
+	
+	<bean id="campaign11" class="domain.Campaign">
+		<property name="start" value="05/16/2017" />
+		<property name="end" value="10/12/2017" />
+		<property name="images">
+			<list>
+				<value>http://url111.com</value>
+				<value>http://url112.com</value>
+			</list>
+		</property>
+		<property name="max" value="25" />
+		<property name="timesDisplayed" value="0" />
+		<property name="fee" value="1.0" />
+		<property name="producer" ref="producer3" />
+	</bean>
+	
+	<bean id="campaign12" class="domain.Campaign">
+		<property name="start" value="09/16/2017" />
+		<property name="end" value="10/12/2017" />
+		<property name="images">
+			<list>
+				<value>http://url121.com</value>
+			</list>
+		</property>
+		<property name="max" value="105" />
+		<property name="timesDisplayed" value="0" />
+		<property name="fee" value="1.0" />
+		<property name="producer" ref="producer3" />
+	</bean>
+	
+	<bean id="campaign13" class="domain.Campaign">
+		<property name="start" value="09/16/2017" />
+		<property name="end" value="10/12/2017" />
+		<property name="images">
+			<list>
+				<value>http://url131.com</value>
+			</list>
+		</property>
+		<property name="max" value="65" />
+		<property name="timesDisplayed" value="0" />
+		<property name="fee" value="1.0" />
+		<property name="producer" ref="producer3" />
+	</bean>
+	
+	<!-- Invoices -->
+	
+	<bean id="invoice1" class="domain.Invoice">
+		<property name="total" value="94.8" />
+		<property name="paid" value="true" />
+		<property name="bilingDate" value="03/03/2016" />
+		<property name="campaign" ref="campaign2" />
+	</bean>
+	
+	<bean id="invoice2" class="domain.Invoice">
+		<property name="total" value="198.0" />
+		<property name="paid" value="true" />
+		<property name="bilingDate" value="06/02/2016" />
+		<property name="campaign" ref="campaign3" />
+	</bean>
+	
+	<bean id="invoice3" class="domain.Invoice">
+		<property name="total" value="50.0" />
+		<property name="paid" value="true" />
+		<property name="bilingDate" value="06/15/2016" />
+		<property name="campaign" ref="campaign4" />
+	</bean>
+	
+	<bean id="invoice4" class="domain.Invoice">
+		<property name="total" value="140.0" />
+		<property name="paid" value="true" />
+		<property name="bilingDate" value="07/29/2016" />
+		<property name="campaign" ref="campaign5" />
+	</bean>
+	
+	<bean id="invoice5" class="domain.Invoice">
+		<property name="total" value="82.5" />
+		<property name="paid" value="true" />
+		<property name="bilingDate" value="08/25/2016" />
+		<property name="campaign" ref="campaign6" />
+	</bean>
+	
+	<bean id="invoice6" class="domain.Invoice">
+		<property name="total" value="218.75" />
+		<property name="paid" value="false" />
+		<property name="bilingDate" value="10/15/2016" />
+		<property name="campaign" ref="campaign7" />
+	</bean>
+	
+	<!-- CINEMATIC ENTITIES -->
+	
+	<!-- ACTORS -->
+	
+	<bean id="actor1" class="domain.CinematicEntity">
+		<property name="name" value="nameActor1" />
+		<property name="surname" value="surnameActor1" />
+		<property name="birthdate" value="03/15/1984" />
+		<property name="director" value="false" />
+	</bean>
+	
+	<bean id="actor2" class="domain.CinematicEntity">
+		<property name="name" value="nameActor2" />
+		<property name="surname" value="surnameActor2" />
+		<property name="birthdate" value="04/21/1975" />
+		<property name="bio" value="This is actor2's biography." />
+		<property name="director" value="false" />
+	</bean>
+	
+	<bean id="actor3" class="domain.CinematicEntity">
+		<property name="name" value="nameActor3" />
+		<property name="surname" value="surnameActor3" />
+		<property name="bio" value="This is actor3's biography." />
+		<property name="birthdate" value="08/26/1991" />
+		<property name="director" value="false" />
+	</bean>
+	
+	<bean id="actor4" class="domain.CinematicEntity">
+		<property name="name" value="nameActor4" />
+		<property name="surname" value="surnameActor4" />
+		<property name="bio" value="This is actor4's biography." />
+		<property name="birthdate" value="01/17/1986" />
+		<property name="director" value="false" />
+	</bean>
+	
+	<bean id="actor5" class="domain.CinematicEntity">
+		<property name="name" value="nameActor5" />
+		<property name="surname" value="surnameActor5" />
+		<property name="bio" value="This is actor5's biography." />
+		<property name="birthdate" value="05/15/1981" />
+		<property name="director" value="false" />
+	</bean>
+	
+	<bean id="actor6" class="domain.CinematicEntity">
+		<property name="name" value="nameActor6" />
+		<property name="surname" value="surnameActor6" />
+		<property name="bio" value="This is actor6's biography." />
+		<property name="birthdate" value="09/03/1992" />
+		<property name="director" value="false" />
+	</bean>
+	
+	<bean id="actor7" class="domain.CinematicEntity">
+		<property name="name" value="nameActor7" />
+		<property name="surname" value="surnameActor7" />
+		<property name="bio" value="This is actor7's biography." />
+		<property name="birthdate" value="11/11/1976" />
+		<property name="director" value="false" />
+	</bean>
+	
+	<!-- DIRECTORS -->
+	
+	<bean id="director1" class="domain.CinematicEntity">
+		<property name="name" value="nameDirector1" />
+		<property name="surname" value="surnameDirector1" />
+		<property name="birthdate" value="01/11/1964" />
+		<property name="director" value="true" />
+	</bean>
+	
+	<bean id="director2" class="domain.CinematicEntity">
+		<property name="name" value="nameDirector2" />
+		<property name="surname" value="surnameDirector2" />
+		<property name="bio" value="This is director2's biography." />
+		<property name="birthdate" value="03/19/1975" />
+		<property name="director" value="true" />
+	</bean>
+	
+	<bean id="director3" class="domain.CinematicEntity">
+		<property name="name" value="nameDirector3" />
+		<property name="surname" value="surnameDirector3" />
+		<property name="bio" value="This is director3's biography." />
+		<property name="birthdate" value="07/05/1969" />
+		<property name="director" value="true" />
+	</bean>
+	
+	<bean id="director4" class="domain.CinematicEntity">
+		<property name="name" value="nameDirector4" />
+		<property name="surname" value="surnameDirector4" />
+		<property name="bio" value="This is director4's biography." />
+		<property name="birthdate" value="07/19/1980" />
+		<property name="director" value="true" />
+	</bean>
+	
+	<bean id="director5" class="domain.CinematicEntity">
+		<property name="name" value="nameDirector5" />
+		<property name="surname" value="surnameDirector5" />
+		<property name="bio" value="This is director5's biography." />
+		<property name="birthdate" value="04/06/1965" />
+		<property name="director" value="true" />
+	</bean>
+	
+	<!-- GENRES -->
+	
+	<bean id="actionGenre" class="domain.Genre">
+		<property name="kind" value="0" />
+	</bean>
+	
+	<bean id="adventureGenre" class="domain.Genre">
+		<property name="kind" value="1" />
+	</bean>
+	
+	<bean id="comedyGenre" class="domain.Genre">
+		<property name="kind" value="2" />
+	</bean>
+	
+	<bean id="dramaGenre" class="domain.Genre">
+		<property name="kind" value="3" />
+	</bean>
+	
+	<bean id="horrorGenre" class="domain.Genre">
+		<property name="kind" value="4" />
+	</bean>
+	
+	<bean id="animationGenre" class="domain.Genre">
+		<property name="kind" value="5" />
+	</bean>
+	
+	<bean id="scifiGenre" class="domain.Genre">
+		<property name="kind" value="6" />
+	</bean>
+	
+	<!-- CONTENTS -->
+	
+	<!-- MOVIES -->
+	
+	<bean id="movie1" class="domain.Movie">
+		<property name="title" value="titleMovie1" />
+		<property name="year" value="2010" />
+		<property name="avgRating" value="0" />
+		<property name="images">
+			<list>
+				<value>http://url131.com</value>
+			</list>
+		</property>
+		<property name="videos">
+			<list>
+				<value>http://url131.com</value>
+			</list>
+		</property>
+		<property name="genres">
+			<list>
+				<ref bean="actionGenre"/>
+				<ref bean="adventureGenre"/>
+			</list>
+		</property> 
+		<property name="producer" ref="producer2" />
+		<property name="cinematicEntities">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="movie2" class="domain.Movie">
+		<property name="title" value="titleMovie2" />
+		<property name="year" value="2013" />
+		<property name="avgRating" value="3" />
+		<property name="images">
+			<list>
+				<value>http://url131.com</value>
+			</list>
+		</property>
+		<property name="videos">
+			<list>
+				<value>http://url131.com</value>
+			</list>
+		</property>
+		<property name="genres">
+			<list>
+				<ref bean="animationGenre"/>
+				<ref bean="comedyGenre"/>
+			</list>
+		</property> 
+		<property name="producer" ref="producer3" />
+		<property name="cinematicEntities">
+			<list>
+				<ref bean="director1" />
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="movie3" class="domain.Movie">
+		<property name="title" value="titleMovie3" />
+		<property name="year" value="2007" />
+		<property name="avgRating" value="3" />
+		<property name="images">
+			<list>
+				<value>http://url131.com</value>
+			</list>
+		</property>
+		<property name="videos">
+			<list>
+				<value>http://url131.com</value>
+			</list>
+		</property>
+		<property name="genres">
+			<list>
+				<ref bean="horrorGenre"/>
+				<ref bean="scifiGenre"/>
+			</list>
+		</property>
+		<property name="producer" ref="producer3" />
+		<property name="cinematicEntities">
+			<list>
+				<ref bean="director2" />
+				<ref bean="actor1" />
+				<ref bean="actor2" />
+				<ref bean="actor3" />
+			</list>
+		</property>
+	</bean>
+	
+	<!-- TV SHOWS -->
+	
+	<bean id="tvshow1" class="domain.TvShow">
+		<property name="title" value="titleShow1" />
+		<property name="year" value="2005" />
+		<property name="avgRating" value="3" />
+		<property name="images">
+			<list>
+				<value>http://url131.com</value>
+			</list>
+		</property>
+		<property name="videos">
+			<list>
+				<value>http://url131.com</value>
+			</list>
+		</property>
+		<property name="genres">
+			<list>
+				<ref bean="comedyGenre"/>
+			</list>
+		</property>
+		<property name="producer" ref="producer3" />
+		<property name="cinematicEntities">
+			<list>
+				<ref bean="director3" />
+				<ref bean="director4" />
+				<ref bean="actor1" />
+				<ref bean="actor4" />
+				<ref bean="actor5" />
+				<ref bean="actor6" />
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="tvshow2" class="domain.TvShow">
+		<property name="title" value="titleShow2" />
+		<property name="year" value="2009" />
+		<property name="avgRating" value="2" />
+		<property name="images">
+			<list>
+				<value>http://url131.com</value>
+			</list>
+		</property>
+		<property name="videos">
+			<list>
+				<value>http://url131.com</value>
+			</list>
+		</property>
+		<property name="genres">
+			<list>
+				<ref bean="dramaGenre"/>
+				<ref bean="scifiGenre"/>
+			</list>
+		</property>
+		<property name="producer" ref="producer3" />
+		<property name="cinematicEntities">
+			<list>
+				<ref bean="director2" />
+				<ref bean="actor1" />
+				<ref bean="actor3" />
+				<ref bean="actor5" />
+				<ref bean="actor7" />
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="tvshow3" class="domain.TvShow">
+		<property name="title" value="titleShow3" />
+		<property name="year" value="2015" />
+		<property name="avgRating" value="1" />
+		<property name="images">
+			<list>
+				<value>http://url131.com</value>
+			</list>
+		</property>
+		<property name="videos">
+			<list>
+				<value>http://url131.com</value>
+			</list>
+		</property>
+		<property name="genres">
+			<list>
+				<ref bean="animationGenre"/>
+				<ref bean="adventureGenre"/>
+				<ref bean="comedyGenre"/>
+			</list>
+		</property>
+		<property name="producer" ref="producer3" />
+		<property name="cinematicEntities">
+			<list>
+				<ref bean="director3" />
+				<ref bean="director4" />
+				<ref bean="actor2" />
+				<ref bean="actor4" />
+				<ref bean="actor5" />
+				<ref bean="actor6" />
+				<ref bean="actor7" />
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="tvshow4" class="domain.TvShow">
+		<property name="title" value="titleShow4" />
+		<property name="year" value="2013" />
+		<property name="avgRating" value="4" />
+		<property name="images">
+			<list>
+				<value>http://url131.com</value>
+			</list>
+		</property>
+		<property name="videos">
+			<list>
+				<value>http://url131.com</value>
+			</list>
+		</property>
+		<property name="genres">
+			<list>
+				<ref bean="actionGenre"/>
+				<ref bean="scifiGenre"/>
+			</list>
+		</property>
+		<property name="producer" ref="producer3" />
+		<property name="cinematicEntities">
+			<list>
+				<ref bean="director5" />
+				<ref bean="actor1" />
+				<ref bean="actor3" />
+				<ref bean="actor4" />
+				<ref bean="actor5" />
+				<ref bean="actor6" />
+				<ref bean="actor7" />
+			</list>
+		</property>
+	</bean>
+	
+	<!-- SEASONS -->
+	
+	<bean id="s1Show1" class="domain.Season">
+		<property name="name" value="Season 1" />
+		<property name="tvShow" ref="tvshow1" />
+	</bean>
+	
+	<bean id="s1Show2" class="domain.Season">
+		<property name="name" value="Season 1" />
+		<property name="tvShow" ref="tvshow2" />
+	</bean>
+	
+	<bean id="s2Show2" class="domain.Season">
+		<property name="name" value="Season 2" />
+		<property name="tvShow" ref="tvshow2" />
+	</bean>
+	
+	<bean id="s1Show3" class="domain.Season">
+		<property name="name" value="Season 1" />
+		<property name="tvShow" ref="tvshow3" />
+	</bean>
+	
+	<bean id="s2Show3" class="domain.Season">
+		<property name="name" value="Season 2" />
+		<property name="tvShow" ref="tvshow3" />
+	</bean>
+	
+	<bean id="s3Show3" class="domain.Season">
+		<property name="name" value="Season 3" />
+		<property name="tvShow" ref="tvshow3" />
+	</bean>
+	
+	<bean id="s4Show3" class="domain.Season">
+		<property name="name" value="Season 4" />
+		<property name="tvShow" ref="tvshow3" />
+	</bean>
+	
+	<bean id="s5Show3" class="domain.Season">
+		<property name="name" value="Season 5" />
+		<property name="tvShow" ref="tvshow3" />
+	</bean>
+	
+	<bean id="s6Show3" class="domain.Season">
+		<property name="name" value="Season 6" />
+		<property name="tvShow" ref="tvshow3" />
+	</bean>
+	
+	<bean id="s1Show4" class="domain.Season">
+		<property name="name" value="Season 1" />
+		<property name="tvShow" ref="tvshow4" />
+	</bean>
+	
+	<!-- CHAPTERS -->
+	
+	<bean id="c1s1Show1" class="domain.Chapter">
+		<property name="name" value="Chapter 1" />
+		<property name="season" ref="s1Show1" />
+	</bean>
+	
+	<bean id="c1s1Show2" class="domain.Chapter">
+		<property name="name" value="Chapter 1" />
+		<property name="season" ref="s1Show2" />
+	</bean>
+	
+	<bean id="c1s2Show2" class="domain.Chapter">
+		<property name="name" value="Chapter 1" />
+		<property name="season" ref="s2Show2" />
+	</bean>
+	
+	<bean id="c1s1Show3" class="domain.Chapter">
+		<property name="name" value="Chapter 1" />
+		<property name="season" ref="s1Show3" />
+	</bean>
+	
+	<bean id="c2s1Show3" class="domain.Chapter">
+		<property name="name" value="Chapter 2" />
+		<property name="season" ref="s1Show3" />
+	</bean>
+	
+	<bean id="c3s1Show3" class="domain.Chapter">
+		<property name="name" value="Chapter 3" />
+		<property name="season" ref="s1Show3" />
+	</bean>
+	
+	<bean id="c4s1Show3" class="domain.Chapter">
+		<property name="name" value="Chapter 4" />
+		<property name="season" ref="s1Show3" />
+	</bean>
+	
+	<bean id="c5s1Show3" class="domain.Chapter">
+		<property name="name" value="Chapter 5" />
+		<property name="season" ref="s1Show3" />
+	</bean>
+	
+	<bean id="c6s1Show3" class="domain.Chapter">
+		<property name="name" value="Chapter 6" />
+		<property name="season" ref="s1Show3" />
+	</bean>
+	
+	<bean id="c1s2Show3" class="domain.Chapter">
+		<property name="name" value="Chapter 1" />
+		<property name="season" ref="s2Show3" />
+	</bean>
+	
+	<bean id="c1s3Show3" class="domain.Chapter">
+		<property name="name" value="Chapter 1" />
+		<property name="season" ref="s3Show3" />
+	</bean>
+	
+	<bean id="c1s4Show3" class="domain.Chapter">
+		<property name="name" value="Chapter 1" />
+		<property name="season" ref="s4Show3" />
+	</bean>
+	
+	<bean id="c1s5Show3" class="domain.Chapter">
+		<property name="name" value="Chapter 1" />
+		<property name="season" ref="s5Show3" />
+	</bean>
+	
+	<bean id="c1s6Show3" class="domain.Chapter">
+		<property name="name" value="Chapter 1" />
+		<property name="season" ref="s6Show3" />
+	</bean>
+	
+	<bean id="c1s1Show4" class="domain.Chapter">
+		<property name="name" value="Chapter 1" />
+		<property name="season" ref="s1Show4" />
+	</bean>
+	
+	<!-- LIKES -->
+	
+	<bean id="like1" class="domain.LikeUser">
+		<property name="assessableEntity" ref="movie2" />
+		<property name="user" ref="user2" />
+	</bean>
+	
+	<bean id="like2" class="domain.LikeUser">
+		<property name="comment" value="A comment." />
+		<property name="assessableEntity" ref="movie3" />
+		<property name="user" ref="user3" />
+	</bean>
+	
+	<bean id="like3" class="domain.LikeUser">
+		<property name="comment" value="Another comment." />
+		<property name="assessableEntity" ref="movie3" />
+		<property name="user" ref="user4" />
+	</bean>
+	
+	<bean id="like4" class="domain.LikeUser">
+		<property name="assessableEntity" ref="movie3" />
+		<property name="user" ref="user5" />
+	</bean>
+	
+	<bean id="like5" class="domain.LikeUser">
+		<property name="assessableEntity" ref="movie3" />
+		<property name="user" ref="user6" />
+	</bean>
+	
+	<bean id="like6" class="domain.LikeUser">
+		<property name="assessableEntity" ref="movie3" />
+		<property name="user" ref="user7" />
+	</bean>
+	
+	<bean id="like7" class="domain.LikeUser">
+		<property name="assessableEntity" ref="movie3" />
+		<property name="user" ref="user8" />
+	</bean>
+	
+	<bean id="like8" class="domain.LikeUser">
+		<property name="assessableEntity" ref="director3" />
+		<property name="user" ref="user3" />
+	</bean>
+	
+	<bean id="like9" class="domain.LikeUser">
+		<property name="assessableEntity" ref="director4" />
+		<property name="user" ref="user3" />
+	</bean>
+	
+	<bean id="like10" class="domain.LikeUser">
+		<property name="assessableEntity" ref="actor3" />
+		<property name="user" ref="user3" />
+	</bean>
+	
+	<bean id="like11" class="domain.LikeUser">
+		<property name="assessableEntity" ref="actor4" />
+		<property name="user" ref="user3" />
+	</bean>
+	
+	<bean id="like12" class="domain.LikeUser">
+		<property name="assessableEntity" ref="actor5" />
+		<property name="user" ref="user3" />
+	</bean>
+	
+	<!-- REVIEWS -->
+	
+	<bean id="review1" class="domain.Review">
+		<property name="title" value="Title review 1" />
+		<property name="body" value="Body review 1" />
+		<property name="rating" value="3" />
+		<property name="draft" value="false" />
+		<property name="critic" ref="critic2" />
+		<property name="content" ref="movie2" />
+	</bean>
+	
+	<bean id="review2" class="domain.Review">
+		<property name="title" value="Title review 2" />
+		<property name="body" value="Body review 2" />
+		<property name="rating" value="5" />
+		<property name="draft" value="false" />
+		<property name="critic" ref="critic3" />
+		<property name="content" ref="movie3" />
+	</bean>
+	
+	<bean id="review3" class="domain.Review">
+		<property name="title" value="Title review 3" />
+		<property name="body" value="Body review 3" />
+		<property name="rating" value="0" />
+		<property name="draft" value="false" />
+		<property name="critic" ref="critic4" />
+		<property name="content" ref="movie3" />
+	</bean>
+	
+	<bean id="review4" class="domain.Review">
+		<property name="title" value="Title review 4" />
+		<property name="body" value="Body review 4" />
+		<property name="rating" value="4" />
+		<property name="draft" value="false" />
+		<property name="critic" ref="critic5" />
+		<property name="content" ref="movie3" />
+	</bean>
+	
+	<bean id="review5" class="domain.Review">
+		<property name="title" value="Title review 5" />
+		<property name="body" value="Body review 5" />
+		<property name="rating" value="4" />
+		<property name="draft" value="false" />
+		<property name="critic" ref="critic6" />
+		<property name="content" ref="movie3" />
+	</bean>
+	
+	<bean id="review6" class="domain.Review">
+		<property name="title" value="Title review 6" />
+		<property name="body" value="Body review 6" />
+		<property name="rating" value="2" />
+		<property name="draft" value="false" />
+		<property name="critic" ref="critic7" />
+		<property name="content" ref="movie3" />
+	</bean>
+	
+	<bean id="review7" class="domain.Review">
+		<property name="title" value="Title review 7" />
+		<property name="body" value="Body review 7" />
+		<property name="rating" value="3" />
+		<property name="draft" value="false" />
+		<property name="critic" ref="critic8" />
+		<property name="content" ref="movie3" />
+	</bean>
+	
+	<bean id="review8" class="domain.Review">
+		<property name="title" value="Title review 8" />
+		<property name="body" value="Body review 8" />
+		<property name="rating" value="3" />
+		<property name="draft" value="false" />
+		<property name="critic" ref="critic3" />
+		<property name="content" ref="tvshow1" />
+	</bean>
+	
+	<bean id="review9" class="domain.Review">
+		<property name="title" value="Title review 9" />
+		<property name="body" value="Body review 9" />
+		<property name="rating" value="2" />
+		<property name="draft" value="false" />
+		<property name="critic" ref="critic3" />
+		<property name="content" ref="tvshow2" />
+	</bean>
+	
+	<bean id="review10" class="domain.Review">
+		<property name="title" value="Title review 10" />
+		<property name="body" value="Body review 10" />
+		<property name="rating" value="1" />
+		<property name="draft" value="false" />
+		<property name="critic" ref="critic3" />
+		<property name="content" ref="tvshow3" />
+	</bean>
+	
+	<bean id="review11" class="domain.Review">
+		<property name="title" value="Title review 11" />
+		<property name="body" value="Body review 11" />
+		<property name="rating" value="4" />
+		<property name="draft" value="false" />
+		<property name="critic" ref="critic3" />
+		<property name="content" ref="tvshow4" />
+	</bean>
+	
+	<bean id="review12" class="domain.Review">
+		<property name="title" value="Title review 12" />
+		<property name="body" value="Body review 12" />
+		<property name="rating" value="3" />
+		<property name="draft" value="false" />
+		<property name="critic" ref="critic3" />
+		<property name="content" ref="movie2" />
 	</bean>
 	
 </beans>

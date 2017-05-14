@@ -36,6 +36,7 @@ public class LikeUser extends DomainEntity {
 	// Relationships
 
 	private AssessableEntity	assessableEntity;
+	private User				user;
 
 
 	@NotNull
@@ -47,6 +48,17 @@ public class LikeUser extends DomainEntity {
 
 	public void setAssessableEntity(final AssessableEntity assessableEntity) {
 		this.assessableEntity = assessableEntity;
+	}
+
+	@NotNull
+	@Valid
+	@ManyToOne(optional = false)
+	public User getUser() {
+		return this.user;
+	}
+
+	public void setUser(final User user) {
+		this.user = user;
 	}
 
 }

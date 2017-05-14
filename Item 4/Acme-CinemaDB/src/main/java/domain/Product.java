@@ -39,6 +39,7 @@ public class Product extends DomainEntity {
 		this.stock = stock;
 	}
 
+	@NotNull
 	@URL
 	public String getPicture() {
 		return this.picture;
