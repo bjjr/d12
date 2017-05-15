@@ -13,7 +13,7 @@
 <!-- Search Form -->
 <form:form action="" modelAttribute="cinematicEntity">
 	<input type="text" name="name"/>
-	<input type="submit" name="search" value="<spring:message code="cinematicEntity.search"/>"/>
+	<input type="submit" name="search" value="<spring:message code="misc.search"/>"/>
 </form:form>
 
 <!-- Listing grid -->

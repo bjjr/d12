@@ -15,7 +15,7 @@ import domain.CinematicEntity;
 
 @Controller
 @RequestMapping("/cinematicEntity")
-public class cinematicEntityController {
+public class CinematicEntityController {
 
 	// Services
 
@@ -25,7 +25,7 @@ public class cinematicEntityController {
 
 	// Constructors
 
-	public cinematicEntityController() {
+	public CinematicEntityController() {
 		super();
 	}
 
