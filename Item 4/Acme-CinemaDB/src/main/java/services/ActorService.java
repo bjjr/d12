@@ -4,6 +4,7 @@ package services;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
@@ -97,6 +98,16 @@ public class ActorService {
 		Assert.notNull(res);
 
 		return res;
+	}
+
+	public String hashCodePassword(final String password) {
+		String result;
+		Md5PasswordEncoder encoder;
+
+		encoder = new Md5PasswordEncoder();
+		result = encoder.encodePassword(password, null);
+
+		return result;
 	}
 
 }
