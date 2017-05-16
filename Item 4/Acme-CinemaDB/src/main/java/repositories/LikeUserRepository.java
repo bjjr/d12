@@ -12,9 +12,9 @@ import domain.LikeUser;
 @Repository
 public interface LikeUserRepository extends JpaRepository<LikeUser, Integer> {
 
-	@Query("select l from LikeUser l where l.user.id = ?1 and type(l.assessableEntity) = domain.Content")
+	@Query("select l from LikeUser l join l.assessableEntity a where l.user.id = ?1 and (type(a) = domain.Movie or type(a) = domain.TvShow)")
 	Collection<LikeUser> findContentLikes(int userId);
 
-	@Query("select l from LikeUser l where l.user.id = ?1 and type(l.assessableEntity) = domain.CinematicEntity")
+	@Query("select l from LikeUser l join l.assessableEntity a where l.user.id = ?1 and type(a) = domain.CinematicEntity")
 	Collection<LikeUser> findCinematicEntityLikes(int userId);
 }

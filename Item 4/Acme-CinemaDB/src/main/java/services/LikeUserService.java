@@ -38,7 +38,7 @@ public class LikeUserService {
 
 		Collection<LikeUser> res;
 
-		res = this.likeUserRepository.findContentLikes(userId);
+		res = this.likeUserRepository.findCinematicEntityLikes(userId);
 
 		return res;
 	}

@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import security.Authority;
+import services.ActorService;
 import services.LikeUserService;
 import services.SocialIdentityService;
 import services.UserService;
@@ -40,6 +42,9 @@ public class UserController extends AbstractController {
 
 	@Autowired
 	private SocialIdentityService	socialIdentityService;
+
+	@Autowired
+	private ActorService			actorService;
 
 
 	// Registration ---------------------------------
@@ -98,6 +103,29 @@ public class UserController extends AbstractController {
 		res.addObject("contentLikes", contentLikes);
 		res.addObject("cEntitiesLikes", cEntitiesLikes);
 		res.addObject("socialIds", socialIds);
+
+		return res;
+	}
+
+	// List -----------------------------------------
+
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	public ModelAndView list() {
+		ModelAndView res;
+		Collection<User> users;
+
+		users = this.userService.findAll();
+
+		if (this.actorService.checkAuthority(Authority.USER)) {
+			User principal;
+
+			principal = this.userService.findByPrincipal();
+
+			users.remove(principal);
+		}
+
+		res = new ModelAndView("user/list");
+		res.addObject("users", users);
 
 		return res;
 	}
