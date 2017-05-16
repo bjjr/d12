@@ -29,6 +29,7 @@
 		<value>/views/legal/messages</value>
 		<value>/views/messageEntity/messages</value>
 		<value>/views/socialIdentity/messages</value>
+		<value>/views/invoice/messages</value>
 		
 	</util:list>
 
