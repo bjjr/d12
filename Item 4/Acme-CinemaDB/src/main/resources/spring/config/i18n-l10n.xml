@@ -46,6 +46,8 @@
 		<value>/views/status/messages</value>		
 		<value>/views/user/messages</value>
 		
+		<value>/views/likeUser/messages</value>
+		
 	</util:list>
 
 </beans>

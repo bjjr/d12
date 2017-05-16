@@ -37,6 +37,8 @@
 		<security:intercept-url pattern="/views/misc/index.jsp" access="permitAll" /> 
 		
 		<security:intercept-url pattern="/legal/**" access="permitAll" />
+		
+		<security:intercept-url pattern="/likeUser/**" access="permitAll" />
 
 		<security:intercept-url pattern="/security/login.do" access="permitAll" /> 
 		<security:intercept-url pattern="/security/loginFailure.do" access="permitAll" /> 
@@ -51,6 +53,8 @@
 		<security:intercept-url pattern="/user/edit.do" access="isAnonymous()" />
 		<security:intercept-url pattern="/user/display.do" access="permitAll" />
 		<security:intercept-url pattern="/user/list.do" access="permitAll" />
+		
+		<security:intercept-url pattern="/review/**" access="permitAll" /> 
 		
 		<security:intercept-url pattern="/critic/administrator/**" access="hasRole('ADMIN')" /> 
 		

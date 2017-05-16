@@ -10,6 +10,7 @@ import org.springframework.util.Assert;
 
 import repositories.LikeUserRepository;
 import domain.LikeUser;
+import domain.User;
 
 @Service
 @Transactional
@@ -18,10 +19,26 @@ public class LikeUserService {
 	// Managed repository ---------------------------
 
 	@Autowired
+	private UserService			userService;
+
+	@Autowired
 	private LikeUserRepository	likeUserRepository;
 
 
+	// Simple CRUD methods --------------------------
+
+	public Collection<LikeUser> findAll() {
+		return this.likeUserRepository.findAll();
+	}
+
 	// Other business methods -----------------------
+
+	public Collection<LikeUser> findAllByPrincipal() {
+		final User currentUser = this.userService.findByPrincipal();
+		final Collection<LikeUser> likeUserByPrincipal = this.likeUserRepository.findAllByUserAccountId(currentUser.getId());
+
+		return likeUserByPrincipal;
+	}
 
 	public Collection<LikeUser> findContentLikes(final int userId) {
 		Assert.isTrue(userId != 0);
