@@ -33,10 +33,23 @@ public class OrderUser extends DomainEntity {
 
 	//Relationships
 
-	private User				user;
-	private ShippingAddress		shippingAddress;
-	private Collection<Product>	products;
-	private Status				status;
+	private User						user;
+	private ShippingAddress				shippingAddress;
+	private Collection<OrderQuantity>	orderQuantities;
+
+
+	@ManyToMany
+	@NotEmpty
+	public Collection<OrderQuantity> getOrderQuantities() {
+		return this.orderQuantities;
+	}
+
+	public void setOrderQuantities(final Collection<OrderQuantity> orderQuantities) {
+		this.orderQuantities = orderQuantities;
+	}
+
+
+	private Status	status;
 
 
 	@NotNull
@@ -59,17 +72,6 @@ public class OrderUser extends DomainEntity {
 
 	public void setShippingAddress(final ShippingAddress shippingAddress) {
 		this.shippingAddress = shippingAddress;
-	}
-
-	@NotNull
-	@NotEmpty
-	@ManyToMany
-	public Collection<Product> getProducts() {
-		return this.products;
-	}
-
-	public void setProducts(final Collection<Product> products) {
-		this.products = products;
 	}
 
 	@NotNull
