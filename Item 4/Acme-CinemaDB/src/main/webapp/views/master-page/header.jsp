@@ -31,7 +31,20 @@
 		</security:authorize>
 		
 		<security:authorize access="isAnonymous()">
+			<li><a class="fNiv" href="user/register.do"><spring:message code="master.page.user.registration" /></a></li>
 			<li><a class="fNiv" href="security/login.do"><spring:message code="master.page.login" /></a></li>
+		</security:authorize>
+		
+		<security:authorize access="isAuthenticated()">
+			<li><a class="fNiv"> 
+					<spring:message code="master.page.profile" /> 
+			        (<security:authentication property="principal.username" />)
+				</a>
+				<ul>
+					<li class="arrow"></li>
+					<li><acme:link href="j_spring_security_logout" code="master.page.logout" /></li>
+				</ul>
+			</li>
 		</security:authorize>
 		
 	</ul>

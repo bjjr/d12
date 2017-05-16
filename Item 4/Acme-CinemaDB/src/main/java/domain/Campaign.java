@@ -16,7 +16,6 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
-import org.hibernate.validator.constraints.URL;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -29,15 +28,15 @@ public class Campaign extends DomainEntity {
 	private Collection<String>	images;
 	private int					max;
 	private int					timesDisplayed;
-	private boolean				approved;
+	private Boolean				approved;
 	private double				fee;
 
 
 	//Getters and Setters
 
 	@NotNull
-	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
-	@Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@Temporal(TemporalType.DATE)
 	public Date getStart() {
 		return this.start;
 	}
@@ -47,8 +46,8 @@ public class Campaign extends DomainEntity {
 	}
 
 	@NotNull
-	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
-	@Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@Temporal(TemporalType.DATE)
 	public Date getEnd() {
 		return this.end;
 	}
@@ -57,8 +56,8 @@ public class Campaign extends DomainEntity {
 		this.end = end;
 	}
 
+	@NotNull
 	@ElementCollection
-	@URL
 	@NotEmpty
 	public Collection<String> getImages() {
 		return this.images;
@@ -68,7 +67,6 @@ public class Campaign extends DomainEntity {
 		this.images = images;
 	}
 
-	@NotNull
 	@Min(value = 10)
 	public int getMax() {
 		return this.max;
@@ -86,12 +84,11 @@ public class Campaign extends DomainEntity {
 		this.timesDisplayed = timesDisplayed;
 	}
 
-	@NotNull
-	public boolean isApproved() {
+	public Boolean isApproved() {
 		return this.approved;
 	}
 
-	public void setApproved(final boolean approved) {
+	public void setApproved(final Boolean approved) {
 		this.approved = approved;
 	}
 

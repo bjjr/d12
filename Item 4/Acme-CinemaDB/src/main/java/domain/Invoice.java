@@ -6,7 +6,6 @@ import java.util.Date;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -38,8 +37,8 @@ public class Invoice extends DomainEntity {
 
 	@NotNull
 	@Past
-	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
-	@Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@Temporal(TemporalType.DATE)
 	public Date getBilingDate() {
 		return this.bilingDate;
 	}
@@ -59,20 +58,8 @@ public class Invoice extends DomainEntity {
 
 	// Relationships
 
-	private Administrator	administrator;
-	private Campaign		campaign;
+	private Campaign	campaign;
 
-
-	@NotNull
-	@Valid
-	@ManyToOne(optional = false)
-	public Administrator getAdministrator() {
-		return this.administrator;
-	}
-
-	public void setAdministrator(final Administrator administrator) {
-		this.administrator = administrator;
-	}
 
 	@NotNull
 	@Valid

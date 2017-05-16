@@ -1,17 +1,14 @@
 
 package domain;
 
-import java.util.Collection;
-
 import javax.persistence.Access;
 import javax.persistence.AccessType;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
-import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.SafeHtml;
 
 @Entity
@@ -36,18 +33,18 @@ public class Season extends DomainEntity {
 
 	//Relationships
 
-	private Collection<Chapter>	chapters;
+	private TvShow	tvShow;
 
 
 	@NotNull
-	@NotEmpty
-	@OneToMany(cascade = CascadeType.ALL)
-	public Collection<Chapter> getChapters() {
-		return this.chapters;
+	@Valid
+	@ManyToOne(optional = false)
+	public TvShow getTvShow() {
+		return this.tvShow;
 	}
 
-	public void setChapters(final Collection<Chapter> chapters) {
-		this.chapters = chapters;
+	public void setTvShow(final TvShow tvShow) {
+		this.tvShow = tvShow;
 	}
 
 }
