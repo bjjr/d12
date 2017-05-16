@@ -65,8 +65,13 @@ public class InvoiceService {
 		Invoice result;
 		Date billingDate;
 		Campaign campaign;
+		Date current;
 
 		campaign = invoice.getCampaign();
+		current = new Date(System.currentTimeMillis());
+
+		Assert.isTrue(campaign.getEnd().before(current) || campaign.getTimesDisplayed() == campaign.getMax());
+
 		billingDate = new Date(System.currentTimeMillis() - 1000);
 		invoice.setTotal(campaign.getTimesDisplayed() * campaign.getFee());
 		invoice.setBillingDate(billingDate);
