@@ -1,14 +1,23 @@
 
 package controllers;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import security.Authority;
+import services.ActorService;
+import services.LikeUserService;
+import services.SocialIdentityService;
 import services.UserService;
+import domain.LikeUser;
+import domain.SocialIdentity;
 import domain.User;
 import forms.ActorForm;
 
@@ -26,7 +35,16 @@ public class UserController extends AbstractController {
 	// Supporting services --------------------------
 
 	@Autowired
-	private UserService	userService;
+	private UserService				userService;
+
+	@Autowired
+	private LikeUserService			likeUserService;
+
+	@Autowired
+	private SocialIdentityService	socialIdentityService;
+
+	@Autowired
+	private ActorService			actorService;
 
 
 	// Registration ---------------------------------
@@ -61,6 +79,53 @@ public class UserController extends AbstractController {
 			} catch (final Throwable th) {
 				res = this.createEditModelAndView(actorForm, "misc.commit.error");
 			}
+
+		return res;
+	}
+
+	// Display --------------------------------------
+
+	@RequestMapping(value = "/display", method = RequestMethod.GET)
+	public ModelAndView display(@RequestParam final int userId) {
+		ModelAndView res;
+		User user;
+		Collection<LikeUser> contentLikes, cEntitiesLikes;
+		Collection<SocialIdentity> socialIds;
+
+		user = this.userService.findOne(userId);
+		contentLikes = this.likeUserService.findContentLikes(userId);
+		cEntitiesLikes = this.likeUserService.findCinematicEntityLikes(userId);
+		socialIds = this.socialIdentityService.findUserSocialIdentities(userId);
+
+		res = new ModelAndView("user/display");
+
+		res.addObject("user", user);
+		res.addObject("contentLikes", contentLikes);
+		res.addObject("cEntitiesLikes", cEntitiesLikes);
+		res.addObject("socialIds", socialIds);
+
+		return res;
+	}
+
+	// List -----------------------------------------
+
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	public ModelAndView list() {
+		ModelAndView res;
+		Collection<User> users;
+
+		users = this.userService.findAll();
+
+		if (this.actorService.checkAuthority(Authority.USER)) {
+			User principal;
+
+			principal = this.userService.findByPrincipal();
+
+			users.remove(principal);
+		}
+
+		res = new ModelAndView("user/list");
+		res.addObject("users", users);
 
 		return res;
 	}

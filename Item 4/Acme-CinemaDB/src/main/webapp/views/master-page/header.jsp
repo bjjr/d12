@@ -47,6 +47,8 @@
 			</li>
 		</security:authorize>
 		
+		<li><a class="fNiv" href="user/list.do"><spring:message code="master.page.user.list" /></a></li>
+		
 	</ul>
 </div>
 

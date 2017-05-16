@@ -14,5 +14,11 @@ public interface LikeUserRepository extends JpaRepository<LikeUser, Integer> {
 
 	@Query("select lu from LikeUser lu where lu.user.id = ?1")
 	Collection<LikeUser> findAllByUserAccountId(int id);
+	
+	@Query("select l from LikeUser l join l.assessableEntity a where l.user.id = ?1 and (type(a) = domain.Movie or type(a) = domain.TvShow)")
+	Collection<LikeUser> findContentLikes(int userId);
+
+	@Query("select l from LikeUser l join l.assessableEntity a where l.user.id = ?1 and type(a) = domain.CinematicEntity")
+	Collection<LikeUser> findCinematicEntityLikes(int userId);
 
 }

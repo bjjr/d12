@@ -59,9 +59,7 @@
 		}
 		window.location.replace(loc);
 	}
-</script>
-
-<script type="text/javascript">
+	
 	function relativeRedir(loc) {	
 		var b = document.getElementsByTagName('base');
 		if (b && b[0] && b[0].href) {
