@@ -59,7 +59,11 @@
 	<acme:column code="content.avgRating" property="${row.avgRating}" />
 	
 	<display:column>
-		<acme:link href="likeUser/listComments.do?assessableEntityId=${row.id}" code="content.comments"/>
+		<acme:link href="likeUser/listComments.do?assessableEntityId=${row.id}" code="likeUser.comments.list"/>
+	</display:column>
+	
+	<display:column>
+		<acme:link href="likeUser/create.do?assessableEntityId=${row.id}" code="likeUser.comments.create"/>
 	</display:column>
 	
 
