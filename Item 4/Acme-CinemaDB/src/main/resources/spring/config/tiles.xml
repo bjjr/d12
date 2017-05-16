@@ -31,6 +31,9 @@
 		<value>/views/actor/tiles.xml</value>
 		
 		<value>/views/review/tiles.xml</value>
+		
+		<value>/views/likeUser/tiles.xml</value>
+		
 	</util:list>
 
 </beans>
