@@ -665,42 +665,42 @@
 	<bean id="invoice1" class="domain.Invoice">
 		<property name="total" value="94.8" />
 		<property name="paid" value="true" />
-		<property name="bilingDate" value="03/03/2016" />
+		<property name="billingDate" value="03/03/2016" />
 		<property name="campaign" ref="campaign2" />
 	</bean>
 	
 	<bean id="invoice2" class="domain.Invoice">
 		<property name="total" value="198.0" />
 		<property name="paid" value="true" />
-		<property name="bilingDate" value="06/02/2016" />
+		<property name="billingDate" value="06/02/2016" />
 		<property name="campaign" ref="campaign3" />
 	</bean>
 	
 	<bean id="invoice3" class="domain.Invoice">
 		<property name="total" value="50.0" />
 		<property name="paid" value="true" />
-		<property name="bilingDate" value="06/15/2016" />
+		<property name="billingDate" value="06/15/2016" />
 		<property name="campaign" ref="campaign4" />
 	</bean>
 	
 	<bean id="invoice4" class="domain.Invoice">
 		<property name="total" value="140.0" />
 		<property name="paid" value="true" />
-		<property name="bilingDate" value="07/29/2016" />
+		<property name="billingDate" value="07/29/2016" />
 		<property name="campaign" ref="campaign5" />
 	</bean>
 	
 	<bean id="invoice5" class="domain.Invoice">
 		<property name="total" value="82.5" />
 		<property name="paid" value="true" />
-		<property name="bilingDate" value="08/25/2016" />
+		<property name="billingDate" value="08/25/2016" />
 		<property name="campaign" ref="campaign6" />
 	</bean>
 	
 	<bean id="invoice6" class="domain.Invoice">
 		<property name="total" value="218.75" />
 		<property name="paid" value="false" />
-		<property name="bilingDate" value="10/15/2016" />
+		<property name="billingDate" value="10/15/2016" />
 		<property name="campaign" ref="campaign7" />
 	</bean>
 	
