@@ -19,8 +19,6 @@
 	<acme:column code="likeUser.comment" property="${row.comment}"/>
 
 	<acme:column code="likeUser.user.name" property="${row.user.name}"/>
-
-	<acme:column code="likeUser.assessableEntity" property="${row.assessableEntity.id}"/>
 	
 </display:table>
 

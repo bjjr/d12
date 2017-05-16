@@ -59,4 +59,10 @@ public class LikeUserService {
 
 		return res;
 	}
+
+	public Collection<LikeUser> findCommentsByAssessableEntity(final int assessableEntityId) {
+		final Collection<LikeUser> allCommentsInTheEntity = this.likeUserRepository.findCommentsByAssessableEntity(assessableEntityId);
+
+		return allCommentsInTheEntity;
+	}
 }
