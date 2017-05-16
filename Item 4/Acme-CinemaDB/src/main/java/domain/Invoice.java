@@ -23,7 +23,7 @@ public class Invoice extends DomainEntity {
 	// Attributes 
 
 	private Boolean	paid;
-	private Date	bilingDate;
+	private Date	billingDate;
 	private double	total;
 
 
@@ -40,12 +40,12 @@ public class Invoice extends DomainEntity {
 	@Past
 	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
 	@Temporal(TemporalType.TIMESTAMP)
-	public Date getBilingDate() {
-		return this.bilingDate;
+	public Date getBillingDate() {
+		return this.billingDate;
 	}
 
-	public void setBilingDate(final Date bilingDate) {
-		this.bilingDate = bilingDate;
+	public void setBillingDate(final Date billingDate) {
+		this.billingDate = billingDate;
 	}
 
 	public double getTotal() {
