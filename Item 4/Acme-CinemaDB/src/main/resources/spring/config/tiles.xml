@@ -35,6 +35,7 @@
 		<value>/views/userAccount/tiles.xml</value>
 		<value>/views/fee/tiles.xml</value>
 		<value>/views/invoice/tiles.xml</value>
+		<value>/views/season/tiles.xml</value>
 	</util:list>
 
 </beans>

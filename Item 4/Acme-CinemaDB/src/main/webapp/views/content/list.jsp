@@ -67,5 +67,7 @@
 	</display:column>
 	
 
+	<display:column><a href="content/display.do?contentId=${row.id}">a</a></display:column>
+
 </display:table>
 

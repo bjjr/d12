@@ -50,6 +50,13 @@
 			<li><a class="fNiv" href="security/login.do"><spring:message code="master.page.login" /></a></li>
 		</security:authorize>
 		
+		<security:authorize access="permitAll()">
+			<li><a class="fNiv" href="content/list.do"><spring:message code="master.page.content" /></a></li>
+			<li><a class="fNiv" href="cinematicEntity/list.do"><spring:message code="master.page.cinematicEntity" /></a></li>
+		</security:authorize>
+		
+		<li><a class="fNiv" href="user/list.do"><spring:message code="master.page.user.list" /></a></li>
+		
 		<security:authorize access="isAuthenticated()">
 			<li><a class="fNiv"> 
 					<spring:message code="master.page.profile" /> 
@@ -61,8 +68,6 @@
 				</ul>
 			</li>
 		</security:authorize>
-		
-		<li><a class="fNiv" href="user/list.do"><spring:message code="master.page.user.list" /></a></li>
 		
 	</ul>
 </div>
