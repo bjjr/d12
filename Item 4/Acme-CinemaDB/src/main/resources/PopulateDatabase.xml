@@ -1328,10 +1328,6 @@
 		<property name="user" ref="user3" />
 	</bean>
 	
-	<bean id="like17" class="domain.LikeUser">
-		<property name="assessableEntity" ref="actor4" />
-		<property name="user" ref="user3" />
-	</bean>
 	
 	<bean id="like18" class="domain.LikeUser">
 		<property name="assessableEntity" ref="movie2" />
