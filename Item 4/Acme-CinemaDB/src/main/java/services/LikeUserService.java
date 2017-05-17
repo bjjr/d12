@@ -47,10 +47,9 @@ public class LikeUserService {
 	}
 
 	public LikeUser save(final LikeUser likeUser) {
-		//todo: faltan restricciones
+		Assert.isTrue(!this.alreadyExistsTheLikeUser(likeUser), "LikeUserService.save: The likeUser already exists");
 
 		final LikeUser savedLikeUser = this.likeUserRepository.save(likeUser);
-
 		return savedLikeUser;
 	}
 
@@ -114,5 +113,18 @@ public class LikeUserService {
 			reconstructed.setComment(null);
 
 		return reconstructed;
+	}
+
+	private Boolean alreadyExistsTheLikeUser(final LikeUser likeUser) {
+		final Collection<LikeUser> allLikeUserOfCurrentUser = this.findAllByPrincipal();
+		Boolean res = false;
+
+		for (final LikeUser lu : allLikeUserOfCurrentUser)
+			if (lu.getAssessableEntity().getId() == likeUser.getAssessableEntity().getId()) {
+				res = true;
+				break;
+			}
+
+		return res;
 	}
 }
