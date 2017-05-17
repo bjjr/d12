@@ -21,16 +21,21 @@
 	<br/>
 	<acme:textbox code="critic.media" path="media"/>
 	<br/>		
-	<acme:textbox code="critic.username" path="userAccount.username"/>
-	<br/>
-	<acme:password code="critic.password" path="userAccount.password"/>
-	<br/>
-	<acme:password code="critic.confirmPassword" path="confirmPassword"/>
-	<br/>
+	
+	<jstl:if test="${!isEdit}">
+		<acme:textbox code="critic.username" path="userAccount.username"/>
+		<br/>
+		<acme:password code="critic.password" path="userAccount.password"/>
+		<br/>
+		<acme:password code="critic.confirmPassword" path="confirmPassword"/>
+		<br/>
+	</jstl:if>
 
 	<acme:submit name="save" code="misc.save"/>		
 	<acme:cancel url="/" code="misc.cancel"/>
 		
 </form:form>
 <br/>
-<i><spring:message code="misc.eula" /></i>
+<jstl:if test="${!isEdit}">
+	<i><spring:message code="misc.eula" /></i>
+</jstl:if>

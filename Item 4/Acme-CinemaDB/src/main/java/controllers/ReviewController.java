@@ -25,7 +25,7 @@ public class ReviewController extends AbstractController {
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public ModelAndView list(@RequestParam final int contentId) {
 		final ModelAndView res;
-		Collection<Review> reviews;
+		final Collection<Review> reviews;
 
 		reviews = this.reviewService.findReviewsByContentId(contentId);
 		Assert.notNull(reviews);
@@ -33,7 +33,10 @@ public class ReviewController extends AbstractController {
 		res = new ModelAndView("review/list");
 		res.addObject("requestURI", "review/list.do");
 		res.addObject("reviews", reviews);
+		res.addObject("contentId", contentId);
+		res.addObject("isCriticReviews", false);
 
 		return res;
 	}
+
 }
