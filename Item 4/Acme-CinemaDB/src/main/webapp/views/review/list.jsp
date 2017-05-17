@@ -19,10 +19,21 @@
 	<acme:column code="review.body" property="${row.body}" sortable="true" />
 	<acme:column code="review.rating" property="${row.rating}" sortable="true" />
 	
+	<security:authorize access="hasRole('CRITIC')">
+		<spring:message code="misc.edit" var="edit" />
+		<display:column title="${edit}">
+			<jstl:if test="${criticId == row.critic.id}">
+				<jstl:if test="${row.draft == true}">
+					<acme:link href="review/critic/edit.do?reviewId=${row.id}" code="misc.edit"/>
+				</jstl:if>
+			</jstl:if>
+		</display:column>
+	</security:authorize>
+	
 </display:table>
 
 <br />
 
 <security:authorize access="hasRole('CRITIC')">
-	<acme:link href="review/critic/create.do" code="review.create"/>
+	<acme:link href="review/critic/create.do?contentId=${contentId}" code="review.create"/>
 </security:authorize>
