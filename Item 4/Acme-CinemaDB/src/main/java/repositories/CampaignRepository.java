@@ -18,4 +18,7 @@ public interface CampaignRepository extends JpaRepository<Campaign, Integer> {
 	@Query("select c from Campaign c where c.end < Current_Date or c.max = c.timesDisplayed")
 	Collection<Campaign> findAllCampaignsFinished();
 
+	@Query("select c from Campaign c where c.producer.id = ?1")
+	Collection<Campaign> findCampaignsProducer(int producerId);
+
 }
