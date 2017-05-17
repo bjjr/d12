@@ -13,25 +13,24 @@ import domain.Producer;
 
 public class ProducerForm {
 
-	private Integer			id;
-	private Integer			version;
-	private String			name;
-	private String			surname;
-	private String			email;
-	private String			phone;
-	private String			country;
-	private String			company;
-	private CreditCard		creditCard;
-	private UserAccount		userAccount;
+	private Integer		id;
+	private Integer		version;
+	private String		name;
+	private String		surname;
+	private String		email;
+	private String		phone;
+	private String		country;
+	private String		company;
+	private CreditCard	creditCard;
+	private UserAccount	userAccount;
 
 	// Form ----------------------------------------
 
-	private final String	confirmPassword;
+	private String		confirmPassword;
 
 
 	public ProducerForm() {
 		super();
-		this.confirmPassword = "";
 	}
 
 	public ProducerForm(final Producer producer) {
@@ -46,6 +45,7 @@ public class ProducerForm {
 		this.company = producer.getCompany();
 		this.creditCard = producer.getCreditCard();
 		this.userAccount = producer.getUserAccount();
+		this.confirmPassword = "";
 	}
 
 	public Producer getProducer() {
@@ -162,4 +162,7 @@ public class ProducerForm {
 		return this.confirmPassword;
 	}
 
+	public void setConfirmPassword(final String confirmPassword) {
+		this.confirmPassword = confirmPassword;
+	}
 }

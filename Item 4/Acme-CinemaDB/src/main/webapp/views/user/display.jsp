@@ -61,7 +61,7 @@
 		</display:column>
 		<acme:column code="content.rating" property="${row.assessableEntity.avgRating}"/>
 		<display:column>
-			<acme:link href="content/display.do?contentId=${row.id}" code="misc.view"/>
+			<acme:link href="content/display.do?contentId=${row.assessableEntity.id}" code="misc.view"/>
 		</display:column>
 	
 	</display:table>
@@ -78,7 +78,7 @@
 		<acme:column code="cinematicEntity.name" property="${cEntity.assessableEntity.name}"/>
 		<acme:column code="cinematicEntity.surname" property="${cEntity.assessableEntity.surname}"/>
 		<display:column>
-			<acme:link href="cinematicEntity/display.do?cinematicEntityId=${cEntity.id}" code="misc.view"/>
+			<acme:link href="cinematicEntity/display.do?cinematicEntityId=${cEntity.assessableEntity.id}" code="misc.view"/>
 		</display:column>
 	
 	</display:table>
@@ -92,9 +92,9 @@
 	<display:table pagesize="5" class="displaytag" name="socialIds"
 		requestURI="user/display.do?userId=${user.id}" id="socialId">
 	
-		<acme:column code="socialIdentity.username" property="${socialId.name}"/>
+		<acme:column code="socialIdentity.username" property="${socialId.username}"/>
 		<display:column>
-			<acme:link href="${socialId.path}" code="socialIdentity.path"/>
+			<a href="${socialId.path}"><jstl:out value="${socialId.path}" /></a>
 		</display:column>
 	
 	</display:table>

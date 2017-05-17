@@ -8,6 +8,7 @@ import javax.persistence.ManyToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.URL;
 
@@ -17,11 +18,23 @@ public class Product extends DomainEntity {
 
 	// Attributes
 
+	private String	name;
 	private double	price;
 	private int		stock;
 	private String	picture;
 	private String	idcode;
 
+
+	@NotNull
+	@NotBlank
+	@Length(min = 1, max = 40)
+	public String getName() {
+		return this.name;
+	}
+
+	public void setName(final String name) {
+		this.name = name;
+	}
 
 	public double getPrice() {
 		return this.price;

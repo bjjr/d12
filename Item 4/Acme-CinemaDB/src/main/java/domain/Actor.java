@@ -75,9 +75,8 @@ public class Actor extends DomainEntity {
 		this.phone = phone;
 	}
 
-
-	@NotBlank
 	@NotNull
+	@NotBlank
 	@SafeHtml
 	public String getCountry() {
 		return this.country;

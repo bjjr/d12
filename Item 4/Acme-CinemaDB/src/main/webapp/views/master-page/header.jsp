@@ -22,10 +22,35 @@
 
 	<ul id="jMenu">
 		<!-- Do not forget the "fNiv" class for the first level links !! -->
+		
 		<security:authorize access="hasRole('ADMIN')">
 			<li><a class="fNiv"><spring:message	code="master.page.administrator" /></a>
 				<ul>
 					<li class="arrow"></li>
+					<li><a href="producer/administrator/create.do"><spring:message code="master.page.producer.create" /></a></li>
+					<li><a href="critic/administrator/register.do"><spring:message code="master.page.critic.create" /></a></li>
+					<li><a href="fee/administrator/list.do"><spring:message code="master.page.fee.edit" /></a></li>
+					<li><a href="invoice/administrator/list.do"><spring:message code="master.page.invoice.list" /></a></li>
+				</ul>
+			</li>
+		</security:authorize>
+		
+		<security:authorize access="hasRole('PRODUCER')">
+			<li><a class="fNiv"><spring:message	code="master.page.producer" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="producer/producer/edit.do"><spring:message code="master.page.producer.edit" /></a></li>
+					<li><a href="userAccount/edit.do"><spring:message code="master.page.changePassword" /></a></li>
+				</ul>
+			</li>
+
+		</security:authorize>
+		
+		<security:authorize access="hasRole('CRITIC')">
+			<li><a class="fNiv"><spring:message	code="master.page.critic" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="userAccount/edit.do"><spring:message code="master.page.changePassword" /></a></li>
 				</ul>
 			</li>
 		</security:authorize>
@@ -34,6 +59,13 @@
 			<li><a class="fNiv" href="user/register.do"><spring:message code="master.page.user.registration" /></a></li>
 			<li><a class="fNiv" href="security/login.do"><spring:message code="master.page.login" /></a></li>
 		</security:authorize>
+		
+		<security:authorize access="permitAll()">
+			<li><a class="fNiv" href="content/list.do"><spring:message code="master.page.content" /></a></li>
+			<li><a class="fNiv" href="cinematicEntity/list.do"><spring:message code="master.page.cinematicEntity" /></a></li>
+		</security:authorize>
+		
+		<li><a class="fNiv" href="user/list.do"><spring:message code="master.page.user.list" /></a></li>
 		
 		<security:authorize access="isAuthenticated()">
 			<li><a class="fNiv"> 
@@ -46,8 +78,6 @@
 				</ul>
 			</li>
 		</security:authorize>
-		
-		<li><a class="fNiv" href="user/list.do"><spring:message code="master.page.user.list" /></a></li>
 		
 	</ul>
 </div>

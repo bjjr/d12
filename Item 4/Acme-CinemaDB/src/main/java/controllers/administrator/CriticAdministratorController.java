@@ -52,7 +52,8 @@ public class CriticAdministratorController extends AbstractController {
 		else
 			try {
 				this.criticService.save(reconstructed);
-				res = this.createEditModelAndView(criticForm, "critic.created.ok");
+				res = new ModelAndView("redirect:/");
+				res.addObject("conf", "critic.created.ok");
 			} catch (final Throwable e) {
 				res = this.createEditModelAndView(criticForm, "misc.commit.error");
 			}
