@@ -17,14 +17,17 @@
 	<!-- Attributes -->
 	<acme:column code="invoice.total" property="${row.total}"/>
 	
-	<acme:column code="invoice.billingDate" property="${row.billingDate}"/>
+	<acme:column code="invoice.billingDate" property="billingDate" isDate="true" />
 	
-	<acme:column code="invoice.paid" property="${row.paid}"/>
+	<display:column>
+		<jstl:if test="${row.paid eq true}">
+			<spring:message code="invoice.paid"/>
+		</jstl:if>
+		<jstl:if test="${row.paid eq false}">
+			<acme:link href="invoice/administrator/setPaid.do?invoiceId=${row.id}" code="invoice.set.paid"/>
+		</jstl:if>
+	</display:column>
 	
-	<jstl:if test="${row.paid == false}">
-		<acme:link href="invoice/administrator/setPaid.do?invoiceId=${row.id}" code="invoice.set.paid"/>
-	</jstl:if>
-
 </display:table>
 
 <acme:link href="invoice/administrator/create.do" code="misc.create"/>

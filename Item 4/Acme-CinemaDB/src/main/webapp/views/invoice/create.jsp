@@ -12,7 +12,6 @@
 	<form:hidden path="id"/>
 	<form:hidden path="version"/>
 	<form:hidden path="paid"/>
-	<form:hidden path="administrator"/>
 	<form:hidden path="total"/>
 	
 	<acme:textbox code="invoice.billingDate" path="billingDate" readonly="true"/>
