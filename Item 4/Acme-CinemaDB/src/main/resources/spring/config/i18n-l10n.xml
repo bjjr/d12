@@ -46,8 +46,8 @@
 		<value>/views/status/messages</value>		
 		<value>/views/user/messages</value>
 		<value>/views/userAccount/messages</value>
-		
 		<value>/views/likeUser/messages</value>
+		<value>/views/invoice/messages</value>
 		
 	</util:list>
 
