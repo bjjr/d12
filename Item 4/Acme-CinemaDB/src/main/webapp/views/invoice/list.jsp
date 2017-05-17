@@ -24,13 +24,23 @@
 			<spring:message code="invoice.paid"/>
 		</jstl:if>
 		<jstl:if test="${row.paid eq false}">
-			<acme:link href="invoice/administrator/setPaid.do?invoiceId=${row.id}" code="invoice.set.paid"/>
+			<spring:message code="invoice.unpaid"/>
 		</jstl:if>
 	</display:column>
 	
+	<security:authorize access="hasRole('PRODUCER')">
+	<display:column>
+		<jstl:if test="${row.paid eq false}">
+			<acme:link href="invoice/producer/setPaid.do?invoiceId=${row.id}" code="invoice.set.paid"/>
+		</jstl:if>
+	</display:column>
+	</security:authorize>
+	
 </display:table>
 
+<security:authorize access="hasRole('ADMIN')">
 <acme:link href="invoice/administrator/create.do" code="misc.create"/>
+</security:authorize>
 
 
 <br />
