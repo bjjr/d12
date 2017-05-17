@@ -12,13 +12,25 @@
 	<form:hidden path="id" />
 	<form:hidden path="version" />
 	
-	<acme:textbox code="review.title" path="title" />
-	<acme:textbox code="review.body" path="body" />
-	<acme:textbox code="review.rating" path="rating" size="1" />
+	<jstl:if test="${review.draft == true}">
+		<acme:textbox code="review.title" path="title" />
+		<acme:textbox code="review.body" path="body" />
+		<acme:textbox code="review.rating" path="rating" size="1" />
+	</jstl:if>
+	<jstl:if test="${review.draft == false}">
+		<acme:textbox code="review.title" path="title" readonly="true" />
+		<acme:textbox code="review.body" path="body" readonly="true" />
+		<acme:textbox code="review.rating" path="rating" size="1" readonly="true" />
+	</jstl:if>
 	<br />
 
-	<acme:submit name="publish" code="review.publish"/>	
-	<acme:submit name="save" code="review.draft"/>
+	<jstl:if test="${review.draft == true}">
+		<acme:submit name="publish" code="review.publish"/>	
+		<acme:submit name="save" code="review.draft"/>
+	</jstl:if>
+	<jstl:if test="${review.id != 0}">
+		<acme:submit name="delete" code="misc.delete"/>
+	</jstl:if>
 	<acme:cancel url="review/list.do?contentId=${contentId}" code="misc.cancel"/>
 		
 </form:form>
