@@ -65,6 +65,7 @@
 		<security:intercept-url pattern="/review/**" access="permitAll" /> 
 		
 		<security:intercept-url pattern="/critic/administrator/**" access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="/critic/critic/**" access="hasRole('CRITIC')" />
 		
 		<security:intercept-url pattern="/fee/administrator/**" access="hasRole('ADMIN')" />
 		

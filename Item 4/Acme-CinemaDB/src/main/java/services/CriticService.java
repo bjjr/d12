@@ -85,19 +85,25 @@ public class CriticService {
 		final Critic res = criticForm.getCritic();
 		this.checkPasswords(criticForm.getUserAccount().getPassword(), criticForm.getConfirmPassword(), binding);
 
-		if (this.actorService.checkAuthority("CRITIC")) {
-			final Critic principal = this.findByPrincipal();
-			res.setId(principal.getId());
-			res.setVersion(principal.getVersion());
-			res.getUserAccount().setId(principal.getUserAccount().getId());
-			res.getUserAccount().setVersion(principal.getUserAccount().getVersion());
-		}
-
 		this.validator.validate(res, binding);
 
 		return res;
 	}
 
+	public Critic reconstruct(final Critic critic, final BindingResult binding) {
+		Assert.isTrue(this.actorService.checkAuthority("CRITIC"));
+		final Critic res = critic;
+		final Critic principal = this.findByPrincipal();
+
+		res.setId(principal.getId());
+		res.setVersion(principal.getVersion());
+		res.setCreditCard(principal.getCreditCard());
+		res.setUserAccount(principal.getUserAccount());
+
+		this.validator.validate(res, binding);
+
+		return res;
+	}
 	public Critic findByPrincipal() {
 		Critic res;
 		UserAccount userAccount;
