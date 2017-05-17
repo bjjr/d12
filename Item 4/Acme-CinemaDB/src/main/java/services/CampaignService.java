@@ -30,9 +30,11 @@ public class CampaignService {
 
 	public Collection<Campaign> findUnpaidCampaigns() {
 		Collection<Campaign> result;
+		Collection<Campaign> campaignsInvoices;
 
 		result = this.campaignRepository.findAllCampaignsFinished();
-		result.removeAll(this.campaignRepository.findCampaignsInvoices());
+		campaignsInvoices = this.campaignRepository.findCampaignsInvoices();
+		result.removeAll(campaignsInvoices);
 
 		return result;
 	}
