@@ -16,9 +16,14 @@
       
 <tiles-definitions>
 
-	<definition name="likeUser/list" extends="master.page">	
-		<put-attribute name="title" value="Lista de me gustas" />
-		<put-attribute name="body" value="/views/likeUser/list.jsp" />
+	<definition name="likeUser/listComments" extends="master.page">	
+		<put-attribute name="title" value="Lista de comentarios" />
+		<put-attribute name="body" value="/views/likeUser/list_comments.jsp" />
+	</definition>
+	
+	<definition name="likeUser/create" extends="master.page">	
+		<put-attribute name="title" value="Crear comentario" />
+		<put-attribute name="body" value="/views/likeUser/edit.jsp" />
 	</definition>
 	
 </tiles-definitions>
