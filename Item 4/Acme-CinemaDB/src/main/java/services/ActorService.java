@@ -4,9 +4,11 @@ package services;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
+import org.springframework.validation.BindingResult;
 
 import repositories.ActorRepository;
 import security.Authority;
@@ -97,6 +99,21 @@ public class ActorService {
 		Assert.notNull(res);
 
 		return res;
+	}
+
+	public String hashCodePassword(final String password) {
+		String result;
+		Md5PasswordEncoder encoder;
+
+		encoder = new Md5PasswordEncoder();
+		result = encoder.encodePassword(password, null);
+
+		return result;
+	}
+
+	public void checkPasswords(final String passwd1, final String passwd2, final BindingResult binding) {
+		if (!passwd1.equals(passwd2) || (passwd1 == null || passwd2 == null))
+			binding.rejectValue("userAccount.password", "misc.password.invalid");
 	}
 
 }

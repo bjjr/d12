@@ -2,6 +2,7 @@
 package services;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -49,6 +50,16 @@ public class ContentService {
 		Assert.notNull(result);
 
 		return result;
+	}
+
+	// Other CRUD methods ----------------------------------
+
+	public List<Content> searchContent(final String s) {
+		List<Content> resultContent;
+
+		resultContent = this.contentRepository.searchContent(s);
+
+		return resultContent;
 	}
 
 }

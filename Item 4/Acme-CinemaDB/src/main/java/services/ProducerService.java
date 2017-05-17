@@ -4,7 +4,6 @@ package services;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
@@ -86,7 +85,7 @@ public class ProducerService {
 		return result;
 	}
 
-	public Producer save(Producer producer) {
+	public Producer save(final Producer producer) {
 		Assert.notNull(producer);
 
 		Producer result;
@@ -94,8 +93,7 @@ public class ProducerService {
 		if (producer.getId() == 0) {
 			Assert.isTrue(producer.getUserAccount().getAuthorities().iterator().next().getAuthority().equals("PRODUCER"));
 			producer.getUserAccount().setPassword(this.hashCodePassword(producer.getUserAccount().getPassword()));
-		} else
-			producer = (Producer) this.actorService.findByPrincipal();
+		}
 
 		result = this.producerRepository.save(producer);
 
@@ -108,35 +106,39 @@ public class ProducerService {
 
 	// Other business methods -------------------------------
 
-	public Producer reconstruct(final Producer producer, final BindingResult binding) {
+	// Reconstruct to create
+
+	public Producer reconstruct(final ProducerForm producerForm, final BindingResult binding) {
 		Producer result;
+		Authority auth;
 
-		if (producer.getId() == 0)
-			result = producer;
-		else {
-			final Producer aux = this.findByPrincipal();
-			result = producer;
+		auth = new Authority();
+		auth.setAuthority("PRODUCER");
 
-			result.setUserAccount(aux.getUserAccount());
-			result.setCreditCard(aux.getCreditCard());
+		result = producerForm.getProducer();
 
-			this.validator.validate(result, binding);
-		}
+		result.getUserAccount().addAuthority(auth);
+
+		this.validator.validate(result, binding);
 
 		return result;
 	}
 
-	public Producer reconstruct(final ProducerForm producerForm, final BindingResult binding) {
-		Producer result;
+	// Reconstruct to edit
 
-		if (producerForm.getProducer().getId() == 0)
-			result = producerForm.getProducer();
-		else {
-			final Producer aux = this.findByPrincipal();
-			result = producerForm.getProducer();
+	public Producer reconstruct(final Producer producer, final BindingResult binding) {
+		final Producer result;
+		Producer aux;
 
-			result.setUserAccount(aux.getUserAccount());
-		}
+		result = producer;
+		aux = this.findByPrincipal();
+
+		result.setName(aux.getName());
+		result.setSurname(aux.getSurname());
+		result.setCountry(aux.getCountry());
+		result.setCompany(aux.getCompany());
+		result.setUserAccount(aux.getUserAccount());
+		result.setCreditCard(aux.getCreditCard());
 
 		this.validator.validate(result, binding);
 
@@ -145,10 +147,8 @@ public class ProducerService {
 
 	public String hashCodePassword(final String password) {
 		String result;
-		Md5PasswordEncoder encoder;
 
-		encoder = new Md5PasswordEncoder();
-		result = encoder.encodePassword(password, null);
+		result = this.actorService.hashCodePassword(password);
 
 		return result;
 	}

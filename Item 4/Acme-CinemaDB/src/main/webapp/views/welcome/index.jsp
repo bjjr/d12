@@ -18,7 +18,11 @@
 
 <p><spring:message code="welcome.greeting.prefix" /><spring:message code="welcome.greeting.suffix" /></p>
 
-<p><spring:message code="welcome.greeting.current.time" /> ${moment}</p> 
+<p><spring:message code="welcome.greeting.current.time" /> ${moment}</p>
+
+<jstl:if test="${conf != null}">
+	<p style="color: green;"><spring:message code="${conf}"/></p>
+</jstl:if>
 
 <div id="legal" style="background-color:#bababa;">
 	<spring:message code="welcome.legal" /> <button id="hide">OK</button>

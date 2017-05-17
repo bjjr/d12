@@ -23,8 +23,19 @@
 		<value>/views/security/tiles.xml</value>
 		<value>/views/welcome/tiles.xml</value>
 		
+		<value>/views/legal/tiles.xml</value>
+		<value>/views/cinematicEntity/tiles.xml</value>
+		<value>/views/content/tiles.xml</value>
 		<value>/views/critic/tiles.xml</value>
+		<value>/views/actor/tiles.xml</value>
+		<value>/views/user/tiles.xml</value>
 		<value>/views/review/tiles.xml</value>
+		<value>/views/likeUser/tiles.xml</value>
+		<value>/views/producer/tiles.xml</value>
+		<value>/views/userAccount/tiles.xml</value>
+		<value>/views/fee/tiles.xml</value>
+		<value>/views/invoice/tiles.xml</value>
+		<value>/views/season/tiles.xml</value>
 	</util:list>
 
 </beans>
