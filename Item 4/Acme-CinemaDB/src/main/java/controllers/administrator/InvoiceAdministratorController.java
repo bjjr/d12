@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import services.CampaignService;
 import services.InvoiceService;
 import controllers.AbstractController;
+import domain.Campaign;
 import domain.Invoice;
 
 @Controller
@@ -23,6 +25,9 @@ public class InvoiceAdministratorController extends AbstractController {
 
 	@Autowired
 	private InvoiceService	invoiceService;
+
+	@Autowired
+	private CampaignService	campaignService;
 
 
 	// Constructors -------------------------------------------
@@ -53,10 +58,13 @@ public class InvoiceAdministratorController extends AbstractController {
 	public ModelAndView create() {
 		ModelAndView result;
 		Invoice invoice;
+		Collection<Campaign> unpaidCampaigns;
 
 		invoice = this.invoiceService.create();
 		result = new ModelAndView("invoice/create");
+		unpaidCampaigns = this.campaignService.findUnpaidCampaigns();
 		result.addObject("invoice", invoice);
+		result.addObject("campaigns", unpaidCampaigns);
 
 		return result;
 	}
