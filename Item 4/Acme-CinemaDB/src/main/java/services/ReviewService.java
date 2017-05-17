@@ -98,6 +98,11 @@ public class ReviewService {
 		return this.reviewRepository.findReviewsByContentId(contentId);
 	}
 
+	public Collection<Review> findReviewsByCriticId(final int criticId) {
+		Assert.notNull(criticId);
+		return this.reviewRepository.findReviewsByCriticId(criticId);
+	}
+
 	public Review findOne(final int reviewId) {
 		Assert.isTrue(reviewId != 0);
 		final Review res = this.reviewRepository.findOne(reviewId);

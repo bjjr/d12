@@ -1,6 +1,8 @@
 
 package controllers.critic;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
@@ -13,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import services.CriticService;
 import services.ReviewService;
 import controllers.AbstractController;
+import domain.Critic;
 import domain.Review;
 
 @Controller
@@ -32,6 +35,25 @@ public class ReviewCriticController extends AbstractController {
 
 	public ReviewCriticController() {
 		super();
+	}
+
+	@RequestMapping(value = "/listMyReviews", method = RequestMethod.GET)
+	public ModelAndView listMyReviews() {
+		final ModelAndView res;
+		final Collection<Review> reviews;
+		final Critic critic = this.criticService.findByPrincipal();
+		Assert.notNull(critic);
+
+		reviews = this.reviewService.findReviewsByCriticId(critic.getId());
+		Assert.notNull(reviews);
+
+		res = new ModelAndView("review/list");
+		res.addObject("requestURI", "review/critic/list.do");
+		res.addObject("reviews", reviews);
+		res.addObject("contentId", this.contentId);
+		res.addObject("isCriticReviews", true);
+
+		return res;
 	}
 
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
@@ -71,7 +93,7 @@ public class ReviewCriticController extends AbstractController {
 		else
 			try {
 				this.reviewService.save(reconstructed);
-				res = new ModelAndView("redirect:/review/list.do?contentId=" + this.contentId);
+				res = new ModelAndView("redirect:/review/critic/listMyReviews.do");
 			} catch (final Throwable e) {
 				res = this.createEditModelAndView(review, "misc.commit.error");
 			}
@@ -79,7 +101,6 @@ public class ReviewCriticController extends AbstractController {
 		return res;
 
 	}
-
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "publish")
 	public ModelAndView savePublish(final Review review, final BindingResult binding) {
 		ModelAndView res;
@@ -91,7 +112,7 @@ public class ReviewCriticController extends AbstractController {
 		else
 			try {
 				this.reviewService.save(reconstructed);
-				res = new ModelAndView("redirect:/review/list.do?contentId=" + this.contentId);
+				res = new ModelAndView("redirect:/review/critic/listMyReviews.do");
 			} catch (final Throwable e) {
 				res = this.createEditModelAndView(review, "misc.commit.error");
 			}
