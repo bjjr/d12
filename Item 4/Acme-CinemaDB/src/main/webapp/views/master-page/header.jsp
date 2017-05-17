@@ -35,6 +35,11 @@
 			<li><a class="fNiv" href="security/login.do"><spring:message code="master.page.login" /></a></li>
 		</security:authorize>
 		
+		<security:authorize access="permitAll()">
+			<li><a class="fNiv" href="content/list.do"><spring:message code="master.page.content" /></a></li>
+			<li><a class="fNiv" href="cinematicEntity/list.do"><spring:message code="master.page.cinematicEntity" /></a></li>
+		</security:authorize>
+		
 	</ul>
 </div>
 

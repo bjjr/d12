@@ -44,6 +44,8 @@
 		<security:intercept-url pattern="/cinematicEntity/**" access="permitAll" /> 
 
 		<security:intercept-url pattern="/content/**" access="permitAll" /> 
+		
+		<security:intercept-url pattern="/season/**" access="permitAll" /> 
 
 		<security:intercept-url pattern="/welcome/index.do" access="permitAll" /> 
 		

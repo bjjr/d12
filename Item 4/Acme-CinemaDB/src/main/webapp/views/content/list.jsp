@@ -58,5 +58,7 @@
 
 	<acme:column code="content.avgRating" property="${row.avgRating}" />
 
+	<display:column><a href="content/display.do?contentId=${row.id}">a</a></display:column>
+
 </display:table>
 

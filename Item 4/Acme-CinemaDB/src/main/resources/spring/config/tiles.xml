@@ -27,6 +27,7 @@
 		<value>/views/cinematicEntity/tiles.xml</value>
 		<value>/views/content/tiles.xml</value>
 		<value>/views/critic/tiles.xml</value>
+		<value>/views/season/tiles.xml</value>
 	</util:list>
 
 </beans>
