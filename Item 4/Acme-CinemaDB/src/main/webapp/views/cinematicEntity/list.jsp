@@ -28,8 +28,6 @@
 
 	<acme:column code="cinematicEntity.birthdate" property="${row.birthdate}"/>
 	
-	<acme:column code="cinematicEntity.bio" property="${row.bio}"/>
-	
 	<display:column>
 		<acme:link href="likeUser/listComments.do?assessableEntityId=${row.id}" code="likeUser.comments.list"/>
 	</display:column>
@@ -37,6 +35,8 @@
 	<display:column>
 		<acme:link href="likeUser/create.do?assessableEntityId=${row.id}" code="likeUser.comments.create"/>
 	</display:column>
+	
+	<display:column><a href="cinematicEntity/display.do?cinematicEntityId=${row.id }"><spring:message code="misc.view" /></a></display:column>
 	
 </display:table>
 
