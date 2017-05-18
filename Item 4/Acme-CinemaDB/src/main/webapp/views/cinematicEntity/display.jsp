@@ -11,14 +11,19 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
-<!-- Search Form -->
-<form:form action="" modelAttribute="content">
-	<input type="text" name="title" />
-	<input type="submit" name="search"
-		value="<spring:message code="misc.search"/>" />
-</form:form>
+<acme:display code="cinematicEntity.name" property="${ cinematicEntity.name}" />
+<br />
+<acme:display code="cinematicEntity.surname" property="${ cinematicEntity.surname}" />
+<br />
+<acme:display code="cinematicEntity.birthdate" property="${ cinematicEntity.birthdate}" />
+<br />
+<acme:display code="cinematicEntity.bio" property="${ cinematicEntity.bio}" />
+<br />
+<jstl:if test="${cinematicEntity.director eq true }">
+<h2><spring:message code="cinematicEntity.director" /></h2>
+</jstl:if>
+<br />
 
-<!-- Listing grid -->
 <display:table pagesize="5" class="displaytag" name="contents"
 	requestURI="${requestURI}" id="row">
 
@@ -70,4 +75,5 @@
 	<display:column><a href="content/display.do?contentId=${row.id}"><spring:message code="misc.view" /></a></display:column>
 
 </display:table>
+
 

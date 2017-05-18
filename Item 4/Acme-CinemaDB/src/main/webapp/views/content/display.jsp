@@ -53,6 +53,29 @@
 	<a href="${video }"><jstl:out value="${video }"></jstl:out></a>
 </jstl:forEach>
 
+<display:table pagesize="5" class="displaytag"
+	name="content.cinematicEntities" requestURI="${requestURI}" id="row">
+	
+	<!-- Attributes -->
+	
+	<acme:column code="cinematicEntity.name" property="${row.name}"/>
+
+	<acme:column code="cinematicEntity.surname" property="${row.surname}"/>
+
+	<acme:column code="cinematicEntity.birthdate" property="${row.birthdate}"/>
+	
+	<display:column>
+		<acme:link href="likeUser/listComments.do?assessableEntityId=${row.id}" code="likeUser.comments.list"/>
+	</display:column>
+	
+	<display:column>
+		<acme:link href="likeUser/create.do?assessableEntityId=${row.id}" code="likeUser.comments.create"/>
+	</display:column>
+
+	<display:column><a href="cinematicEntity/display.do?cinematicEntityId=${row.id }"><spring:message code="misc.view" /></a></display:column>
+	
+</display:table>
+
 <jstl:if test="${isMovie eq false }">
 	<display:table pagesize="5" class="displaytag" name="seasons"
 		requestURI="${requestURI}" id="row">
@@ -61,7 +84,7 @@
 
 		<acme:column code="cinematicEntity.name" property="${row.name}" />
 		
-		<display:column><a href="season/display.do?seasonId=${row.id }">a</a></display:column>
+		<display:column><a href="season/display.do?seasonId=${row.id }"><spring:message code="misc.view" /></a></display:column>
 
 	</display:table>
 </jstl:if>
