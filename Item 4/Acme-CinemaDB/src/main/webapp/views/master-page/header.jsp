@@ -55,6 +55,17 @@
 			</li>
 		</security:authorize>
 		
+		<security:authorize access="hasRole('USER')">
+			<li><a class="fNiv"><spring:message	code="master.page.user" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="user/display.do"><spring:message code="master.page.user.profile" /></a></li>
+					<li><a href="order/list.do"><spring:message code="master.page.user.orders" /></a></li>
+					<li><a href="userAccount/edit.do"><spring:message code="master.page.changePassword" /></a></li>
+				</ul>
+			</li>
+		</security:authorize>
+		
 		<security:authorize access="isAnonymous()">
 			<li><a class="fNiv" href="user/register.do"><spring:message code="master.page.user.registration" /></a></li>
 			<li><a class="fNiv" href="security/login.do"><spring:message code="master.page.login" /></a></li>

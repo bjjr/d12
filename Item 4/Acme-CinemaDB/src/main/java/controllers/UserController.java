@@ -86,13 +86,18 @@ public class UserController extends AbstractController {
 	// Display --------------------------------------
 
 	@RequestMapping(value = "/display", method = RequestMethod.GET)
-	public ModelAndView display(@RequestParam final int userId) {
+	public ModelAndView display(@RequestParam(defaultValue = "-1") int userId) {
 		ModelAndView res;
 		User user;
 		Collection<LikeUser> contentLikes, cEntitiesLikes;
 		Collection<SocialIdentity> socialIds;
 
-		user = this.userService.findOne(userId);
+		if (userId == -1) {
+			user = this.userService.findByPrincipal();
+			userId = user.getId();
+		} else
+			user = this.userService.findOne(userId);
+
 		contentLikes = this.likeUserService.findContentLikes(userId);
 		cEntitiesLikes = this.likeUserService.findCinematicEntityLikes(userId);
 		socialIds = this.socialIdentityService.findUserSocialIdentities(userId);

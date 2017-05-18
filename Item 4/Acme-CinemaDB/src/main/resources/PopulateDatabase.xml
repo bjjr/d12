@@ -1948,6 +1948,7 @@
 	
 	<bean id="order1" class="domain.OrderUser">
 		<property name="total" value="5.99" />
+		<property name="moment" value="03/12/2016 15:43" />
 		<property name="user" ref="user2" />
 		<property name="orderQuantities">
 			<list>
@@ -1960,6 +1961,7 @@
 	
 	<bean id="order2" class="domain.OrderUser">
 		<property name="total" value="66.86" />
+		<property name="moment" value="04/14/2016 16:21" />
 		<property name="user" ref="user3" />
 		<property name="orderQuantities">
 			<list>
@@ -1977,6 +1979,7 @@
 	
 	<bean id="order3" class="domain.OrderUser">
 		<property name="total" value="13.99" />
+		<property name="moment" value="05/23/2016 17:11" />
 		<property name="user" ref="user3" />
 		<property name="orderQuantities">
 			<list>
@@ -1989,6 +1992,7 @@
 	
 	<bean id="order4" class="domain.OrderUser">
 		<property name="total" value="2.99" />
+		<property name="moment" value="06/19/2016 17:52" />
 		<property name="user" ref="user3" />
 		<property name="orderQuantities">
 			<list>
@@ -2001,6 +2005,7 @@
 	
 	<bean id="order5" class="domain.OrderUser">
 		<property name="total" value="5.99" />
+		<property name="moment" value="06/20/2016 17:36" />
 		<property name="user" ref="user3" />
 		<property name="orderQuantities">
 			<list>
@@ -2013,6 +2018,7 @@
 	
 	<bean id="order6" class="domain.OrderUser">
 		<property name="total" value="11.95" />
+		<property name="moment" value="01/11/2017 15:43" />
 		<property name="user" ref="user3" />
 		<property name="orderQuantities">
 			<list>
@@ -2025,6 +2031,7 @@
 	
 	<bean id="order7" class="domain.OrderUser">
 		<property name="total" value="7.99" />
+		<property name="moment" value="03/12/2017 11:43" />
 		<property name="user" ref="user3" />
 		<property name="orderQuantities">
 			<list>
