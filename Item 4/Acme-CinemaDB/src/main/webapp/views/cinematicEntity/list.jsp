@@ -30,13 +30,20 @@
 	
 	<acme:column code="cinematicEntity.bio" property="${row.bio}"/>
 	
-	<security:authorize access="hasRole('USER')">
+	<security:authorize access="isAnonymous()">
 		<display:column>
 			<acme:link href="likeUser/listComments.do?assessableEntityId=${row.id}" code="likeUser.comments.list"/>
 		</display:column>
-		
+	</security:authorize>
+	
+	
+	<security:authorize access="hasRole('USER')">
 		<display:column>
-			<acme:link href="likeUser/create.do?assessableEntityId=${row.id}" code="likeUser.comments.create"/>
+			<acme:link href="likeUser/user/listComments.do?assessableEntityId=${row.id}" code="likeUser.comments.list"/>
+		</display:column>
+	
+		<display:column>
+			<acme:link href="likeUser/user/create.do?assessableEntityId=${row.id}" code="likeUser.comments.create"/>
 		</display:column>
 	</security:authorize>
 	

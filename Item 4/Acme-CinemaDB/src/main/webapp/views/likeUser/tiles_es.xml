@@ -21,7 +21,7 @@
 		<put-attribute name="body" value="/views/likeUser/list_comments.jsp" />
 	</definition>
 	
-	<definition name="likeUser/create" extends="master.page">	
+	<definition name="likeUser/edit" extends="master.page">	
 		<put-attribute name="title" value="Crear comentario" />
 		<put-attribute name="body" value="/views/likeUser/edit.jsp" />
 	</definition>
