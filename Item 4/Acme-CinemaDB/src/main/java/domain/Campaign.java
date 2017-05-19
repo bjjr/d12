@@ -84,7 +84,7 @@ public class Campaign extends DomainEntity {
 		this.timesDisplayed = timesDisplayed;
 	}
 
-	public Boolean isApproved() {
+	public Boolean getApproved() {
 		return this.approved;
 	}
 

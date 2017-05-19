@@ -76,7 +76,7 @@
 		</display:column>
 	</security:authorize>
 
-	<display:column><a href="content/display.do?contentId=${row.id}">a</a></display:column>
+	<display:column><a href="content/display.do?contentId=${row.id}"><spring:message code="misc.view" /></a></display:column>
 
 </display:table>
 

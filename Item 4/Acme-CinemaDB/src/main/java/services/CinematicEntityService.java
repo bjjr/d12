@@ -11,6 +11,7 @@ import org.springframework.util.Assert;
 
 import repositories.CinematicEntityRepository;
 import domain.CinematicEntity;
+import domain.Content;
 
 @Service
 @Transactional
@@ -60,6 +61,14 @@ public class CinematicEntityService {
 		resultCinematicEntities = this.cinematicEntityRepository.searchCinematicEntity(s);
 
 		return resultCinematicEntities;
+	}
+
+	public List<Content> getContents(final int cinematicEntityId) {
+		List<Content> resultContents;
+
+		resultContents = this.cinematicEntityRepository.getContents(cinematicEntityId);
+
+		return resultContents;
 	}
 
 }

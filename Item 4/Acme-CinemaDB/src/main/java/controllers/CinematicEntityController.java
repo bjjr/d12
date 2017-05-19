@@ -2,6 +2,7 @@
 package controllers;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import services.CinematicEntityService;
 import domain.CinematicEntity;
+import domain.Content;
 
 @Controller
 @RequestMapping("/cinematicEntity")
@@ -27,6 +29,23 @@ public class CinematicEntityController {
 
 	public CinematicEntityController() {
 		super();
+	}
+
+	@RequestMapping(value = "/display", method = RequestMethod.GET)
+	public ModelAndView display(@RequestParam(required = true) final int cinematicEntityId) {
+		ModelAndView result;
+		CinematicEntity cinematicEntity;
+		List<Content> contents;
+
+		cinematicEntity = this.cinematicEntityService.findOne(cinematicEntityId);
+		contents = this.cinematicEntityService.getContents(cinematicEntityId);
+
+		result = new ModelAndView("cinematicEntity/display");
+		result.addObject("requestURI", "cinematicEntity/display.do");
+		result.addObject("cinematicEntity", cinematicEntity);
+		result.addObject("contents", contents);
+
+		return result;
 	}
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)

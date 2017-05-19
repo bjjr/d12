@@ -54,6 +54,22 @@ public class ActorService {
 		return res;
 	}
 
+	public Actor save(final Actor actor) {
+		Assert.notNull(actor);
+		Actor res;
+
+		if (actor.getId() == 0) {
+			String password, hashedPassword;
+			password = actor.getUserAccount().getPassword();
+			hashedPassword = this.hashCodePassword(password);
+
+			actor.getUserAccount().setPassword(hashedPassword);
+		}
+
+		res = this.actorRepository.save(actor);
+		return res;
+	}
+
 	// Other business methods ----------------------------------
 
 	public Actor findByPrincipal() {

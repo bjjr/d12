@@ -746,6 +746,20 @@
 		<property name="producer" ref="producer3" />
 	</bean>
 	
+	<bean id="campaign14" class="domain.Campaign">
+		<property name="start" value="02/16/2017" />
+		<property name="end" value="05/12/2017" />
+		<property name="images">
+			<list>
+				<value>http://url141.com</value>
+			</list>
+		</property>
+		<property name="max" value="65" />
+		<property name="timesDisplayed" value="52" />
+		<property name="fee" value="1.0" />
+		<property name="producer" ref="producer3" />
+	</bean>
+	
 	<!-- Invoices -->
 	
 	<bean id="invoice1" class="domain.Invoice">
@@ -1052,12 +1066,15 @@
 		<property name="avgRating" value="1" />
 		<property name="images">
 			<list>
-				<value>http://url131.com</value>
+				<value>http://www.resortcollection.com/wp-content/themes/resortcollection/property-images/summit/summit-beach-resort-panama-city-beach-fl-beach-01.jpg</value>
+				<value>http://az616578.vo.msecnd.net/files/2016/06/16/636017001832422628-355544219_beach%20pic.jpg</value>
 			</list>
 		</property>
 		<property name="videos">
 			<list>
-				<value>http://url131.com</value>
+				<value>E8gDvbsYd0Q</value>
+				<value>kZu5iDTtNg0</value>
+				<value>FIZ_gDOrzGk</value>
 			</list>
 		</property>
 		<property name="genres">
@@ -1328,6 +1345,10 @@
 		<property name="user" ref="user3" />
 	</bean>
 	
+	<bean id="like17" class="domain.LikeUser">
+		<property name="assessableEntity" ref="director2" />
+		<property name="user" ref="user3" />
+	</bean>
 	
 	<bean id="like18" class="domain.LikeUser">
 		<property name="assessableEntity" ref="movie2" />
@@ -1944,6 +1965,7 @@
 	
 	<bean id="order1" class="domain.OrderUser">
 		<property name="total" value="5.99" />
+		<property name="moment" value="03/12/2016 15:43" />
 		<property name="user" ref="user2" />
 		<property name="orderQuantities">
 			<list>
@@ -1956,6 +1978,7 @@
 	
 	<bean id="order2" class="domain.OrderUser">
 		<property name="total" value="66.86" />
+		<property name="moment" value="04/14/2016 16:21" />
 		<property name="user" ref="user3" />
 		<property name="orderQuantities">
 			<list>
@@ -1973,6 +1996,7 @@
 	
 	<bean id="order3" class="domain.OrderUser">
 		<property name="total" value="13.99" />
+		<property name="moment" value="05/23/2016 17:11" />
 		<property name="user" ref="user3" />
 		<property name="orderQuantities">
 			<list>
@@ -1985,6 +2009,7 @@
 	
 	<bean id="order4" class="domain.OrderUser">
 		<property name="total" value="2.99" />
+		<property name="moment" value="06/19/2016 17:52" />
 		<property name="user" ref="user3" />
 		<property name="orderQuantities">
 			<list>
@@ -1997,6 +2022,7 @@
 	
 	<bean id="order5" class="domain.OrderUser">
 		<property name="total" value="5.99" />
+		<property name="moment" value="06/20/2016 17:36" />
 		<property name="user" ref="user3" />
 		<property name="orderQuantities">
 			<list>
@@ -2009,6 +2035,7 @@
 	
 	<bean id="order6" class="domain.OrderUser">
 		<property name="total" value="11.95" />
+		<property name="moment" value="01/11/2017 15:43" />
 		<property name="user" ref="user3" />
 		<property name="orderQuantities">
 			<list>
@@ -2021,6 +2048,7 @@
 	
 	<bean id="order7" class="domain.OrderUser">
 		<property name="total" value="7.99" />
+		<property name="moment" value="03/12/2017 11:43" />
 		<property name="user" ref="user3" />
 		<property name="orderQuantities">
 			<list>

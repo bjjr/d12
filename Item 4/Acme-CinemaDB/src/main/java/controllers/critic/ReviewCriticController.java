@@ -75,7 +75,6 @@ public class ReviewCriticController extends AbstractController {
 		final Review review = this.reviewService.findOne(reviewId);
 		this.contentId = review.getContent().getId();
 		Assert.notNull(review);
-		Assert.isTrue(review.isDraft());
 
 		res = this.createEditModelAndView(review);
 
@@ -101,6 +100,7 @@ public class ReviewCriticController extends AbstractController {
 		return res;
 
 	}
+
 	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "publish")
 	public ModelAndView savePublish(final Review review, final BindingResult binding) {
 		ModelAndView res;
@@ -121,6 +121,20 @@ public class ReviewCriticController extends AbstractController {
 
 	}
 
+	@RequestMapping(value = "/edit", method = RequestMethod.POST, params = "delete")
+	public ModelAndView delete(final Review review, final BindingResult binding) {
+		ModelAndView res;
+		this.reviewService.delete(review);
+		res = new ModelAndView("redirect:/review/critic/listMyReviews.do");
+		//		try {
+		//			this.reviewService.delete(review);
+		//			res = new ModelAndView("redirect:/review/critic/listMyReviews.do");
+		//		} catch (final Throwable e) {
+		//			res = this.createEditModelAndView(review, "misc.commit.error");
+		//		}
+
+		return res;
+	}
 	// Ancillary methods ---------------------
 
 	protected ModelAndView createEditModelAndView(final Review review) {

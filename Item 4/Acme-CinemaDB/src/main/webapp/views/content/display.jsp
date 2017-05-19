@@ -44,14 +44,66 @@
 <br />
 <acme:display code="content.avgRating" property="${ content.avgRating}" />
 <br />
-<jstl:forEach items="${content.images }" var="image">
-	<img src="${image }" style="height:" />
-</jstl:forEach>
+
+<acme:display code="content.images" />
+
+<div id="jssor_1" style="position:relative;margin:0 auto;top:0px;left:0px;width:600px;height:300px;overflow:hidden;visibility:hidden;">
+
+	<!-- Loading Screen -->
+	<div data-u="loading" style="position:absolute;top:0px;left:0px;background:url('../../images/loading.gif') no-repeat 50% 50%;background-color:rgba(0, 0, 0, 0.7);"></div>
+	<div data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:600px;height:300px;overflow:hidden;">
+	
+	<jstl:forEach items="${content.images }" var="imagesrc">
+		<div>
+    		<img data-u="image" src="${imagesrc}" />
+		</div>
+	</jstl:forEach>
+	
+	</div>
+	
+	<!-- Bullet Navigator -->
+	
+	<div data-u="navigator" class="jssorb05" style="bottom:16px;right:16px;" data-autocenter="1">
+		<!-- bullet navigator item prototype -->
+		<div data-u="prototype" style="width:16px;height:16px;"></div>
+	</div>
+	
+	<!-- Arrow Navigator -->
+	
+	<span data-u="arrowleft" class="jssora12l" style="top:0px;left:0px;width:30px;height:46px;" data-autocenter="2"></span>
+	<span data-u="arrowright" class="jssora12r" style="top:0px;right:0px;width:30px;height:46px;" data-autocenter="2"></span>
+</div>
+
 <br />
+
 <acme:display code="content.videos" />
 <jstl:forEach items="${content.videos }" var="video">
-	<a href="${video }"><jstl:out value="${video }"></jstl:out></a>
+	<iframe width="560" height="315" src="https://www.youtube.com/embed/${video}" allowfullscreen style="border: 0;"></iframe>
+	<br>
 </jstl:forEach>
+
+<display:table pagesize="5" class="displaytag"
+	name="content.cinematicEntities" requestURI="${requestURI}" id="row">
+	
+	<!-- Attributes -->
+	
+	<acme:column code="cinematicEntity.name" property="${row.name}"/>
+
+	<acme:column code="cinematicEntity.surname" property="${row.surname}"/>
+
+	<acme:column code="cinematicEntity.birthdate" property="${row.birthdate}"/>
+	
+	<display:column>
+		<acme:link href="likeUser/listComments.do?assessableEntityId=${row.id}" code="likeUser.comments.list"/>
+	</display:column>
+	
+	<display:column>
+		<acme:link href="likeUser/create.do?assessableEntityId=${row.id}" code="likeUser.comments.create"/>
+	</display:column>
+
+	<display:column><a href="cinematicEntity/display.do?cinematicEntityId=${row.id }"><spring:message code="misc.view" /></a></display:column>
+	
+</display:table>
 
 <jstl:if test="${isMovie eq false }">
 	<display:table pagesize="5" class="displaytag" name="seasons"
@@ -61,7 +113,7 @@
 
 		<acme:column code="cinematicEntity.name" property="${row.name}" />
 		
-		<display:column><a href="season/display.do?seasonId=${row.id }">a</a></display:column>
+		<display:column><a href="season/display.do?seasonId=${row.id }"><spring:message code="misc.view" /></a></display:column>
 
 	</display:table>
 </jstl:if>

@@ -61,14 +61,14 @@ public class ReviewService {
 	public void delete(final Review review) {
 		final Critic critic = this.criticService.findByPrincipal();
 		Assert.notNull(critic);
-		Assert.isTrue(review.getCritic().getId() == critic.getId());
+		final Review res = this.findOne(review.getId());
+		Assert.notNull(res);
 
-		this.reviewRepository.delete(review.getId());
+		this.reviewRepository.delete(res);
 	}
 
 	public Review reconstruct(final Review review, final int contentId, final boolean isDraft, final BindingResult bindingResult) {
 		final Review result = review;
-		;
 
 		if (review.getId() != 0) {
 			final Review aux = this.findOne(review.getId());

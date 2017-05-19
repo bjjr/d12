@@ -28,7 +28,6 @@
 
 	<acme:column code="cinematicEntity.birthdate" property="${row.birthdate}"/>
 	
-	<acme:column code="cinematicEntity.bio" property="${row.bio}"/>
 	
 	<security:authorize access="isAnonymous()">
 		<display:column>
