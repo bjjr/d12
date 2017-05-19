@@ -16,8 +16,13 @@
        
 <tiles-definitions>
 
+	<definition name="critic/register" extends="master.page">
+		<put-attribute name="title" value="Registrar crítico" />
+		<put-attribute name="body" value="/views/critic/edit.jsp" />
+	</definition>
+	
 	<definition name="critic/edit" extends="master.page">
-		<put-attribute name="title" value="Registrar/editar crítico" />
+		<put-attribute name="title" value="Editar crítico" />
 		<put-attribute name="body" value="/views/critic/edit.jsp" />
 	</definition>
 	

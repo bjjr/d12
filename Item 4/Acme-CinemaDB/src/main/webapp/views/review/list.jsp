@@ -19,10 +19,19 @@
 	<acme:column code="review.body" property="${row.body}" sortable="true" />
 	<acme:column code="review.rating" property="${row.rating}" sortable="true" />
 	
+	<jstl:if test="${isCriticReviews}">
+		<acme:column code="review.isDraft" property="${row.draft}" />
+		<display:column>
+			<acme:link href="review/critic/edit.do?reviewId=${row.id}" code="misc.edit"/>
+		</display:column>
+	</jstl:if>
+	
 </display:table>
 
 <br />
 
 <security:authorize access="hasRole('CRITIC')">
-	<acme:link href="review/critic/create.do" code="review.create"/>
+	<jstl:if test="${!isCriticReviews}">
+		<acme:link href="review/critic/create.do?contentId=${contentId}" code="review.create"/>
+	</jstl:if>
 </security:authorize>

@@ -41,7 +41,7 @@ public class CriticAdministratorController extends AbstractController {
 
 	// Save ----------------------------------
 
-	@RequestMapping(value = "/save", method = RequestMethod.POST, params = "save")
+	@RequestMapping(value = "/register", method = RequestMethod.POST, params = "save")
 	public ModelAndView save(final CriticForm criticForm, final BindingResult binding) {
 		ModelAndView res;
 		Critic reconstructed;
@@ -69,12 +69,13 @@ public class CriticAdministratorController extends AbstractController {
 	}
 
 	protected ModelAndView createEditModelAndView(final CriticForm criticForm, final String message) {
-		final ModelAndView res = new ModelAndView("critic/edit");
+		final ModelAndView res = new ModelAndView("critic/register");
 
-		res.addObject("action", "critic/administrator/save.do");
+		res.addObject("action", "critic/administrator/register.do");
 		res.addObject("modelAttribute", "criticForm");
 		res.addObject("criticForm", criticForm);
 		res.addObject("message", message);
+		res.addObject("isEdit", false);
 
 		return res;
 	}

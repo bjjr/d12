@@ -5,6 +5,7 @@ import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
 import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Digits;
 
 @Entity
 @Access(AccessType.PROPERTY)

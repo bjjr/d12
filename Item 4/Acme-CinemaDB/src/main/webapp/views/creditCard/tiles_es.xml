@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <!-- 
- * tiles.xml
+ * tiles_es.xml
  *
  * Copyright (C) 2017 Universidad de Sevilla
  * 
@@ -13,17 +13,17 @@
 <!DOCTYPE tiles-definitions PUBLIC
        "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
-       
+      
 <tiles-definitions>
-	
-	<definition name="review/list" extends="master.page">
-		<put-attribute name="title" value="Show reviews" />
-		<put-attribute name="body" value="/views/review/list.jsp" />
-	</definition>
-	
-	<definition name="review/edit" extends="master.page">
-		<put-attribute name="title" value="Edit review" />
-		<put-attribute name="body" value="/views/review/edit.jsp" />
-	</definition>
 
+	<definition name="creditCard/display" extends="master.page">	
+		<put-attribute name="title" value="Información de la tarjeta de crédito" />
+		<put-attribute name="body" value="/views/creditCard/display.jsp" />
+	</definition>
+	
+	<definition name="creditCard/edit" extends="master.page">	
+		<put-attribute name="title" value="Editar tarjeta de crédito" />
+		<put-attribute name="body" value="/views/creditCard/edit.jsp" />
+	</definition>
+	
 </tiles-definitions>
