@@ -43,7 +43,7 @@ public class LikeUserService {
 		if (likeUser == null) {
 			likeUser = new LikeUser();
 
-			likeUser.setComment("");
+			likeUser.setComment(null);
 
 			likeUser.setUser(currentUser);
 			likeUser.setAssessableEntity(this.assessableEntityService.findOne(assessableEntityId));
@@ -87,6 +87,20 @@ public class LikeUserService {
 		final Collection<LikeUser> likeUserByPrincipal = this.likeUserRepository.findAllByPrincipal(currentUser.getId());
 
 		return likeUserByPrincipal;
+	}
+
+	public void like(final int assessableEntityId) {
+		final LikeUser likeUser = this.create(assessableEntityId);
+
+		this.save(likeUser);
+	}
+
+	public void unlike(final int assessableEntityId) {
+		final User currentUser = this.userService.findByPrincipal();
+
+		final LikeUser retrievedLikeUser = this.findByUserAndAssessableEntity(currentUser.getId(), assessableEntityId);
+
+		this.delete(retrievedLikeUser);
 	}
 
 	public LikeUser findByUserAndAssessableEntity(final int userId, final int assessableEntityId) {

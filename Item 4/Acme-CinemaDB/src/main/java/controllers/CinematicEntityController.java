@@ -11,9 +11,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import security.Authority;
+import services.ActorService;
 import services.CinematicEntityService;
+import services.LikeUserService;
 import domain.CinematicEntity;
 import domain.Content;
+import domain.LikeUser;
 
 @Controller
 @RequestMapping("/cinematicEntity")
@@ -23,6 +27,12 @@ public class CinematicEntityController {
 
 	@Autowired
 	private CinematicEntityService	cinematicEntityService;
+
+	@Autowired
+	private LikeUserService			likeUserService;
+
+	@Autowired
+	private ActorService			actorService;
 
 
 	// Constructors
@@ -52,12 +62,17 @@ public class CinematicEntityController {
 	public ModelAndView list() {
 		ModelAndView result;
 		Collection<CinematicEntity> cinematicEntities;
+		Collection<LikeUser> allLikeUserByPrincipal = null;
+
+		if (this.actorService.checkAuthority(Authority.USER))
+			allLikeUserByPrincipal = this.likeUserService.findAllByPrincipal();
 
 		cinematicEntities = this.cinematicEntityService.findAll();
 
 		result = new ModelAndView("cinematicEntity/list");
 		result.addObject("requestURI", "cinematicEntity/list.do");
 		result.addObject("cinematicEntities", cinematicEntities);
+		result.addObject("likeUserCurrentUser", allLikeUserByPrincipal);
 
 		return result;
 	}

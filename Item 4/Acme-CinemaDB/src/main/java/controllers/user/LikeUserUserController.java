@@ -43,6 +43,25 @@ public class LikeUserUserController extends AbstractController {
 
 		return view;
 	}
+
+	@RequestMapping(value = "/like", method = RequestMethod.GET)
+	public ModelAndView like(@RequestParam final int assessableEntityId) {
+		final ModelAndView view = new ModelAndView("redirect:/");
+
+		this.likeUserService.like(assessableEntityId);
+
+		return view;
+	}
+
+	@RequestMapping(value = "/unlike", method = RequestMethod.GET)
+	public ModelAndView unlike(@RequestParam final int assessableEntityId) {
+		final ModelAndView view = new ModelAndView("redirect:/");
+
+		this.likeUserService.unlike(assessableEntityId);
+
+		return view;
+	}
+
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
 	public ModelAndView create(@RequestParam final int assessableEntityId) {
 
