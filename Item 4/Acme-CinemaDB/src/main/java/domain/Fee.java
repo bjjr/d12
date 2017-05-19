@@ -16,6 +16,7 @@ public class Fee extends DomainEntity {
 
 
 	@DecimalMin(value = "0.0")
+	@Digits(integer = 6, fraction = 2)
 	public double getValue() {
 		return this.value;
 	}
