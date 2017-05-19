@@ -746,6 +746,20 @@
 		<property name="producer" ref="producer3" />
 	</bean>
 	
+	<bean id="campaign14" class="domain.Campaign">
+		<property name="start" value="02/16/2017" />
+		<property name="end" value="05/12/2017" />
+		<property name="images">
+			<list>
+				<value>http://url141.com</value>
+			</list>
+		</property>
+		<property name="max" value="65" />
+		<property name="timesDisplayed" value="52" />
+		<property name="fee" value="1.0" />
+		<property name="producer" ref="producer3" />
+	</bean>
+	
 	<!-- Invoices -->
 	
 	<bean id="invoice1" class="domain.Invoice">

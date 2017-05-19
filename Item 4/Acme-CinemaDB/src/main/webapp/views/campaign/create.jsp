@@ -7,14 +7,17 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
-<form:form action="invoice/administrator/create.do" modelAttribute="invoice" >
+<form:form action="campaign/producer/create.do" modelAttribute="campaign" >
 	
 	<form:hidden path="id"/>
 	<form:hidden path="version"/>
 	
-	<acme:select items="${campaigns}" itemLabel="id" code="invoice.campaigns" path="campaign"/>
+	<acme:textbox code="campaign.start" path="start"/>
+	<acme:textbox code="campaign.end" path="end"/>
+	<acme:textarea code="campaign.images" path="images"/>
+	<acme:textbox code="campaign.max" path="max"/>
 	
 	<acme:submit name="save" code="misc.save"/>
-	<acme:cancel url="invoice/administrator/list.do" code="misc.cancel"/>
+	<acme:cancel url="campaign/producer/list.do" code="misc.cancel"/>
 		
 </form:form>

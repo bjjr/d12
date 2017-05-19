@@ -8,11 +8,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import services.CampaignService;
 import services.InvoiceService;
 import controllers.AbstractController;
+import domain.Campaign;
 import domain.Invoice;
 
 @Controller
@@ -23,6 +24,9 @@ public class InvoiceAdministratorController extends AbstractController {
 
 	@Autowired
 	private InvoiceService	invoiceService;
+
+	@Autowired
+	private CampaignService	campaignService;
 
 
 	// Constructors -------------------------------------------
@@ -53,10 +57,13 @@ public class InvoiceAdministratorController extends AbstractController {
 	public ModelAndView create() {
 		ModelAndView result;
 		Invoice invoice;
+		Collection<Campaign> unpaidCampaigns;
 
 		invoice = this.invoiceService.create();
 		result = new ModelAndView("invoice/create");
+		unpaidCampaigns = this.campaignService.findUnpaidCampaigns();
 		result.addObject("invoice", invoice);
+		result.addObject("campaigns", unpaidCampaigns);
 
 		return result;
 	}
@@ -66,41 +73,28 @@ public class InvoiceAdministratorController extends AbstractController {
 	@RequestMapping(value = "/create", method = RequestMethod.POST, params = "save")
 	public ModelAndView save(final Invoice invoice, final BindingResult binding) {
 		ModelAndView result;
+		Invoice reconstructed;
+		final Collection<Campaign> unpaidCampaigns;
+
+		reconstructed = this.invoiceService.reconstruct(invoice, binding);
+		unpaidCampaigns = this.campaignService.findUnpaidCampaigns();
 
 		if (binding.hasErrors()) {
 			result = new ModelAndView("invoice/create");
-			result.addObject("invoice", invoice);
+			result.addObject("invoice", reconstructed);
+			result.addObject("campaigns", unpaidCampaigns);
 		} else
 			try {
-				this.invoiceService.save(invoice);
+				this.invoiceService.save(reconstructed);
 				result = new ModelAndView("redirect:list.do");
 			} catch (final Throwable th) {
 				result = new ModelAndView("invoice/create");
-				result.addObject("invoice", invoice);
+				result.addObject("invoice", reconstructed);
 				result.addObject("message", "misc.commit.error");
+				result.addObject("campaigns", unpaidCampaigns);
 			}
 
 		return result;
 	}
 
-	//Set paid -----------------------------------------
-
-	@RequestMapping(value = "/setPaid", method = RequestMethod.GET)
-	public ModelAndView cancel(@RequestParam final int invoiceId) {
-		ModelAndView result;
-		Invoice invoice;
-
-		invoice = this.invoiceService.findOne(invoiceId);
-
-		try {
-			this.invoiceService.setPaid(invoice);
-			result = new ModelAndView("redirect:list.do");
-			result.addObject("messageStatus", "misc.commit.ok");
-		} catch (final Throwable oops) {
-			result = new ModelAndView("redirect:list.do");
-			result.addObject("messageStatus", "misc.commit.error");
-		}
-
-		return result;
-	}
 }

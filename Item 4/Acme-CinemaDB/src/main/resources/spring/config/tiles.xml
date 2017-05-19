@@ -38,6 +38,7 @@
 		<value>/views/season/tiles.xml</value>
 		<value>/views/orderUser/tiles.xml</value>
 		<value>/views/creditCard/tiles.xml</value>
+		<value>/views/campaign/tiles.xml</value>
 	</util:list>
 
 </beans>
