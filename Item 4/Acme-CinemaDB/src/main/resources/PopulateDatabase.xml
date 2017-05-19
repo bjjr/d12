@@ -1052,12 +1052,15 @@
 		<property name="avgRating" value="1" />
 		<property name="images">
 			<list>
-				<value>http://url131.com</value>
+				<value>http://www.resortcollection.com/wp-content/themes/resortcollection/property-images/summit/summit-beach-resort-panama-city-beach-fl-beach-01.jpg</value>
+				<value>http://az616578.vo.msecnd.net/files/2016/06/16/636017001832422628-355544219_beach%20pic.jpg</value>
 			</list>
 		</property>
 		<property name="videos">
 			<list>
-				<value>http://url131.com</value>
+				<value>E8gDvbsYd0Q</value>
+				<value>kZu5iDTtNg0</value>
+				<value>FIZ_gDOrzGk</value>
 			</list>
 		</property>
 		<property name="genres">
@@ -1329,7 +1332,7 @@
 	</bean>
 	
 	<bean id="like17" class="domain.LikeUser">
-		<property name="assessableEntity" ref="actor4" />
+		<property name="assessableEntity" ref="director2" />
 		<property name="user" ref="user3" />
 	</bean>
 	
