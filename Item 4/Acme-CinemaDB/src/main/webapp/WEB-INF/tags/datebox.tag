@@ -24,11 +24,15 @@
  
 <%@ attribute name="path" required="true" %>
 <%@ attribute name="code" required="true" %>
-
+<%@ attribute name="isDate" required="false" %>
 <%@ attribute name="readonly" required="false" %>
 
 <jstl:if test="${readonly == null}">
 	<jstl:set var="readonly" value="false" />
+</jstl:if>
+
+<jstl:if test="${isDate == null}">
+	<jstl:set var="isDate" value="false" />
 </jstl:if>
 
 <%-- Definition --%>
@@ -36,7 +40,16 @@
 <div>
 	<form:label path="${path}">
 		<spring:message code="${code}" />
-	</form:label>	
-	<form:input path="${path}" placeholder="dd/MM/yyyy HH:mm" readonly="${readonly}" />	
+	</form:label>
+	
+	<jstl:if test="${isDate}">
+		<spring:message code="misc.date.pholder" var="pholder" />
+	</jstl:if>
+	
+	<jstl:if test="${!isDate}">
+		<spring:message code="misc.timestamp.pholder" var="pholder" />
+	</jstl:if>
+	
+	<form:input path="${path}" placeholder="${pholder}" readonly="${readonly}" />	
 	<form:errors path="${path}" cssClass="error" />
 </div>	

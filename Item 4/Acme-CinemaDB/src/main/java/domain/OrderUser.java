@@ -80,9 +80,8 @@ public class OrderUser extends DomainEntity {
 		this.user = user;
 	}
 
-	@NotNull
 	@Valid
-	@ManyToOne(optional = false)
+	@ManyToOne(optional = true)
 	public ShippingAddress getShippingAddress() {
 		return this.shippingAddress;
 	}
