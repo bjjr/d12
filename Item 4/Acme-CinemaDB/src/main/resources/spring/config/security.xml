@@ -83,6 +83,8 @@
 		
 		<security:intercept-url pattern="/shippingAddress/**" access="hasRole('USER')" />
 		
+		<security:intercept-url pattern="/socialIdentity/**" access="hasRole('USER')" />
+		
 		<security:intercept-url pattern="/**" access="hasRole('NONE')" />
 
 		<security:form-login 
