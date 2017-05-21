@@ -1362,7 +1362,7 @@
 		<property name="title" value="Title review 3" />
 		<property name="body" value="Body review 3" />
 		<property name="rating" value="0" />
-		<property name="draft" value="false" />
+		<property name="draft" value="true" />
 		<property name="critic" ref="critic4" />
 		<property name="content" ref="movie3" />
 	</bean>
@@ -1371,7 +1371,7 @@
 		<property name="title" value="Title review 4" />
 		<property name="body" value="Body review 4" />
 		<property name="rating" value="4" />
-		<property name="draft" value="false" />
+		<property name="draft" value="true" />
 		<property name="critic" ref="critic5" />
 		<property name="content" ref="movie3" />
 	</bean>
