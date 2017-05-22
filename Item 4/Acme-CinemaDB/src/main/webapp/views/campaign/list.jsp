@@ -15,42 +15,85 @@
 <display:table pagesize="5" class="displaytag" name="campaigns"
 	requestURI="${requestURI}" id="row">
 
-	<!-- Attributes -->
-	<acme:column code="campaign.start" property="start" isDate="true" />
+	<jstl:set value="${row.end.time - current.time}" var="diffms" />
 
-	<acme:column code="campaign.end" property="end" isDate="true" />
+	<jstl:set value="${diffms < 0}" var="isPast" /> />
 
-	<acme:column code="campaign.max" property="${row.max}" />
+	<jstl:choose>
 
-	<acme:column code="campaign.timesDisplayed"
-		property="${row.timesDisplayed}" />
+		<jstl:when test="${!isPast}">
 
-	<display:column>
-	<jstl:if test="${row.approved ne null}">
-		<jstl:if test="${row.approved eq true}">
-			<spring:message code="campaign.approved" />
-		</jstl:if>
-		<jstl:if test="${row.approved eq false}">
-			<spring:message code="campaign.cancelled" />
-		</jstl:if>
-	</jstl:if>
-	</display:column>
+			<!-- Attributes -->
+			<acme:column code="campaign.start" property="start" isDate="true" />
 
-	<acme:column code="campaign.fee" property="${row.fee}" />
-	
-	<security:authorize access="hasRole('ADMIN')">
-		<display:column>
-			<jstl:if test="${row.approved eq null}">
-				<acme:link href="campaign/administrator/approve.do?campaignId=${row.id}" code="campaign.approve"/>
-				<acme:link href="campaign/administrator/cancel.do?campaignId=${row.id}" code="campaign.cancel"/>
-			</jstl:if>
-		</display:column>
-	</security:authorize>
+			<acme:column code="campaign.end" property="end" isDate="true" />
+
+			<acme:column code="campaign.max" property="${row.max}" />
+
+			<acme:column code="campaign.timesDisplayed"
+				property="${row.timesDisplayed}" />
+
+			<display:column>
+				<jstl:if test="${row.approved ne null}">
+					<jstl:if test="${row.approved eq true}">
+						<spring:message code="campaign.approved" />
+					</jstl:if>
+					<jstl:if test="${row.approved eq false}">
+						<spring:message code="campaign.cancelled" />
+					</jstl:if>
+				</jstl:if>
+			</display:column>
+
+			<acme:column code="campaign.fee" property="${row.fee}" />
+
+			<security:authorize access="hasRole('ADMIN')">
+				<display:column>
+					<jstl:if test="${row.approved eq null}">
+						<acme:link
+							href="campaign/administrator/approve.do?campaignId=${row.id}"
+							code="campaign.approve" />
+						<acme:link
+							href="campaign/administrator/cancel.do?campaignId=${row.id}"
+							code="campaign.cancel" />
+					</jstl:if>
+				</display:column>
+			</security:authorize>
+
+		</jstl:when>
+
+		<jstl:when test="${isPast}">
+			<acme:column code="campaign.start" property="start" isDate="true"
+				style="background-color:grey;" />
+
+			<acme:column code="campaign.end" property="end" isDate="true"
+				style="background-color:grey;" />
+
+			<acme:column code="campaign.max" property="${row.max}"
+				style="background-color:grey;" />
+
+			<acme:column code="campaign.timesDisplayed"
+				property="${row.timesDisplayed}" style="background-color:grey;" />
+
+			<display:column style="background-color:grey;">
+				<jstl:if test="${row.approved ne null}">
+					<jstl:if test="${row.approved eq true}">
+						<spring:message code="campaign.approved" />
+					</jstl:if>
+					<jstl:if test="${row.approved eq false}">
+						<spring:message code="campaign.cancelled" />
+					</jstl:if>
+				</jstl:if>
+			</display:column>
+
+			<acme:column code="campaign.fee" property="${row.fee}"
+				style="background-color:grey;" />
+		</jstl:when>
+	</jstl:choose>
 
 </display:table>
 
 <security:authorize access="hasRole('PRODUCER')">
-<acme:link href="campaign/producer/create.do" code="misc.create" />
+	<acme:link href="campaign/producer/create.do" code="misc.create" />
 </security:authorize>
 
 <br />
