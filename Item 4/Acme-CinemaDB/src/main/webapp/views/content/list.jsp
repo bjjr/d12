@@ -59,11 +59,9 @@
 	<acme:column code="content.avgRating" property="${row.avgRating}" />
 	
 	
-	<security:authorize access="isAnonymous()">
-		<display:column>
-			<acme:link href="likeUser/listComments.do?assessableEntityId=${row.id}" code="likeUser.comments.list"/>
-		</display:column>
-	</security:authorize>
+	<display:column>
+		<acme:link href="likeUser/listComments.do?assessableEntityId=${row.id}" code="likeUser.comments.list"/>
+	</display:column>
 	
 	
 	<security:authorize access="hasRole('USER')">
@@ -84,10 +82,6 @@
 					<acme:link href="likeUser/user/unlike.do?assessableEntityId=${row.id}" code="likeUser.unlike"/>
 				</jstl:otherwise>
 			</jstl:choose>		
-		</display:column>
-		
-		<display:column>
-			<acme:link href="likeUser/user/listComments.do?assessableEntityId=${row.id}" code="likeUser.comments.list"/>
 		</display:column>
 	
 		<display:column>

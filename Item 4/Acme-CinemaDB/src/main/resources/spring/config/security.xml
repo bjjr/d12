@@ -38,7 +38,7 @@
 		
 		<security:intercept-url pattern="/legal/**" access="permitAll" />
 		
-		<security:intercept-url pattern="/likeUser/listComments.do" access="isAnonymous()" />
+		<security:intercept-url pattern="/likeUser/listComments.do" access="permitAll" />
 		
 		<security:intercept-url pattern="/likeUser/user/**" access="hasRole('USER')" />
 

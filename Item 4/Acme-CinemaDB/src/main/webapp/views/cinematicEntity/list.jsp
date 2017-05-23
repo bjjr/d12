@@ -33,12 +33,10 @@
 
 	<acme:column code="cinematicEntity.birthdate" property="${row.birthdate}"/>
 	
-	
-	<security:authorize access="isAnonymous()">
-		<display:column>
-			<acme:link href="likeUser/listComments.do?assessableEntityId=${row.id}" code="likeUser.comments.list"/>
-		</display:column>
-	</security:authorize>
+
+	<display:column>
+		<acme:link href="likeUser/listComments.do?assessableEntityId=${row.id}" code="likeUser.comments.list"/>
+	</display:column>
 	
 	
 	<security:authorize access="hasRole('USER')">
@@ -49,7 +47,7 @@
     			<jstl:set var="contains" value="true" />
   			</jstl:if>
 		</jstl:forEach>
-		w
+
 		<display:column>
 			<jstl:choose>
 				<jstl:when test="${contains == false}">
@@ -59,10 +57,6 @@
 					<acme:link href="likeUser/user/unlike.do?assessableEntityId=${row.id}" code="likeUser.unlike"/>
 				</jstl:otherwise>
 			</jstl:choose>		
-		</display:column>
-		
-		<display:column>
-			<acme:link href="likeUser/user/listComments.do?assessableEntityId=${row.id}" code="likeUser.comments.list"/>
 		</display:column>
 	
 		<display:column>

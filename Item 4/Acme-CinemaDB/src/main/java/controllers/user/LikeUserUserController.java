@@ -1,8 +1,6 @@
 
 package controllers.user;
 
-import java.util.Collection;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
@@ -13,10 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import services.LikeUserService;
-import services.UserService;
 import controllers.AbstractController;
 import domain.LikeUser;
-import domain.User;
 
 @RequestMapping("/likeUser/user")
 @Controller
@@ -25,24 +21,6 @@ public class LikeUserUserController extends AbstractController {
 	@Autowired
 	private LikeUserService	likeUserService;
 
-	@Autowired
-	private UserService		userService;
-
-
-	@RequestMapping(value = "/listComments", method = RequestMethod.GET)
-	public ModelAndView listComments(@RequestParam final int assessableEntityId) {
-		final User currentUser = this.userService.findByPrincipal();
-
-		final ModelAndView view = new ModelAndView("likeUser/listComments");
-
-		final Collection<LikeUser> allCommentsByAssessableEntity = this.likeUserService.findCommentsByAssessableEntity(assessableEntityId);
-
-		view.addObject("likeUser", allCommentsByAssessableEntity);
-		view.addObject("currentUserId", currentUser.getId());
-		view.addObject("requestURI", "/likeUser/user/listComments.do?assessableEntityId=" + assessableEntityId);
-
-		return view;
-	}
 
 	@RequestMapping(value = "/like", method = RequestMethod.GET)
 	public ModelAndView like(@RequestParam final int assessableEntityId) {
