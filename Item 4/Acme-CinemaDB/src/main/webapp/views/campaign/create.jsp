@@ -12,8 +12,8 @@
 	<form:hidden path="id"/>
 	<form:hidden path="version"/>
 	
-	<acme:datebox code="campaign.start" path="start" isDate="true"/>
-	<acme:datebox code="campaign.end" path="end" isDate="true"/>
+	<acme:datebox code="campaign.start" path="start"/>
+	<acme:datebox code="campaign.end" path="end"/>
 	<acme:textarea code="campaign.images" path="images"/>
 	<acme:textbox code="campaign.max" path="max"/>
 	

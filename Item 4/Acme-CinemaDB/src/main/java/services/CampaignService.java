@@ -38,6 +38,9 @@ public class CampaignService {
 	@Autowired
 	private ProducerService		producerService;
 
+	@Autowired
+	private CreditCardService	creditCardService;
+
 
 	// Constructors -----------------------------------------
 
@@ -63,6 +66,7 @@ public class CampaignService {
 		producer = this.producerService.findByPrincipal();
 
 		Assert.isTrue(producer.getCreditCard() != null);
+		Assert.isTrue(this.creditCardService.isCreditCardDateValid(producer.getCreditCard()));
 
 		result = new Campaign();
 

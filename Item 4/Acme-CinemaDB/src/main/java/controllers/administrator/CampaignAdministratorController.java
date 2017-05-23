@@ -2,6 +2,7 @@
 package controllers.administrator;
 
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -36,12 +37,15 @@ public class CampaignAdministratorController extends AbstractController {
 	public ModelAndView list() {
 		final ModelAndView result;
 		Collection<Campaign> campaigns;
+		Date current;
 
 		campaigns = this.campaignService.findAll();
+		current = new Date(System.currentTimeMillis());
 
 		result = new ModelAndView("campaign/list");
 		result.addObject("campaigns", campaigns);
 		result.addObject("requestURI", "campaign/administrator/list.do");
+		result.addObject("current", current);
 
 		return result;
 	}
