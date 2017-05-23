@@ -35,6 +35,17 @@ public class OrderUserService {
 
 	// Simple CRUD methods --------------------------
 
+	public OrderUser save(final OrderUser orderUser) {
+		Assert.isTrue(this.actorService.checkAuthority(Authority.USER) || this.actorService.checkAuthority(Authority.ADMIN));
+		Assert.notNull(orderUser);
+
+		OrderUser res;
+
+		res = this.orderUserRepository.save(orderUser);
+
+		return res;
+	}
+
 	// Other business methods -----------------------
 
 	public Collection<OrderUser> findOrdersByUser(final int userId) {
@@ -44,6 +55,17 @@ public class OrderUserService {
 		Collection<OrderUser> res;
 
 		res = this.orderUserRepository.findOrdersByUser(userId);
+
+		return res;
+	}
+
+	public Collection<OrderUser> findOrdersByShippingAddress(final int shippingAddressId) {
+		Assert.isTrue(this.actorService.checkAuthority(Authority.USER));
+		Assert.isTrue(shippingAddressId != 0);
+
+		Collection<OrderUser> res;
+
+		res = this.orderUserRepository.findOrdersByShippingAddress(shippingAddressId);
 
 		return res;
 	}

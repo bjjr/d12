@@ -39,6 +39,7 @@
 		<value>/views/orderUser/tiles.xml</value>
 		<value>/views/creditCard/tiles.xml</value>
 		<value>/views/campaign/tiles.xml</value>
+		<value>/views/shippingAddress/tiles.xml</value>
 		<value>/views/messageEntity/tiles.xml</value>
 	</util:list>
 

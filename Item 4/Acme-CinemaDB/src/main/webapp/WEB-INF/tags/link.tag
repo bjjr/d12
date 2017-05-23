@@ -24,7 +24,18 @@
 
 <%@ attribute name="href" required="true" %>
 <%@ attribute name="code" required="true" %>
+<%@ attribute name="isDeletionLink" required="false" %>
+
+<jstl:if test="${isDeletionLink == null}">
+	<jstl:set var="isDeletionLink" value="false" />
+</jstl:if>
 
 <%-- Definition --%>
 
-<a href="${href}"><spring:message code="${code}" /></a>
+<jstl:if test="${!isDeletionLink}">
+	<a href="${href}"><spring:message code="${code}" /></a>
+</jstl:if>
+
+<jstl:if test="${isDeletionLink}">
+	<a href="${href}" onclick="return confirm('<spring:message code="misc.confirm.delete" />')"><spring:message code="${code}" /></a>
+</jstl:if>

@@ -26,9 +26,9 @@
 
 	<acme:column code="content.title" property="${row.title}" />
 
-	<acme:column code="content.year" property="${row.year}" />
-
-	<display:column title="content.genre">
+		<spring:message code="content.genre" var="genreTitle" />
+		
+		<display:column title="${genreTitle}">
 		<jstl:forEach items="${row.genres }" var="genre">
 			<jstl:choose>
 				<jstl:when test="${genre.kind eq 0 }">
