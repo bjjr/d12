@@ -47,7 +47,9 @@
 		
 		<security:intercept-url pattern="/userAccount/edit.do" access="hasAnyRole('USER', 'PRODUCER', 'CRITIC')" />
 
-		<security:intercept-url pattern="/cinematicEntity/**" access="permitAll" /> 
+		<security:intercept-url pattern="/cinematicEntity/list.do" access="permitAll" />
+		<security:intercept-url pattern="/cinematicEntity/display.do" access="permitAll" /> 
+		<security:intercept-url pattern="/cinematicEntity/producer/**" access="hasRole('PRODUCER')" />		 
 
 		<security:intercept-url pattern="/content/**" access="permitAll" /> 
 		
