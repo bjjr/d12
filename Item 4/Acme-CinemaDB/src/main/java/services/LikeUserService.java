@@ -64,6 +64,7 @@ public class LikeUserService {
 
 	public void delete(final LikeUser likeUser) {
 		final LikeUser likeUserRetrieved = this.findOne(likeUser.getId());
+		Assert.notNull(likeUserRetrieved);
 
 		final User currentUser = this.userService.findByPrincipal();
 

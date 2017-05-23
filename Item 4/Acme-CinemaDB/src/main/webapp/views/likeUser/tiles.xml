@@ -26,4 +26,9 @@
 		<put-attribute name="body" value="/views/likeUser/edit.jsp" />
 	</definition>
 	
+	<definition name="likeUser/listLikes" extends="master.page">	
+		<put-attribute name="title" value="List of likes" />
+		<put-attribute name="body" value="/views/likeUser/list_likes.jsp" />
+	</definition>
+	
 </tiles-definitions>

@@ -1,6 +1,8 @@
 
 package controllers.user;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.Assert;
@@ -21,6 +23,18 @@ public class LikeUserUserController extends AbstractController {
 	@Autowired
 	private LikeUserService	likeUserService;
 
+
+	@RequestMapping(value = "/listLikes", method = RequestMethod.GET)
+	public ModelAndView listComments() {
+
+		final ModelAndView view = new ModelAndView("likeUser/listLikes");
+
+		final Collection<LikeUser> allLikeUsersByPrincipal = this.likeUserService.findAllByPrincipal();
+
+		view.addObject("likeUser", allLikeUsersByPrincipal);
+
+		return view;
+	}
 
 	@RequestMapping(value = "/like", method = RequestMethod.GET)
 	public ModelAndView like(@RequestParam final int assessableEntityId) {
