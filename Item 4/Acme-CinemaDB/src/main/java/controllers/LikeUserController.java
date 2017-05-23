@@ -44,7 +44,7 @@ public class LikeUserController extends AbstractController {
 
 		view.addObject("likeUser", allCommentsByAssessableEntity);
 		view.addObject("currentUserId", currentUserId);
-		view.addObject("requestURI", "/likeUser/user/listComments.do?assessableEntityId=" + assessableEntityId);
+		view.addObject("requestURI", "/likeUser/listComments.do?assessableEntityId=" + assessableEntityId);
 
 		return view;
 	}
