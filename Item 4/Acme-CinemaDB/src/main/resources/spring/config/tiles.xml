@@ -41,6 +41,7 @@
 		<value>/views/campaign/tiles.xml</value>
 		<value>/views/shippingAddress/tiles.xml</value>
 		<value>/views/messageEntity/tiles.xml</value>
+		<value>/views/socialIdentity/tiles.xml</value>
 	</util:list>
 
 </beans>

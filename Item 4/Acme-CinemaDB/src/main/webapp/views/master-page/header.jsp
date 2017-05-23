@@ -71,6 +71,7 @@
 					<li><a href="user/display.do"><spring:message code="master.page.user.profile" /></a></li>
 					<li><a href="order/list.do"><spring:message code="master.page.user.orders" /></a></li>
 					<li><a href="shippingAddress/list.do"><spring:message code="master.page.user.sas" /></a></li>
+					<li><a href="socialIdentity/list.do"><spring:message code="master.page.user.si" /></a></li>
 					<li><a href="userAccount/edit.do"><spring:message code="master.page.changePassword" /></a></li>
 				</ul>
 			</li>
