@@ -32,7 +32,17 @@
 		</jstl:choose>
 	</display:column>
 	
-	<acme:column code="order.shippingAddress" property="${row.shippingAddress.saName}"/>
+	<spring:message code="order.shippingAddress" var="shippingTitle" />
+	
+	<display:column title="${shippingTitle}">
+		<jstl:if test="${row.shippingAddress != null}">
+			<jstl:out value="${row.shippingAddress.saName}" />
+		</jstl:if>
+		
+		<jstl:if test="${row.shippingAddress == null}">
+			<spring:message code="sa.deleted" />
+		</jstl:if>
+	</display:column>
 	
 	<display:column>
 		<acme:link href="order/display.do?orderId=${row.id}" code="misc.view"/>

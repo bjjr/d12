@@ -105,6 +105,7 @@
 		}
 		window.location.replace(loc);
 	}
+	
 </script>
 
 </head>

@@ -64,6 +64,7 @@
 					<li class="arrow"></li>
 					<li><a href="user/display.do"><spring:message code="master.page.user.profile" /></a></li>
 					<li><a href="order/list.do"><spring:message code="master.page.user.orders" /></a></li>
+					<li><a href="shippingAddress/list.do"><spring:message code="master.page.user.sas" /></a></li>
 					<li><a href="userAccount/edit.do"><spring:message code="master.page.changePassword" /></a></li>
 				</ul>
 			</li>
@@ -97,6 +98,6 @@
 </div>
 
 <div>
-	<a href="?language=en">en</a> | <a href="?language=es">es</a>
+	<a id="enlink" href="?language=en">en</a> | <a id="eslink" href="?language=es">es</a>
 </div>
 

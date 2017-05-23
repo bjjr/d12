@@ -81,6 +81,8 @@
 		
 		<security:intercept-url pattern="/creditCard/**" access="hasAnyRole('USER', 'PRODUCER')" />
 		
+		<security:intercept-url pattern="/shippingAddress/**" access="hasRole('USER')" />
+		
 		<security:intercept-url pattern="/**" access="hasRole('NONE')" />
 
 		<security:form-login 
