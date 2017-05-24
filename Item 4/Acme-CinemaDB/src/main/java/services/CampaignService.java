@@ -2,7 +2,9 @@
 package services;
 
 import java.lang.annotation.Annotation;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Random;
 
 import javax.validation.Payload;
 import javax.validation.constraints.Pattern.Flag;
@@ -83,6 +85,14 @@ public class CampaignService {
 		return result;
 	}
 
+	public Campaign saveAnyone(final Campaign campaign) {
+		final Campaign result;
+
+		result = this.campaignRepository.save(campaign);
+
+		return result;
+	}
+
 	public Campaign findOne(final int campaignId) {
 		Assert.isTrue(campaignId != 0);
 		Assert.notNull(campaignId);
@@ -117,6 +127,24 @@ public class CampaignService {
 		result = this.campaignRepository.findAllCampaignsFinished();
 		campaignsInvoices = this.campaignRepository.findCampaignsInvoices();
 		result.removeAll(campaignsInvoices);
+
+		return result;
+	}
+
+	public Collection<Campaign> findAllCampaignsUnfinished() {
+		Collection<Campaign> result;
+
+		result = this.campaignRepository.findAllCampaignsUnfinished();
+		Assert.notNull(result);
+
+		return result;
+	}
+
+	public Collection<Campaign> findCampaignsUnpaidInvoices() {
+		Collection<Campaign> result;
+
+		result = this.campaignRepository.findCampaignsUnpaidInvoices();
+		Assert.notNull(result);
 
 		return result;
 	}
@@ -228,6 +256,29 @@ public class CampaignService {
 				binding.rejectValue("attachments", "org.hibernate.validator.constraints.URL.message");
 				break;
 			}
+	}
+
+	public void incrementDisplayed(final Campaign c) {
+		final Campaign res = c;
+		Campaign saved;
+		res.setTimesDisplayed(c.getTimesDisplayed() + 1);
+		saved = this.saveAnyone(res);
+		Assert.isTrue(res.getTimesDisplayed() == saved.getTimesDisplayed());
+	}
+
+	public String displayBanner() {
+		String res = "";
+		ArrayList<String> banners;
+		final ArrayList<Campaign> listC = (ArrayList<Campaign>) this.findAllCampaignsUnfinished();
+		if (listC.size() > 0) {
+			final Campaign c = listC.get(new Random().nextInt(listC.size()));
+			if (c.getTimesDisplayed() <= c.getMax()) {
+				banners = new ArrayList<>(c.getImages());
+				res = banners.get(new Random().nextInt(banners.size()));
+				this.incrementDisplayed(c);
+			}
+		}
+		return res;
 	}
 
 }
