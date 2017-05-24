@@ -16,12 +16,14 @@
 	requestURI="${requestURI}" id="row">
 
 	<jstl:set value="${row.end.time - current.time}" var="diffms" />
+	<jstl:set value="${row.start.time - current.time}" var="diffms2" />
 
 	<jstl:set value="${diffms < 0}" var="isPast" /> />
+	<jstl:set value="${diffms2 < 0 and diffms >= 0}" var="isPresent" /> />
 
 	<jstl:choose>
 
-		<jstl:when test="${!isPast}">
+		<jstl:when test="${(!isPast and !isPresent) or (row.approved eq null and isPresent)or (row.approved eq false and isPresent)}">
 
 			<!-- Attributes -->
 			<acme:column code="campaign.start" property="start" isDate="true" />
@@ -33,7 +35,7 @@
 			<acme:column code="campaign.timesDisplayed"
 				property="${row.timesDisplayed}" />
 
-			<display:column>
+			<display:column style="background-color:;">
 				<jstl:if test="${row.approved ne null}">
 					<jstl:if test="${row.approved eq true}">
 						<spring:message code="campaign.approved" />
@@ -47,7 +49,7 @@
 			<acme:column code="campaign.fee" property="${row.fee}" />
 
 			<security:authorize access="hasRole('ADMIN')">
-				<display:column>
+				<display:column style="background-color:;">
 					<jstl:if test="${row.approved eq null}">
 						<acme:link
 							href="campaign/administrator/approve.do?campaignId=${row.id}"
@@ -62,6 +64,7 @@
 		</jstl:when>
 
 		<jstl:when test="${isPast}">
+
 			<acme:column code="campaign.start" property="start" isDate="true"
 				style="background-color:grey;" />
 
@@ -87,6 +90,50 @@
 
 			<acme:column code="campaign.fee" property="${row.fee}"
 				style="background-color:grey;" />
+			
+			<display:column style="background-color:grey;">
+			</display:column>
+
+		</jstl:when>
+		<jstl:when test="${isPresent}">
+			<acme:column code="campaign.start" property="start" isDate="true"
+				style="background-color:yellow;" />
+
+			<acme:column code="campaign.end" property="end" isDate="true"
+				style="background-color:yellow;" />
+
+			<acme:column code="campaign.max" property="${row.max}"
+				style="background-color:yellow;" />
+
+			<acme:column code="campaign.timesDisplayed"
+				property="${row.timesDisplayed}" style="background-color:yellow;" />
+
+			<display:column style="background-color:yellow;">
+				<jstl:if test="${row.approved ne null}">
+					<jstl:if test="${row.approved eq true}">
+						<spring:message code="campaign.approved" />
+					</jstl:if>
+					<jstl:if test="${row.approved eq false}">
+						<spring:message code="campaign.cancelled" />
+					</jstl:if>
+				</jstl:if>
+			</display:column>
+
+			<acme:column code="campaign.fee" property="${row.fee}"
+				style="background-color:yellow;" />
+				
+				<security:authorize access="hasRole('ADMIN')">
+				<display:column style="background-color:yellow;">
+					<jstl:if test="${row.approved eq null}">
+						<acme:link
+							href="campaign/administrator/approve.do?campaignId=${row.id}"
+							code="campaign.approve" />
+						<acme:link
+							href="campaign/administrator/cancel.do?campaignId=${row.id}"
+							code="campaign.cancel" />
+					</jstl:if>
+				</display:column>
+			</security:authorize>
 		</jstl:when>
 	</jstl:choose>
 
