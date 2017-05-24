@@ -296,20 +296,6 @@
 		<property name="kind" value="6" />
 	</bean>
 	
-	<!-- STATUS -->
-	
-	<bean id="inProcess" class="domain.Status">
-		<property name="kind" value="0" />
-	</bean>
-	
-	<bean id="sent" class="domain.Status">
-		<property name="kind" value="1" />
-	</bean>
-	
-	<bean id="cancelled" class="domain.Status">
-		<property name="kind" value="2" />
-	</bean>
-	
 	<!-- CREDIT CARDS -->
 	
 	<bean id="creditCard1" class="domain.CreditCard">
@@ -1832,7 +1818,7 @@
 	</bean>
 	
 	<bean id="product2" class="domain.Product">
-		<property name="name" value="Product 1" />
+		<property name="name" value="Product 2" />
 		<property name="price" value="13.99" />
 		<property name="stock" value="2" />
 		<property name="picture" value="http://url.com" />
@@ -1841,7 +1827,7 @@
 	</bean>
 	
 	<bean id="product3" class="domain.Product">
-		<property name="name" value="Product 2" />
+		<property name="name" value="Product 3" />
 		<property name="price" value="2.99" />
 		<property name="stock" value="25" />
 		<property name="picture" value="http://url.com" />
@@ -1850,7 +1836,7 @@
 	</bean>
 	
 	<bean id="product4" class="domain.Product">
-		<property name="name" value="Product 3" />
+		<property name="name" value="Product 4" />
 		<property name="price" value="5.99" />
 		<property name="stock" value="55" />
 		<property name="picture" value="http://url.com" />
@@ -1859,7 +1845,7 @@
 	</bean>
 	
 	<bean id="product5" class="domain.Product">
-		<property name="name" value="Product 4" />
+		<property name="name" value="Product 5" />
 		<property name="price" value="11.95" />
 		<property name="stock" value="13" />
 		<property name="picture" value="http://url.com" />
@@ -1868,7 +1854,7 @@
 	</bean>
 	
 	<bean id="product6" class="domain.Product">
-		<property name="name" value="Product 5" />
+		<property name="name" value="Product 6" />
 		<property name="price" value="7.99" />
 		<property name="stock" value="0" />
 		<property name="picture" value="http://url.com" />
@@ -1877,7 +1863,7 @@
 	</bean>
 	
 	<bean id="product7" class="domain.Product">
-		<property name="name" value="Product 6" />
+		<property name="name" value="Product 7" />
 		<property name="price" value="4.99" />
 		<property name="stock" value="1" />
 		<property name="picture" value="http://url.com" />
@@ -1966,19 +1952,21 @@
 	<bean id="order1" class="domain.OrderUser">
 		<property name="total" value="5.99" />
 		<property name="moment" value="03/12/2016 15:43" />
+		<property name="finished" value="true" />
 		<property name="user" ref="user2" />
 		<property name="orderQuantities">
 			<list>
 				<ref bean="qOrder1"/>
 			</list>
 		</property>
-		<property name="status" ref="inProcess" />
+		<property name="status" value="0" />
 		<property name="shippingAddress" ref="shippingaddress1" />
 	</bean>
 	
 	<bean id="order2" class="domain.OrderUser">
 		<property name="total" value="66.86" />
 		<property name="moment" value="04/14/2016 16:21" />
+		<property name="finished" value="true" />
 		<property name="user" ref="user3" />
 		<property name="orderQuantities">
 			<list>
@@ -1990,72 +1978,77 @@
 				<ref bean="qOrder7"/>
 			</list>
 		</property>
-		<property name="status" ref="sent" />
+		<property name="status" value="1" />
 		<property name="shippingAddress" ref="shippingaddress2" />
 	</bean>
 	
 	<bean id="order3" class="domain.OrderUser">
 		<property name="total" value="13.99" />
 		<property name="moment" value="05/23/2016 17:11" />
+		<property name="finished" value="true" />
 		<property name="user" ref="user3" />
 		<property name="orderQuantities">
 			<list>
 				<ref bean="qOrder8"/>
 			</list>
 		</property>
-		<property name="status" ref="cancelled" />
+		<property name="status" value="2" />
 		<property name="shippingAddress" ref="shippingaddress2" />
 	</bean>
 	
 	<bean id="order4" class="domain.OrderUser">
 		<property name="total" value="2.99" />
 		<property name="moment" value="06/19/2016 17:52" />
+		<property name="finished" value="true" />
 		<property name="user" ref="user3" />
 		<property name="orderQuantities">
 			<list>
 				<ref bean="qOrder9"/>
 			</list>
 		</property>
-		<property name="status" ref="sent" />
+		<property name="status" value="1" />
 		<property name="shippingAddress" ref="shippingaddress2" />
 	</bean>
 	
 	<bean id="order5" class="domain.OrderUser">
 		<property name="total" value="5.99" />
 		<property name="moment" value="06/20/2016 17:36" />
+		<property name="finished" value="true" />
 		<property name="user" ref="user3" />
 		<property name="orderQuantities">
 			<list>
 				<ref bean="qOrder10"/>
 			</list>
 		</property>
-		<property name="status" ref="sent" />
+		<property name="status" value="1" />
 		<property name="shippingAddress" ref="shippingaddress2" />
 	</bean>
 	
 	<bean id="order6" class="domain.OrderUser">
 		<property name="total" value="11.95" />
 		<property name="moment" value="01/11/2017 15:43" />
+		<property name="finished" value="true" />
 		<property name="user" ref="user3" />
 		<property name="orderQuantities">
 			<list>
 				<ref bean="qOrder11"/>
 			</list>
 		</property>
-		<property name="status" ref="cancelled" />
+		<property name="status" value="2" />
 		<property name="shippingAddress" ref="shippingaddress2" />
 	</bean>
 	
 	<bean id="order7" class="domain.OrderUser">
 		<property name="total" value="7.99" />
 		<property name="moment" value="03/12/2017 11:43" />
+		<property name="finished" value="true" />
 		<property name="user" ref="user3" />
 		<property name="orderQuantities">
 			<list>
 				<ref bean="qOrder12"/>
 			</list>
 		</property>
-		<property name="status" ref="sent" />
+		<property name="status" value="1" />
 		<property name="shippingAddress" ref="shippingaddress2" />
 	</bean>
 	

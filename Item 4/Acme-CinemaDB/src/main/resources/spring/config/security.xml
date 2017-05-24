@@ -77,7 +77,14 @@
 		<security:intercept-url pattern="/producer/administrator/**" access="hasRole('ADMIN')" />
 		<security:intercept-url pattern="/producer/producer/**" access="hasRole('PRODUCER')" />
 		
-		<security:intercept-url pattern="/order/**" access="hasRole('USER')" />
+		<security:intercept-url pattern="/orderUser/list.do" access="hasAnyRole('USER', 'ADMIN')" />
+		<security:intercept-url pattern="/orderUser/display.do" access="hasAnyRole('USER', 'ADMIN')" />
+		<security:intercept-url pattern="/orderUser/addProduct.do" access="hasRole('USER')" />
+		<security:intercept-url pattern="/orderUser/removeProduct.do" access="hasRole('USER')" />
+		<security:intercept-url pattern="/orderUser/administrator/**" access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="/orderUser/finish.do" access="hasRole('USER')" />
+		
+		<security:intercept-url pattern="/orderQuantity/**" access="hasRole('USER')" />
 		
 		<security:intercept-url pattern="/creditCard/**" access="hasAnyRole('USER', 'PRODUCER')" />
 		
