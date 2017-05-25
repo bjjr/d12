@@ -10,92 +10,28 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
-	
-<!-- User's info -->
+<spring:message code="oq.subtotal" var="subtotalTitle" />
 
-<h1><spring:message code="user.personal.info" /></h1>
+<display:table pagesize="5" class="displaytag" name="orderUser.orderQuantities"
+	requestURI="orderUser/display.do" id="row">
 
-<div id="info">
-	<acme:display code="actor.name" property="${user.name}"/>
-	<acme:display code="actor.surname" property="${user.surname}"/>
-	<acme:display code="actor.country" property="${user.country}"/>
-	<acme:display code="security.username" property="${user.userAccount.username}"/>
-</div>
-
-<!-- User's content likes -->
-
-<h1><spring:message code="user.likes.content" /></h1>
-
-<div id="contentLikes">
-	<display:table pagesize="5" class="displaytag" name="contentLikes"
-		requestURI="user/display.do?userId=${user.id}" id="row">
-	
-		<acme:column code="content.title" property="${row.assessableEntity.title}"/>
-		<acme:column code="content.year" property="${row.assessableEntity.year}"/>
-		<display:column title="content.genre">
-			<jstl:forEach items="${row.assessableEntity.genres}" var="genre">
-				<jstl:choose>
-					<jstl:when test="${genre.kind eq 0 }">
-						<spring:message code="genre.action" />
-					</jstl:when>
-					<jstl:when test="${genre.kind eq 1 }">
-						<spring:message code="genre.adventure" />
-					</jstl:when>
-					<jstl:when test="${genre.kind eq 2 }">
-						<spring:message code="genre.comedy" />
-					</jstl:when>
-					<jstl:when test="${genre.kind eq 3 }">
-						<spring:message code="genre.drama" />
-					</jstl:when>
-					<jstl:when test="${genre.kind eq 4 }">
-						<spring:message code="genre.horror" />
-					</jstl:when>
-					<jstl:when test="${genre.kind eq 5 }">
-						<spring:message code="genre.animation" />
-					</jstl:when>
-					<jstl:when test="${genre.kind eq 6 }">
-						<spring:message code="genre.sci-fi" />
-					</jstl:when>
-				</jstl:choose>
-			</jstl:forEach>
-		</display:column>
-		<acme:column code="content.rating" property="${row.assessableEntity.avgRating}"/>
+	<acme:column code="oq.product" property="${row.product.name}"/>
+	<acme:column code="oq.product.price" property="${row.product.price}"/>
+	<acme:column code="oq.quantity" property="${row.quantity}"/>
+	<display:column title="${subtotalTitle}">
+		<jstl:out value="${row.product.price * row.quantity}"></jstl:out>
+	</display:column>
+	<jstl:if test="${!orderUser.finished}">
 		<display:column>
-			<acme:link href="content/display.do?contentId=${row.assessableEntity.id}" code="misc.view"/>
+			<acme:link href="orderUser/removeProduct.do?orderQuantityId=${row.id}" code="order.removeProduct"/>
 		</display:column>
-	
-	</display:table>
-</div>
-
-<!-- User's cinematic entities likes -->
-
-<h1><spring:message code="user.likes.cinEntities" /></h1>
-
-<div id="cinematicLikes">
-	<display:table pagesize="5" class="displaytag" name="cEntitiesLikes"
-		requestURI="user/display.do?userId=${user.id}" id="cEntity">
-	
-		<acme:column code="cinematicEntity.name" property="${cEntity.assessableEntity.name}"/>
-		<acme:column code="cinematicEntity.surname" property="${cEntity.assessableEntity.surname}"/>
 		<display:column>
-			<acme:link href="cinematicEntity/display.do?cinematicEntityId=${cEntity.assessableEntity.id}" code="misc.view"/>
+			<acme:link href="orderQuantity/edit.do?orderQuantityId=${row.id}" code="order.editQuantity"/>
 		</display:column>
-	
-	</display:table>
-</div>
+	</jstl:if>
+</display:table>
 
-<!-- User's social identities -->
-
-<h1><spring:message code="user.socialIdentities" /></h1>
-
-<div id="sIdent">
-	<display:table pagesize="5" class="displaytag" name="socialIds"
-		requestURI="user/display.do?userId=${user.id}" id="socialId">
-	
-		<acme:column code="socialIdentity.username" property="${socialId.username}"/>
-		<display:column>
-			<a href="${socialId.path}"><jstl:out value="${socialId.path}" /></a>
-		</display:column>
-	
-	</display:table>
-</div>
+<jstl:if test="${!orderUser.finished && orderUser.id != 0}">
+	<acme:display code="order.total" property="${orderUser.total}"/>
+	<acme:link href="orderUser/finish.do" code="order.finish"/>
+</jstl:if>

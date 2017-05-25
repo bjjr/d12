@@ -9,38 +9,59 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import repositories.ProductRepository;
+import security.Authority;
 import domain.Product;
 
 @Service
 @Transactional
 public class ProductService {
 
+	// Managed repository ---------------------------
+
 	@Autowired
 	private ProductRepository	productRepository;
 
+	// Supporting services --------------------------
 
-	public Collection<Product> findAll() {
-		return this.productRepository.findAll();
-	}
+	@Autowired
+	private ActorService		actorService;
+
+
+	// Simple CRUD methods --------------------------
 
 	public Product save(final Product product) {
-		Assert.notNull(product);
+		Assert.isTrue(this.actorService.checkAuthority(Authority.USER) || this.actorService.checkAuthority(Authority.PRODUCER));
 
-		final Product productSaved = this.productRepository.save(product);
+		Product res;
 
-		return productSaved;
-	}
+		res = this.productRepository.save(product);
 
-	public void delete(final Product product) {
-		this.productRepository.delete(product);
+		return res;
 	}
 
 	public Product findOne(final int productId) {
-		return this.productRepository.findOne(productId);
+		Assert.isTrue(productId != 0);
+
+		Product res;
+
+		res = this.productRepository.findOne(productId);
+
+		return res;
+	}
+
+	// Other business methods -----------------------
+
+	public Collection<Product> findProductsByOrder(final int orderId) {
+		Assert.isTrue(orderId != 0);
+
+		Collection<Product> res;
+
+		res = this.productRepository.findProductsByOrder(orderId);
+
+		return res;
 	}
 
 	public Collection<Product> findAllProductsByContentId(final int contentId) {
 		return this.productRepository.findAllProductsByContentId(contentId);
 	}
-
 }
