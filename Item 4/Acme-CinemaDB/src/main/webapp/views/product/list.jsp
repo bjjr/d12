@@ -15,20 +15,32 @@
 	name="products" requestURI="${requestURI}" id="row">
 	
 	<!-- Attributes -->
+	
+	<spring:message code="product.picture" var="pic" />
+	<display:column title="${pic}">
+		<img src="${row.picture}" style="max-width: 150px; max-height: 150px;" />
+	</display:column>
+	
 	<acme:column code="product.name" property="${row.name}"/>
 	
 	<acme:column code="product.price" property="${row.price}"/>
 	
 	<acme:column code="product.stock" property="${row.stock}"/>
 	
-	<acme:column code="product.picture" property="${row.picture}"/>
-	
 	<acme:column code="product.idcode" property="${row.idcode}"/>
 	
 	<security:authorize access="hasRole('PRODUCER')">
-		<acme:link href="/product/producer/edit.do?productId=${row.id}" code="misc.edit"/>
+		<display:column>
+			<acme:link href="product/producer/edit.do?productId=${row.id}" code="misc.edit"/>
+		</display:column>
 	</security:authorize>
-			
-	
+
+	<security:authorize access="hasRole('USER')">
+		<jstl:if test="${row.stock > 0}">
+			<display:column>
+				<acme:link href="orderUser/addProduct.do?productId=${row.id}" code="order.addProduct"/>
+			</display:column>
+		</jstl:if>
+	</security:authorize>
 	
 </display:table>
