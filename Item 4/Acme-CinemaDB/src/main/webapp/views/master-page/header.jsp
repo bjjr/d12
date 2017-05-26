@@ -44,6 +44,8 @@
 					<li><a href="userAccount/edit.do"><spring:message code="master.page.changePassword" /></a></li>
 					<li><a href="invoice/producer/list.do"><spring:message code="master.page.invoice.list" /></a></li>
 					<li><a href="campaign/producer/list.do"><spring:message code="master.page.campaign.list" /></a></li>
+					<li><a href="movie/producer/list.do"><spring:message code="master.page.producer.list.movies" /></a></li>
+					<li><a href="tvShow/producer/list.do"><spring:message code="master.page.producer.list.tvShow" /></a></li>
 				</ul>
 			</li>
 

@@ -59,3 +59,4 @@
 
 </display:table>
 
+<acme:link href="cinematicEntity/producer/create.do" code="cinematicEntity.create"/>

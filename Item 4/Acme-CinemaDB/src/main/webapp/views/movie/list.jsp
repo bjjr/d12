@@ -11,15 +11,8 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
-<!-- Search Form -->
-<form:form action="" modelAttribute="content">
-	<input type="text" name="title" />
-	<input type="submit" name="search"
-		value="<spring:message code="misc.search"/>" />
-</form:form>
-
 <!-- Listing grid -->
-<display:table pagesize="5" class="displaytag" name="contents"
+<display:table pagesize="5" class="displaytag" name="movies"
 	requestURI="${requestURI}" id="row">
 
 	<!-- Attributes -->
@@ -58,33 +51,23 @@
 
 	<acme:column code="content.avgRating" property="${row.avgRating}" />
 
-
-
 	<display:column>
-		<acme:link
-			href="likeUser/listComments.do?assessableEntityId=${row.id}"
-			code="likeUser.comments.list" />
+		<jstl:choose>
+			<jstl:when test="${isTv == true }">
+
+				<acme:link href="tvShow/producer/edit.do?movieId=${row.id}"
+					code="misc.edit" />
+			</jstl:when>
+			<jstl:otherwise>
+				<acme:link href="movie/producer/edit.do?movieId=${row.id}"
+					code="misc.edit" />
+
+			</jstl:otherwise>
+		</jstl:choose>
 	</display:column>
 
-	<security:authorize access="hasRole('USER')">
-		<display:column>
-			<acme:link href="likeUser/create.do?assessableEntityId=${row.id}"
-				code="likeUser.comments.create" />
-		</display:column>
-	</security:authorize>
 
-	<jstl:if test="${isProducer == true }">
-		<display:column>
-			<acme:link href="content/producer/edit.do?contentId=${row.id}"
-				code="misc.edit" />
-		</display:column>
-
-	</jstl:if>
-
-	<display:column>
-		<a href="content/display.do?contentId=${row.id}"><spring:message
-				code="misc.view" /></a>
-	</display:column>
 
 </display:table>
 
+<acme:link href="${createURL }" code="content.create" />
