@@ -13,6 +13,7 @@
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
+<%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <div>
 	<img src="images/logo.png" alt="Acme-CinemaDB, Inc." />
@@ -28,21 +29,48 @@
 				<ul>
 					<li class="arrow"></li>
 					<li><a href="producer/administrator/create.do"><spring:message code="master.page.producer.create" /></a></li>
+					<li><a href="critic/administrator/register.do"><spring:message code="master.page.critic.create" /></a></li>
+					<li><a href="orderUser/list.do"><spring:message code="master.page.admin.orders" /></a></li>
 					<li><a href="fee/administrator/list.do"><spring:message code="master.page.fee.edit" /></a></li>
+					<li><a href="invoice/administrator/list.do"><spring:message code="master.page.invoice.list" /></a></li>
+					<li><a href="campaign/administrator/list.do"><spring:message code="master.page.campaign.list" /></a></li>
 				</ul>
 			</li>
-			<li><a href="j_spring_security_logout"><spring:message code="master.page.logout" /></a></li>
 		</security:authorize>
 		
 		<security:authorize access="hasRole('PRODUCER')">
 			<li><a class="fNiv"><spring:message	code="master.page.producer" /></a>
 				<ul>
 					<li class="arrow"></li>
+					<li><a href="producer/producer/edit.do"><spring:message code="master.page.producer.edit" /></a></li>
+					<li><a href="userAccount/edit.do"><spring:message code="master.page.changePassword" /></a></li>
+					<li><a href="invoice/producer/list.do"><spring:message code="master.page.invoice.list" /></a></li>
+					<li><a href="campaign/producer/list.do"><spring:message code="master.page.campaign.list" /></a></li>
 				</ul>
 			</li>
-			<li><a class="fNiv" href="producer/producer/edit.do"><spring:message code="master.page.producer.edit" /></a></li>
-			<li><a class="fNiv" href="userAccount/edit.do"><spring:message code="master.page.changePassword" /></a></li>
-			<li><a href="j_spring_security_logout"><spring:message code="master.page.logout" /></a></li>
+
+		</security:authorize>
+		
+		<security:authorize access="hasRole('CRITIC')">
+			<li><a class="fNiv"><spring:message	code="master.page.critic" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="userAccount/edit.do"><spring:message code="master.page.changePassword" /></a></li>
+				</ul>
+			</li>
+		</security:authorize>
+		
+		<security:authorize access="hasRole('USER')">
+			<li><a class="fNiv" href="orderUser/display.do"><spring:message code="master.page.user.shoppingCart" /></a></li>
+			<li><a class="fNiv"><spring:message	code="master.page.user" /></a>
+				<ul>
+					<li class="arrow"></li>
+					<li><a href="user/display.do"><spring:message code="master.page.user.profile" /></a></li>
+					<li><a href="orderUser/list.do"><spring:message code="master.page.user.orders" /></a></li>
+					<li><a href="shippingAddress/list.do"><spring:message code="master.page.user.sas" /></a></li>
+					<li><a href="userAccount/edit.do"><spring:message code="master.page.changePassword" /></a></li>
+				</ul>
+			</li>
 		</security:authorize>
 		
 		<security:authorize access="isAnonymous()">
@@ -73,6 +101,6 @@
 </div>
 
 <div>
-	<a href="?language=en">en</a> | <a href="?language=es">es</a>
+	<a id="enlink" href="?language=en">en</a> | <a id="eslink" href="?language=es">es</a>
 </div>
 

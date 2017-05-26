@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
 
 import repositories.InvoiceRepository;
 import domain.Campaign;
@@ -27,6 +29,11 @@ public class InvoiceService {
 	@Autowired
 	private ActorService		actorService;
 
+	// Validator --------------------------------------------
+
+	@Autowired
+	private Validator			validator;
+
 
 	// Constructors -----------------------------------------
 
@@ -40,13 +47,8 @@ public class InvoiceService {
 		Assert.isTrue(this.actorService.checkAuthority("ADMIN"));
 
 		final Invoice result;
-		Date billingDate;
 
 		result = new Invoice();
-		billingDate = new Date(System.currentTimeMillis() - 1000);
-
-		result.setPaid(false);
-		result.setBillingDate(billingDate);
 
 		return result;
 	}
@@ -56,18 +58,14 @@ public class InvoiceService {
 		Assert.notNull(invoice);
 
 		Invoice result;
-		Date billingDate;
-		Campaign campaign;
 		Date current;
+		Campaign campaign;
 
 		campaign = invoice.getCampaign();
 		current = new Date(System.currentTimeMillis());
 
 		Assert.isTrue(campaign.getEnd().before(current) || campaign.getTimesDisplayed() == campaign.getMax());
 
-		billingDate = new Date(System.currentTimeMillis() - 1000);
-		invoice.setTotal(campaign.getTimesDisplayed() * campaign.getFee());
-		invoice.setBillingDate(billingDate);
 		result = this.invoiceRepository.save(invoice);
 
 		return result;
@@ -101,12 +99,44 @@ public class InvoiceService {
 	// Other business methods ----------------------------------
 
 	public void setPaid(final Invoice invoice) {
-		Assert.isTrue(this.actorService.checkAuthority("ADMIN"));
+		Assert.isTrue(this.actorService.checkAuthority("PRODUCER"));
 		Assert.isTrue(!invoice.getPaid());
 		Assert.notNull(invoice);
+		//TODO Añadir comprobaciones de credit card
 
 		invoice.setPaid(true);
 
 	}
 
+	public Invoice reconstruct(final Invoice invoice, final BindingResult bindingResult) {
+		Assert.isTrue(this.actorService.checkAuthority("ADMIN"));
+		Assert.isTrue(invoice.getId() == 0);
+
+		Invoice result;
+		Date billingDate;
+		Campaign campaign;
+
+		result = invoice;
+		billingDate = new Date(System.currentTimeMillis() - 1000);
+		campaign = invoice.getCampaign();
+
+		result.setBillingDate(billingDate);
+		result.setPaid(false);
+		invoice.setTotal(campaign.getTimesDisplayed() * campaign.getFee());
+
+		this.validator.validate(result, bindingResult);
+
+		return result;
+	}
+
+	public Collection<Invoice> findInvoicesProducer(final int producerId) {
+		Assert.isTrue(producerId != 0);
+		Assert.notNull(producerId);
+
+		Collection<Invoice> result;
+
+		result = this.invoiceRepository.findInvoicesProducer(producerId);
+
+		return result;
+	}
 }

@@ -4,7 +4,8 @@ package domain;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
-import javax.validation.constraints.Min;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Digits;
 
 @Entity
 @Access(AccessType.PROPERTY)
@@ -15,7 +16,8 @@ public class Fee extends DomainEntity {
 	private double	value;
 
 
-	@Min(value = 0)
+	@DecimalMin(value = "0.0")
+	@Digits(integer = 6, fraction = 2)
 	public double getValue() {
 		return this.value;
 	}

@@ -11,6 +11,8 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
+<acme:display code="content.title" property="${ season.tvShow.title}" />
+<br />
 <acme:display code="season.name" property="${ season.name}" />
 <br />
 <display:table pagesize="5" class="displaytag" name="chapters"

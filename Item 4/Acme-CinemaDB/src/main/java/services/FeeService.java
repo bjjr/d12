@@ -70,4 +70,13 @@ public class FeeService {
 
 	// Other business methods -------------------------------
 
+	public Double findFeeValue() {
+		Double result;
+
+		result = this.feeRepository.findFeeValue();
+		Assert.notNull(result);
+
+		return result;
+	}
+
 }

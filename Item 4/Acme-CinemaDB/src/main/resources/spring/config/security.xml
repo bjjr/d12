@@ -55,7 +55,11 @@
 
 		<security:intercept-url pattern="/welcome/index.do" access="permitAll" />
 		
+		<security:intercept-url pattern="/invoice/producer/**" access="hasRole('PRODUCER')" /> 
 		<security:intercept-url pattern="/invoice/administrator/**" access="hasRole('ADMIN')" /> 
+		
+		<security:intercept-url pattern="/campaign/producer/**" access="hasRole('PRODUCER')" /> 
+		<security:intercept-url pattern="/campaign/administrator/**" access="hasRole('ADMIN')" /> 
 		
 		<security:intercept-url pattern="/user/register.do" access="isAnonymous()" />
 		<security:intercept-url pattern="/user/edit.do" access="isAnonymous()" />
@@ -73,7 +77,18 @@
 		<security:intercept-url pattern="/producer/administrator/**" access="hasRole('ADMIN')" />
 		<security:intercept-url pattern="/producer/producer/**" access="hasRole('PRODUCER')" />
 		
+		<security:intercept-url pattern="/orderUser/list.do" access="hasAnyRole('USER', 'ADMIN')" />
+		<security:intercept-url pattern="/orderUser/display.do" access="hasAnyRole('USER', 'ADMIN')" />
+		<security:intercept-url pattern="/orderUser/addProduct.do" access="hasRole('USER')" />
+		<security:intercept-url pattern="/orderUser/removeProduct.do" access="hasRole('USER')" />
+		<security:intercept-url pattern="/orderUser/administrator/**" access="hasRole('ADMIN')" />
+		<security:intercept-url pattern="/orderUser/finish.do" access="hasRole('USER')" />
+		
+		<security:intercept-url pattern="/orderQuantity/**" access="hasRole('USER')" />
+		
 		<security:intercept-url pattern="/creditCard/**" access="hasAnyRole('USER', 'PRODUCER')" />
+		
+		<security:intercept-url pattern="/shippingAddress/**" access="hasRole('USER')" />
 		
 		<security:intercept-url pattern="/**" access="hasRole('NONE')" />
 

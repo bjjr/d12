@@ -26,9 +26,9 @@
 
 	<acme:column code="content.title" property="${row.title}" />
 
-	<acme:column code="content.year" property="${row.year}" />
-
-	<display:column title="content.genre">
+		<spring:message code="content.genre" var="genreTitle" />
+		
+		<display:column title="${genreTitle}">
 		<jstl:forEach items="${row.genres }" var="genre">
 			<jstl:choose>
 				<jstl:when test="${genre.kind eq 0 }">
@@ -58,16 +58,19 @@
 
 	<acme:column code="content.avgRating" property="${row.avgRating}" />
 	
+	
+	
 	<display:column>
 		<acme:link href="likeUser/listComments.do?assessableEntityId=${row.id}" code="likeUser.comments.list"/>
 	</display:column>
 	
-	<display:column>
-		<acme:link href="likeUser/create.do?assessableEntityId=${row.id}" code="likeUser.comments.create"/>
-	</display:column>
-	
+	<security:authorize access="hasRole('USER')">
+		<display:column>
+			<acme:link href="likeUser/create.do?assessableEntityId=${row.id}" code="likeUser.comments.create"/>
+		</display:column>
+	</security:authorize>
 
-	<display:column><a href="content/display.do?contentId=${row.id}">a</a></display:column>
+	<display:column><a href="content/display.do?contentId=${row.id}"><spring:message code="misc.view" /></a></display:column>
 
 </display:table>
 
