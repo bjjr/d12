@@ -11,9 +11,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import security.Authority;
+import services.ActorService;
 import services.ContentService;
+import services.LikeUserService;
 import services.TvShowService;
 import domain.Content;
+import domain.LikeUser;
 import domain.Movie;
 import domain.Season;
 
@@ -29,6 +33,12 @@ public class ContentController {
 	@Autowired
 	private TvShowService	TvShowService;
 
+	@Autowired
+	private LikeUserService	likeUserService;
+
+	@Autowired
+	private ActorService	actorService;
+
 
 	// Constructors
 
@@ -40,12 +50,17 @@ public class ContentController {
 	public ModelAndView list() {
 		ModelAndView result;
 		Collection<Content> contents;
+		Collection<LikeUser> allLikeUserByPrincipal = null;
+
+		if (this.actorService.checkAuthority(Authority.USER))
+			allLikeUserByPrincipal = this.likeUserService.findAllByPrincipal();
 
 		contents = this.contentService.findAll();
 
 		result = new ModelAndView("content/list");
 		result.addObject("requestURI", "content/list.do");
 		result.addObject("contents", contents);
+		result.addObject("likeUserCurrentUser", allLikeUserByPrincipal);
 
 		return result;
 	}

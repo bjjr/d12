@@ -59,18 +59,46 @@
 	<acme:column code="content.avgRating" property="${row.avgRating}" />
 	
 	
-	
 	<display:column>
 		<acme:link href="likeUser/listComments.do?assessableEntityId=${row.id}" code="likeUser.comments.list"/>
 	</display:column>
 	
+	
 	<security:authorize access="hasRole('USER')">
+	
+		<jstl:set var="contains" value="false" />
+		<jstl:forEach var="likeUser" items="${likeUserCurrentUser}">
+  			<jstl:if test="${likeUser.assessableEntity eq row}">
+    			<jstl:set var="contains" value="true" />
+  			</jstl:if>
+		</jstl:forEach>
+		
 		<display:column>
-			<acme:link href="likeUser/create.do?assessableEntityId=${row.id}" code="likeUser.comments.create"/>
+			<jstl:choose>
+				<jstl:when test="${contains == false}">
+					<acme:link href="likeUser/user/like.do?assessableEntityId=${row.id}" code="likeUser.like"/>
+				</jstl:when>
+				<jstl:otherwise>
+					<acme:link href="likeUser/user/unlike.do?assessableEntityId=${row.id}" code="likeUser.unlike"/>
+				</jstl:otherwise>
+			</jstl:choose>		
+		</display:column>
+	
+		<display:column>
+		<jstl:choose>
+			<jstl:when test="${contains == false}">
+				<acme:link href="likeUser/user/create.do?assessableEntityId=${row.id}" code="likeUser.comments.createAndLike"/>
+			</jstl:when>
+			<jstl:otherwise>
+				<acme:link href="likeUser/user/create.do?assessableEntityId=${row.id}" code="likeUser.comments.create"/>
+			</jstl:otherwise>
+		</jstl:choose>
 		</display:column>
 	</security:authorize>
 
 	<display:column><a href="content/display.do?contentId=${row.id}"><spring:message code="misc.view" /></a></display:column>
-
+	
+	<display:column><acme:link href="product/list.do?contentId=${row.id}" code="product.show"/></display:column>
+	
 </display:table>
 

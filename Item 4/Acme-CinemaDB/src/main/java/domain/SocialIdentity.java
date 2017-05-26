@@ -54,7 +54,7 @@ public class SocialIdentity extends DomainEntity {
 	@NotNull
 	@Valid
 	@ManyToOne(optional = false)
-	public Actor getUser() {
+	public User getUser() {
 		return this.user;
 	}
 

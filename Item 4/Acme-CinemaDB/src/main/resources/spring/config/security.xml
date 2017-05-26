@@ -40,14 +40,16 @@
 		
 		<security:intercept-url pattern="/likeUser/listComments.do" access="permitAll" />
 		
-		<security:intercept-url pattern="/likeUser/create.do" access="hasRole('USER')" />
+		<security:intercept-url pattern="/likeUser/user/**" access="hasRole('USER')" />
 
 		<security:intercept-url pattern="/security/login.do" access="permitAll" /> 
 		<security:intercept-url pattern="/security/loginFailure.do" access="permitAll" /> 
 		
 		<security:intercept-url pattern="/userAccount/edit.do" access="hasAnyRole('USER', 'PRODUCER', 'CRITIC')" />
-
-		<security:intercept-url pattern="/cinematicEntity/**" access="permitAll" /> 
+		
+		<security:intercept-url pattern="/cinematicEntity/list.do" access="permitAll" />
+		<security:intercept-url pattern="/cinematicEntity/display.do" access="permitAll" /> 
+		<security:intercept-url pattern="/cinematicEntity/producer/**" access="hasRole('PRODUCER')" />
 
 		<security:intercept-url pattern="/content/**" access="permitAll" /> 
 		
@@ -79,6 +81,8 @@
 		<security:intercept-url pattern="/producer/administrator/**" access="hasRole('ADMIN')" />
 		<security:intercept-url pattern="/producer/producer/**" access="hasRole('PRODUCER')" />
 		
+		<security:intercept-url pattern="/product/list.do" access="permitAll" />
+		
 		<security:intercept-url pattern="/orderUser/list.do" access="hasAnyRole('USER', 'ADMIN')" />
 		<security:intercept-url pattern="/orderUser/display.do" access="hasAnyRole('USER', 'ADMIN')" />
 		<security:intercept-url pattern="/orderUser/addProduct.do" access="hasRole('USER')" />
@@ -91,6 +95,8 @@
 		<security:intercept-url pattern="/creditCard/**" access="hasAnyRole('USER', 'PRODUCER')" />
 		
 		<security:intercept-url pattern="/shippingAddress/**" access="hasRole('USER')" />
+		
+		<security:intercept-url pattern="/socialIdentity/**" access="hasRole('USER')" />
 		
 		<security:intercept-url pattern="/**" access="hasRole('NONE')" />
 

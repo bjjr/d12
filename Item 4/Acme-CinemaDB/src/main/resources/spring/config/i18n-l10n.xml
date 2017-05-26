@@ -50,6 +50,7 @@
 		<value>/views/likeUser/messages</value>
 		<value>/views/invoice/messages</value>
 		<value>/views/status/messages</value>
+		<value>/views/product/messages</value>
 		
 	</util:list>
 

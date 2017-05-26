@@ -48,6 +48,10 @@ public class ProductService {
 
 		return res;
 	}
+	
+	public Collection<Product> findAll() {
+		return this.productRepository.findAll();
+	}
 
 	// Other business methods -----------------------
 
@@ -59,5 +63,9 @@ public class ProductService {
 		res = this.productRepository.findProductsByOrder(orderId);
 
 		return res;
+	}
+	
+	public Collection<Product> findAllProductsByContentId(final int contentId) {
+		return this.productRepository.findAllProductsByContentId(contentId);
 	}
 }

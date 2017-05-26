@@ -12,21 +12,27 @@
 
 <!-- Listing grid -->
 <display:table pagesize="5" class="displaytag"
-	name="likeUser" requestURI="${requestURI}" id="row">
+	name="likeUser" requestURI="/likeUser/user/listLikes.do" id="row">
 	
 	<!-- Attributes -->
 	
+	
 	<acme:column code="likeUser.comment" property="${row.comment}"/>
 
-	<acme:column code="likeUser.user.name" property="${row.user.name}"/>
 	
-	<security:authorize access="hasRole('USER')">
-		<display:column>
-			<jstl:if test="${row.user.id == currentUserId}">
-				<acme:link href="likeUser/user/edit.do?assessableEntityId=${row.id}" code="likeUser.comments.edit"/>
-			</jstl:if>
-		</display:column>
-	</security:authorize>
+	<display:column>
+		<acme:link href="likeUser/user/create.do?assessableEntityId=${row.assessableEntity.id}" code="likeUser.comments.edit"/>
+	</display:column>
+	
+	
+
+	<display:column>
+		<acme:link href="likeUser/user/unlike.do?assessableEntityId=${row.assessableEntity.id}" code="likeUser.unlike"/>	
+	</display:column>
+
+
+	
+	
 	
 </display:table>
 

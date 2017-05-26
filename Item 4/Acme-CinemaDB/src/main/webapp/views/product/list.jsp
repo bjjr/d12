@@ -12,21 +12,23 @@
 
 <!-- Listing grid -->
 <display:table pagesize="5" class="displaytag"
-	name="likeUser" requestURI="${requestURI}" id="row">
+	name="products" requestURI="${requestURI}" id="row">
 	
 	<!-- Attributes -->
+	<acme:column code="product.name" property="${row.name}"/>
 	
-	<acme:column code="likeUser.comment" property="${row.comment}"/>
-
-	<acme:column code="likeUser.user.name" property="${row.user.name}"/>
+	<acme:column code="product.price" property="${row.price}"/>
 	
-	<security:authorize access="hasRole('USER')">
-		<display:column>
-			<jstl:if test="${row.user.id == currentUserId}">
-				<acme:link href="likeUser/user/edit.do?assessableEntityId=${row.id}" code="likeUser.comments.edit"/>
-			</jstl:if>
-		</display:column>
+	<acme:column code="product.stock" property="${row.stock}"/>
+	
+	<acme:column code="product.picture" property="${row.picture}"/>
+	
+	<acme:column code="product.idcode" property="${row.idcode}"/>
+	
+	<security:authorize access="hasRole('PRODUCER')">
+		<acme:link href="/product/producer/edit.do?productId=${row.id}" code="misc.edit"/>
 	</security:authorize>
+			
+	
 	
 </display:table>
-
