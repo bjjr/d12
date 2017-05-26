@@ -34,8 +34,11 @@
 					<li><a href="fee/administrator/list.do"><spring:message code="master.page.fee.edit" /></a></li>
 					<li><a href="invoice/administrator/list.do"><spring:message code="master.page.invoice.list" /></a></li>
 					<li><a href="campaign/administrator/list.do"><spring:message code="master.page.campaign.list" /></a></li>
+					<li><a href="messageEntity/listSent.do"><spring:message code="master.page.messageEntity.sentMessages" /></a></li>
+					<li><a href="messageEntity/listReceived.do"><spring:message code="master.page.messageEntity.receivedMessages" /></a></li>
 				</ul>
 			</li>
+			<li><a href="producer/administrator/list.do"><spring:message code="master.page.producers" /></a></li>
 		</security:authorize>
 		
 		<security:authorize access="hasRole('PRODUCER')">
@@ -46,6 +49,9 @@
 					<li><a href="userAccount/edit.do"><spring:message code="master.page.changePassword" /></a></li>
 					<li><a href="invoice/producer/list.do"><spring:message code="master.page.invoice.list" /></a></li>
 					<li><a href="campaign/producer/list.do"><spring:message code="master.page.campaign.list" /></a></li>
+					<li><a href="messageEntity/sendToAdmin.do"><spring:message code="master.page.messageEntity.sentToAdmin" /></a></li>
+					<li><a href="messageEntity/listSent.do"><spring:message code="master.page.messageEntity.sentMessages" /></a></li>
+					<li><a href="messageEntity/listReceived.do"><spring:message code="master.page.messageEntity.receivedMessages" /></a></li>
 				</ul>
 			</li>
 

@@ -13,4 +13,7 @@ public interface AdministratorRepository extends JpaRepository<Administrator, In
 	@Query("select a from Administrator a where a.userAccount.id = ?1")
 	Administrator findByUserAccountId(int userAccountId);
 
+	@Query("select a from Actor a where type(a) = domain.Administrator")
+	Administrator findAdministrator();
+
 }
