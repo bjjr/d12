@@ -45,6 +45,7 @@
 					<li><a href="producer/producer/edit.do"><spring:message code="master.page.producer.edit" /></a></li>
 					<li><a href="userAccount/edit.do"><spring:message code="master.page.changePassword" /></a></li>
 					<li><a href="invoice/producer/list.do"><spring:message code="master.page.invoice.list" /></a></li>
+					<li><a href="creditCard/display.do"><spring:message code="master.page.user.creditCard" /></a></li>
 					<li><a href="campaign/producer/list.do"><spring:message code="master.page.campaign.list" /></a></li>
 				</ul>
 			</li>
@@ -55,7 +56,9 @@
 			<li><a class="fNiv"><spring:message	code="master.page.critic" /></a>
 				<ul>
 					<li class="arrow"></li>
+					<li><a href="critic/critic/edit.do"><spring:message code="master.page.producer.edit" /></a></li>
 					<li><a href="userAccount/edit.do"><spring:message code="master.page.changePassword" /></a></li>
+					<li><a href="review/critic/listMyReviews.do"><spring:message code="master.page.review.list" /></a></li>
 				</ul>
 			</li>
 		</security:authorize>
@@ -68,6 +71,7 @@
 					<li><a href="user/display.do"><spring:message code="master.page.user.profile" /></a></li>
 					<li><a href="orderUser/list.do"><spring:message code="master.page.user.orders" /></a></li>
 					<li><a href="shippingAddress/list.do"><spring:message code="master.page.user.sas" /></a></li>
+					<li><a href="creditCard/display.do"><spring:message code="master.page.user.creditCard" /></a></li>
 					<li><a href="userAccount/edit.do"><spring:message code="master.page.changePassword" /></a></li>
 				</ul>
 			</li>
