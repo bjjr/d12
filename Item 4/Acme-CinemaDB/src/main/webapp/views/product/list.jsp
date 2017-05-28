@@ -25,10 +25,21 @@
 	
 	<acme:column code="product.idcode" property="${row.idcode}"/>
 	
-	<security:authorize access="hasRole('PRODUCER')">
-		<acme:link href="/product/producer/edit.do?productId=${row.id}" code="misc.edit"/>
+	<security:authorize access="hasRole('PRODUCER')">	
+		<display:column>
+			<jstl:if test="${isThisContentBelongToCurrentProducer == true}">
+    			<acme:link href="product/producer/edit.do?productId=${row.id}" code="misc.edit"/>	
+  			</jstl:if>
+		</display:column>
 	</security:authorize>
 			
 	
 	
 </display:table>
+
+
+<security:authorize access="hasRole('PRODUCER')">	
+	<jstl:if test="${isThisContentBelongToCurrentProducer == true}">
+	 	<acme:link href="product/producer/create.do?contentId=${contentId}" code="product.create"/>	
+	</jstl:if>
+</security:authorize>
