@@ -92,7 +92,7 @@
 	<br />
 </jstl:forEach>
 
-<acme:display code="master.page.cinematicEntity"  />
+<acme:display code="master.page.cinematicEntity" />
 <display:table pagesize="5" class="displaytag"
 	name="content.cinematicEntities" requestURI="${requestURI}" id="row">
 
@@ -149,6 +149,20 @@
 		<acme:link href="season/producer/create.do?tvShowId=${content.id}"
 			code="season.create" />
 	</jstl:if>
+</jstl:if>
+<jstl:if test="${producerId eq content.producer.id}">
+	<jstl:choose>
+		<jstl:when test="${isMovie eq false }">
+			<acme:link
+				href="tvShow/producer/addCinematicEntities.do?tvShowId=${content.id}"
+				code="content.add.cinematicEntity" />
+		</jstl:when>
+		<jstl:otherwise>
+			<acme:link
+				href="movie/producer/addCinematicEntities.do?movieId=${content.id}"
+				code="content.add.cinematicEntity" />
+		</jstl:otherwise>
+	</jstl:choose>
 </jstl:if>
 
 

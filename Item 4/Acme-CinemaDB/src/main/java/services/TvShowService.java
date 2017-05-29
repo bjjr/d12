@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,25 +29,28 @@ public class TvShowService {
 	// Managed repository -----------------------------------
 
 	@Autowired
-	private TvShowRepository	tvShowRepository;
+	private TvShowRepository		tvShowRepository;
 
 	@Autowired
-	private ProducerService		producerService;
+	private ProducerService			producerService;
 
 	@Autowired
-	private GenreService		genreService;
+	private GenreService			genreService;
 
 	@Autowired
-	private ContentService		contentService;
+	private ContentService			contentService;
 
 	@Autowired
-	private SeasonService		seasonService;
+	private SeasonService			seasonService;
 
 	@Autowired
-	private ChapterService		chapterService;
+	private ChapterService			chapterService;
 
 	@Autowired
-	private Validator			validator;
+	private CinematicEntityService	cinematicEntityService;
+
+	@Autowired
+	private Validator				validator;
 
 
 	// Constructors -----------------------------------------
@@ -101,6 +105,25 @@ public class TvShowService {
 		this.validator.validate(tvShow, binding);
 
 		return tvShow;
+	}
+
+	public TvShow addCinematicEntity(final Integer tvShowId, final List<Integer> cinematicEntitiesId) {
+		TvShow res;
+		final TvShow tvShow;
+		final Set<CinematicEntity> cinematicEntities = new HashSet<>();
+
+		tvShow = this.findOneEdit(tvShowId);
+
+		for (final Integer id : cinematicEntitiesId)
+			cinematicEntities.add(this.cinematicEntityService.findOne(id));
+
+		cinematicEntities.addAll(tvShow.getCinematicEntities());
+
+		tvShow.setCinematicEntities(cinematicEntities);
+
+		res = this.tvShowRepository.save(tvShow);
+
+		return res;
 	}
 
 	//	public void delete(final TvShow tvShow) {

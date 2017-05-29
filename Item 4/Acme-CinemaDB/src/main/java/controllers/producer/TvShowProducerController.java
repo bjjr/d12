@@ -2,6 +2,8 @@
 package controllers.producer;
 
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,9 +12,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
+import services.CinematicEntityService;
 import services.GenreService;
 import services.TvShowService;
+import domain.CinematicEntity;
 import domain.TvShow;
 import forms.MovieForm;
 
@@ -23,10 +28,13 @@ public class TvShowProducerController {
 	// Services
 
 	@Autowired
-	private TvShowService	tvShowService;
+	private TvShowService			tvShowService;
 
 	@Autowired
-	private GenreService	genreService;
+	private GenreService			genreService;
+
+	@Autowired
+	private CinematicEntityService	cinematicEntityService;
 
 
 	// Constructors
@@ -118,6 +126,47 @@ public class TvShowProducerController {
 	//
 	//		return result;
 	//	}
+
+	@RequestMapping(value = "/producer/addCinematicEntities", method = RequestMethod.GET)
+	public ModelAndView add(@RequestParam final int tvShowId) {
+		ModelAndView res;
+		MovieForm movieForm;
+		final Map<Integer, String> idList = new HashMap<>();
+		final Collection<CinematicEntity> cinematicEntities = this.cinematicEntityService.findAll();
+
+		cinematicEntities.removeAll(this.tvShowService.findOneEdit(tvShowId).getCinematicEntities());
+
+		for (final CinematicEntity ce : cinematicEntities)
+			idList.put(ce.getId(), ce.getName());
+
+		movieForm = new MovieForm();
+
+		movieForm.setId(tvShowId);
+
+		res = new ModelAndView("content/producer/addCinematicEntities");
+		res.addObject("movieForm", movieForm);
+		res.addObject("action", "tvShow/producer/addCinematicEntities.do");
+		res.addObject("listURL", "content/display.do?contentId=" + movieForm.getId());
+		res.addObject("idList", idList);
+
+		return res;
+	}
+	@RequestMapping(value = "/producer/addCinematicEntities", method = RequestMethod.POST, params = "save")
+	public ModelAndView addSave(final MovieForm movieForm, final BindingResult binding) {
+		ModelAndView res;
+
+		try {
+			this.tvShowService.addCinematicEntity(movieForm.getId(), movieForm.getGenres());
+			res = new ModelAndView("redirect:/content/display.do?contentId=" + movieForm.getId());
+		} catch (final Throwable e) {
+			res = new ModelAndView();
+			res.setView(new RedirectView("addCinematicEntities.do?tvShowId=" + movieForm.getId()));
+			res.addObject("message", "misc.commit.error");
+		}
+
+		return res;
+	}
+
 	// Ancillary methods ---------------------
 
 	protected ModelAndView createEditModelAndView(final MovieForm tvShowForm) {

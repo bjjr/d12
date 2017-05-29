@@ -4,6 +4,8 @@ package services;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,22 +27,25 @@ public class MovieService {
 	// Managed repository -----------------------------------
 
 	@Autowired
-	private MovieRepository	movieRepository;
+	private MovieRepository			movieRepository;
 
 	@Autowired
-	private ContentService	contentService;
+	private ContentService			contentService;
 
 	@Autowired
-	private TvShowService	tvShowService;
+	private TvShowService			tvShowService;
 
 	@Autowired
-	private ProducerService	producerService;
+	private ProducerService			producerService;
 
 	@Autowired
-	private GenreService	genreService;
+	private GenreService			genreService;
 
 	@Autowired
-	private Validator		validator;
+	private CinematicEntityService	cinematicEntityService;
+
+	@Autowired
+	private Validator				validator;
 
 
 	// Constructors -----------------------------------------
@@ -67,6 +72,24 @@ public class MovieService {
 		return res;
 	}
 
+	public Movie addCinematicEntity(final Integer movieId, final List<Integer> cinematicEntitiesId) {
+		Movie res;
+		final Movie movie;
+		final Set<CinematicEntity> cinematicEntities = new HashSet<>();
+
+		movie = this.findOneEdit(movieId);
+
+		for (final Integer id : cinematicEntitiesId)
+			cinematicEntities.add(this.cinematicEntityService.findOne(id));
+
+		cinematicEntities.addAll(movie.getCinematicEntities());
+
+		movie.setCinematicEntities(cinematicEntities);
+
+		res = this.movieRepository.save(movie);
+
+		return res;
+	}
 	public Movie reconstruct(final MovieForm movieForm, final BindingResult binding) {
 		Movie aux, movie;
 		final Collection<Genre> selectedGenres = new ArrayList<>();
