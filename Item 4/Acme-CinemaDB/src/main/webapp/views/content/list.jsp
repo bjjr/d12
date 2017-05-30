@@ -26,9 +26,9 @@
 
 	<acme:column code="content.title" property="${row.title}" />
 
-		<spring:message code="content.genre" var="genreTitle" />
-		
-		<display:column title="${genreTitle}">
+	<spring:message code="content.genre" var="genreTitle" />
+
+	<display:column title="${genreTitle}">
 		<jstl:forEach items="${row.genres }" var="genre">
 			<jstl:choose>
 				<jstl:when test="${genre.kind eq 0 }">
@@ -98,6 +98,12 @@
 		</jstl:choose>
 		</display:column>
 	</security:authorize>
+	
+	<jstl:if test="${isProducer == true }">
+		<display:column>
+			<acme:link href="content/producer/edit.do?contentId=${row.id}" code="misc.edit" />
+		</display:column>
+	</jstl:if>
 
 	<display:column><a href="content/display.do?contentId=${row.id}"><spring:message code="misc.view" /></a></display:column>
 	

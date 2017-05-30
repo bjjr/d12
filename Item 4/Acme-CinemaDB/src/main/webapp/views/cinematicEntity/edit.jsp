@@ -38,9 +38,6 @@
 
 	<acme:submit name="save" code="socialIdentity.save" />
 
-	<acme:delete confirmationCode="socialIdentity.confirm.delete"
-		buttonCode="socialIdentity.delete" id="${socialIdentity.id}" />
-
-	<acme:cancel url="socialIdentity/list.do" code="socialIdentity.cancel" />
+	<acme:cancel url="cinematicEntity/list.do" code="socialIdentity.cancel" />
 
 </form:form>

@@ -10,14 +10,14 @@
 
 <tiles-definitions>
 
-	<definition name="season/display" extends="master.page">
-		<put-attribute name="title" value="View season" />
-		<put-attribute name="body" value="/views/season/display.jsp" />
+	<definition name="movie/producer/list" extends="master.page">
+		<put-attribute name="title" value="List of content" />
+		<put-attribute name="body" value="/views/movie/list.jsp" />
 	</definition>
 
-	<definition name="season/producer/edit" extends="master.page">
-		<put-attribute name="title" value="Edit season" />
-		<put-attribute name="body" value="/views/season/edit.jsp" />
+	<definition name="movie/producer/edit" extends="master.page">
+		<put-attribute name="title" value="Create content" />
+		<put-attribute name="body" value="/views/movie/edit.jsp" />
 	</definition>
 
 </tiles-definitions>

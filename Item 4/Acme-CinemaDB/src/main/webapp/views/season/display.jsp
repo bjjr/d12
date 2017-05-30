@@ -17,6 +17,17 @@
 <br />
 <display:table pagesize="5" class="displaytag" name="chapters"
 	requestURI="${requestURI}" id="row">
-	<acme:column code="cinematicEntity.name" property="${ row.name}"/>
-	</display:table>
+	<acme:column code="cinematicEntity.name" property="${ row.name}" />
+	<jstl:if test="${producerId eq season.tvShow.producer.id}">
+		<display:column>
+			<acme:link href="chapter/producer/edit.do?chapterId=${row.id}"
+				code="misc.edit" />
 
+		</display:column>
+	</jstl:if>
+</display:table>
+
+<jstl:if test="${producerId eq season.tvShow.producer.id}">
+	<acme:link href="chapter/producer/create.do?seasonId=${season.id}"
+		code="chapter.create" />
+</jstl:if>

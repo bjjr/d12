@@ -60,7 +60,6 @@ public class CinematicEntityService {
 	}
 
 	public CinematicEntity reconstruct(final CinematicEntity cinematicEntity, final BindingResult binding) {
-		cinematicEntity.setProducer(this.producerService.findByPrincipal());
 
 		this.validator.validate(cinematicEntity, binding);
 

@@ -13,7 +13,6 @@
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
-<%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <div>
 	<img src="images/logo.png" alt="Acme-CinemaDB, Inc." />
@@ -50,6 +49,8 @@
 					<li><a href="invoice/producer/list.do"><spring:message code="master.page.invoice.list" /></a></li>
 					<li><a href="creditCard/display.do"><spring:message code="master.page.user.creditCard" /></a></li>
 					<li><a href="campaign/producer/list.do"><spring:message code="master.page.campaign.list" /></a></li>
+					<li><a href="movie/producer/list.do"><spring:message code="master.page.producer.list.movies" /></a></li>
+					<li><a href="tvShow/producer/list.do"><spring:message code="master.page.producer.list.tvShow" /></a></li>
 					<li><a href="messageEntity/sendToAdmin.do"><spring:message code="master.page.messageEntity.sentToAdmin" /></a></li>
 					<li><a href="messageEntity/listSent.do"><spring:message code="master.page.messageEntity.sentMessages" /></a></li>
 					<li><a href="messageEntity/listReceived.do"><spring:message code="master.page.messageEntity.receivedMessages" /></a></li>

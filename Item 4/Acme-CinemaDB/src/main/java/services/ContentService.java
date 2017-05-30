@@ -1,15 +1,12 @@
 
 package services;
 
-import java.lang.annotation.Annotation;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-import javax.validation.Payload;
-import javax.validation.constraints.Pattern.Flag;
-
-import org.hibernate.validator.constraints.URL;
-import org.hibernate.validator.internal.constraintvalidators.URLValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,6 +24,9 @@ public class ContentService {
 
 	@Autowired
 	private ContentRepository	contentRepository;
+
+	@Autowired
+	private ProducerService		producerService;
 
 
 	// Constructors -----------------------------------------
@@ -59,7 +59,30 @@ public class ContentService {
 		return result;
 	}
 
+	public Content findOneEdit(final int contentId) {
+		Assert.notNull(contentId);
+		Assert.isTrue(contentId != 0);
+
+		Content result;
+
+		result = this.contentRepository.findOne(contentId);
+		Assert.notNull(result);
+		Assert.isTrue(result.getProducer().equals(this.producerService.findByPrincipal()), "Couldn`t edit this content");
+
+		return result;
+	}
+
 	// Other CRUD methods ----------------------------------
+
+	public Collection<Content> findAllProducer() {
+		Collection<Content> result;
+
+		result = this.contentRepository.findAllProducer(this.producerService.findByPrincipal().getId());
+		Assert.notNull(result);
+
+		return result;
+
+	}
 
 	public List<Content> searchContent(final String s) {
 		List<Content> resultContent;
@@ -78,66 +101,18 @@ public class ContentService {
 	 *            The BindingResult used in the form to inject error messages if necessary
 	 */
 
-	private void checkURLs(final Collection<String> paths, final BindingResult binding) {
-		URLValidator urlValidator;
+	public void checkURLs(final Collection<String> paths, final BindingResult binding) {
 
-		urlValidator = new URLValidator();
-
-		urlValidator.initialize(new URL() {
-
-			@Override
-			public Class<? extends Annotation> annotationType() {
-				return null;
-			}
-
-			@Override
-			public String regexp() {
-				return "^https?:\\/\\/www\\.youtube\\.com\\/watch\\?v=[^= &?/\\r\\n]{8,11}$"; // Matches Youtube URLs
-			}
-
-			@Override
-			public String protocol() {
-				return null;
-			}
-
-			@Override
-			public int port() {
-				return -1;
-			}
-
-			@Override
-			public Class<? extends Payload>[] payload() {
-				return null;
-			}
-
-			@Override
-			public String message() {
-				return "content.video.invalid";
-			}
-
-			@Override
-			public String host() {
-				return null;
-			}
-
-			@Override
-			public Class<?>[] groups() {
-				return null;
-			}
-
-			@Override
-			public Flag[] flags() {
-				return null;
-			}
-		});
-
-		for (final String s : paths)
-			if (!urlValidator.isValid(s, null)) {
+		final Pattern youtube = Pattern.compile("^https?:\\/\\/www\\.youtube\\.com\\/watch\\?v=[^= &?/\\r\\n]{8,11}$");
+		Matcher m;
+		for (final String s : paths) {
+			m = youtube.matcher(s);
+			if (m.matches() == false) {
 				binding.rejectValue("videos", "content.video.invalid");
 				break;
 			}
+		}
 	}
-
 	/**
 	 * Given a Youtube URL this method returns the videoID.
 	 * 
@@ -146,12 +121,21 @@ public class ContentService {
 	 * @return The videoID to be stored in the DB.
 	 */
 
-	private String getYoutubeVideoId(final String url) {
+	public String getYoutubeVideoId(final String url) {
 		String res;
 		String[] fragments;
 
 		fragments = url.split("="); // Splits the url. There is only one "=" character, the right part after the split is the videoID.
 		res = fragments[1]; // Get the second part of the spliced URL, which is the videoID.
+
+		return res;
+	}
+
+	public List<String> listYoutubeId(final Collection<String> collection) {
+		final List<String> res = new ArrayList<>();
+
+		for (final String string : collection)
+			res.add(this.getYoutubeVideoId(string));
 
 		return res;
 	}

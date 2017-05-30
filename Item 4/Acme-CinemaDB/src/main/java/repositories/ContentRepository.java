@@ -15,4 +15,7 @@ public interface ContentRepository extends JpaRepository<Content, Integer> {
 	@Query("select c from Content c where c.title like %?1%")
 	List<Content> searchContent(String s);
 
+	@Query("select c from Content c where c.producer.id = ?1")
+	List<Content> findAllProducer(int producerId);
+
 }
