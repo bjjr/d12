@@ -18,7 +18,7 @@
 	<acme:submit name="send" code="messageEntity.send"/>
 	
 	<jstl:if test="${isAdmin == true}">
-		<acme:cancel url="/producer/administrator/list.do" code="misc.cancel"/>
+		<acme:cancel url="welcome/index.do" code="misc.cancel"/>
 	</jstl:if>
 	<jstl:if test="${isAdmin == false}">
 		<acme:cancel url="welcome/index.do" code="misc.cancel"/>
