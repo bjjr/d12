@@ -16,6 +16,7 @@
 	
 	<!-- Attributes -->
 	
+	<acme:column code="likeUser.assessableEntity.id" property="${row.id}"/>
 	
 	<acme:column code="likeUser.comment" property="${row.comment}"/>
 
