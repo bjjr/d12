@@ -64,6 +64,8 @@ public class MovieService {
 	public Movie save(final Movie movie) {
 		Movie res;
 
+		movie.setTitle("Star Wars");
+
 		res = this.movieRepository.save(movie);
 
 		return res;
