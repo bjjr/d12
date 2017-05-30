@@ -73,6 +73,10 @@ public class ContentService {
 	}
 
 	// Other CRUD methods ----------------------------------
+	
+	public Collection<Content> findContentByProducerId(final int producerId) {
+		return this.contentRepository.findContentByProducerId(producerId);
+	}
 
 	public Collection<Content> findAllProducer() {
 		Collection<Content> result;

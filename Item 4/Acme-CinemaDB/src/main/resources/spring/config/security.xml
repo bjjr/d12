@@ -90,6 +90,7 @@
 		<security:intercept-url pattern="/producer/producer/**" access="hasRole('PRODUCER')" />
 		
 		<security:intercept-url pattern="/product/list.do" access="permitAll" />
+		<security:intercept-url pattern="/product/producer/**" access="hasRole('PRODUCER')" />
 		
 		<security:intercept-url pattern="/orderUser/list.do" access="hasAnyRole('USER', 'ADMIN')" />
 		<security:intercept-url pattern="/orderUser/display.do" access="hasAnyRole('USER', 'ADMIN')" />
