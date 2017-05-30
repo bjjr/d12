@@ -90,20 +90,18 @@ public class ProductService {
 		this.productRepository.delete(product);
 	}
 	public Product reconstruct(final Product product, final BindingResult bindingResult) {
-		Product reconstructed;
+		final Product reconstructed = product;
 
-		if (product.getId() == 0) {
-			reconstructed = product;
+		if (product.getId() == 0)
 			reconstructed.setIdcode(this.generateIdCode());
-		} else {
-			reconstructed = this.findOne(product.getId());
-			reconstructed.setName(product.getName());
-			reconstructed.setPrice(product.getPrice());
-			reconstructed.setStock(product.getStock());
-			reconstructed.setPicture(product.getPicture());
+		else {
+			final Product aux = this.productRepository.findOne(product.getId());
 
-			this.validator.validate(reconstructed, bindingResult);
+			reconstructed.setIdcode(aux.getIdcode());
+			reconstructed.setContent(aux.getContent());
 		}
+
+		this.validator.validate(reconstructed, bindingResult);
 
 		return reconstructed;
 	}
