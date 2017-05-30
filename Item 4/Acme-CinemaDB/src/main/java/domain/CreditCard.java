@@ -81,7 +81,7 @@ public class CreditCard extends DomainEntity implements Serializable {
 		this.month = month;
 	}
 
-	@Range(min = 100, max = 999)
+	@Range(min = 0)
 	public int getCvv() {
 		return this.cvv;
 	}
