@@ -12,9 +12,7 @@
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
 <acme:display code="content.title" property="${ content.title}" />
-<br />
 <acme:display code="content.year" property="${ content.year}" />
-<br />
 <acme:display code="content.genre" />
 <jstl:forEach items="${content.genres }" var="genre">
 	<jstl:choose>
@@ -45,7 +43,7 @@
 <acme:display code="content.avgRating" property="${ content.avgRating}" />
 <br />
 
-<acme:display code="content.images" />
+<h1><spring:message code="content.images" /></h1>
 
 <div id="jssor_1" style="position:relative;margin:0 auto;top:0px;left:0px;width:600px;height:300px;overflow:hidden;visibility:hidden;">
 
@@ -76,11 +74,14 @@
 
 <br />
 
-<acme:display code="content.videos" />
+<h1><spring:message code="content.videos" /></h1>
+
 <jstl:forEach items="${content.videos }" var="video">
 	<iframe width="560" height="315" src="https://www.youtube.com/embed/${video}" allowfullscreen style="border: 0;"></iframe>
 	<br>
 </jstl:forEach>
+
+<h1><spring:message code="cinematicEntity.list" /></h1>
 
 <display:table pagesize="5" class="displaytag"
 	name="content.cinematicEntities" requestURI="${requestURI}" id="row">
@@ -91,21 +92,19 @@
 
 	<acme:column code="cinematicEntity.surname" property="${row.surname}"/>
 
-	<acme:column code="cinematicEntity.birthdate" property="${row.birthdate}"/>
+	<acme:column code="cinematicEntity.birthdate" property="birthdate" isDate="true"/>
 	
 	<display:column>
 		<acme:link href="likeUser/listComments.do?assessableEntityId=${row.id}" code="likeUser.comments.list"/>
 	</display:column>
 	
-	<display:column>
-		<acme:link href="likeUser/create.do?assessableEntityId=${row.id}" code="likeUser.comments.create"/>
-	</display:column>
-
 	<display:column><a href="cinematicEntity/display.do?cinematicEntityId=${row.id }"><spring:message code="misc.view" /></a></display:column>
 	
 </display:table>
 
 <jstl:if test="${isMovie eq false }">
+	<h1><spring:message code="content.seasons" /></h1>
+	
 	<display:table pagesize="5" class="displaytag" name="seasons"
 		requestURI="${requestURI}" id="row">
 

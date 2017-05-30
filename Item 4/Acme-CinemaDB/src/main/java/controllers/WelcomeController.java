@@ -62,6 +62,7 @@ public class WelcomeController extends AbstractController {
 		result.addObject("name", name);
 		result.addObject("moment", moment);
 		result.addObject("banner", banner);
+		result.addObject("conf", conf);
 
 		return result;
 	}
