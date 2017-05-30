@@ -40,7 +40,7 @@ public class LikeUserUserController extends AbstractController {
 	public ModelAndView like(@RequestParam final int assessableEntityId) {
 		final ModelAndView view = new ModelAndView("redirect:/");
 
-		this.likeUserService.like(assessableEntityId);
+		//this.likeUserService.like(assessableEntityId); INTENTIONAL BUG FOR ACCEPTANCE TEST
 
 		return view;
 	}
