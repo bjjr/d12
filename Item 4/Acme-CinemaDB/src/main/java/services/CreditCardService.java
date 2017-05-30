@@ -174,7 +174,6 @@ public class CreditCardService {
 		Assert.notNull(actor, "You are not logged as an User");
 
 		creditCard = this.creditCardRepository.findCreditCardByActorId(actor.getId());
-		Assert.notNull(creditCard);
 
 		return creditCard;
 	}

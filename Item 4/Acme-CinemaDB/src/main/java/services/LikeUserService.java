@@ -36,22 +36,41 @@ public class LikeUserService {
 	// Simple CRUD methods --------------------------
 
 	public LikeUser create(final int assessableEntityId) {
-		final LikeUser likeUser = new LikeUser();
+		final User currentUser = this.userService.findByPrincipal();
 
-		likeUser.setComment("");
+		LikeUser likeUser = this.findByUserAndAssessableEntity(currentUser.getId(), assessableEntityId);    // if already a like user exists get that like user 
 
-		likeUser.setUser(this.userService.findByPrincipal());
-		likeUser.setAssessableEntity(this.assessableEntityService.findOne(assessableEntityId));
+		if (likeUser == null) {
+			likeUser = new LikeUser();
+
+			likeUser.setComment(null);
+
+			likeUser.setUser(currentUser);
+			likeUser.setAssessableEntity(this.assessableEntityService.findOne(assessableEntityId));
+		}
 
 		return likeUser;
 	}
 
 	public LikeUser save(final LikeUser likeUser) {
-		//todo: faltan restricciones
+		final User currentUser = this.userService.findByPrincipal();
+
+		Assert.isTrue(!this.alreadyExistsTheLikeUser(likeUser), "LikeUserService.save: The likeUser already exists");
+		Assert.isTrue(likeUser.getUser().equals(currentUser), "LikeUserService.save: You can't save a like user that doesnt belong to you");
 
 		final LikeUser savedLikeUser = this.likeUserRepository.save(likeUser);
-
 		return savedLikeUser;
+	}
+
+	public void delete(final LikeUser likeUser) {
+		final LikeUser likeUserRetrieved = this.findOne(likeUser.getId());
+		Assert.notNull(likeUserRetrieved);
+
+		final User currentUser = this.userService.findByPrincipal();
+
+		Assert.isTrue(likeUserRetrieved.getUser().equals(currentUser), "LikeUserService.delete: You can't delete a like user that doesnt belong to you");
+
+		this.likeUserRepository.delete(likeUserRetrieved);
 	}
 
 	public Collection<LikeUser> findAll() {
@@ -66,9 +85,27 @@ public class LikeUserService {
 
 	public Collection<LikeUser> findAllByPrincipal() {
 		final User currentUser = this.userService.findByPrincipal();
-		final Collection<LikeUser> likeUserByPrincipal = this.likeUserRepository.findAllByUserAccountId(currentUser.getId());
+		final Collection<LikeUser> likeUserByPrincipal = this.likeUserRepository.findAllByPrincipal(currentUser.getId());
 
 		return likeUserByPrincipal;
+	}
+
+	public void like(final int assessableEntityId) {
+		final LikeUser likeUser = this.create(assessableEntityId);
+
+		this.save(likeUser);
+	}
+
+	public void unlike(final int assessableEntityId) {
+		final User currentUser = this.userService.findByPrincipal();
+
+		final LikeUser retrievedLikeUser = this.findByUserAndAssessableEntity(currentUser.getId(), assessableEntityId);
+
+		this.delete(retrievedLikeUser);
+	}
+
+	public LikeUser findByUserAndAssessableEntity(final int userId, final int assessableEntityId) {
+		return this.likeUserRepository.findByUserAndAssessableEntity(userId, assessableEntityId);
 	}
 
 	public Collection<LikeUser> findContentLikes(final int userId) {
@@ -114,5 +151,18 @@ public class LikeUserService {
 			reconstructed.setComment(null);
 
 		return reconstructed;
+	}
+
+	private Boolean alreadyExistsTheLikeUser(final LikeUser likeUser) {
+		final Collection<LikeUser> allLikeUserOfCurrentUser = this.findAllByPrincipal();
+		Boolean res = false;
+
+		for (final LikeUser lu : allLikeUserOfCurrentUser)
+			if (lu.getAssessableEntity().getId() == likeUser.getAssessableEntity().getId() && lu.getId() != likeUser.getId()) {
+				res = true;
+				break;
+			}
+
+		return res;
 	}
 }

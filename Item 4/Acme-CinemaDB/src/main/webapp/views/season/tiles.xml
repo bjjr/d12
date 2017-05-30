@@ -15,4 +15,9 @@
 		<put-attribute name="body" value="/views/season/display.jsp" />
 	</definition>
 
+	<definition name="season/producer/edit" extends="master.page">
+		<put-attribute name="title" value="Edit season" />
+		<put-attribute name="body" value="/views/season/edit.jsp" />
+	</definition>
+
 </tiles-definitions>

@@ -10,9 +10,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import services.CreditCardService;
 import services.InvoiceService;
 import services.ProducerService;
 import controllers.AbstractController;
+import domain.CreditCard;
 import domain.Invoice;
 import domain.Producer;
 
@@ -21,10 +23,13 @@ import domain.Producer;
 public class InvoiceProducerController extends AbstractController {
 
 	@Autowired
-	private InvoiceService	invoiceService;
+	private InvoiceService		invoiceService;
 
 	@Autowired
-	private ProducerService	producerService;
+	private ProducerService		producerService;
+
+	@Autowired
+	private CreditCardService	creditCardService;
 
 
 	// Constructors -------------------------------------------
@@ -57,13 +62,24 @@ public class InvoiceProducerController extends AbstractController {
 	public ModelAndView setPaid(@RequestParam final int invoiceId) {
 		ModelAndView result;
 		Invoice invoice;
+		Producer producer;
+		CreditCard creditCard;
 
 		invoice = this.invoiceService.findOne(invoiceId);
+		producer = this.producerService.findByPrincipal();
+		creditCard = producer.getCreditCard();
+		result = new ModelAndView();
 
 		try {
-			this.invoiceService.setPaid(invoice);
-			result = new ModelAndView("redirect:list.do");
-			result.addObject("messageStatus", "misc.commit.ok");
+			if (creditCard == null)
+				result = new ModelAndView("redirect:/creditCard/create.do");
+			if (creditCard != null && !this.creditCardService.isCreditCardDateValid(creditCard))
+				result = new ModelAndView("redirect:/creditCard/edit.do?creditCardId=" + creditCard.getId());
+			if (creditCard != null && this.creditCardService.isCreditCardDateValid(creditCard)) {
+				this.invoiceService.setPaid(invoice);
+				result = new ModelAndView("redirect:list.do");
+				result.addObject("messageStatus", "misc.commit.ok");
+			}
 		} catch (final Throwable oops) {
 			result = new ModelAndView("redirect:list.do");
 			result.addObject("messageStatus", "misc.commit.error");

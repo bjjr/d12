@@ -102,10 +102,20 @@ public class InvoiceService {
 		Assert.isTrue(this.actorService.checkAuthority("PRODUCER"));
 		Assert.isTrue(!invoice.getPaid());
 		Assert.notNull(invoice);
-		//TODO Añadir comprobaciones de credit card
 
 		invoice.setPaid(true);
 
+	}
+
+	public Invoice findInvoiceCampaign(final int campaignId) {
+		Assert.isTrue(campaignId != 0);
+		Assert.notNull(campaignId);
+
+		Invoice result;
+
+		result = this.invoiceRepository.findInvoiceCampaign(campaignId);
+
+		return result;
 	}
 
 	public Invoice reconstruct(final Invoice invoice, final BindingResult bindingResult) {
