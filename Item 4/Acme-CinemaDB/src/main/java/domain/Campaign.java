@@ -12,7 +12,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.Valid;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -67,7 +66,6 @@ public class Campaign extends DomainEntity {
 		this.images = images;
 	}
 
-	@Min(value = 10)
 	public int getMax() {
 		return this.max;
 	}
