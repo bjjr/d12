@@ -35,6 +35,7 @@
 					<li><a href="campaign/administrator/list.do"><spring:message code="master.page.campaign.list" /></a></li>
 					<li><a href="messageEntity/listSent.do"><spring:message code="master.page.messageEntity.sentMessages" /></a></li>
 					<li><a href="messageEntity/listReceived.do"><spring:message code="master.page.messageEntity.receivedMessages" /></a></li>
+					<li><a href="dashboard/administrator/dashboard.do"><spring:message code="master.page.admin.dashboard" /></a></li>
 				</ul>
 			</li>
 			<li><a href="producer/administrator/list.do"><spring:message code="master.page.producers" /></a></li>
