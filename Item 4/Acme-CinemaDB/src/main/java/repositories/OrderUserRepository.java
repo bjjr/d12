@@ -14,4 +14,7 @@ public interface OrderUserRepository extends JpaRepository<OrderUser, Integer> {
 
 	@Query("select o from OrderUser o where o.user.id = ?1")
 	Collection<OrderUser> findOrdersByUser(int userId);
+
+	@Query("select avg(o.total) from OrderUser o")
+	Double findAvgTotalMoneyOrders();
 }
