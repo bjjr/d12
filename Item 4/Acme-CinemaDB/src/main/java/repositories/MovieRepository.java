@@ -22,7 +22,7 @@ public interface MovieRepository extends JpaRepository<Movie, Integer> {
 	List<Long> findMaxMoviesProducer();
 
 	@Query("select count(c)*1.0/(select count(p) from Producer p) from Content c where Type(c) = domain.Movie")
-	List<Long> findAvgMoviesProducer();
+	Double findAvgMoviesProducer();
 
 	@Query("select count(m), g.kind from Movie m join m.genres g group by g")
 	List<Integer[]> findNumberOfMoviesPerType();

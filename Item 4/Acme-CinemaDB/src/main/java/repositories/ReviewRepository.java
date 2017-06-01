@@ -25,7 +25,7 @@ public interface ReviewRepository extends JpaRepository<Review, Integer> {
 	@Query("select count(r)*1.0/(select count(c) from Critic c) from Review r")
 	Double findAvgReviewCritic();
 
-	@Query("select count(r) from Review r join r.critic c group by c order by count(r) des")
+	@Query("select count(r) from Review r join r.critic c group by c order by count(r) desc")
 	List<Long> findMaxReviewCritic();
 
 	@Query("select sum(r.rating)*1.0/(select count(c) from Content c where Type(c) = domain.Movie) from Review r join r.content c where Type(c) = domain.Movie")
