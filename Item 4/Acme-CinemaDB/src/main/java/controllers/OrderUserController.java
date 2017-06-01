@@ -22,10 +22,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import security.Authority;
 import services.ActorService;
-import services.CreditCardService;
 import services.OrderUserService;
 import services.ShippingAddressService;
-import domain.CreditCard;
 import domain.OrderUser;
 import domain.ShippingAddress;
 
@@ -41,8 +39,8 @@ public class OrderUserController extends AbstractController {
 	@Autowired
 	private ShippingAddressService	shippingAddressService;
 
-	@Autowired
-	private CreditCardService		creditCardService;
+	//	@Autowired
+	//	private CreditCardService		creditCardService;
 
 	@Autowired
 	private ActorService			actorService;
@@ -130,18 +128,18 @@ public class OrderUserController extends AbstractController {
 	public ModelAndView finishOrder() {
 		ModelAndView res;
 		OrderUser orderUser;
-		CreditCard creditCard;
-
-		creditCard = this.creditCardService.findActorCreditCard();
-
-		if (creditCard == null)
-			res = new ModelAndView("redirect:/creditCard/display.do?showWarning=true");
-		else if (!this.creditCardService.isCreditCardDateValid(creditCard))
-			res = new ModelAndView("redirect:/creditCard/display.do?showWarning=true");
-		else {
-			orderUser = this.orderUserService.findUnfinishedOrder();
-			res = this.createEditModelAndView(orderUser);
-		}
+		//		CreditCard creditCard;
+		//
+		//		creditCard = this.creditCardService.findActorCreditCard();
+		//
+		//		if (creditCard == null)
+		//			res = new ModelAndView("redirect:/creditCard/display.do?showWarning=true");
+		//		else if (!this.creditCardService.isCreditCardDateValid(creditCard))
+		//			res = new ModelAndView("redirect:/creditCard/display.do?showWarning=true");
+		//		else {
+		orderUser = this.orderUserService.findUnfinishedOrder();
+		res = this.createEditModelAndView(orderUser);
+		//		}
 
 		return res;
 	}
