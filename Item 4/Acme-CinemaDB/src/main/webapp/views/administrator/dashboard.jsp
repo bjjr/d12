@@ -42,7 +42,7 @@
 	<spring:message code="administrator.numberOfTvShowsPerType" />
 </h2>
 <jstl:forEach var="entry" items="${numberOfTvShowsPerType}">
-	<spring:message code="administrator.numberOfTvShowsPerType" />
+	<spring:message code="administrator.numberOfTvShowsPerType.genre" />
 	<jstl:out value="${entry[1]}" />
 	<spring:message
 		code="administrator.numberOfTvShowsPerType.quantity" />
@@ -93,17 +93,17 @@
 <h2>
 	<spring:message code="administrator.percentageOrdersInProgress" />
 </h2>
-<jstl:out value="${percentageOrdersInProgress}"></jstl:out>
+<jstl:out value="${percentageOrdersInProgress}%"></jstl:out>
 
 <h2>
 	<spring:message code="administrator.percentageOrdersSent" />
 </h2>
-<jstl:out value="${percentageOrdersSent}"></jstl:out>
+<jstl:out value="${percentageOrdersSent}%"></jstl:out>
 
 <h2>
 	<spring:message code="administrator.percentageOrdersCancelled" />
 </h2>
-<jstl:out value="${percentageOrdersCancelled}"></jstl:out>
+<jstl:out value="${percentageOrdersCancelled}%"></jstl:out>
 
 <h2>
 	<spring:message code="administrator.minReviewCritic" />
