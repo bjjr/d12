@@ -71,6 +71,9 @@
 		<bean class="converters.OrderUserToStringConverter" />
 		<bean class="converters.StringToOrderUserConverter" />
 		
+		<bean class="converters.OrderQuantityToStringConverter" />
+		<bean class="converters.StringToOrderQuantityConverter" />
+		
 		<bean class="converters.ProducerToStringConverter" />
 		<bean class="converters.StringToProducerConverter" />
 		

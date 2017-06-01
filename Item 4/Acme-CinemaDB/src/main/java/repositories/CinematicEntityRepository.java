@@ -19,4 +19,6 @@ public interface CinematicEntityRepository extends JpaRepository<CinematicEntity
 	@Query("select c from Content c join c.cinematicEntities ce where ce.id = ?1")
 	List<Content> getContents(int cinematicEntityId);
 
+	@Query("select c from CinematicEntity c where c.producer.id = ?1")
+	List<CinematicEntity> findAllProducer(int cinematicEntity);
 }

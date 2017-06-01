@@ -12,6 +12,9 @@ import domain.Movie;
 @Repository
 public interface MovieRepository extends JpaRepository<Movie, Integer> {
 
+	@Query("select m from Movie m where m.producer.id = ?1")
+	List<Movie> findAllProducer(int producerId);
+
 	@Query("select count(c) from Content c join c.producer p where Type(c) = domain.Movie group by p order by count(c) asc")
 	List<Long> findMinMoviesProducer();
 
@@ -23,4 +26,6 @@ public interface MovieRepository extends JpaRepository<Movie, Integer> {
 
 	@Query("select c.coordinates.country,count(c) from Chorbi c group by c.coordinates.country")
 	List<String[]> findNumberOfMoviesPerType();
+	
+
 }

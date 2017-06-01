@@ -7,7 +7,7 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
-<form:form action="likeUser/create.do" modelAttribute="likeUser" >
+<form:form action="likeUser/user/edit.do" modelAttribute="likeUser" >
 	
 	<form:hidden path="id"/>
 	<form:hidden path="version"/>
@@ -17,6 +17,7 @@
 	
 	<div>
 		<acme:submit name="save" code="misc.save"/>
+		<acme:submit name="delete" code="misc.delete"/>
 		<acme:cancel url="/" code="misc.cancel"/>
 	</div>
 </form:form>

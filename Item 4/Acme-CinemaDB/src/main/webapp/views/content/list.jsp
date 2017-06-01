@@ -26,9 +26,9 @@
 
 	<acme:column code="content.title" property="${row.title}" />
 
-	<acme:column code="content.year" property="${row.year}" />
+	<spring:message code="content.genre" var="genreTitle" />
 
-	<display:column title="content.genre">
+	<display:column title="${genreTitle}">
 		<jstl:forEach items="${row.genres }" var="genre">
 			<jstl:choose>
 				<jstl:when test="${genre.kind eq 0 }">
@@ -58,19 +58,56 @@
 
 	<acme:column code="content.avgRating" property="${row.avgRating}" />
 	
-	
+	<display:column>
+		<acme:link href="review/list.do?contentId=${row.id}" code="review.show"/>
+	</display:column>
 	
 	<display:column>
 		<acme:link href="likeUser/listComments.do?assessableEntityId=${row.id}" code="likeUser.comments.list"/>
 	</display:column>
 	
+	
 	<security:authorize access="hasRole('USER')">
+	
+		<jstl:set var="contains" value="false" />
+		<jstl:forEach var="likeUser" items="${likeUserCurrentUser}">
+  			<jstl:if test="${likeUser.assessableEntity eq row}">
+    			<jstl:set var="contains" value="true" />
+  			</jstl:if>
+		</jstl:forEach>
+		
 		<display:column>
-			<acme:link href="likeUser/create.do?assessableEntityId=${row.id}" code="likeUser.comments.create"/>
+			<jstl:choose>
+				<jstl:when test="${contains == false}">
+					<acme:link href="likeUser/user/like.do?assessableEntityId=${row.id}" code="likeUser.like"/>
+				</jstl:when>
+				<jstl:otherwise>
+					<acme:link href="likeUser/user/unlike.do?assessableEntityId=${row.id}" code="likeUser.unlike"/>
+				</jstl:otherwise>
+			</jstl:choose>		
+		</display:column>
+	
+		<display:column>
+		<jstl:choose>
+			<jstl:when test="${contains == false}">
+				<acme:link href="likeUser/user/create.do?assessableEntityId=${row.id}" code="likeUser.comments.createAndLike"/>
+			</jstl:when>
+			<jstl:otherwise>
+				<acme:link href="likeUser/user/create.do?assessableEntityId=${row.id}" code="likeUser.comments.create"/>
+			</jstl:otherwise>
+		</jstl:choose>
 		</display:column>
 	</security:authorize>
+	
+	<jstl:if test="${isProducer == true }">
+		<display:column>
+			<acme:link href="content/producer/edit.do?contentId=${row.id}" code="misc.edit" />
+		</display:column>
+	</jstl:if>
 
 	<display:column><a href="content/display.do?contentId=${row.id}"><spring:message code="misc.view" /></a></display:column>
-
+	
+	<display:column><acme:link href="product/list.do?contentId=${row.id}" code="product.show"/></display:column>
+	
 </display:table>
 

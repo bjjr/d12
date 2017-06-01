@@ -1,6 +1,8 @@
 
 package controllers.administrator;
 
+import java.util.Collection;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -40,6 +42,22 @@ public class ProducerAdministratorController extends AbstractController {
 		producer = this.producerService.create();
 		producerForm = new ProducerForm(producer);
 		result = this.createEditModelAndView(producerForm);
+
+		return result;
+	}
+
+	// Listing ------------------------------------------------
+
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	public ModelAndView list() {
+		final ModelAndView result;
+		Collection<Producer> producers;
+
+		producers = this.producerService.findAll();
+
+		result = new ModelAndView("producer/list");
+		result.addObject("producers", producers);
+		result.addObject("requestURI", "producer/list.do");
 
 		return result;
 	}

@@ -26,4 +26,9 @@
 		<put-attribute name="body" value="/views/cinematicEntity/display.jsp" />
 	</definition>
 	
+	<definition name="cinematicEntity/producer/edit" extends="master.page">	
+		<put-attribute name="title" value="Create actor/director" />
+		<put-attribute name="body" value="/views/cinematicEntity/edit.jsp" />
+	</definition>
+	
 </tiles-definitions>

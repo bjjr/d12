@@ -37,6 +37,7 @@
 		<value>/views/likeUser/messages</value>
 		<value>/views/messageEntity/messages</value>
 		<value>/views/orderUser/messages</value>
+		<value>/views/orderQuantity/messages</value>
 		<value>/views/producer/messages</value>
 		<value>/views/product/messages</value>
 		<value>/views/review/messages</value>
@@ -49,6 +50,7 @@
 		<value>/views/likeUser/messages</value>
 		<value>/views/invoice/messages</value>
 		<value>/views/status/messages</value>
+		<value>/views/product/messages</value>
 		
 	</util:list>
 
