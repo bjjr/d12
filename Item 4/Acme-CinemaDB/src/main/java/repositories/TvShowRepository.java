@@ -23,4 +23,7 @@ public interface TvShowRepository extends JpaRepository<TvShow, Integer> {
 	@Query("select tv from TvShow tv where tv.producer.id = ?1")
 	List<TvShow> findAllProducer(int producerId);
 
+	@Query("select count(t), g.kind from TvShow t join t.genres g group by g")
+	List<Integer[]> findNumberOfTvShowsPerType();
+
 }
