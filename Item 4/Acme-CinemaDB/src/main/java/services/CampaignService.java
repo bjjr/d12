@@ -272,7 +272,7 @@ public class CampaignService {
 		final ArrayList<Campaign> listC = (ArrayList<Campaign>) this.findAllCampaignsUnfinished();
 		if (listC.size() > 0) {
 			final Campaign c = listC.get(new Random().nextInt(listC.size()));
-			if (c.getTimesDisplayed() <= c.getMax()) {
+			if (c.getTimesDisplayed() < c.getMax()) {
 				banners = new ArrayList<>(c.getImages());
 				res = banners.get(new Random().nextInt(banners.size()));
 				this.incrementDisplayed(c);

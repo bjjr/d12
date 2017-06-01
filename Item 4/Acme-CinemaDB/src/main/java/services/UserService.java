@@ -2,6 +2,7 @@
 package services;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -128,6 +129,22 @@ public class UserService {
 		this.validator.validate(res, binding);
 
 		return res;
+	}
+
+	public List<Integer> findAllUserId() {
+		List<Integer> result;
+
+		result = this.userRepository.findAllUserId();
+
+		return result;
+	}
+
+	public List<Integer> findAllUsersWithOrdersId() {
+		List<Integer> result;
+
+		result = this.userRepository.findAllUsersWithOrdersId();
+
+		return result;
 	}
 
 }
