@@ -2,6 +2,7 @@
 package services;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
@@ -160,6 +161,24 @@ public class CriticService {
 	private void checkPasswords(final String passwd1, final String passwd2, final BindingResult binding) {
 		if (!passwd1.equals(passwd2) || (passwd1 == null || passwd2 == null))
 			binding.rejectValue("userAccount.password", "critic.password.invalid");
+	}
+
+	// Other business methods ----------------------------------
+
+	public List<Integer> findAllCriticId() {
+		List<Integer> result;
+
+		result = this.criticRepository.findAllCriticId();
+
+		return result;
+	}
+
+	public List<Integer> findAllCriticWithReviewsId() {
+		List<Integer> result;
+
+		result = this.criticRepository.findAllCriticWithReviewsId();
+
+		return result;
 	}
 
 }

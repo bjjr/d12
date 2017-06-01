@@ -2,6 +2,7 @@
 package services;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -132,6 +133,29 @@ public class ChapterService {
 		producer = this.producerService.findByPrincipal();
 
 		Assert.isTrue(result.getSeason().getTvShow().getProducer().getId() == producer.getId(), "Couldn`t edit this season");
+
+		return result;
+	}
+
+	// Other business methods ----------------------------------
+
+	public Double findAvgChaptersPerSeason() {
+		Double result;
+
+		result = this.chapterRepository.findAvgChaptersPerSeason();
+
+		return result;
+	}
+
+	public Long findMaxChaptersPerSeason() {
+		Long result;
+		List<Long> chapterMax;
+
+		result = 0L;
+		chapterMax = this.chapterRepository.findMaxChaptersPerSeason();
+
+		if (!chapterMax.isEmpty())
+			result = chapterMax.get(0);
 
 		return result;
 	}
