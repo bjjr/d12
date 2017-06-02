@@ -46,6 +46,7 @@
 		<value>/views/orderQuantity/tiles.xml</value>
 		<value>/views/socialIdentity/tiles.xml</value>
 		<value>/views/product/tiles.xml</value>
+		<value>/views/administrator/tiles.xml</value>
 	</util:list>
 
 </beans>

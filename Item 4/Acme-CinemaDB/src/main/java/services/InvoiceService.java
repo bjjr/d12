@@ -149,4 +149,28 @@ public class InvoiceService {
 
 		return result;
 	}
+
+	public Double findMinTotalMoneyInvoices() {
+		Double result;
+
+		result = this.invoiceRepository.findMinTotalMoneyInvoices();
+
+		return result;
+	}
+
+	public Double findAvgTotalMoneyInvoices() {
+		Double result;
+
+		result = this.invoiceRepository.findAvgTotalMoneyInvoices();
+
+		return result;
+	}
+
+	public Double findMaxTotalMoneyInvoices() {
+		Double result;
+
+		result = this.invoiceRepository.findMaxTotalMoneyInvoices();
+
+		return result;
+	}
 }

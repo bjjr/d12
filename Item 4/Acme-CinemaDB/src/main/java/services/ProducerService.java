@@ -2,6 +2,7 @@
 package services;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -171,6 +172,22 @@ public class ProducerService {
 		Assert.notNull(userAccount);
 		result = this.findByUserAccount(userAccount);
 		Assert.notNull(result);
+
+		return result;
+	}
+
+	public List<Integer> findAllProducerId() {
+		List<Integer> result;
+
+		result = this.producerRepository.findAllProducerId();
+
+		return result;
+	}
+
+	public List<Integer> findAllProducerWithMoviesId() {
+		List<Integer> result;
+
+		result = this.producerRepository.findAllProducerWithMoviesId();
 
 		return result;
 	}
