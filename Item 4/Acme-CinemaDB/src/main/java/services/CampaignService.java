@@ -260,10 +260,8 @@ public class CampaignService {
 
 	public void incrementDisplayed(final Campaign c) {
 		final Campaign res = c;
-		Campaign saved;
 		res.setTimesDisplayed(c.getTimesDisplayed() + 1);
-		saved = this.saveAnyone(res);
-		Assert.isTrue(res.getTimesDisplayed() == saved.getTimesDisplayed());
+		this.saveAnyone(res);
 	}
 
 	public String displayBanner() {
@@ -272,11 +270,9 @@ public class CampaignService {
 		final ArrayList<Campaign> listC = (ArrayList<Campaign>) this.findAllCampaignsUnfinished();
 		if (listC.size() > 0) {
 			final Campaign c = listC.get(new Random().nextInt(listC.size()));
-			if (c.getTimesDisplayed() < c.getMax()) {
-				banners = new ArrayList<>(c.getImages());
-				res = banners.get(new Random().nextInt(banners.size()));
-				this.incrementDisplayed(c);
-			}
+			banners = new ArrayList<>(c.getImages());
+			res = banners.get(new Random().nextInt(banners.size()));
+			this.incrementDisplayed(c);
 		}
 		return res;
 	}
