@@ -21,7 +21,7 @@ public interface CampaignRepository extends JpaRepository<Campaign, Integer> {
 	@Query("select c from Campaign c where c.end < Current_Date or c.max = c.timesDisplayed")
 	Collection<Campaign> findAllCampaignsFinished();
 
-	@Query("select c from Campaign c where ((c.start <= Current_Date and c.end >= Current_Date) or c.max > c.timesDisplayed) and c.approved = true")
+	@Query("select c from Campaign c where ((c.start <= Current_Date and c.end >= Current_Date) and c.max > c.timesDisplayed) and c.approved = true")
 	Collection<Campaign> findAllCampaignsUnfinished();
 
 	@Query("select c from Campaign c where c.producer.id = ?1")
