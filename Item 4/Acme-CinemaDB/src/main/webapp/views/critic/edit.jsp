@@ -8,6 +8,9 @@
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
 <form:form action="${action}" modelAttribute="${modelAttribute}" >
+
+	<form:hidden path="id" />
+	<form:hidden path="version" />
 		
 	<acme:textbox code="actor.name" path="name"/>
 	<br/>
