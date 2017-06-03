@@ -11,7 +11,7 @@ before_install:
     - mysql -u root < init.sql
 
 script:
-    - cd Item\ 3/Acme-CinemaDB/
+    - cd Item\ 4/Acme-CinemaDB/
     - mvn clean install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
     - mvn clean test -B
     - ls -lah
