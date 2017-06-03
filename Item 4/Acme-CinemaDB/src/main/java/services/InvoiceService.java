@@ -64,6 +64,9 @@ public class InvoiceService {
 		campaign = invoice.getCampaign();
 		current = new Date(System.currentTimeMillis());
 
+		Assert.isTrue(this.invoiceRepository.findInvoiceCampaign(campaign.getId()) == null);
+		Assert.isTrue(campaign.getApproved() != null);
+		Assert.isTrue(campaign.getApproved());
 		Assert.isTrue(campaign.getEnd().before(current) || campaign.getTimesDisplayed() == campaign.getMax());
 
 		result = this.invoiceRepository.save(invoice);
