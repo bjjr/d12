@@ -14,7 +14,9 @@ import org.springframework.validation.Validator;
 import repositories.MessageEntityRepository;
 import security.Authority;
 import domain.Actor;
+import domain.Administrator;
 import domain.MessageEntity;
+import domain.Producer;
 
 @Service
 @Transactional
@@ -29,6 +31,9 @@ public class MessageEntityService {
 
 	@Autowired
 	private ActorService			actorService;
+
+	@Autowired
+	private AdministratorService	administratorService;
 
 	// Validator --------------------------------------------
 
@@ -59,7 +64,12 @@ public class MessageEntityService {
 
 		sender = this.actorService.findByPrincipal();
 		recipient = this.actorService.findOne(recipientId);
-		Assert.isTrue(recipient.getUserAccount().getAuthorities().contains(authProducer) || recipient.getUserAccount().getAuthorities().contains(authAdmin), "You only can send messages to producers or administrator");
+
+		if (this.actorService.findByPrincipal() instanceof Administrator)
+			Assert.isTrue(recipient.getUserAccount().getAuthorities().contains(authProducer), "You only can send messages to producers");
+		else if (this.actorService.findByPrincipal() instanceof Producer)
+			Assert.isTrue(recipient.getUserAccount().getAuthorities().contains(authAdmin), "You only can send messages to the administrator");
+
 		moment = new Date(System.currentTimeMillis() - 1000);
 		Assert.isTrue(!recipient.equals(sender), "Cannot send a message to you");
 		result = new MessageEntity();
@@ -67,6 +77,19 @@ public class MessageEntityService {
 		result.setRecipient(recipient);
 		result.setCopy(false);
 		result.setMoment(moment);
+
+		return result;
+	}
+
+	public MessageEntity sendToAdmin() {
+		Assert.isTrue(this.actorService.checkAuthority("PRODUCER"));
+
+		MessageEntity result;
+		final int adminId;
+
+		adminId = this.administratorService.findAdministrator().getId();
+
+		result = this.create(adminId);
 
 		return result;
 	}

@@ -32,6 +32,7 @@
 </display:table>
 
 <jstl:if test="${!orderUser.finished && orderUser.id != 0}">
+	<spring:message code="order.costs"></spring:message>
 	<acme:display code="order.total" property="${orderUser.total}"/>
 	<acme:link href="orderUser/finish.do" code="order.finish"/>
 </jstl:if>

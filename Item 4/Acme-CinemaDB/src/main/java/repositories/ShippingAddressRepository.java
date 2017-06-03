@@ -14,4 +14,7 @@ public interface ShippingAddressRepository extends JpaRepository<ShippingAddress
 
 	@Query("select s from ShippingAddress s where s.user.id = ?1")
 	Collection<ShippingAddress> findShippingAddressesByUser(int userId);
+
+	@Query("select count(spa)*1.0/(select count(u) from User u) from ShippingAddress spa")
+	Double findAvgShippingAddressPerUser();
 }

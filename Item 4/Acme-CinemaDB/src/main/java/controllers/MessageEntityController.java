@@ -63,11 +63,10 @@ public class MessageEntityController extends AbstractController {
 	public ModelAndView sendToAdmin() {
 		ModelAndView result;
 		MessageEntity messageEntity;
-		final int adminId;
+
 		Boolean isAdmin;
 
-		adminId = this.administratorService.findAdministrator().getId();
-		messageEntity = this.messageEntityService.create(adminId);
+		messageEntity = this.messageEntityService.sendToAdmin();
 		isAdmin = false;
 
 		result = this.createEditModelAndView(messageEntity);

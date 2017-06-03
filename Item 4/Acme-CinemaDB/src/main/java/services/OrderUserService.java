@@ -326,4 +326,77 @@ public class OrderUserService {
 
 		this.save(orderUser);
 	}
+
+	public Double findAvgTotalMoneyOrdersFinished() {
+		Double result;
+
+		result = this.orderUserRepository.findAvgTotalMoneyOrdersFinished();
+
+		return result;
+	}
+
+	public Long findMinOrderUserPerUser() {
+		Long result;
+		List<Integer> allUsers, allUsersOrders;
+		List<Long> ordersMin;
+
+		allUsers = this.userService.findAllUserId();
+		allUsersOrders = this.userService.findAllUsersWithOrdersId();
+
+		if (!allUsersOrders.containsAll(allUsers))
+			return 0L;
+
+		result = 0L;
+		ordersMin = this.orderUserRepository.findMinOrderUserPerUser();
+
+		if (!ordersMin.isEmpty())
+			result = ordersMin.get(0);
+
+		return result;
+	}
+
+	public Double findAvgOrderUserPerUser() {
+		Double result;
+
+		result = this.orderUserRepository.findAvgOrderUserPerUser();
+
+		return result;
+	}
+
+	public Long findMaxOrderUserPerUser() {
+		Long result;
+		List<Long> ordersMax;
+
+		result = 0L;
+		ordersMax = this.orderUserRepository.findMaxOrderUserPerUser();
+
+		if (!ordersMax.isEmpty())
+			result = ordersMax.get(0);
+
+		return result;
+	}
+
+	public Double findPercentageOrdersInProgress() {
+		Double result;
+
+		result = this.orderUserRepository.findPercentageOrdersInProgress();
+
+		return result;
+	}
+
+	public Double findPercentageOrdersSent() {
+		Double result;
+
+		result = this.orderUserRepository.findPercentageOrdersSent();
+
+		return result;
+	}
+
+	public Double findPercentageOrdersCancelled() {
+		Double result;
+
+		result = this.orderUserRepository.findPercentageOrdersCancelled();
+
+		return result;
+	}
 }

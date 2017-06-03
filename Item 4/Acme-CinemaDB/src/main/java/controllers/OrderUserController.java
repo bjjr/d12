@@ -99,22 +99,14 @@ public class OrderUserController extends AbstractController {
 	@RequestMapping(value = "/addProduct", method = RequestMethod.GET)
 	public ModelAndView addProduct(@RequestParam final int productId) {
 		ModelAndView res;
-		CreditCard creditCard;
 
-		creditCard = this.creditCardService.findActorCreditCard();
-
-		if (creditCard == null)
-			res = new ModelAndView("redirect:/creditCard/display.do?showWarning=true");
-		else if (!this.creditCardService.isCreditCardDateValid(creditCard))
-			res = new ModelAndView("redirect:/creditCard/display.do?showWarning=true");
-		else
-			try {
-				this.orderUserService.addProduct(productId);
-				res = new ModelAndView("redirect:display.do");
-			} catch (final IllegalArgumentException e) {
-				res = new ModelAndView("redirect:display.do");
-				res.addObject("message", "order.product.repeat");
-			}
+		try {
+			this.orderUserService.addProduct(productId);
+			res = new ModelAndView("redirect:display.do");
+		} catch (final IllegalArgumentException e) {
+			res = new ModelAndView("redirect:display.do");
+			res.addObject("message", "order.product.repeat");
+		}
 
 		return res;
 	}
@@ -138,10 +130,18 @@ public class OrderUserController extends AbstractController {
 	public ModelAndView finishOrder() {
 		ModelAndView res;
 		OrderUser orderUser;
+		CreditCard creditCard;
 
-		orderUser = this.orderUserService.findUnfinishedOrder();
+		creditCard = this.creditCardService.findActorCreditCard();
 
-		res = this.createEditModelAndView(orderUser);
+		if (creditCard == null)
+			res = new ModelAndView("redirect:/creditCard/display.do?showWarning=true");
+		else if (!this.creditCardService.isCreditCardDateValid(creditCard))
+			res = new ModelAndView("redirect:/creditCard/display.do?showWarning=true");
+		else {
+			orderUser = this.orderUserService.findUnfinishedOrder();
+			res = this.createEditModelAndView(orderUser);
+		}
 
 		return res;
 	}

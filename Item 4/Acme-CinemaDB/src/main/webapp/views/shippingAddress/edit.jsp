@@ -37,6 +37,6 @@
 	<br/>
 
 	<acme:submit name="save" code="misc.save"/>		
-	<acme:cancel url="../list.do" code="misc.cancel"/>
+	<acme:cancel url="shippingAddress/list.do" code="misc.cancel"/>
 		
 </form:form>

@@ -46,10 +46,18 @@
 		<security:intercept-url pattern="/security/loginFailure.do" access="permitAll" /> 
 		
 		<security:intercept-url pattern="/userAccount/edit.do" access="hasAnyRole('USER', 'PRODUCER', 'CRITIC')" />
-
+		
 		<security:intercept-url pattern="/cinematicEntity/list.do" access="permitAll" />
 		<security:intercept-url pattern="/cinematicEntity/display.do" access="permitAll" /> 
-		<security:intercept-url pattern="/cinematicEntity/producer/**" access="hasRole('PRODUCER')" />		 
+		<security:intercept-url pattern="/cinematicEntity/producer/**" access="hasRole('PRODUCER')" />
+		
+		<security:intercept-url pattern="/movie/producer/**" access="hasRole('PRODUCER')" />
+		
+		<security:intercept-url pattern="/tvShow/producer/**" access="hasRole('PRODUCER')" />		 
+
+		<security:intercept-url pattern="/season/producer/**" access="hasRole('PRODUCER')" />
+
+		<security:intercept-url pattern="/chapter/producer/**" access="hasRole('PRODUCER')" />
 
 		<security:intercept-url pattern="/content/**" access="permitAll" /> 
 		
@@ -83,7 +91,7 @@
 		
 		<security:intercept-url pattern="/product/list.do" access="permitAll" />
 		<security:intercept-url pattern="/product/producer/**" access="hasRole('PRODUCER')" />
-
+		
 		<security:intercept-url pattern="/orderUser/list.do" access="hasAnyRole('USER', 'ADMIN')" />
 		<security:intercept-url pattern="/orderUser/display.do" access="hasAnyRole('USER', 'ADMIN')" />
 		<security:intercept-url pattern="/orderUser/addProduct.do" access="hasRole('USER')" />
@@ -98,6 +106,8 @@
 		<security:intercept-url pattern="/shippingAddress/**" access="hasRole('USER')" />
 		
 		<security:intercept-url pattern="/socialIdentity/**" access="hasRole('USER')" />
+		
+		<security:intercept-url pattern="/dashboard/administrator/dashboard.do" access="hasRole('ADMIN')" />
 		
 		<security:intercept-url pattern="/**" access="hasRole('NONE')" />
 

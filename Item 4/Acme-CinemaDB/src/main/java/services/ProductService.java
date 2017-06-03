@@ -61,6 +61,7 @@ public class ProductService {
 
 		return product;
 	}
+
 	public Product save(final Product product) {
 		Assert.isTrue(this.actorService.checkAuthority(Authority.USER) || this.actorService.checkAuthority(Authority.PRODUCER));
 
@@ -69,9 +70,6 @@ public class ProductService {
 		res = this.productRepository.save(product);
 
 		return res;
-	}
-	public Collection<Product> findAll() {
-		return this.productRepository.findAll();
 	}
 
 	public Product findOne(final int productId) {
@@ -84,11 +82,12 @@ public class ProductService {
 		return res;
 	}
 
-	public void delete(final Product product) {
-		Assert.notNull(product);
-
-		this.productRepository.delete(product);
+	public Collection<Product> findAll() {
+		return this.productRepository.findAll();
 	}
+
+	// Other business methods -----------------------
+
 	public Product reconstruct(final Product product, final BindingResult bindingResult) {
 		final Product reconstructed = product;
 
@@ -105,8 +104,6 @@ public class ProductService {
 
 		return reconstructed;
 	}
-
-	// Other business methods -----------------------
 
 	public Collection<Product> findProductsByOrder(final int orderId) {
 		Assert.isTrue(orderId != 0);

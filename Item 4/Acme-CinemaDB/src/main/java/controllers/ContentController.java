@@ -1,6 +1,8 @@
 
 package controllers;
 
+import java.security.Principal;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -84,13 +86,21 @@ public class ContentController {
 	}
 
 	@RequestMapping(value = "/display", method = RequestMethod.GET)
-	public ModelAndView display(@RequestParam(required = true) final int contentId) {
+	public ModelAndView display(final Principal p, @RequestParam(required = true) final int contentId) {
 		ModelAndView result;
 		Content content;
 		List<Season> seasons = null;
 		Boolean isMovie = true;
+		int producerId = -999;
+		List<String> listYtId = new ArrayList<>();
 
 		content = this.contentService.findOne(contentId);
+
+		if (!content.getVideos().isEmpty())
+			listYtId = this.contentService.listYoutubeId(content.getVideos());
+
+		if (p != null)
+			producerId = this.actorService.findByPrincipal().getId();
 
 		if (!(content instanceof Movie)) {
 			isMovie = false;
@@ -102,7 +112,28 @@ public class ContentController {
 		result.addObject("content", content);
 		result.addObject("isMovie", isMovie);
 		result.addObject("seasons", seasons);
+		result.addObject("producerId", producerId);
+		result.addObject("listYtId", listYtId);
 
 		return result;
 	}
+
+	// Ancillary methods ---------------------
+
+	protected ModelAndView createEditModelAndView(final Content content) {
+		final ModelAndView res = this.createEditModelAndView(content, null);
+		return res;
+	}
+
+	protected ModelAndView createEditModelAndView(final Content content, final String message) {
+		final ModelAndView res = new ModelAndView("content/producer/edit");
+
+		res.addObject("action", "content/producer/edit.do");
+		res.addObject("modelAttribute", "content");
+		res.addObject("content", content);
+		res.addObject("message", message);
+
+		return res;
+	}
+
 }
