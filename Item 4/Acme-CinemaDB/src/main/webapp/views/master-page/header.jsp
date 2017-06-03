@@ -13,7 +13,6 @@
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@taglib prefix="security" uri="http://www.springframework.org/security/tags"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
-<%@taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <div>
 	<img src="images/logo.png" alt="Acme-CinemaDB, Inc." />
@@ -34,8 +33,12 @@
 					<li><a href="fee/administrator/list.do"><spring:message code="master.page.fee.edit" /></a></li>
 					<li><a href="invoice/administrator/list.do"><spring:message code="master.page.invoice.list" /></a></li>
 					<li><a href="campaign/administrator/list.do"><spring:message code="master.page.campaign.list" /></a></li>
+					<li><a href="messageEntity/listSent.do"><spring:message code="master.page.messageEntity.sentMessages" /></a></li>
+					<li><a href="messageEntity/listReceived.do"><spring:message code="master.page.messageEntity.receivedMessages" /></a></li>
+					<li><a href="dashboard/administrator/dashboard.do"><spring:message code="master.page.admin.dashboard" /></a></li>
 				</ul>
 			</li>
+			<li><a href="producer/administrator/list.do"><spring:message code="master.page.producers" /></a></li>
 		</security:authorize>
 		
 		<security:authorize access="hasRole('PRODUCER')">
@@ -47,6 +50,11 @@
 					<li><a href="invoice/producer/list.do"><spring:message code="master.page.invoice.list" /></a></li>
 					<li><a href="creditCard/display.do"><spring:message code="master.page.user.creditCard" /></a></li>
 					<li><a href="campaign/producer/list.do"><spring:message code="master.page.campaign.list" /></a></li>
+					<li><a href="movie/producer/list.do"><spring:message code="master.page.producer.list.movies" /></a></li>
+					<li><a href="tvShow/producer/list.do"><spring:message code="master.page.producer.list.tvShow" /></a></li>
+					<li><a href="messageEntity/sendToAdmin.do"><spring:message code="master.page.messageEntity.sentToAdmin" /></a></li>
+					<li><a href="messageEntity/listSent.do"><spring:message code="master.page.messageEntity.sentMessages" /></a></li>
+					<li><a href="messageEntity/listReceived.do"><spring:message code="master.page.messageEntity.receivedMessages" /></a></li>
 				</ul>
 			</li>
 
@@ -72,7 +80,9 @@
 					<li><a href="orderUser/list.do"><spring:message code="master.page.user.orders" /></a></li>
 					<li><a href="shippingAddress/list.do"><spring:message code="master.page.user.sas" /></a></li>
 					<li><a href="creditCard/display.do"><spring:message code="master.page.user.creditCard" /></a></li>
+					<li><a href="socialIdentity/list.do"><spring:message code="master.page.user.si" /></a></li>
 					<li><a href="userAccount/edit.do"><spring:message code="master.page.changePassword" /></a></li>
+					<li><a href="likeUser/user/listLikes.do"><spring:message code="master.page.listLikes" /></a></li>
 				</ul>
 			</li>
 		</security:authorize>

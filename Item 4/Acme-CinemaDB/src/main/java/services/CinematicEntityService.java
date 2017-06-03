@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
 
 import repositories.CinematicEntityRepository;
 import domain.CinematicEntity;
@@ -22,6 +24,14 @@ public class CinematicEntityService {
 	@Autowired
 	private CinematicEntityRepository	cinematicEntityRepository;
 
+	@Autowired
+	private ProducerService				producerService;
+
+	// Validator --------------------------------------------
+
+	@Autowired
+	private Validator					validator;
+
 
 	// Constructors -----------------------------------------
 
@@ -30,6 +40,31 @@ public class CinematicEntityService {
 	}
 
 	// Simple CRUD methods ----------------------------------
+
+	public CinematicEntity create() {
+		CinematicEntity res;
+
+		res = new CinematicEntity();
+
+		//res.setProducer(this.producerService.findByPrincipal());
+
+		return res;
+	}
+
+	public CinematicEntity save(final CinematicEntity cinematicEntity) {
+		CinematicEntity res;
+
+		res = this.cinematicEntityRepository.save(cinematicEntity);
+
+		return res;
+	}
+
+	public CinematicEntity reconstruct(final CinematicEntity cinematicEntity, final BindingResult binding) {
+
+		this.validator.validate(cinematicEntity, binding);
+
+		return cinematicEntity;
+	}
 
 	public Collection<CinematicEntity> findAll() {
 		Collection<CinematicEntity> result;
@@ -53,6 +88,18 @@ public class CinematicEntityService {
 		return result;
 	}
 
+	public CinematicEntity findOneEdit(final int cinematicEntityId) {
+		Assert.notNull(cinematicEntityId);
+		Assert.isTrue(cinematicEntityId != 0);
+
+		CinematicEntity result;
+
+		result = this.cinematicEntityRepository.findOne(cinematicEntityId);
+		Assert.notNull(result);
+		Assert.isTrue(result.getProducer().equals(this.producerService.findByPrincipal()), "Couldn`t edit this cinematicEntity");
+
+		return result;
+	}
 	// Other CRUD methods ----------------------------------
 
 	public List<CinematicEntity> searchCinematicEntity(final String s) {
@@ -69,6 +116,16 @@ public class CinematicEntityService {
 		resultContents = this.cinematicEntityRepository.getContents(cinematicEntityId);
 
 		return resultContents;
+	}
+
+	public Collection<CinematicEntity> findAllProducer() {
+		Collection<CinematicEntity> result;
+
+		result = this.cinematicEntityRepository.findAllProducer(this.producerService.findByPrincipal().getId());
+		Assert.notNull(result);
+
+		return result;
+
 	}
 
 }

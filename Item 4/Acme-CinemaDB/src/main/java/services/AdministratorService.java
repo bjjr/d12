@@ -86,4 +86,13 @@ public class AdministratorService {
 		return result;
 	}
 
+	public Administrator findAdministrator() {
+		Administrator result;
+
+		result = this.administratorRepository.findAdministrator();
+		Assert.notNull(result);
+
+		return result;
+	}
+
 }

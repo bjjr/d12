@@ -20,5 +20,13 @@
 
 	<acme:column code="likeUser.user.name" property="${row.user.name}"/>
 	
+	<security:authorize access="hasRole('USER')">
+		<display:column>
+			<jstl:if test="${row.user.id == currentUserId}">
+				<acme:link href="likeUser/user/edit.do?assessableEntityId=${row.id}" code="likeUser.comments.edit"/>
+			</jstl:if>
+		</display:column>
+	</security:authorize>
+	
 </display:table>
 

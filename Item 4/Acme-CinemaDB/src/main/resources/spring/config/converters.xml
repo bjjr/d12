@@ -92,9 +92,6 @@
 		<bean class="converters.ShippingAddressToStringConverter" />
 		<bean class="converters.StringToShippingAddressConverter" />
 		
-		<bean class="converters.StatusToStringConverter" />
-		<bean class="converters.StringToStatusConverter" />
-		
 		<bean class="converters.TvShowToStringConverter" />
 		<bean class="converters.StringToTvShowConverter" />
 		

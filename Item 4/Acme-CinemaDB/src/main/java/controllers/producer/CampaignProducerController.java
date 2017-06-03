@@ -2,6 +2,7 @@
 package controllers.producer;
 
 import java.util.Collection;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -42,13 +43,16 @@ public class CampaignProducerController extends AbstractController {
 		final ModelAndView result;
 		Collection<Campaign> campaigns;
 		Producer producer;
+		Date current;
 
 		producer = this.producerService.findByPrincipal();
 		campaigns = this.campaignService.findCampaignsProducer(producer.getId());
+		current = new Date(System.currentTimeMillis());
 
 		result = new ModelAndView("campaign/list");
 		result.addObject("campaigns", campaigns);
 		result.addObject("requestURI", "campaign/producer/list.do");
+		result.addObject("current", current);
 
 		return result;
 	}
@@ -59,10 +63,18 @@ public class CampaignProducerController extends AbstractController {
 	public ModelAndView create() {
 		ModelAndView result;
 		Campaign campaign;
+		Producer producer;
 
-		campaign = this.campaignService.create();
-		result = new ModelAndView("campaign/create");
-		result.addObject("campaign", campaign);
+		producer = this.producerService.findByPrincipal();
+
+		try {
+			campaign = this.campaignService.create();
+			result = new ModelAndView("campaign/create");
+			result.addObject("campaign", campaign);
+		} catch (final Throwable th) {
+			result = new ModelAndView("creditCard/display");
+			result.addObject("creditCard", producer.getCreditCard());
+		}
 
 		return result;
 	}

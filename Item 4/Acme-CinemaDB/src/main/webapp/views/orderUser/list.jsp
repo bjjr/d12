@@ -15,6 +15,7 @@
 <acme:link href="orderUser/list.do?displayCategory=0" code="order.display.inProgress"/>
 <acme:link href="orderUser/list.do?displayCategory=1" code="order.display.sent"/>
 <acme:link href="orderUser/list.do?displayCategory=2" code="order.display.cancelled"/>
+<br/><br/>
 	
 <display:table pagesize="5" class="displaytag" name="orders"
 	requestURI="orderUser/list.do" id="row">
