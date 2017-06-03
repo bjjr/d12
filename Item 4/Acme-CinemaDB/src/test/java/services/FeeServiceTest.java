@@ -43,11 +43,11 @@ public class FeeServiceTest extends AbstractTest {
 	public void changeFeeDriver() {
 		final Object testingData[][] = {
 			{    // Successful test
-				"admin", 234, 4.0, null
+				"admin", 231, 4.0, null
 			}, { //An actor logged as producer cannot change a fee
-				"producer1", 234, 12.0, IllegalArgumentException.class
+				"producer1", 231, 12.0, IllegalArgumentException.class
 			}, { //An administrator cannot introduce a not valid value for a fee
-				"admin", 234, -2.0, ConstraintViolationException.class
+				"admin", 231, -2.0, ConstraintViolationException.class
 			}
 		};
 

@@ -39,23 +39,44 @@ public class MessageEntityServiceTest extends AbstractTest {
 
 	// Tests ------------------------------------------------------------------
 
+	// USE CASE WITH 10 TESTS
+
 	/*
 	 * Use case: An actor who is authenticated as an administrator must be able to:
 	 * Send messages to producers
 	 * Expected errors:
+	 * - A non registered user tries to send a message --> IllegalArgumentException
+	 * - A user tries to send a message --> IllegalArgumentException
+	 * - A producer tries to send a message to another producer --> IllegalArgumentException
+	 * - A critic tries to send a message --> IllegalArgumentException
 	 * - The administrator tries to send a message to an user --> IllegalArgumentException
+	 * - The administrator tries to send a message to a critic --> IllegalArgumentException
 	 * - The administrator tries to send a message to himself --> IllegalArgumentException
 	 */
 
 	@Test
 	public void sendMessageToAProducerDriver() {
 		final Object testingData[][] = {
-			{    //The administrator cannot send a message to a user
-				"admin", 252, IllegalArgumentException.class
+			{    // A non registered user cannot send a message
+				null, 262, IllegalArgumentException.class
+			}, { // An user cannot send a message
+				"user3", 262, IllegalArgumentException.class
+			}, { // A producer tries to send a message to another producer
+				"producer1", 262, IllegalArgumentException.class
+			}, { // A critic cannot send a message
+				"critic2", 262, IllegalArgumentException.class
+			}, { //The administrator cannot send a message to a user
+				"admin", 248, IllegalArgumentException.class
+			}, { //The administrator cannot send a message to a critic
+				"admin", 254, IllegalArgumentException.class
 			}, { //The administrator cannot send a message to himself
-				"admin", 249, IllegalArgumentException.class
+				"admin", 243, IllegalArgumentException.class
 			}, { //Successful test
-				"admin", 266, null
+				"admin", 260, null
+			}, { //Successful test
+				"admin", 261, null
+			}, { //Successful test
+				"admin", 262, null
 			}
 		};
 
@@ -67,6 +88,7 @@ public class MessageEntityServiceTest extends AbstractTest {
 	 * Use case: An actor who is authenticated as a producer must be able to:
 	 * Send messages to the administrator
 	 * Expected errors:
+	 * - A
 	 * - An user tries to send a message to the administrator --> IllegalArgumentException
 	 * - A critic tries to send a message to the administrator --> IllegalArgumentException
 	 */
