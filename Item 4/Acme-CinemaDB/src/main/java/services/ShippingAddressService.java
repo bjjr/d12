@@ -143,4 +143,12 @@ public class ShippingAddressService {
 		return res;
 	}
 
+	public Double findAvgShippingAddressPerUser() {
+		Double result;
+
+		result = this.shippingAddressRepository.findAvgShippingAddressPerUser();
+
+		return result;
+	}
+
 }

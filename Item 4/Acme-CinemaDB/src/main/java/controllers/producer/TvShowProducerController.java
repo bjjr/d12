@@ -47,7 +47,7 @@ public class TvShowProducerController {
 
 		tvShows = this.tvShowService.findAllProducer();
 
-		result = new ModelAndView("movie/producer/list");
+		result = new ModelAndView("tvshow/producer/list");
 		result.addObject("requestURI", "tvShow/producer/list.do");
 		result.addObject("movies", tvShows);
 		result.addObject("isTv", isTv);
@@ -174,7 +174,7 @@ public class TvShowProducerController {
 	protected ModelAndView createEditModelAndView(final MovieForm tvShowForm, final String message) {
 		ModelAndView res;
 
-		res = new ModelAndView("movie/producer/edit");
+		res = new ModelAndView("tvshow/producer/edit");
 		res.addObject("movieForm", tvShowForm);
 		res.addObject("message", message);
 		res.addObject("action", "tvShow/producer/edit.do");

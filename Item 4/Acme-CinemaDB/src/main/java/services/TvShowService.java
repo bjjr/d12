@@ -210,4 +210,14 @@ public class TvShowService {
 
 	}
 
+	// Other business methods ----------------------------------
+
+	public List<Integer[]> findNumberOfTvShowsPerType() {
+		List<Integer[]> result;
+
+		result = this.tvShowRepository.findNumberOfTvShowsPerType();
+
+		return result;
+	}
+
 }

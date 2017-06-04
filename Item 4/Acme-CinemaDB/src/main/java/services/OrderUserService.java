@@ -16,6 +16,7 @@ import org.springframework.validation.Validator;
 
 import repositories.OrderUserRepository;
 import security.Authority;
+import domain.CreditCard;
 import domain.OrderQuantity;
 import domain.OrderUser;
 import domain.Product;
@@ -47,6 +48,9 @@ public class OrderUserService {
 
 	@Autowired
 	private ShippingAddressService	shippingAddressService;
+
+	@Autowired
+	private CreditCardService		creditCardService;
 
 	// Validator ------------------------------------
 
@@ -283,6 +287,13 @@ public class OrderUserService {
 	public OrderUser finishOrder(final OrderUser orderUser) {
 		Assert.isTrue(this.actorService.checkAuthority(Authority.USER));
 
+		CreditCard principalCard;
+
+		principalCard = this.creditCardService.findActorCreditCard();
+
+		Assert.notNull(principalCard);
+		Assert.isTrue(this.creditCardService.isCreditCardDateValid(principalCard));
+
 		Date moment;
 		OrderUser res;
 
@@ -325,5 +336,78 @@ public class OrderUserService {
 		orderUser.setStatus(status);
 
 		this.save(orderUser);
+	}
+
+	public Double findAvgTotalMoneyOrdersFinished() {
+		Double result;
+
+		result = this.orderUserRepository.findAvgTotalMoneyOrdersFinished();
+
+		return result;
+	}
+
+	public Long findMinOrderUserPerUser() {
+		Long result;
+		List<Integer> allUsers, allUsersOrders;
+		List<Long> ordersMin;
+
+		allUsers = this.userService.findAllUserId();
+		allUsersOrders = this.userService.findAllUsersWithOrdersId();
+
+		if (!allUsersOrders.containsAll(allUsers))
+			return 0L;
+
+		result = 0L;
+		ordersMin = this.orderUserRepository.findMinOrderUserPerUser();
+
+		if (!ordersMin.isEmpty())
+			result = ordersMin.get(0);
+
+		return result;
+	}
+
+	public Double findAvgOrderUserPerUser() {
+		Double result;
+
+		result = this.orderUserRepository.findAvgOrderUserPerUser();
+
+		return result;
+	}
+
+	public Long findMaxOrderUserPerUser() {
+		Long result;
+		List<Long> ordersMax;
+
+		result = 0L;
+		ordersMax = this.orderUserRepository.findMaxOrderUserPerUser();
+
+		if (!ordersMax.isEmpty())
+			result = ordersMax.get(0);
+
+		return result;
+	}
+
+	public Double findPercentageOrdersInProgress() {
+		Double result;
+
+		result = this.orderUserRepository.findPercentageOrdersInProgress();
+
+		return result;
+	}
+
+	public Double findPercentageOrdersSent() {
+		Double result;
+
+		result = this.orderUserRepository.findPercentageOrdersSent();
+
+		return result;
+	}
+
+	public Double findPercentageOrdersCancelled() {
+		Double result;
+
+		result = this.orderUserRepository.findPercentageOrdersCancelled();
+
+		return result;
 	}
 }

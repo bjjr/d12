@@ -181,4 +181,55 @@ public class MovieService {
 
 	}
 
+	// Other business methods ----------------------------------
+
+	public Long findMinMoviesProducer() {
+		Long result;
+		List<Integer> allProducers, allProducersMovies;
+		List<Long> movieMin;
+
+		allProducers = this.producerService.findAllProducerId();
+		allProducersMovies = this.producerService.findAllProducerWithMoviesId();
+
+		if (!allProducersMovies.containsAll(allProducers))
+			return 0L;
+
+		result = 0L;
+		movieMin = this.movieRepository.findMinMoviesProducer();
+
+		if (!movieMin.isEmpty())
+			result = movieMin.get(0);
+
+		return result;
+	}
+
+	public Long findMaxMoviesProducer() {
+		Long result;
+		List<Long> movieMax;
+
+		result = 0L;
+		movieMax = this.movieRepository.findMaxMoviesProducer();
+
+		if (!movieMax.isEmpty())
+			result = movieMax.get(0);
+
+		return result;
+	}
+
+	public Double findAvgMoviesProducer() {
+		Double result;
+
+		result = this.movieRepository.findAvgMoviesProducer();
+
+		return result;
+	}
+
+	public List<Integer[]> findNumberOfMoviesPerType() {
+		List<Integer[]> result;
+
+		result = this.movieRepository.findNumberOfMoviesPerType();
+
+		return result;
+	}
+
 }

@@ -64,6 +64,9 @@ public class InvoiceService {
 		campaign = invoice.getCampaign();
 		current = new Date(System.currentTimeMillis());
 
+		Assert.isTrue(this.invoiceRepository.findInvoiceCampaign(campaign.getId()) == null);
+		Assert.isTrue(campaign.getApproved() != null);
+		Assert.isTrue(campaign.getApproved());
 		Assert.isTrue(campaign.getEnd().before(current) || campaign.getTimesDisplayed() == campaign.getMax());
 
 		result = this.invoiceRepository.save(invoice);
@@ -146,6 +149,30 @@ public class InvoiceService {
 		Collection<Invoice> result;
 
 		result = this.invoiceRepository.findInvoicesProducer(producerId);
+
+		return result;
+	}
+
+	public Double findMinTotalMoneyInvoices() {
+		Double result;
+
+		result = this.invoiceRepository.findMinTotalMoneyInvoices();
+
+		return result;
+	}
+
+	public Double findAvgTotalMoneyInvoices() {
+		Double result;
+
+		result = this.invoiceRepository.findAvgTotalMoneyInvoices();
+
+		return result;
+	}
+
+	public Double findMaxTotalMoneyInvoices() {
+		Double result;
+
+		result = this.invoiceRepository.findMaxTotalMoneyInvoices();
 
 		return result;
 	}

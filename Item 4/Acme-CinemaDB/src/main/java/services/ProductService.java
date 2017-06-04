@@ -65,6 +65,12 @@ public class ProductService {
 	public Product save(final Product product) {
 		Assert.isTrue(this.actorService.checkAuthority(Authority.USER) || this.actorService.checkAuthority(Authority.PRODUCER));
 
+		if (this.actorService.checkAuthority(Authority.PRODUCER)) {
+			final Content content = this.contentService.findOne(product.getContent().getId());
+			final Collection<Content> allContentByPrincipal = this.contentService.findContentByProducerId(this.producerService.findByPrincipal().getId());
+			Assert.isTrue(allContentByPrincipal.contains(content), "ProductService.create: You cant create a product in a content that doesnt belong to you");
+		}
+
 		Product res;
 
 		res = this.productRepository.save(product);

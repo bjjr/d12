@@ -2,6 +2,7 @@
 package services;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -129,6 +130,29 @@ public class SeasonService {
 		producer = this.producerService.findByPrincipal();
 
 		Assert.isTrue(result.getTvShow().getProducer().getId() == producer.getId(), "Couldn`t edit this season");
+
+		return result;
+	}
+
+	// Other business methods ----------------------------------
+
+	public Double findAvgSeasonsPerTvShow() {
+		Double result;
+
+		result = this.seasonRepository.findAvgSeasonsPerTvShow();
+
+		return result;
+	}
+
+	public Long findMaxSeasonsPerTvShow() {
+		Long result;
+		List<Long> seasonMax;
+
+		result = 0L;
+		seasonMax = this.seasonRepository.findMaxSeasonsPerTvShow();
+
+		if (!seasonMax.isEmpty())
+			result = seasonMax.get(0);
 
 		return result;
 	}

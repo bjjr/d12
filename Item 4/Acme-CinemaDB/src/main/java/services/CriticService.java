@@ -2,6 +2,7 @@
 package services;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
@@ -67,15 +68,14 @@ public class CriticService {
 		return res;
 	}
 
-	public Critic save(Critic critic) {
+	public Critic save(final Critic critic) {
 		Assert.notNull(critic);
 		final Critic res;
 
 		if (critic.getId() == 0) {
 			Assert.isTrue(critic.getUserAccount().getAuthorities().iterator().next().getAuthority().equals("CRITIC"));
 			critic.getUserAccount().setPassword(this.hashCodePassword(critic.getUserAccount().getPassword()));
-		} else
-			critic = (Critic) this.actorService.findByPrincipal();
+		}
 
 		res = this.criticRepository.save(critic);
 		return res;
@@ -95,8 +95,6 @@ public class CriticService {
 		final Critic res = critic;
 		final Critic principal = this.findByPrincipal();
 
-		res.setId(principal.getId());
-		res.setVersion(principal.getVersion());
 		res.setCreditCard(principal.getCreditCard());
 		res.setUserAccount(principal.getUserAccount());
 
@@ -160,6 +158,24 @@ public class CriticService {
 	private void checkPasswords(final String passwd1, final String passwd2, final BindingResult binding) {
 		if (!passwd1.equals(passwd2) || (passwd1 == null || passwd2 == null))
 			binding.rejectValue("userAccount.password", "critic.password.invalid");
+	}
+
+	// Other business methods ----------------------------------
+
+	public List<Integer> findAllCriticId() {
+		List<Integer> result;
+
+		result = this.criticRepository.findAllCriticId();
+
+		return result;
+	}
+
+	public List<Integer> findAllCriticWithReviewsId() {
+		List<Integer> result;
+
+		result = this.criticRepository.findAllCriticWithReviewsId();
+
+		return result;
 	}
 
 }

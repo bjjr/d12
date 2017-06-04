@@ -2,6 +2,7 @@
 package services;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -112,6 +113,67 @@ public class ReviewService {
 		Assert.isTrue(res.getCritic().getId() == critic.getId());
 
 		return res;
+	}
+
+	// Other business methods -----------------------------------
+
+	public Long findMinReviewCritic() {
+		Long result;
+		List<Integer> allCritics, allCriticsReviews;
+		List<Long> reviewMin;
+
+		allCritics = this.criticService.findAllCriticId();
+		allCriticsReviews = this.criticService.findAllCriticWithReviewsId();
+
+		if (!allCriticsReviews.containsAll(allCritics))
+			return 0L;
+
+		result = 0L;
+		reviewMin = this.reviewRepository.findMinReviewCritic();
+
+		if (!reviewMin.isEmpty())
+			result = reviewMin.get(0);
+
+		return result;
+
+	}
+
+	public Double findAvgReviewCritic() {
+		Double result;
+
+		result = this.reviewRepository.findAvgReviewCritic();
+
+		return result;
+	}
+
+	public Long findMaxReviewCritic() {
+		Long result;
+		List<Long> reviewMax;
+
+		result = 0L;
+		reviewMax = this.reviewRepository.findMaxReviewCritic();
+
+		if (!reviewMax.isEmpty())
+			result = reviewMax.get(0);
+
+		return result;
+
+	}
+
+	public Double findAvgRatingMovies() {
+		Double result;
+
+		result = this.reviewRepository.findAvgRatingMovies();
+
+		return result;
+	}
+
+	public Double findAvgRatingTvShows() {
+		Double result;
+
+		result = this.reviewRepository.findAvgRatingTvShows();
+
+		return result;
 	}
 
 }
