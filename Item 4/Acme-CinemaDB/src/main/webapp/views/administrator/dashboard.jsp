@@ -31,10 +31,31 @@
 </h2>
 <jstl:forEach var="entry" items="${numberOfMoviesPerType}">
 	<spring:message code="administrator.numberOfMoviesPerType.genre" />
-	<jstl:out value="${entry[1]}" />
+	<jstl:out value=": "></jstl:out>
+	<jstl:if test="${entry[1] eq 0}">
+		<spring:message code="administrator.genre.action" />
+	</jstl:if>
+	<jstl:if test="${entry[1] eq 1}">
+		<spring:message code="administrator.genre.adventure" />
+	</jstl:if>
+	<jstl:if test="${entry[1] eq 2}">
+		<spring:message code="administrator.genre.comedy" />
+	</jstl:if>
+	<jstl:if test="${entry[1] eq 3}">
+		<spring:message code="administrator.genre.drama" />
+	</jstl:if>
+	<jstl:if test="${entry[1] eq 4}">
+		<spring:message code="administrator.genre.horror" />
+	</jstl:if>
+	<jstl:if test="${entry[1] eq 5}">
+		<spring:message code="administrator.genre.animation" />
+	</jstl:if>
+	<jstl:if test="${entry[1] eq 6}">
+		<spring:message code="administrator.genre.sci-fi" />
+	</jstl:if>
 	<spring:message
 		code="administrator.numberOfMoviesPerType.quantity" />
-	<jstl:out value="${entry[0]}" />
+	<jstl:out value=": ${entry[0]}" />
 	<br />
 </jstl:forEach>
 
@@ -43,10 +64,31 @@
 </h2>
 <jstl:forEach var="entry" items="${numberOfTvShowsPerType}">
 	<spring:message code="administrator.numberOfTvShowsPerType.genre" />
-	<jstl:out value="${entry[1]}" />
+	<jstl:out value=": "></jstl:out>
+	<jstl:if test="${entry[1] eq 0}">
+		<spring:message code="administrator.genre.action" />
+	</jstl:if>
+	<jstl:if test="${entry[1] eq 1}">
+		<spring:message code="administrator.genre.adventure" />
+	</jstl:if>
+	<jstl:if test="${entry[1] eq 2}">
+		<spring:message code="administrator.genre.comedy" />
+	</jstl:if>
+	<jstl:if test="${entry[1] eq 3}">
+		<spring:message code="administrator.genre.drama" />
+	</jstl:if>
+	<jstl:if test="${entry[1] eq 4}">
+		<spring:message code="administrator.genre.horror" />
+	</jstl:if>
+	<jstl:if test="${entry[1] eq 5}">
+		<spring:message code="administrator.genre.animation" />
+	</jstl:if>
+	<jstl:if test="${entry[1] eq 6}">
+		<spring:message code="administrator.genre.sci-fi" />
+	</jstl:if>
 	<spring:message
 		code="administrator.numberOfTvShowsPerType.quantity" />
-	<jstl:out value="${entry[0]}" />
+	<jstl:out value=": ${entry[0]}" />
 	<br />
 </jstl:forEach>
 
