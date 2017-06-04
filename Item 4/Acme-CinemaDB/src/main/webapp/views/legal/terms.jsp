@@ -28,9 +28,6 @@
 <p><spring:message code="legal.terms.account.text" /></p>
 <p><spring:message code="legal.terms.account.text2" /></p>
 
-<h3><spring:message code="legal.terms.properties" /></h3>
-<p><spring:message code="legal.terms.properties.text" /></p>
-
 <h3><spring:message code="legal.terms.conduct" /></h3>
 <p><spring:message code="legal.terms.conduct.text" /></p>
 
