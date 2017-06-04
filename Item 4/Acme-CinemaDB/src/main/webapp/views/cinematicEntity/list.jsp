@@ -28,10 +28,7 @@
 
 	<acme:column code="cinematicEntity.surname" property="${row.surname}" />
 
-	<acme:column code="cinematicEntity.birthdate"
-		property="${row.birthdate}" />
-
-	<acme:column code="cinematicEntity.birthdate" property="${row.birthdate}"/>
+	<acme:column code="cinematicEntity.birthdate" property="birthdate" isDate="true"/>
 	
 
 	<display:column>
