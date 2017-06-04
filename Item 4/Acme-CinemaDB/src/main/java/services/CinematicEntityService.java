@@ -12,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.Validator;
 
 import repositories.CinematicEntityRepository;
+import security.Authority;
 import domain.CinematicEntity;
 import domain.Content;
 
@@ -26,6 +27,9 @@ public class CinematicEntityService {
 
 	@Autowired
 	private ProducerService				producerService;
+
+	@Autowired
+	private ActorService				actorService;
 
 	// Validator --------------------------------------------
 
@@ -53,6 +57,8 @@ public class CinematicEntityService {
 
 	public CinematicEntity save(final CinematicEntity cinematicEntity) {
 		CinematicEntity res;
+
+		Assert.isTrue(this.actorService.checkAuthority(Authority.PRODUCER));
 
 		res = this.cinematicEntityRepository.save(cinematicEntity);
 
@@ -100,6 +106,11 @@ public class CinematicEntityService {
 
 		return result;
 	}
+
+	public void flush() {
+		this.cinematicEntityRepository.flush();
+	}
+
 	// Other CRUD methods ----------------------------------
 
 	public List<CinematicEntity> searchCinematicEntity(final String s) {

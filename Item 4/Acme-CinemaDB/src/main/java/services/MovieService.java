@@ -165,6 +165,10 @@ public class MovieService {
 		return result;
 	}
 
+	public void flush() {
+		this.movieRepository.flush();
+	}
+
 	// Other CRUD methods ----------------------------------
 
 	public Collection<Movie> findAllProducer() {

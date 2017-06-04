@@ -163,6 +163,10 @@ public class TvShowService {
 		return result;
 	}
 
+	public void flush() {
+		this.tvShowRepository.flush();
+	}
+
 	// Other CRUD methods ----------------------------------
 
 	public List<Season> getSeasons(final int tvShowId) {

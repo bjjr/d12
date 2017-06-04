@@ -74,7 +74,7 @@ public class SocialIdentityController extends AbstractController {
 		ModelAndView result;
 		SocialIdentity socialIdentity;
 
-		socialIdentity = this.socialIdentityService.findOne(socialIdentityId);
+		socialIdentity = this.socialIdentityService.findOneEdit(socialIdentityId);
 		Assert.notNull(socialIdentity);
 		result = this.createEditModelAndView(socialIdentity);
 
