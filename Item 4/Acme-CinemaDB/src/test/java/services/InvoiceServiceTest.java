@@ -128,6 +128,7 @@ public class InvoiceServiceTest extends AbstractTest {
 			invoice.setBillingDate(new Date(System.currentTimeMillis()));
 			invoice.setPaid(false);
 			invoice.setTotal(45.78);
+			campaign.setTimesDisplayed(campaign.getMax());
 			invoice.setCampaign(campaign);
 
 			this.invoiceService.save(invoice);
