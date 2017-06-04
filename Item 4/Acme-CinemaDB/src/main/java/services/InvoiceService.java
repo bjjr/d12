@@ -130,14 +130,18 @@ public class InvoiceService {
 		Campaign campaign;
 
 		result = invoice;
-		billingDate = new Date(System.currentTimeMillis() - 1000);
-		campaign = invoice.getCampaign();
 
-		result.setBillingDate(billingDate);
-		result.setPaid(false);
-		invoice.setTotal(campaign.getTimesDisplayed() * campaign.getFee());
+		if (result.getCampaign() == null)
+			bindingResult.rejectValue("campaign", "invoice.error.campaign");
+		else {
+			billingDate = new Date(System.currentTimeMillis() - 1000);
+			campaign = invoice.getCampaign();
 
-		this.validator.validate(result, bindingResult);
+			result.setBillingDate(billingDate);
+			result.setPaid(false);
+			invoice.setTotal(campaign.getTimesDisplayed() * campaign.getFee());
+			this.validator.validate(result, bindingResult);
+		}
 
 		return result;
 	}
