@@ -16,6 +16,7 @@ import org.springframework.validation.Validator;
 
 import repositories.OrderUserRepository;
 import security.Authority;
+import domain.CreditCard;
 import domain.OrderQuantity;
 import domain.OrderUser;
 import domain.Product;
@@ -47,6 +48,9 @@ public class OrderUserService {
 
 	@Autowired
 	private ShippingAddressService	shippingAddressService;
+
+	@Autowired
+	private CreditCardService		creditCardService;
 
 	// Validator ------------------------------------
 
@@ -282,6 +286,13 @@ public class OrderUserService {
 
 	public OrderUser finishOrder(final OrderUser orderUser) {
 		Assert.isTrue(this.actorService.checkAuthority(Authority.USER));
+
+		CreditCard principalCard;
+
+		principalCard = this.creditCardService.findActorCreditCard();
+
+		Assert.notNull(principalCard);
+		Assert.isTrue(this.creditCardService.isCreditCardDateValid(principalCard));
 
 		Date moment;
 		OrderUser res;
