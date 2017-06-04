@@ -68,15 +68,14 @@ public class CriticService {
 		return res;
 	}
 
-	public Critic save(Critic critic) {
+	public Critic save(final Critic critic) {
 		Assert.notNull(critic);
 		final Critic res;
 
 		if (critic.getId() == 0) {
 			Assert.isTrue(critic.getUserAccount().getAuthorities().iterator().next().getAuthority().equals("CRITIC"));
 			critic.getUserAccount().setPassword(this.hashCodePassword(critic.getUserAccount().getPassword()));
-		} else
-			critic = (Critic) this.actorService.findByPrincipal();
+		}
 
 		res = this.criticRepository.save(critic);
 		return res;
@@ -96,8 +95,6 @@ public class CriticService {
 		final Critic res = critic;
 		final Critic principal = this.findByPrincipal();
 
-		res.setId(principal.getId());
-		res.setVersion(principal.getVersion());
 		res.setCreditCard(principal.getCreditCard());
 		res.setUserAccount(principal.getUserAccount());
 

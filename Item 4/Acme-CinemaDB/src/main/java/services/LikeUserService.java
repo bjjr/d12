@@ -55,6 +55,7 @@ public class LikeUserService {
 	public LikeUser save(final LikeUser likeUser) {
 		final User currentUser = this.userService.findByPrincipal();
 
+		Assert.notNull(currentUser);
 		Assert.isTrue(!this.alreadyExistsTheLikeUser(likeUser), "LikeUserService.save: The likeUser already exists");
 		Assert.isTrue(likeUser.getUser().equals(currentUser), "LikeUserService.save: You can't save a like user that doesnt belong to you");
 
@@ -100,6 +101,8 @@ public class LikeUserService {
 		final User currentUser = this.userService.findByPrincipal();
 
 		final LikeUser retrievedLikeUser = this.findByUserAndAssessableEntity(currentUser.getId(), assessableEntityId);
+
+		Assert.notNull(retrievedLikeUser);
 
 		this.delete(retrievedLikeUser);
 	}

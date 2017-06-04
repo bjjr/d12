@@ -48,7 +48,7 @@ public class ReviewCriticController extends AbstractController {
 		Assert.notNull(reviews);
 
 		res = new ModelAndView("review/list");
-		res.addObject("requestURI", "review/critic/list.do");
+		res.addObject("requestURI", "review/critic/listMyReviews.do");
 		res.addObject("reviews", reviews);
 		res.addObject("contentId", this.contentId);
 		res.addObject("isCriticReviews", true);

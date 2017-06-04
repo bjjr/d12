@@ -8,9 +8,6 @@
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
 <form:form action="${action}" modelAttribute="${modelAttribute}" >
-
-	<form:hidden path="id" />
-	<form:hidden path="version" />
 		
 	<acme:textbox code="actor.name" path="name"/>
 	<br/>
@@ -25,8 +22,17 @@
 	<acme:textbox code="critic.media" path="media"/>
 	<br/>		
 
+	<acme:textbox code="critic.username" path="userAccount.username"/>
+	<br/>
+	<acme:password code="critic.password" path="userAccount.password"/>
+	<br/>
+	<acme:password code="critic.confirmPassword" path="confirmPassword"/>
+	<br/>
+
 	<acme:submit name="save" code="misc.save"/>		
 	<acme:cancel url="/" code="misc.cancel"/>
 		
 </form:form>
 <br/>
+
+<i><spring:message code="misc.eula" /></i>
