@@ -113,6 +113,10 @@ public class SeasonService {
 		return result;
 	}
 
+	public void flush() {
+		this.seasonRepository.flush();
+	}
+
 	public Season findOneEdit(final int seasonId) {
 		Assert.notNull(seasonId);
 		Assert.isTrue(seasonId != 0);

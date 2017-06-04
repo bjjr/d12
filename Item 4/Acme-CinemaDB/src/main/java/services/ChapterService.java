@@ -118,6 +118,10 @@ public class ChapterService {
 		return result;
 	}
 
+	public void flush() {
+		this.chapterRepository.flush();
+	}
+
 	// Other CRUD methods ----------------------------------
 
 	public Chapter findOneEdit(final int chapterId) {

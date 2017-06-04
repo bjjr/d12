@@ -87,6 +87,7 @@ public class SeasonProducerController {
 		res.addObject("season", season);
 		res.addObject("message", message);
 		res.addObject("action", "season/producer/edit.do");
+		res.addObject("listURL", "content/display.do?contentId=" + season.getTvShow().getId());
 
 		return res;
 	}

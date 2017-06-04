@@ -72,6 +72,23 @@ public class SocialIdentityService {
 
 	}
 
+	public SocialIdentity findOneEdit(final int socialIdentityId) {
+
+		SocialIdentity result;
+
+		User user;
+
+		result = this.socialIdentityRepository.findOne(socialIdentityId);
+
+		user = this.userService.findByPrincipal();
+
+		Assert.notNull(result);
+		Assert.isTrue(result.getUser().getId() == user.getId(), "Couldn`t edit this socialIdentity");
+
+		return result;
+
+	}
+
 	public Collection<SocialIdentity> findAll() {
 
 		Collection<SocialIdentity> result;

@@ -73,7 +73,7 @@ public class ContentService {
 	}
 
 	// Other CRUD methods ----------------------------------
-	
+
 	public Collection<Content> findContentByProducerId(final int producerId) {
 		return this.contentRepository.findContentByProducerId(producerId);
 	}
@@ -106,7 +106,6 @@ public class ContentService {
 	 */
 
 	public void checkURLs(final Collection<String> paths, final BindingResult binding) {
-
 		final Pattern youtube = Pattern.compile("^https?:\\/\\/www\\.youtube\\.com\\/watch\\?v=[^= &?/\\r\\n]{8,11}$");
 		Matcher m;
 		for (final String s : paths) {
@@ -117,6 +116,7 @@ public class ContentService {
 			}
 		}
 	}
+
 	/**
 	 * Given a Youtube URL this method returns the videoID.
 	 * 

@@ -36,6 +36,7 @@ public class SocialIdentity extends DomainEntity {
 	}
 
 	@URL
+	@NotBlank
 	@NotNull
 	public String getPath() {
 		return this.path;
