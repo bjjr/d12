@@ -11,6 +11,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import utilities.AbstractTest;
+import domain.Content;
+import domain.Critic;
 import domain.Review;
 
 @ContextConfiguration(locations = {
@@ -23,11 +25,20 @@ public class ReviewServiceTest extends AbstractTest {
 	@Autowired
 	private ReviewService	reviewService;
 
+	@Autowired
+	private CriticService	criticService;
+
+	@Autowired
+	private ContentService	contentService;
+
 
 	@Test
 	public void saveReviewDriver() {
 		final Object testingData[][] = {
 			{
+				// OK
+				"critic1", 300, "Great movie", "I liked it!", 4, true, null
+			}, {
 				// An administrator is not allowed to save a review -> Exception
 				"admin", 300, "Great movie", "I liked it!", 4, true, IllegalArgumentException.class
 			}, {
@@ -36,9 +47,6 @@ public class ReviewServiceTest extends AbstractTest {
 			}, {
 				// Rating must be higher than 0 and less than 5 -> Exception
 				"critic1", 300, "Great movie", "I liked it!", 6, true, ConstraintViolationException.class
-			}, {
-				// OK
-				"critic1", 300, "Great movie", "I liked it!", 4, true, null
 			}
 		};
 
@@ -74,10 +82,15 @@ public class ReviewServiceTest extends AbstractTest {
 			this.authenticate(username);
 
 			final Review review = this.reviewService.create(contentId);
+			final Critic critic = this.criticService.findByPrincipal();
+			final Content content = this.contentService.findOne(contentId);
+
 			review.setTitle(title);
 			review.setBody(body);
 			review.setRating(rating);
 			review.setDraft(draft);
+			review.setCritic(critic);
+			review.setContent(content);
 
 			this.reviewService.save(review);
 			this.reviewService.flush();
