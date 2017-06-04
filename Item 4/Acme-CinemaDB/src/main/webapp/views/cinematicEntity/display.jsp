@@ -69,10 +69,11 @@
 		<acme:link href="likeUser/listComments.do?assessableEntityId=${row.id}" code="likeUser.comments.list"/>
 	</display:column>
 	
-	<display:column>
-		<acme:link href="likeUser/create.do?assessableEntityId=${row.id}" code="likeUser.comments.create"/>
-	</display:column>
-	
+	<security:authorize access="hasRole('USER')">
+		<display:column>
+			<acme:link href="likeUser/create.do?assessableEntityId=${row.id}" code="likeUser.comments.create"/>
+		</display:column>
+	</security:authorize>
 
 	<display:column><a href="content/display.do?contentId=${row.id}"><spring:message code="misc.view" /></a></display:column>
 
