@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+ * PopulateDatabase.xml
+ *
+ * Copyright (C) 2017 Universidad de Sevilla
+ * 
+ * The use of this project is hereby constrained to the conditions of the 
+ * TDG Licence, a copy of which you may download from 
+ * http://www.tdg-seville.info/License.html
+ -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	">
+	
+	<!-- User accounts -->
+
+	<bean id="userAccountA" class="security.UserAccount">
+		<property name="username" value="admin" />
+		<property name="password" value="21232f297a57a5a743894a0e4a801fc3" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ADMIN" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- Other domain beans come here -->
+	
+	<!-- FEE -->
+	
+	<bean id="fee" class="domain.Fee">
+		<property name="value" value="1.0" />
+	</bean>
+	
+	<!-- GENRES -->
+	
+	<bean id="actionGenre" class="domain.Genre">
+		<property name="kind" value="0" />
+	</bean>
+	
+	<bean id="adventureGenre" class="domain.Genre">
+		<property name="kind" value="1" />
+	</bean>
+	
+	<bean id="comedyGenre" class="domain.Genre">
+		<property name="kind" value="2" />
+	</bean>
+	
+	<bean id="dramaGenre" class="domain.Genre">
+		<property name="kind" value="3" />
+	</bean>
+	
+	<bean id="horrorGenre" class="domain.Genre">
+		<property name="kind" value="4" />
+	</bean>
+	
+	<bean id="animationGenre" class="domain.Genre">
+		<property name="kind" value="5" />
+	</bean>
+	
+	<bean id="scifiGenre" class="domain.Genre">
+		<property name="kind" value="6" />
+	</bean>
+	
+	<!-- ADMIN -->
+	
+	<bean id="admin" class="domain.Administrator">
+		<property name="name" value="nameAdmin" />
+		<property name="surname" value="surnameAdmin" />
+		<property name="email" value="admin@admin.com" />
+		<property name="phone" value="+34000000000" />
+		<property name="country" value="Spain" />
+		<property name="userAccount" ref="userAccountA" />
+	</bean>
+	
+</beans>
