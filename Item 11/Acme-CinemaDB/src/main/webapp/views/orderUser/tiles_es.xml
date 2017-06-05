@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- 
+ * tiles_es.xml
+ *
+ * Copyright (C) 2017 Universidad de Sevilla
+ * 
+ * The use of this project is hereby constrained to the conditions of the 
+ * TDG Licence, a copy of which you may download from 
+ * http://www.tdg-seville.info/License.html
+ -->
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+       
+<tiles-definitions>
+
+	<definition name="orderUser/list" extends="master.page">
+		<put-attribute name="title" value="Mis pedidos" />
+		<put-attribute name="body" value="/views/orderUser/list.jsp" />
+	</definition>
+	
+	<definition name="orderUser/display" extends="master.page">
+		<put-attribute name="title" value="Mi pedido" />
+		<put-attribute name="body" value="/views/orderUser/display.jsp" />
+	</definition>
+	
+	<definition name="orderUser/edit" extends="master.page">
+		<put-attribute name="title" value="Elegir dirección de envío" />
+		<put-attribute name="body" value="/views/orderUser/edit.jsp" />
+	</definition>
+
+</tiles-definitions>

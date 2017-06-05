@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+ * converters.xml
+ *
+ * Copyright (C) 2017 Universidad de Sevilla
+ * 
+ * The use of this project is hereby constrained to the conditions of the 
+ * TDG Licence, a copy of which you may download from 
+ * http://www.tdg-seville.info/License.html
+ -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd		
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd		
+	">
+
+	<util:list id="converters">
+		<!-- 
+			Add your own converters using entries of the following form: 
+			<bean class="converters.Class1ToClass2" /> 
+		-->
+		
+		<bean class="converters.ActorToStringConverter" />
+		<bean class="converters.StringToActorConverter" />
+		
+		<bean class="converters.AdministratorToStringConverter" />
+		<bean class="converters.StringToAdministratorConverter" />
+		
+		<bean class="converters.AssessableEntityToStringConverter" />
+		<bean class="converters.StringToAssessableEntityConverter" />
+		
+		<bean class="converters.CampaignToStringConverter" />
+		<bean class="converters.StringToCampaignConverter" />
+		
+		<bean class="converters.ChapterToStringConverter" />
+		<bean class="converters.StringToChapterConverter" />
+		
+		<bean class="converters.CinematicEntityToStringConverter" />
+		<bean class="converters.StringToCinematicEntityConverter" />
+		
+		<bean class="converters.ContentToStringConverter" />
+		<bean class="converters.StringToContentConverter" />
+		
+		<bean class="converters.CreditCardToStringConverter" />
+		<bean class="converters.StringToCreditCardConverter" />
+		
+		<bean class="converters.CriticToStringConverter" />
+		<bean class="converters.StringToCriticConverter" />
+		
+		<bean class="converters.FeeToStringConverter" />
+		<bean class="converters.StringToFeeConverter" />
+		
+		<bean class="converters.GenreToStringConverter" />
+		<bean class="converters.StringToGenreConverter" />
+		
+		<bean class="converters.InvoiceToStringConverter" />
+		<bean class="converters.StringToInvoiceConverter" />
+		
+		<bean class="converters.LikeUserToStringConverter" />
+		<bean class="converters.StringToLikeUserConverter" />
+		
+		<bean class="converters.MessageEntityToStringConverter" />
+		<bean class="converters.StringToMessageEntityConverter" />
+		
+		<bean class="converters.MovieToStringConverter" />
+		<bean class="converters.StringToMovieConverter" />
+		
+		<bean class="converters.OrderUserToStringConverter" />
+		<bean class="converters.StringToOrderUserConverter" />
+		
+		<bean class="converters.OrderQuantityToStringConverter" />
+		<bean class="converters.StringToOrderQuantityConverter" />
+		
+		<bean class="converters.ProducerToStringConverter" />
+		<bean class="converters.StringToProducerConverter" />
+		
+		<bean class="converters.ProductToStringConverter" />
+		<bean class="converters.StringToProductConverter" />
+		
+		<bean class="converters.ReviewToStringConverter" />
+		<bean class="converters.StringToReviewConverter" />
+		
+		<bean class="converters.SeasonToStringConverter" />
+		<bean class="converters.StringToSeasonConverter" />
+		
+		<bean class="converters.SocialIdentityToStringConverter" />
+		<bean class="converters.StringToSocialIdentityConverter" />
+		
+		<bean class="converters.ShippingAddressToStringConverter" />
+		<bean class="converters.StringToShippingAddressConverter" />
+		
+		<bean class="converters.TvShowToStringConverter" />
+		<bean class="converters.StringToTvShowConverter" />
+		
+		<bean class="converters.UserToStringConverter" />
+		<bean class="converters.StringToUserConverter" />
+		
+		<bean class="converters.UserAccountToStringConverter" />
+		<bean class="converters.StringToUserAccountConverter" />
+		
+	</util:list>
+	
+</beans>

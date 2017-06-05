@@ -1,0 +1,2055 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+ * PopulateDatabase.xml
+ *
+ * Copyright (C) 2017 Universidad de Sevilla
+ * 
+ * The use of this project is hereby constrained to the conditions of the 
+ * TDG Licence, a copy of which you may download from 
+ * http://www.tdg-seville.info/License.html
+ -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	">
+	
+	<!-- User accounts -->
+
+	<bean id="userAccountA" class="security.UserAccount">
+		<property name="username" value="admin" />
+		<property name="password" value="21232f297a57a5a743894a0e4a801fc3" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ADMIN" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccountU1" class="security.UserAccount">
+		<property name="username" value="user1" />
+		<property name="password" value="24c9e15e52afc47c225b757e7bee1f9d" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="USER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccountU2" class="security.UserAccount">
+		<property name="username" value="user2" />
+		<property name="password" value="7e58d63b60197ceb55a1c487989a3720" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="USER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccountU3" class="security.UserAccount">
+		<property name="username" value="user3" />
+		<property name="password" value="92877af70a45fd6a2ed7fe81e1236b78" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="USER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccountU4" class="security.UserAccount">
+		<property name="username" value="user4" />
+		<property name="password" value="3f02ebe3d7929b091e3d8ccfde2f3bc6" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="USER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccountU5" class="security.UserAccount">
+		<property name="username" value="user5" />
+		<property name="password" value="0a791842f52a0acfbb3a783378c066b8" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="USER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccountU6" class="security.UserAccount">
+		<property name="username" value="user6" />
+		<property name="password" value="affec3b64cf90492377a8114c86fc093" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="USER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccountU7" class="security.UserAccount">
+		<property name="username" value="user7" />
+		<property name="password" value="3e0469fb134991f8f75a2760e409c6ed" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="USER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccountU8" class="security.UserAccount">
+		<property name="username" value="user8" />
+		<property name="password" value="7668f673d5669995175ef91b5d171945" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="USER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccountC1" class="security.UserAccount">
+		<property name="username" value="critic1" />
+		<property name="password" value="165d185050bab438668aef6faeee3be5" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="CRITIC" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccountC2" class="security.UserAccount">
+		<property name="username" value="critic2" />
+		<property name="password" value="88fc227c1f12e1f11b8b1584991c88fe" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="CRITIC" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccountC3" class="security.UserAccount">
+		<property name="username" value="critic3" />
+		<property name="password" value="8a253092f1d177ba06d104b69a159d93" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="CRITIC" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccountC4" class="security.UserAccount">
+		<property name="username" value="critic4" />
+		<property name="password" value="7ca0505ccfc49a367e7e0e9340d6656d" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="CRITIC" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccountC5" class="security.UserAccount">
+		<property name="username" value="critic5" />
+		<property name="password" value="18c7b56054e6b8da311caf45bf3efd79" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="CRITIC" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccountC6" class="security.UserAccount">
+		<property name="username" value="critic6" />
+		<property name="password" value="e5c68eddb605466c498f1391c20ab175" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="CRITIC" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccountC7" class="security.UserAccount">
+		<property name="username" value="critic7" />
+		<property name="password" value="d3e612b468512127b2f11fa174216ca1" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="CRITIC" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccountC8" class="security.UserAccount">
+		<property name="username" value="critic8" />
+		<property name="password" value="a04adf303b69bca92345e6371468483f" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="CRITIC" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccountP1" class="security.UserAccount">
+		<property name="username" value="producer1" />
+		<property name="password" value="d241610b8b0fe72211f7c97e44490bf3" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="PRODUCER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccountP2" class="security.UserAccount">
+		<property name="username" value="producer2" />
+		<property name="password" value="211cd297447bcffe0adb1549acbc8027" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="PRODUCER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="userAccountP3" class="security.UserAccount">
+		<property name="username" value="producer3" />
+		<property name="password" value="d200e947051ceac468db08bbb25a2c7c" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="PRODUCER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<!-- Other domain beans come here -->
+	
+	<!-- FEE -->
+	
+	<bean id="fee" class="domain.Fee">
+		<property name="value" value="1.0" />
+	</bean>
+	
+	<!-- GENRES -->
+	
+	<bean id="actionGenre" class="domain.Genre">
+		<property name="kind" value="0" />
+	</bean>
+	
+	<bean id="adventureGenre" class="domain.Genre">
+		<property name="kind" value="1" />
+	</bean>
+	
+	<bean id="comedyGenre" class="domain.Genre">
+		<property name="kind" value="2" />
+	</bean>
+	
+	<bean id="dramaGenre" class="domain.Genre">
+		<property name="kind" value="3" />
+	</bean>
+	
+	<bean id="horrorGenre" class="domain.Genre">
+		<property name="kind" value="4" />
+	</bean>
+	
+	<bean id="animationGenre" class="domain.Genre">
+		<property name="kind" value="5" />
+	</bean>
+	
+	<bean id="scifiGenre" class="domain.Genre">
+		<property name="kind" value="6" />
+	</bean>
+	
+	<!-- CREDIT CARDS -->
+	
+	<bean id="creditCard1" class="domain.CreditCard">
+		<property name="holder" value="holder1" />
+		<property name="brand" value="brand1" />
+		<property name="number" value="4024007187631436" />
+		<property name="month" value="12" />
+		<property name="year" value="2019" />
+		<property name="cvv" value="103" />
+	</bean>
+	
+	<bean id="creditCard2" class="domain.CreditCard">
+		<property name="holder" value="holder2" />
+		<property name="brand" value="brand2" />
+		<property name="number" value="4539871801678497" />
+		<property name="month" value="03" />
+		<property name="year" value="2020" />
+		<property name="cvv" value="157" />
+	</bean>
+	
+	<bean id="creditCard3" class="domain.CreditCard">
+		<property name="holder" value="holder3" />
+		<property name="brand" value="brand3" />
+		<property name="number" value="4024007178231816" />
+		<property name="month" value="04" />
+		<property name="year" value="2020" />
+		<property name="cvv" value="157" />
+	</bean>
+	
+	<bean id="creditCard4" class="domain.CreditCard">
+		<property name="holder" value="holder4" />
+		<property name="brand" value="brand4" />
+		<property name="number" value="4539976489516792" />
+		<property name="month" value="12" />
+		<property name="year" value="2020" />
+		<property name="cvv" value="157" />
+	</bean>
+	
+	<!-- ADMIN -->
+	
+	<bean id="admin" class="domain.Administrator">
+		<property name="name" value="nameAdmin" />
+		<property name="surname" value="surnameAdmin" />
+		<property name="email" value="admin@admin.com" />
+		<property name="phone" value="+34000000000" />
+		<property name="country" value="Spain" />
+		<property name="userAccount" ref="userAccountA" />
+	</bean>
+	
+	<!-- USERS -->
+	
+	<bean id="user1" class="domain.User">
+		<property name="name" value="nameUser1" />
+		<property name="surname" value="surnameUser1" />
+		<property name="email" value="user1@user.com" />
+		<property name="phone" value="+48123456789" />
+		<property name="country" value="France" />
+		<property name="userAccount" ref="userAccountU1" />
+	</bean>
+	
+	<bean id="user2" class="domain.User">
+		<property name="name" value="nameUser2" />
+		<property name="surname" value="surnameUser2" />
+		<property name="email" value="user2@user.com" />
+		<property name="phone" value="+16123456789" />
+		<property name="country" value="Italy" />
+		<property name="userAccount" ref="userAccountU2" />
+		<property name="creditCard" ref="creditCard1" />
+	</bean>
+	
+	<bean id="user3" class="domain.User">
+		<property name="name" value="nameUser3" />
+		<property name="surname" value="surnameUser3" />
+		<property name="email" value="user3@user.com" />
+		<property name="phone" value="+34555666777" />
+		<property name="country" value="Spain" />
+		<property name="userAccount" ref="userAccountU3" />
+		<property name="creditCard" ref="creditCard2" />
+	</bean>
+	
+	<bean id="user4" class="domain.User">
+		<property name="name" value="nameUser4" />
+		<property name="surname" value="surnameUser4" />
+		<property name="email" value="user4@user.com" />
+		<property name="phone" value="+32123456789" />
+		<property name="country" value="Canada" />
+		<property name="userAccount" ref="userAccountU4" />
+	</bean>
+	
+	<bean id="user5" class="domain.User">
+		<property name="name" value="nameUser5" />
+		<property name="surname" value="surnameUser5" />
+		<property name="email" value="user5@user.com" />
+		<property name="phone" value="+12789456123" />
+		<property name="country" value="United Kingdom" />
+		<property name="userAccount" ref="userAccountU5" />
+	</bean>
+	
+	<bean id="user6" class="domain.User">
+		<property name="name" value="nameUser6" />
+		<property name="surname" value="surnameUser6" />
+		<property name="email" value="user6@user.com" />
+		<property name="phone" value="+45252627289" />
+		<property name="country" value="Netherlands" />
+		<property name="userAccount" ref="userAccountU6" />
+	</bean>
+	
+	<bean id="user7" class="domain.User">
+		<property name="name" value="nameUser7" />
+		<property name="surname" value="surnameUser7" />
+		<property name="email" value="user7@user.com" />
+		<property name="phone" value="+45211127289" />
+		<property name="country" value="Netherlands" />
+		<property name="userAccount" ref="userAccountU7" />
+	</bean>
+	
+	<bean id="user8" class="domain.User">
+		<property name="name" value="nameUser8" />
+		<property name="surname" value="surnameUser8" />
+		<property name="email" value="user8@user.com" />
+		<property name="phone" value="+45245727289" />
+		<property name="country" value="Netherlands" />
+		<property name="userAccount" ref="userAccountU8" />
+	</bean>
+	
+	<!-- CRITICS -->
+	
+	<bean id="critic1" class="domain.Critic">
+		<property name="name" value="nameCritic1" />
+		<property name="surname" value="surnameCritic1" />
+		<property name="email" value="critic1@critic.com" />
+		<property name="phone" value="+34123456789" />
+		<property name="country" value="Spain" />
+		<property name="media" value="mediaCritic1" />
+		<property name="userAccount" ref="userAccountC1" />
+	</bean>
+	
+	<bean id="critic2" class="domain.Critic">
+		<property name="name" value="nameCritic2" />
+		<property name="surname" value="surnameCritic2" />
+		<property name="email" value="critic2@critic.com" />
+		<property name="phone" value="+64444555222" />
+		<property name="country" value="United Kingdom" />
+		<property name="media" value="mediaCritic2" />
+		<property name="userAccount" ref="userAccountC2" />
+	</bean>
+	
+	<bean id="critic3" class="domain.Critic">
+		<property name="name" value="nameCritic3" />
+		<property name="surname" value="surnameCritic3" />
+		<property name="email" value="critic3@critic.com" />
+		<property name="phone" value="+47555111333" />
+		<property name="country" value="France" />
+		<property name="media" value="mediaCritic3" />
+		<property name="userAccount" ref="userAccountC3" />
+	</bean>
+	
+	<bean id="critic4" class="domain.Critic">
+		<property name="name" value="nameCritic4" />
+		<property name="surname" value="surnameCritic4" />
+		<property name="email" value="critic4@critic.com" />
+		<property name="phone" value="+11555145633" />
+		<property name="country" value="Italy" />
+		<property name="media" value="mediaCritic4" />
+		<property name="userAccount" ref="userAccountC4" />
+	</bean>
+	
+	<bean id="critic5" class="domain.Critic">
+		<property name="name" value="nameCritic5" />
+		<property name="surname" value="surnameCritic5" />
+		<property name="email" value="critic5@critic.com" />
+		<property name="phone" value="+21598611333" />
+		<property name="country" value="Russia" />
+		<property name="media" value="mediaCritic5" />
+		<property name="userAccount" ref="userAccountC5" />
+	</bean>
+	
+	<bean id="critic6" class="domain.Critic">
+		<property name="name" value="nameCritic6" />
+		<property name="surname" value="surnameCritic6" />
+		<property name="email" value="critic6@critic.com" />
+		<property name="phone" value="+40555112573" />
+		<property name="country" value="Norway" />
+		<property name="media" value="mediaCritic6" />
+		<property name="userAccount" ref="userAccountC6" />
+	</bean>
+	
+	<bean id="critic7" class="domain.Critic">
+		<property name="name" value="nameCritic7" />
+		<property name="surname" value="surnameCritic7" />
+		<property name="email" value="critic7@critic.com" />
+		<property name="phone" value="+37555111744" />
+		<property name="country" value="Iceland" />
+		<property name="media" value="mediaCritic7" />
+		<property name="userAccount" ref="userAccountC7" />
+	</bean>
+	
+	<bean id="critic8" class="domain.Critic">
+		<property name="name" value="nameCritic8" />
+		<property name="surname" value="surnameCritic8" />
+		<property name="email" value="critic8@critic.com" />
+		<property name="phone" value="+67555118553" />
+		<property name="country" value="Switzerland" />
+		<property name="media" value="mediaCritic8" />
+		<property name="userAccount" ref="userAccountC8" />
+	</bean>
+	
+	<!-- PRODUCERS -->
+	
+	<bean id="producer1" class="domain.Producer">
+		<property name="name" value="nameProducer1" />
+		<property name="surname" value="surnameProducer1" />
+		<property name="email" value="producer1@producer.com" />
+		<property name="phone" value="+34565656117" />
+		<property name="country" value="Spain" />
+		<property name="company" value="Producciones Atlantis S.L." />
+		<property name="userAccount" ref="userAccountP1" />
+	</bean>
+	
+	<bean id="producer2" class="domain.Producer">
+		<property name="name" value="nameProducer2" />
+		<property name="surname" value="surnameProducer2" />
+		<property name="email" value="producer2@producer.com" />
+		<property name="phone" value="+34741258963" />
+		<property name="country" value="Spain" />
+		<property name="company" value="Mediterráneo S.L." />
+		<property name="userAccount" ref="userAccountP2" />
+		<property name="creditCard" ref="creditCard3" />
+	</bean>
+	
+	<bean id="producer3" class="domain.Producer">
+		<property name="name" value="nameProducer3" />
+		<property name="surname" value="surnameProducer3" />
+		<property name="email" value="producer3@producer.com" />
+		<property name="phone" value="+34963258741" />
+		<property name="country" value="Spain" />
+		<property name="company" value="Vértigo S.L." />
+		<property name="userAccount" ref="userAccountP3" />
+		<property name="creditCard" ref="creditCard4" />
+	</bean>
+	
+	<!-- CAMPAIGNS -->
+	
+	<bean id="campaign1" class="domain.Campaign">
+		<property name="start" value="01/01/2017" />
+		<property name="end" value="01/01/2019" />
+		<property name="images">
+			<list>
+				<value>http://es.web.img3.acsta.net/pictures/14/03/05/09/42/163621.jpg</value>
+			</list>
+		</property>
+		<property name="max" value="20" />
+		<property name="timesDisplayed" value="0" />
+		<property name="approved" value="false" />
+		<property name="fee" value="1.0" />
+		<property name="producer" ref="producer2" />
+	</bean>
+	
+	<bean id="campaign2" class="domain.Campaign">
+		<property name="start" value="02/03/2016" />
+		<property name="end" value="03/03/2016" />
+		<property name="images">
+			<list>
+				<value>http://www.que.es/archivos/201104/cartel-70x50-640x640x80.jpg</value>
+				<value>https://urbozblob.blob.core.windows.net/images/7564428808417186_crop.jpg</value>
+			</list>
+		</property>
+		<property name="max" value="120" />
+		<property name="timesDisplayed" value="120" />
+		<property name="approved" value="true" />
+		<property name="fee" value="0.79" />
+		<property name="producer" ref="producer3" />
+	</bean>
+	
+	<bean id="campaign3" class="domain.Campaign">
+		<property name="start" value="05/04/2016" />
+		<property name="end" value="06/01/2016" />
+		<property name="images">
+			<list>
+				<value>https://images-na.ssl-images-amazon.com/images/M/MV5BMTkxMTA5OTAzMl5BMl5BanBnXkFtZTgwNjA5MDc3NjE@._V1_UX182_CR0,0,182,268_AL_.jpg</value>
+			</list>
+		</property>
+		<property name="max" value="150" />
+		<property name="timesDisplayed" value="150" />
+		<property name="approved" value="true" />
+		<property name="fee" value="1.32" />
+		<property name="producer" ref="producer3" />
+	</bean>
+	
+	<bean id="campaign4" class="domain.Campaign">
+		<property name="start" value="06/05/2016" />
+		<property name="end" value="06/15/2016" />
+		<property name="images">
+			<list>
+				<value>https://www.peliculasraras.com/wp-content/uploads/2015/02/memento-filmplakat.jpg</value>
+			</list>
+		</property>
+		<property name="max" value="50" />
+		<property name="timesDisplayed" value="50" />
+		<property name="approved" value="true" />
+		<property name="fee" value="1.0" />
+		<property name="producer" ref="producer3" />
+	</bean>
+	
+	<bean id="campaign5" class="domain.Campaign">
+		<property name="start" value="07/08/2016" />
+		<property name="end" value="07/29/2016" />
+		<property name="images">
+			<list>
+				<value>http://catalogo.artium.org/sites/default/files/imagenesbody/12/2014/el_club_de_la_lucha_cast.jpg</value>
+			</list>
+		</property>
+		<property name="max" value="112" />
+		<property name="timesDisplayed" value="112" />
+		<property name="approved" value="true" />
+		<property name="fee" value="1.25" />
+		<property name="producer" ref="producer3" />
+	</bean>
+	
+	<bean id="campaign6" class="domain.Campaign">
+		<property name="start" value="08/11/2016" />
+		<property name="end" value="08/25/2016" />
+		<property name="images">
+			<list>
+				<value>http://www.fotogramas.es/var/ezflow_site/storage/images/cinefilia/x-cosas-que-no-sabias-de-los-soprano/un-titulo-confuso/110540174-1-esl-ES/Un-titulo-confuso_ampliacion.jpg</value>
+			</list>
+		</property>
+		<property name="max" value="50" />
+		<property name="timesDisplayed" value="50" />
+		<property name="approved" value="true" />
+		<property name="fee" value="1.65" />
+		<property name="producer" ref="producer3" />
+	</bean>
+
+	<bean id="campaign7" class="domain.Campaign">
+		<property name="start" value="09/19/2016" />
+		<property name="end" value="10/15/2016" />
+		<property name="images">
+			<list>
+				<value>http://pics.filmaffinity.com/the_pacific_tv-633494263-large.jpg</value>
+			</list>
+		</property>
+		<property name="max" value="175" />
+		<property name="timesDisplayed" value="175" />
+		<property name="approved" value="true" />
+		<property name="fee" value="1.25" />
+		<property name="producer" ref="producer3" />
+	</bean>
+	
+	<bean id="campaign8" class="domain.Campaign">
+		<property name="start" value="05/10/2017" />
+		<property name="end" value="12/12/2017" />
+		<property name="images">
+			<list>
+				<value>http://www.bolsamania.com/cine/wp-content/uploads/2014/09/213.jpg</value>
+			</list>
+		</property>
+		<property name="max" value="200" />
+		<property name="timesDisplayed" value="198" />
+		<property name="approved" value="true" />
+		<property name="fee" value="1.25" />
+		<property name="producer" ref="producer3" />
+	</bean>
+	
+	<bean id="campaign9" class="domain.Campaign">
+		<property name="start" value="05/10/2017" />
+		<property name="end" value="10/12/2017" />
+		<property name="images">
+			<list>
+				<value>https://secure.netflix.com/us/boxshots/tv_sdp_s/70155569.jpg</value>
+			</list>
+		</property>
+		<property name="max" value="65" />
+		<property name="timesDisplayed" value="0" />
+		<property name="fee" value="1.0" />
+		<property name="producer" ref="producer3" />
+	</bean>
+	
+	<bean id="campaign10" class="domain.Campaign">
+		<property name="start" value="05/16/2017" />
+		<property name="end" value="10/12/2017" />
+		<property name="images">
+			<list>
+				<value>http://3.bp.blogspot.com/-ZXCVnlS7dIw/T7n7gOFqDoI/AAAAAAAAJo8/X3g04xAGNjY/s275/el-codigo-da-vinci.jpg</value>
+				<value>https://www.actualapp.com/wp-content/uploads/2016/04/Juego-de-tronos-sexta-temporada-actualapp-portada.jpg</value>
+			</list>
+		</property>
+		<property name="max" value="90" />
+		<property name="timesDisplayed" value="0" />
+		<property name="fee" value="1.0" />
+		<property name="producer" ref="producer3" />
+	</bean>
+	
+	<bean id="campaign11" class="domain.Campaign">
+		<property name="start" value="05/16/2017" />
+		<property name="end" value="10/12/2017" />
+		<property name="images">
+			<list>
+				<value>http://www.foxlatina.com/custom-pages/logan-es/img/backgrounds_logan_outer.jpg</value>
+				<value>http://es.web.img3.acsta.net/c_300_300/medias/nmedia/18/67/71/17/20027466.jpg</value>
+			</list>
+		</property>
+		<property name="max" value="25" />
+		<property name="timesDisplayed" value="0" />
+		<property name="fee" value="1.0" />
+		<property name="producer" ref="producer3" />
+	</bean>
+	
+	<bean id="campaign12" class="domain.Campaign">
+		<property name="start" value="09/16/2017" />
+		<property name="end" value="10/12/2017" />
+		<property name="images">
+			<list>
+				<value>http://images.amcnetworks.com/amc.com/wp-content/uploads/2010/12/breaking-bad-S5-400x600-compressedV1.jpg</value>
+			</list>
+		</property>
+		<property name="max" value="105" />
+		<property name="timesDisplayed" value="0" />
+		<property name="fee" value="1.0" />
+		<property name="producer" ref="producer3" />
+	</bean>
+	
+	<bean id="campaign13" class="domain.Campaign">
+		<property name="start" value="09/16/2017" />
+		<property name="end" value="10/12/2017" />
+		<property name="images">
+			<list>
+				<value>http://1.bp.blogspot.com/-OY7ecxQen5M/US9JvYMmYnI/AAAAAAAACws/67K_BTmdnJY/s1600/112541.front.jpg</value>
+			</list>
+		</property>
+		<property name="max" value="65" />
+		<property name="timesDisplayed" value="0" />
+		<property name="fee" value="1.0" />
+		<property name="producer" ref="producer3" />
+	</bean>
+	
+	<bean id="campaign14" class="domain.Campaign">
+		<property name="start" value="02/16/2017" />
+		<property name="end" value="05/12/2017" />
+		<property name="images">
+			<list>
+				<value>https://upload.wikimedia.org/wikipedia/en/0/0c/Black_hawk_down_ver1.jpg</value>
+			</list>
+		</property>
+		<property name="max" value="65" />
+		<property name="timesDisplayed" value="52" />
+		<property name="fee" value="1.0" />
+		<property name="producer" ref="producer3" />
+	</bean>
+	
+	<!-- Invoices -->
+	
+	<bean id="invoice1" class="domain.Invoice">
+		<property name="total" value="94.8" />
+		<property name="paid" value="true" />
+		<property name="billingDate" value="03/03/2016" />
+		<property name="campaign" ref="campaign2" />
+	</bean>
+	
+	<bean id="invoice2" class="domain.Invoice">
+		<property name="total" value="198.0" />
+		<property name="paid" value="true" />
+		<property name="billingDate" value="06/02/2016" />
+		<property name="campaign" ref="campaign3" />
+	</bean>
+	
+	<bean id="invoice3" class="domain.Invoice">
+		<property name="total" value="50.0" />
+		<property name="paid" value="true" />
+		<property name="billingDate" value="06/15/2016" />
+		<property name="campaign" ref="campaign4" />
+	</bean>
+	
+	<bean id="invoice4" class="domain.Invoice">
+		<property name="total" value="140.0" />
+		<property name="paid" value="true" />
+		<property name="billingDate" value="07/29/2016" />
+		<property name="campaign" ref="campaign5" />
+	</bean>
+	
+	<bean id="invoice5" class="domain.Invoice">
+		<property name="total" value="82.5" />
+		<property name="paid" value="true" />
+		<property name="billingDate" value="08/25/2016" />
+		<property name="campaign" ref="campaign6" />
+	</bean>
+	
+	<bean id="invoice6" class="domain.Invoice">
+		<property name="total" value="218.75" />
+		<property name="paid" value="false" />
+		<property name="billingDate" value="10/15/2016" />
+		<property name="campaign" ref="campaign7" />
+	</bean>
+	
+	<!-- CINEMATIC ENTITIES -->
+	
+	<!-- ACTORS -->
+	
+	<bean id="actor1" class="domain.CinematicEntity">
+		<property name="name" value="nameActor1" />
+		<property name="surname" value="surnameActor1" />
+		<property name="birthdate" value="03/15/1984" />
+		<property name="director" value="false" />
+	</bean>
+	
+	<bean id="actor2" class="domain.CinematicEntity">
+		<property name="name" value="nameActor2" />
+		<property name="surname" value="surnameActor2" />
+		<property name="birthdate" value="04/21/1975" />
+		<property name="bio" value="This is actor2's biography." />
+		<property name="director" value="false" />
+	</bean>
+	
+	<bean id="actor3" class="domain.CinematicEntity">
+		<property name="name" value="nameActor3" />
+		<property name="surname" value="surnameActor3" />
+		<property name="bio" value="This is actor3's biography." />
+		<property name="birthdate" value="08/26/1991" />
+		<property name="director" value="false" />
+	</bean>
+	
+	<bean id="actor4" class="domain.CinematicEntity">
+		<property name="name" value="nameActor4" />
+		<property name="surname" value="surnameActor4" />
+		<property name="bio" value="This is actor4's biography." />
+		<property name="birthdate" value="01/17/1986" />
+		<property name="director" value="false" />
+	</bean>
+	
+	<bean id="actor5" class="domain.CinematicEntity">
+		<property name="name" value="nameActor5" />
+		<property name="surname" value="surnameActor5" />
+		<property name="bio" value="This is actor5's biography." />
+		<property name="birthdate" value="05/15/1981" />
+		<property name="director" value="false" />
+	</bean>
+	
+	<bean id="actor6" class="domain.CinematicEntity">
+		<property name="name" value="nameActor6" />
+		<property name="surname" value="surnameActor6" />
+		<property name="bio" value="This is actor6's biography." />
+		<property name="birthdate" value="09/03/1992" />
+		<property name="director" value="false" />
+	</bean>
+	
+	<bean id="actor7" class="domain.CinematicEntity">
+		<property name="name" value="nameActor7" />
+		<property name="surname" value="surnameActor7" />
+		<property name="bio" value="This is actor7's biography." />
+		<property name="birthdate" value="11/11/1976" />
+		<property name="director" value="false" />
+	</bean>
+	
+	<!-- DIRECTORS -->
+	
+	<bean id="director1" class="domain.CinematicEntity">
+		<property name="name" value="nameDirector1" />
+		<property name="surname" value="surnameDirector1" />
+		<property name="birthdate" value="01/11/1964" />
+		<property name="director" value="true" />
+	</bean>
+	
+	<bean id="director2" class="domain.CinematicEntity">
+		<property name="name" value="nameDirector2" />
+		<property name="surname" value="surnameDirector2" />
+		<property name="bio" value="This is director2's biography." />
+		<property name="birthdate" value="03/19/1975" />
+		<property name="director" value="true" />
+	</bean>
+	
+	<bean id="director3" class="domain.CinematicEntity">
+		<property name="name" value="nameDirector3" />
+		<property name="surname" value="surnameDirector3" />
+		<property name="bio" value="This is director3's biography." />
+		<property name="birthdate" value="07/05/1969" />
+		<property name="director" value="true" />
+	</bean>
+	
+	<bean id="director4" class="domain.CinematicEntity">
+		<property name="name" value="nameDirector4" />
+		<property name="surname" value="surnameDirector4" />
+		<property name="bio" value="This is director4's biography." />
+		<property name="birthdate" value="07/19/1980" />
+		<property name="director" value="true" />
+	</bean>
+	
+	<bean id="director5" class="domain.CinematicEntity">
+		<property name="name" value="nameDirector5" />
+		<property name="surname" value="surnameDirector5" />
+		<property name="bio" value="This is director5's biography." />
+		<property name="birthdate" value="04/06/1965" />
+		<property name="director" value="true" />
+	</bean>
+	
+	<!-- CONTENTS -->
+	
+	<!-- MOVIES -->
+	
+	<bean id="movie1" class="domain.Movie">
+		<property name="title" value="titleMovie1" />
+		<property name="year" value="2010" />
+		<property name="avgRating" value="0" />
+		<property name="images">
+			<list>
+				<value>http://images2.fanpop.com/image/photos/10900000/Clash-of-The-Titans-Wallpaper-clash-of-the-titans-10985500-1600-1200.jpg</value>
+			</list>
+		</property>
+		<property name="videos">
+			<list>
+				<value>https://www.youtube.com/watch?v=FY00zwMZsqM</value>
+			</list>
+		</property>
+		<property name="genres">
+			<list>
+				<ref bean="actionGenre"/>
+				<ref bean="adventureGenre"/>
+			</list>
+		</property> 
+		<property name="producer" ref="producer2" />
+		<property name="cinematicEntities">
+			<list>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="movie2" class="domain.Movie">
+		<property name="title" value="titleMovie2" />
+		<property name="year" value="2013" />
+		<property name="avgRating" value="3" />
+		<property name="images">
+			<list>
+				<value>https://image.tmdb.org/t/p/original/kYY4CKjjknT1GY45ZueZs556Mnl.jpg</value>
+			</list>
+		</property>
+		<property name="videos">
+			<list>
+				<value>https://www.youtube.com/watch?v=4fVCKy69zUY</value>
+			</list>
+		</property>
+		<property name="genres">
+			<list>
+				<ref bean="animationGenre"/>
+				<ref bean="comedyGenre"/>
+			</list>
+		</property> 
+		<property name="producer" ref="producer3" />
+		<property name="cinematicEntities">
+			<list>
+				<ref bean="director1" />
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="movie3" class="domain.Movie">
+		<property name="title" value="titleMovie3" />
+		<property name="year" value="2007" />
+		<property name="avgRating" value="3" />
+		<property name="images">
+			<list>
+				<value>https://i.ytimg.com/vi/6SbhWWA7BLQ/maxresdefault.jpg</value>
+			</list>
+		</property>
+		<property name="videos">
+			<list>
+				<value>https://www.youtube.com/watch?v=dgJ4xeDUhMk</value>
+			</list>
+		</property>
+		<property name="genres">
+			<list>
+				<ref bean="horrorGenre"/>
+				<ref bean="scifiGenre"/>
+			</list>
+		</property>
+		<property name="producer" ref="producer3" />
+		<property name="cinematicEntities">
+			<list>
+				<ref bean="director2" />
+				<ref bean="actor1" />
+				<ref bean="actor2" />
+				<ref bean="actor3" />
+			</list>
+		</property>
+	</bean>
+	
+	<!-- TV SHOWS -->
+	
+	<bean id="tvshow1" class="domain.TvShow">
+		<property name="title" value="titleShow1" />
+		<property name="year" value="2005" />
+		<property name="avgRating" value="3" />
+		<property name="images">
+			<list>
+				<value>http://www.nbc.com/sites/nbcunbc/files/files/styles/640x360/public/images/2016/1/19/MDot-TheOffice-640x360-MP.jpg?itok=Gn98SGYE</value>
+			</list>
+		</property>
+		<property name="videos">
+			<list>
+				<value>https://www.youtube.com/watch?v=iyj2oEs3feU</value>
+			</list>
+		</property>
+		<property name="genres">
+			<list>
+				<ref bean="comedyGenre"/>
+			</list>
+		</property>
+		<property name="producer" ref="producer3" />
+		<property name="cinematicEntities">
+			<list>
+				<ref bean="director3" />
+				<ref bean="director4" />
+				<ref bean="actor1" />
+				<ref bean="actor4" />
+				<ref bean="actor5" />
+				<ref bean="actor6" />
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="tvshow2" class="domain.TvShow">
+		<property name="title" value="titleShow2" />
+		<property name="year" value="2009" />
+		<property name="avgRating" value="2" />
+		<property name="images">
+			<list>
+				<value>https://portadas.seriesgato.com/doctor-who-2005-78804-p-200x294.jpg</value>
+			</list>
+		</property>
+		<property name="videos">
+			<list>
+				<value>https://www.youtube.com/watch?v=09nw1MKJGao</value>
+			</list>
+		</property>
+		<property name="genres">
+			<list>
+				<ref bean="dramaGenre"/>
+				<ref bean="scifiGenre"/>
+			</list>
+		</property>
+		<property name="producer" ref="producer3" />
+		<property name="cinematicEntities">
+			<list>
+				<ref bean="director2" />
+				<ref bean="actor1" />
+				<ref bean="actor3" />
+				<ref bean="actor5" />
+				<ref bean="actor7" />
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="tvshow3" class="domain.TvShow">
+		<property name="title" value="titleShow3" />
+		<property name="year" value="2015" />
+		<property name="avgRating" value="1" />
+		<property name="images">
+			<list>
+				<value>http://www.resortcollection.com/wp-content/themes/resortcollection/property-images/summit/summit-beach-resort-panama-city-beach-fl-beach-01.jpg</value>
+				<value>http://az616578.vo.msecnd.net/files/2016/06/16/636017001832422628-355544219_beach%20pic.jpg</value>
+			</list>
+		</property>
+		<property name="videos">
+			<list>
+				<value>https://www.youtube.com/watch?v=BirGJS23Nfo</value>
+				<value>https://www.youtube.com/watch?v=WTWdP5DMdsM</value>
+				<value>https://www.youtube.com/watch?v=r0IwfHdO36Y</value>
+			</list>
+		</property>
+		<property name="genres">
+			<list>
+				<ref bean="animationGenre"/>
+				<ref bean="adventureGenre"/>
+				<ref bean="comedyGenre"/>
+			</list>
+		</property>
+		<property name="producer" ref="producer3" />
+		<property name="cinematicEntities">
+			<list>
+				<ref bean="director3" />
+				<ref bean="director4" />
+				<ref bean="actor2" />
+				<ref bean="actor4" />
+				<ref bean="actor5" />
+				<ref bean="actor6" />
+				<ref bean="actor7" />
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="tvshow4" class="domain.TvShow">
+		<property name="title" value="titleShow4" />
+		<property name="year" value="2013" />
+		<property name="avgRating" value="4" />
+		<property name="images">
+			<list>
+				<value>https://www.noticiasenserie.com/wp-content/uploads/2017/03/001-2.jpg</value>
+			</list>
+		</property>
+		<property name="videos">
+			<list>
+				<value>https://www.youtube.com/watch?v=fLfRF8A1hk8</value>
+			</list>
+		</property>
+		<property name="genres">
+			<list>
+				<ref bean="actionGenre"/>
+				<ref bean="scifiGenre"/>
+			</list>
+		</property>
+		<property name="producer" ref="producer3" />
+		<property name="cinematicEntities">
+			<list>
+				<ref bean="director5" />
+				<ref bean="actor1" />
+				<ref bean="actor3" />
+				<ref bean="actor4" />
+				<ref bean="actor5" />
+				<ref bean="actor6" />
+				<ref bean="actor7" />
+			</list>
+		</property>
+	</bean>
+	
+	<!-- SEASONS -->
+	
+	<bean id="s1Show1" class="domain.Season">
+		<property name="name" value="Season 1" />
+		<property name="tvShow" ref="tvshow1" />
+	</bean>
+	
+	<bean id="s1Show2" class="domain.Season">
+		<property name="name" value="Season 1" />
+		<property name="tvShow" ref="tvshow2" />
+	</bean>
+	
+	<bean id="s2Show2" class="domain.Season">
+		<property name="name" value="Season 2" />
+		<property name="tvShow" ref="tvshow2" />
+	</bean>
+	
+	<bean id="s1Show3" class="domain.Season">
+		<property name="name" value="Season 1" />
+		<property name="tvShow" ref="tvshow3" />
+	</bean>
+	
+	<bean id="s2Show3" class="domain.Season">
+		<property name="name" value="Season 2" />
+		<property name="tvShow" ref="tvshow3" />
+	</bean>
+	
+	<bean id="s3Show3" class="domain.Season">
+		<property name="name" value="Season 3" />
+		<property name="tvShow" ref="tvshow3" />
+	</bean>
+	
+	<bean id="s4Show3" class="domain.Season">
+		<property name="name" value="Season 4" />
+		<property name="tvShow" ref="tvshow3" />
+	</bean>
+	
+	<bean id="s5Show3" class="domain.Season">
+		<property name="name" value="Season 5" />
+		<property name="tvShow" ref="tvshow3" />
+	</bean>
+	
+	<bean id="s6Show3" class="domain.Season">
+		<property name="name" value="Season 6" />
+		<property name="tvShow" ref="tvshow3" />
+	</bean>
+	
+	<bean id="s1Show4" class="domain.Season">
+		<property name="name" value="Season 1" />
+		<property name="tvShow" ref="tvshow4" />
+	</bean>
+	
+	<!-- CHAPTERS -->
+	
+	<bean id="c1s1Show1" class="domain.Chapter">
+		<property name="name" value="Chapter 1" />
+		<property name="season" ref="s1Show1" />
+	</bean>
+	
+	<bean id="c1s1Show2" class="domain.Chapter">
+		<property name="name" value="Chapter 1" />
+		<property name="season" ref="s1Show2" />
+	</bean>
+	
+	<bean id="c1s2Show2" class="domain.Chapter">
+		<property name="name" value="Chapter 1" />
+		<property name="season" ref="s2Show2" />
+	</bean>
+	
+	<bean id="c1s1Show3" class="domain.Chapter">
+		<property name="name" value="Chapter 1" />
+		<property name="season" ref="s1Show3" />
+	</bean>
+	
+	<bean id="c2s1Show3" class="domain.Chapter">
+		<property name="name" value="Chapter 2" />
+		<property name="season" ref="s1Show3" />
+	</bean>
+	
+	<bean id="c3s1Show3" class="domain.Chapter">
+		<property name="name" value="Chapter 3" />
+		<property name="season" ref="s1Show3" />
+	</bean>
+	
+	<bean id="c4s1Show3" class="domain.Chapter">
+		<property name="name" value="Chapter 4" />
+		<property name="season" ref="s1Show3" />
+	</bean>
+	
+	<bean id="c5s1Show3" class="domain.Chapter">
+		<property name="name" value="Chapter 5" />
+		<property name="season" ref="s1Show3" />
+	</bean>
+	
+	<bean id="c6s1Show3" class="domain.Chapter">
+		<property name="name" value="Chapter 6" />
+		<property name="season" ref="s1Show3" />
+	</bean>
+	
+	<bean id="c1s2Show3" class="domain.Chapter">
+		<property name="name" value="Chapter 1" />
+		<property name="season" ref="s2Show3" />
+	</bean>
+	
+	<bean id="c1s3Show3" class="domain.Chapter">
+		<property name="name" value="Chapter 1" />
+		<property name="season" ref="s3Show3" />
+	</bean>
+	
+	<bean id="c1s4Show3" class="domain.Chapter">
+		<property name="name" value="Chapter 1" />
+		<property name="season" ref="s4Show3" />
+	</bean>
+	
+	<bean id="c1s5Show3" class="domain.Chapter">
+		<property name="name" value="Chapter 1" />
+		<property name="season" ref="s5Show3" />
+	</bean>
+	
+	<bean id="c1s6Show3" class="domain.Chapter">
+		<property name="name" value="Chapter 1" />
+		<property name="season" ref="s6Show3" />
+	</bean>
+	
+	<bean id="c1s1Show4" class="domain.Chapter">
+		<property name="name" value="Chapter 1" />
+		<property name="season" ref="s1Show4" />
+	</bean>
+	
+	<!-- LIKES -->
+	
+	<bean id="like1" class="domain.LikeUser">
+		<property name="assessableEntity" ref="movie2" />
+		<property name="user" ref="user2" />
+	</bean>
+	
+	<bean id="like2" class="domain.LikeUser">
+		<property name="comment" value="A comment." />
+		<property name="assessableEntity" ref="movie3" />
+		<property name="user" ref="user3" />
+	</bean>
+	
+	<bean id="like3" class="domain.LikeUser">
+		<property name="comment" value="Another comment." />
+		<property name="assessableEntity" ref="movie3" />
+		<property name="user" ref="user4" />
+	</bean>
+	
+	<bean id="like4" class="domain.LikeUser">
+		<property name="assessableEntity" ref="movie3" />
+		<property name="user" ref="user5" />
+	</bean>
+	
+	<bean id="like5" class="domain.LikeUser">
+		<property name="assessableEntity" ref="movie3" />
+		<property name="user" ref="user6" />
+	</bean>
+	
+	<bean id="like6" class="domain.LikeUser">
+		<property name="assessableEntity" ref="movie3" />
+		<property name="user" ref="user7" />
+	</bean>
+	
+	<bean id="like7" class="domain.LikeUser">
+		<property name="assessableEntity" ref="movie3" />
+		<property name="user" ref="user8" />
+	</bean>
+	
+	<bean id="like8" class="domain.LikeUser">
+		<property name="assessableEntity" ref="director3" />
+		<property name="user" ref="user3" />
+	</bean>
+	
+	<bean id="like9" class="domain.LikeUser">
+		<property name="assessableEntity" ref="director4" />
+		<property name="user" ref="user3" />
+	</bean>
+	
+	<bean id="like10" class="domain.LikeUser">
+		<property name="assessableEntity" ref="actor3" />
+		<property name="user" ref="user3" />
+	</bean>
+	
+	<bean id="like11" class="domain.LikeUser">
+		<property name="assessableEntity" ref="actor4" />
+		<property name="user" ref="user3" />
+	</bean>
+	
+	<bean id="like12" class="domain.LikeUser">
+		<property name="assessableEntity" ref="actor5" />
+		<property name="user" ref="user3" />
+	</bean>
+	
+	<bean id="like13" class="domain.LikeUser">
+		<property name="assessableEntity" ref="director5" />
+		<property name="user" ref="user3" />
+	</bean>
+	
+	<bean id="like14" class="domain.LikeUser">
+		<property name="assessableEntity" ref="tvshow1" />
+		<property name="user" ref="user3" />
+	</bean>
+	
+	<bean id="like15" class="domain.LikeUser">
+		<property name="assessableEntity" ref="tvshow2" />
+		<property name="user" ref="user3" />
+	</bean>
+	
+	<bean id="like16" class="domain.LikeUser">
+		<property name="assessableEntity" ref="tvshow3" />
+		<property name="user" ref="user3" />
+	</bean>
+	
+	<bean id="like17" class="domain.LikeUser">
+		<property name="assessableEntity" ref="director2" />
+		<property name="user" ref="user3" />
+	</bean>
+	
+	<bean id="like18" class="domain.LikeUser">
+		<property name="assessableEntity" ref="movie2" />
+		<property name="user" ref="user3" />
+	</bean>
+	
+	<!-- REVIEWS -->
+	
+	<bean id="review1" class="domain.Review">
+		<property name="title" value="Title review 1" />
+		<property name="body" value="Body review 1" />
+		<property name="rating" value="3" />
+		<property name="draft" value="false" />
+		<property name="critic" ref="critic2" />
+		<property name="content" ref="movie2" />
+	</bean>
+	
+	<bean id="review2" class="domain.Review">
+		<property name="title" value="Title review 2" />
+		<property name="body" value="Body review 2" />
+		<property name="rating" value="5" />
+		<property name="draft" value="false" />
+		<property name="critic" ref="critic3" />
+		<property name="content" ref="movie3" />
+	</bean>
+	
+	<bean id="review3" class="domain.Review">
+		<property name="title" value="Title review 3" />
+		<property name="body" value="Body review 3" />
+		<property name="rating" value="0" />
+		<property name="draft" value="true" />
+		<property name="critic" ref="critic4" />
+		<property name="content" ref="movie3" />
+	</bean>
+	
+	<bean id="review4" class="domain.Review">
+		<property name="title" value="Title review 4" />
+		<property name="body" value="Body review 4" />
+		<property name="rating" value="4" />
+		<property name="draft" value="true" />
+		<property name="critic" ref="critic5" />
+		<property name="content" ref="movie3" />
+	</bean>
+	
+	<bean id="review5" class="domain.Review">
+		<property name="title" value="Title review 5" />
+		<property name="body" value="Body review 5" />
+		<property name="rating" value="4" />
+		<property name="draft" value="false" />
+		<property name="critic" ref="critic6" />
+		<property name="content" ref="movie3" />
+	</bean>
+	
+	<bean id="review6" class="domain.Review">
+		<property name="title" value="Title review 6" />
+		<property name="body" value="Body review 6" />
+		<property name="rating" value="2" />
+		<property name="draft" value="false" />
+		<property name="critic" ref="critic7" />
+		<property name="content" ref="movie3" />
+	</bean>
+	
+	<bean id="review7" class="domain.Review">
+		<property name="title" value="Title review 7" />
+		<property name="body" value="Body review 7" />
+		<property name="rating" value="3" />
+		<property name="draft" value="false" />
+		<property name="critic" ref="critic8" />
+		<property name="content" ref="movie3" />
+	</bean>
+	
+	<bean id="review8" class="domain.Review">
+		<property name="title" value="Title review 8" />
+		<property name="body" value="Body review 8" />
+		<property name="rating" value="3" />
+		<property name="draft" value="false" />
+		<property name="critic" ref="critic3" />
+		<property name="content" ref="tvshow1" />
+	</bean>
+	
+	<bean id="review9" class="domain.Review">
+		<property name="title" value="Title review 9" />
+		<property name="body" value="Body review 9" />
+		<property name="rating" value="2" />
+		<property name="draft" value="false" />
+		<property name="critic" ref="critic3" />
+		<property name="content" ref="tvshow2" />
+	</bean>
+	
+	<bean id="review10" class="domain.Review">
+		<property name="title" value="Title review 10" />
+		<property name="body" value="Body review 10" />
+		<property name="rating" value="1" />
+		<property name="draft" value="false" />
+		<property name="critic" ref="critic3" />
+		<property name="content" ref="tvshow3" />
+	</bean>
+	
+	<bean id="review11" class="domain.Review">
+		<property name="title" value="Title review 11" />
+		<property name="body" value="Body review 11" />
+		<property name="rating" value="4" />
+		<property name="draft" value="false" />
+		<property name="critic" ref="critic3" />
+		<property name="content" ref="tvshow4" />
+	</bean>
+	
+	<bean id="review12" class="domain.Review">
+		<property name="title" value="Title review 12" />
+		<property name="body" value="Body review 12" />
+		<property name="rating" value="3" />
+		<property name="draft" value="false" />
+		<property name="critic" ref="critic3" />
+		<property name="content" ref="movie2" />
+	</bean>
+	
+	<!-- SOCIAL IDENTITIES -->
+	
+	<bean id="social1" class="domain.SocialIdentity">
+		<property name="username" value="username1" />
+		<property name="path" value="http://url.com" />
+		<property name="user" ref="user2" />
+	</bean>
+	
+	<bean id="social2" class="domain.SocialIdentity">
+		<property name="username" value="username1" />
+		<property name="path" value="http://url1.com" />
+		<property name="user" ref="user3" />
+	</bean>
+	
+	<bean id="social3" class="domain.SocialIdentity">
+		<property name="username" value="username2" />
+		<property name="path" value="http://url2.com" />
+		<property name="user" ref="user3" />
+	</bean>
+	
+	<bean id="social4" class="domain.SocialIdentity">
+		<property name="username" value="username3" />
+		<property name="path" value="http://url3.com" />
+		<property name="user" ref="user3" />
+	</bean>
+	
+	<bean id="social5" class="domain.SocialIdentity">
+		<property name="username" value="username4" />
+		<property name="path" value="http://url4.com" />
+		<property name="user" ref="user3" />
+	</bean>
+	
+	<bean id="social6" class="domain.SocialIdentity">
+		<property name="username" value="username5" />
+		<property name="path" value="http://url5.com" />
+		<property name="user" ref="user3" />
+	</bean>
+	
+	<bean id="social7" class="domain.SocialIdentity">
+		<property name="username" value="username6" />
+		<property name="path" value="http://url6.com" />
+		<property name="user" ref="user3" />
+	</bean>
+	
+	<!-- MESSAGES -->
+	
+	<bean id="message1" class="domain.MessageEntity">
+		<property name="title" value="titleMessage1" />
+		<property name="body" value="bodyMessage1" />
+		<property name="copy" value="false" />
+		<property name="moment" value="01/01/2017 00:00" />
+		<property name="sender" ref="producer2" />
+		<property name="recipient" ref="admin" />
+	</bean>
+	
+	<bean id="message2" class="domain.MessageEntity">
+		<property name="title" value="titleMessage1" />
+		<property name="body" value="bodyMessage1" />
+		<property name="copy" value="true" />
+		<property name="moment" value="01/01/2017 00:00" />
+		<property name="sender" ref="producer2" />
+		<property name="recipient" ref="admin" />
+	</bean>
+	
+	<bean id="message3" class="domain.MessageEntity">
+		<property name="title" value="titleMessage2" />
+		<property name="body" value="bodyMessage2" />
+		<property name="copy" value="false" />
+		<property name="moment" value="01/13/2017 00:00" />
+		<property name="sender" ref="producer2" />
+		<property name="recipient" ref="admin" />
+	</bean>
+	
+	<bean id="message4" class="domain.MessageEntity">
+		<property name="title" value="titleMessage2" />
+		<property name="body" value="bodyMessage2" />
+		<property name="copy" value="true" />
+		<property name="moment" value="01/13/2017 00:00" />
+		<property name="sender" ref="producer2" />
+		<property name="recipient" ref="admin" />
+	</bean>
+	
+	<bean id="message5" class="domain.MessageEntity">
+		<property name="title" value="titleMessage3" />
+		<property name="body" value="bodyMessage3" />
+		<property name="copy" value="false" />
+		<property name="moment" value="02/02/2017 00:00" />
+		<property name="sender" ref="producer2" />
+		<property name="recipient" ref="admin" />
+	</bean>
+	
+	<bean id="message6" class="domain.MessageEntity">
+		<property name="title" value="titleMessage3" />
+		<property name="body" value="bodyMessage3" />
+		<property name="copy" value="true" />
+		<property name="moment" value="02/02/2017 00:00" />
+		<property name="sender" ref="producer2" />
+		<property name="recipient" ref="admin" />
+	</bean>
+	
+	<bean id="message7" class="domain.MessageEntity">
+		<property name="title" value="titleMessage4" />
+		<property name="body" value="bodyMessage4" />
+		<property name="copy" value="false" />
+		<property name="moment" value="02/03/2017 00:00" />
+		<property name="sender" ref="producer2" />
+		<property name="recipient" ref="admin" />
+	</bean>
+	
+	<bean id="message8" class="domain.MessageEntity">
+		<property name="title" value="titleMessage4" />
+		<property name="body" value="bodyMessage4" />
+		<property name="copy" value="true" />
+		<property name="moment" value="02/03/2017 00:00" />
+		<property name="sender" ref="producer2" />
+		<property name="recipient" ref="admin" />
+	</bean>
+	
+	<bean id="message9" class="domain.MessageEntity">
+		<property name="title" value="titleMessage5" />
+		<property name="body" value="bodyMessage5" />
+		<property name="copy" value="false" />
+		<property name="moment" value="02/12/2017 00:00" />
+		<property name="sender" ref="producer3" />
+		<property name="recipient" ref="admin" />
+	</bean>
+	
+	<bean id="message10" class="domain.MessageEntity">
+		<property name="title" value="titleMessage5" />
+		<property name="body" value="bodyMessage5" />
+		<property name="copy" value="false" />
+		<property name="moment" value="02/12/2017 00:00" />
+		<property name="sender" ref="producer3" />
+		<property name="recipient" ref="admin" />
+	</bean>
+	
+	<bean id="message11" class="domain.MessageEntity">
+		<property name="title" value="titleMessage6" />
+		<property name="body" value="bodyMessage6" />
+		<property name="copy" value="false" />
+		<property name="moment" value="04/09/2017 00:00" />
+		<property name="sender" ref="producer3" />
+		<property name="recipient" ref="admin" />
+	</bean>
+	
+	<bean id="message12" class="domain.MessageEntity">
+		<property name="title" value="titleMessage6" />
+		<property name="body" value="bodyMessage6" />
+		<property name="copy" value="true" />
+		<property name="moment" value="04/09/2017 00:00" />
+		<property name="sender" ref="producer3" />
+		<property name="recipient" ref="admin" />
+	</bean>
+	
+	<bean id="message13" class="domain.MessageEntity">
+		<property name="title" value="titleMessage7" />
+		<property name="body" value="bodyMessage7" />
+		<property name="copy" value="false" />
+		<property name="moment" value="04/13/2017 00:00" />
+		<property name="sender" ref="producer3" />
+		<property name="recipient" ref="admin" />
+	</bean>
+	
+	<bean id="message14" class="domain.MessageEntity">
+		<property name="title" value="titleMessage7" />
+		<property name="body" value="bodyMessage7" />
+		<property name="copy" value="true" />
+		<property name="moment" value="04/13/2017 00:00" />
+		<property name="sender" ref="admin" />
+		<property name="recipient" ref="producer2" />
+	</bean>
+	
+	<bean id="message15" class="domain.MessageEntity">
+		<property name="title" value="titleMessage8" />
+		<property name="body" value="bodyMessage8" />
+		<property name="copy" value="false" />
+		<property name="moment" value="04/14/2017 00:00" />
+		<property name="sender" ref="admin" />
+		<property name="recipient" ref="producer2" />
+	</bean>
+	
+	<bean id="message16" class="domain.MessageEntity">
+		<property name="title" value="titleMessage8" />
+		<property name="body" value="bodyMessage8" />
+		<property name="copy" value="true" />
+		<property name="moment" value="04/14/2017 00:00" />
+		<property name="sender" ref="admin" />
+		<property name="recipient" ref="producer2" />
+	</bean>
+	
+	<bean id="message17" class="domain.MessageEntity">
+		<property name="title" value="titleMessage9" />
+		<property name="body" value="bodyMessage9" />
+		<property name="copy" value="false" />
+		<property name="moment" value="04/15/2017 00:00" />
+		<property name="sender" ref="admin" />
+		<property name="recipient" ref="producer2" />
+	</bean>
+	
+	<bean id="message18" class="domain.MessageEntity">
+		<property name="title" value="titleMessage9" />
+		<property name="body" value="bodyMessage9" />
+		<property name="copy" value="true" />
+		<property name="moment" value="04/15/2017 00:00" />
+		<property name="sender" ref="admin" />
+		<property name="recipient" ref="producer2" />
+	</bean>
+	
+	<bean id="message19" class="domain.MessageEntity">
+		<property name="title" value="titleMessage10" />
+		<property name="body" value="bodyMessage10" />
+		<property name="copy" value="false" />
+		<property name="moment" value="04/16/2017 00:00" />
+		<property name="sender" ref="admin" />
+		<property name="recipient" ref="producer2" />
+	</bean>
+	
+	<bean id="message20" class="domain.MessageEntity">
+		<property name="title" value="titleMessage10" />
+		<property name="body" value="bodyMessage10" />
+		<property name="copy" value="true" />
+		<property name="moment" value="04/16/2017 00:00" />
+		<property name="sender" ref="admin" />
+		<property name="recipient" ref="producer2" />
+	</bean>
+	
+	<bean id="message21" class="domain.MessageEntity">
+		<property name="title" value="titleMessage11" />
+		<property name="body" value="bodyMessage11" />
+		<property name="copy" value="false" />
+		<property name="moment" value="04/17/2017 00:00" />
+		<property name="sender" ref="admin" />
+		<property name="recipient" ref="producer3" />
+	</bean>
+	
+	<bean id="message22" class="domain.MessageEntity">
+		<property name="title" value="titleMessage11" />
+		<property name="body" value="bodyMessage11" />
+		<property name="copy" value="true" />
+		<property name="moment" value="04/17/2017 00:00" />
+		<property name="sender" ref="admin" />
+		<property name="recipient" ref="producer3" />
+	</bean>
+	
+	<bean id="message23" class="domain.MessageEntity">
+		<property name="title" value="titleMessage12" />
+		<property name="body" value="bodyMessage12" />
+		<property name="copy" value="false" />
+		<property name="moment" value="04/13/2017 00:00" />
+		<property name="sender" ref="admin" />
+		<property name="recipient" ref="producer3" />
+	</bean>
+	
+	<bean id="message24" class="domain.MessageEntity">
+		<property name="title" value="titleMessage12" />
+		<property name="body" value="bodyMessage12" />
+		<property name="copy" value="true" />
+		<property name="moment" value="04/13/2017 00:00" />
+		<property name="sender" ref="admin" />
+		<property name="recipient" ref="producer3" />
+	</bean>
+	
+	<!-- SHIPPING ADDRESSES -->
+	
+	<bean id="shippingaddress1" class="domain.ShippingAddress">
+		<property name="saName" value="Shipping Address 1" />
+		<property name="name" value="name1" />
+		<property name="surname" value="surname1" />
+		<property name="country" value="country1" />
+		<property name="address" value="address1" />
+		<property name="city" value="city1" />
+		<property name="province" value="province1" />
+		<property name="state" value="state1" />
+		<property name="zipcode" value="00001" />
+		<property name="phone" value="+12123456789" />
+		<property name="user" ref="user2" />
+	</bean>
+	
+	<bean id="shippingaddress2" class="domain.ShippingAddress">
+		<property name="saName" value="Shipping Address 1" />
+		<property name="name" value="name2" />
+		<property name="surname" value="surname2" />
+		<property name="country" value="country1" />
+		<property name="address" value="address1" />
+		<property name="city" value="city1" />
+		<property name="province" value="province1" />
+		<property name="state" value="state1" />
+		<property name="zipcode" value="00001" />
+		<property name="phone" value="+12123456789" />
+		<property name="user" ref="user3" />
+	</bean>
+	
+	<bean id="shippingaddress3" class="domain.ShippingAddress">
+		<property name="saName" value="Shipping Address 2" />
+		<property name="name" value="name1" />
+		<property name="surname" value="surname1" />
+		<property name="country" value="country2" />
+		<property name="address" value="address2" />
+		<property name="city" value="city2" />
+		<property name="zipcode" value="00002" />
+		<property name="phone" value="+12123456789" />
+		<property name="user" ref="user3" />
+	</bean>
+	
+	<bean id="shippingaddress4" class="domain.ShippingAddress">
+		<property name="saName" value="Shipping Address 3" />
+		<property name="name" value="name2" />
+		<property name="surname" value="surname2" />
+		<property name="country" value="country1" />
+		<property name="address" value="address1" />
+		<property name="city" value="city1" />
+		<property name="zipcode" value="40123" />
+		<property name="phone" value="+12147852369" />
+		<property name="user" ref="user3" />
+	</bean>
+	
+	<bean id="shippingaddress5" class="domain.ShippingAddress">
+		<property name="saName" value="Shipping Address 4" />
+		<property name="name" value="name3" />
+		<property name="surname" value="surname3" />
+		<property name="country" value="country3" />
+		<property name="address" value="address3" />
+		<property name="city" value="city3" />
+		<property name="province" value="province3" />
+		<property name="state" value="state3" />
+		<property name="zipcode" value="71235" />
+		<property name="phone" value="+12963258741" />
+		<property name="user" ref="user3" />
+	</bean>
+	
+	<bean id="shippingaddress6" class="domain.ShippingAddress">
+		<property name="saName" value="Shipping Address 5" />
+		<property name="name" value="name1" />
+		<property name="surname" value="surname1" />
+		<property name="country" value="country4" />
+		<property name="address" value="address4" />
+		<property name="city" value="city4" />
+		<property name="zipcode" value="58213" />
+		<property name="phone" value="+74582147963" />
+		<property name="user" ref="user3" />
+	</bean>
+	
+	<bean id="shippingaddress7" class="domain.ShippingAddress">
+		<property name="saName" value="Shipping Address 6" />
+		<property name="name" value="name4" />
+		<property name="surname" value="surname4" />
+		<property name="country" value="country5" />
+		<property name="address" value="address5" />
+		<property name="city" value="city5" />
+		<property name="province" value="province5" />
+		<property name="zipcode" value="96548" />
+		<property name="phone" value="+47521346749" />
+		<property name="user" ref="user3" />
+	</bean>
+	
+	<!-- PRODUCTS -->
+	
+	<bean id="product1" class="domain.Product">
+		<property name="name" value="Product 1" />
+		<property name="price" value="5.99" />
+		<property name="stock" value="10" />
+		<property name="picture" value="http://blog.tshirt-factory.com/wp-content/uploads/2011/12/movie-t-shirts3.jpg" />
+		<property name="idcode" value="AAAAA-00001" />
+		<property name="content" ref="movie2" />
+	</bean>
+	
+	<bean id="product2" class="domain.Product">
+		<property name="name" value="Product 2" />
+		<property name="price" value="13.99" />
+		<property name="stock" value="2" />
+		<property name="picture" value="http://www.teesnthings.com/productimages/movie/terminator-t-shirts/terminator-movie-logo-tee-shirt-detail.jpg" />
+		<property name="idcode" value="AAAAA-00002" />
+		<property name="content" ref="movie3" />
+	</bean>
+	
+	<bean id="product3" class="domain.Product">
+		<property name="name" value="Product 3" />
+		<property name="price" value="2.99" />
+		<property name="stock" value="25" />
+		<property name="picture" value="https://img.freeauctiondesigns.com/btmclothing/The%20Thing%20Mens%20Graphite.jpg" />
+		<property name="idcode" value="AAAAA-00003" />
+		<property name="content" ref="movie3" />
+	</bean>
+	
+	<bean id="product4" class="domain.Product">
+		<property name="name" value="Product 4" />
+		<property name="price" value="5.99" />
+		<property name="stock" value="55" />
+		<property name="picture" value="https://images-na.ssl-images-amazon.com/images/I/81%2BXRuyuCBL._UX385_.jpg" />
+		<property name="idcode" value="AAAAA-00004" />
+		<property name="content" ref="movie3" />
+	</bean>
+	
+	<bean id="product5" class="domain.Product">
+		<property name="name" value="Product 5" />
+		<property name="price" value="11.95" />
+		<property name="stock" value="13" />
+		<property name="picture" value="https://i1.wp.com/www.fortressofsolitude.co.za/wp-content/uploads/2017/05/Hippolyta.png?resize=316%2C225" />
+		<property name="idcode" value="AAAAA-00005" />
+		<property name="content" ref="movie3" />
+	</bean>
+	
+	<bean id="product6" class="domain.Product">
+		<property name="name" value="Product 6" />
+		<property name="price" value="7.99" />
+		<property name="stock" value="0" />
+		<property name="picture" value="https://s-media-cache-ak0.pinimg.com/564x/de/fe/3d/defe3da832c044cfa13a725f5ed2f0b3.jpg" />
+		<property name="idcode" value="AAAAA-00006" />
+		<property name="content" ref="movie3" />
+	</bean>
+	
+	<bean id="product7" class="domain.Product">
+		<property name="name" value="Product 7" />
+		<property name="price" value="4.99" />
+		<property name="stock" value="1" />
+		<property name="picture" value="http://cdn.shopify.com/s/files/1/0620/1409/products/Fast_Furious_276_Brian_O_Conner_WS_grande.png?v=1454215529" />
+		<property name="idcode" value="AAAAA-00007" />
+		<property name="content" ref="movie3" />
+	</bean>
+	
+	<!-- ORDER QUANTITIES -->
+	
+	<!-- For order1 -->
+	
+	<bean id="qOrder1" class="domain.OrderQuantity">
+		<property name="quantity" value="1" />
+		<property name="product" ref="product1" />
+	</bean>
+	
+	<!-- For order2 -->
+	
+	<bean id="qOrder2" class="domain.OrderQuantity">
+		<property name="quantity" value="2" />
+		<property name="product" ref="product1" />
+	</bean>
+	
+	<bean id="qOrder3" class="domain.OrderQuantity">
+		<property name="quantity" value="1" />
+		<property name="product" ref="product2" />
+	</bean>
+	
+	<bean id="qOrder4" class="domain.OrderQuantity">
+		<property name="quantity" value="3" />
+		<property name="product" ref="product3" />
+	</bean>
+	
+	<bean id="qOrder5" class="domain.OrderQuantity">
+		<property name="quantity" value="2" />
+		<property name="product" ref="product4" />
+	</bean>
+	
+	<bean id="qOrder6" class="domain.OrderQuantity">
+		<property name="quantity" value="1" />
+		<property name="product" ref="product5" />
+	</bean>
+	
+	<bean id="qOrder7" class="domain.OrderQuantity">
+		<property name="quantity" value="1" />
+		<property name="product" ref="product6" />
+	</bean>
+	
+	<!-- For order3 -->
+	
+	<bean id="qOrder8" class="domain.OrderQuantity">
+		<property name="quantity" value="1" />
+		<property name="product" ref="product2" />
+	</bean>
+	
+	<!-- For order4 -->
+	
+	<bean id="qOrder9" class="domain.OrderQuantity">
+		<property name="quantity" value="1" />
+		<property name="product" ref="product3" />
+	</bean>
+	
+	<!-- For order5 -->
+	
+	<bean id="qOrder10" class="domain.OrderQuantity">
+		<property name="quantity" value="1" />
+		<property name="product" ref="product4" />
+	</bean>
+	
+	<!-- For order6 -->
+	
+	<bean id="qOrder11" class="domain.OrderQuantity">
+		<property name="quantity" value="1" />
+		<property name="product" ref="product5" />
+	</bean>
+	
+	<!-- For order7 -->
+	
+	<bean id="qOrder12" class="domain.OrderQuantity">
+		<property name="quantity" value="1" />
+		<property name="product" ref="product6" />
+	</bean>
+	
+	<!-- ORDER USER -->
+	
+	<bean id="order1" class="domain.OrderUser">
+		<property name="total" value="5.99" />
+		<property name="moment" value="03/12/2016 15:43" />
+		<property name="finished" value="true" />
+		<property name="user" ref="user2" />
+		<property name="orderQuantities">
+			<list>
+				<ref bean="qOrder1"/>
+			</list>
+		</property>
+		<property name="status" value="0" />
+		<property name="shippingAddress" ref="shippingaddress1" />
+	</bean>
+	
+	<bean id="order2" class="domain.OrderUser">
+		<property name="total" value="66.86" />
+		<property name="moment" value="04/14/2016 16:21" />
+		<property name="finished" value="true" />
+		<property name="user" ref="user3" />
+		<property name="orderQuantities">
+			<list>
+				<ref bean="qOrder2"/>
+				<ref bean="qOrder3"/>
+				<ref bean="qOrder4"/>
+				<ref bean="qOrder5"/>
+				<ref bean="qOrder6"/>
+				<ref bean="qOrder7"/>
+			</list>
+		</property>
+		<property name="status" value="1" />
+		<property name="shippingAddress" ref="shippingaddress2" />
+	</bean>
+	
+	<bean id="order3" class="domain.OrderUser">
+		<property name="total" value="13.99" />
+		<property name="moment" value="05/23/2016 17:11" />
+		<property name="finished" value="true" />
+		<property name="user" ref="user3" />
+		<property name="orderQuantities">
+			<list>
+				<ref bean="qOrder8"/>
+			</list>
+		</property>
+		<property name="status" value="2" />
+		<property name="shippingAddress" ref="shippingaddress2" />
+	</bean>
+	
+	<bean id="order4" class="domain.OrderUser">
+		<property name="total" value="2.99" />
+		<property name="moment" value="06/19/2016 17:52" />
+		<property name="finished" value="true" />
+		<property name="user" ref="user3" />
+		<property name="orderQuantities">
+			<list>
+				<ref bean="qOrder9"/>
+			</list>
+		</property>
+		<property name="status" value="1" />
+		<property name="shippingAddress" ref="shippingaddress2" />
+	</bean>
+	
+	<bean id="order5" class="domain.OrderUser">
+		<property name="total" value="5.99" />
+		<property name="moment" value="06/20/2016 17:36" />
+		<property name="finished" value="true" />
+		<property name="user" ref="user3" />
+		<property name="orderQuantities">
+			<list>
+				<ref bean="qOrder10"/>
+			</list>
+		</property>
+		<property name="status" value="1" />
+		<property name="shippingAddress" ref="shippingaddress2" />
+	</bean>
+	
+	<bean id="order6" class="domain.OrderUser">
+		<property name="total" value="11.95" />
+		<property name="moment" value="01/11/2017 15:43" />
+		<property name="finished" value="true" />
+		<property name="user" ref="user3" />
+		<property name="orderQuantities">
+			<list>
+				<ref bean="qOrder11"/>
+			</list>
+		</property>
+		<property name="status" value="2" />
+		<property name="shippingAddress" ref="shippingaddress2" />
+	</bean>
+	
+	<bean id="order7" class="domain.OrderUser">
+		<property name="total" value="7.99" />
+		<property name="moment" value="03/12/2017 11:43" />
+		<property name="finished" value="true" />
+		<property name="user" ref="user3" />
+		<property name="orderQuantities">
+			<list>
+				<ref bean="qOrder12"/>
+			</list>
+		</property>
+		<property name="status" value="1" />
+		<property name="shippingAddress" ref="shippingaddress2" />
+	</bean>
+	
+</beans>
